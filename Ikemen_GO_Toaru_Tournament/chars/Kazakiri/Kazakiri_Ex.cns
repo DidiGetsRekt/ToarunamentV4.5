@@ -626,8 +626,8 @@ sprpriority = -1
 		var(1)=0
 
 [State 200,V1=0]
-		Type=null;VarAdd
-		Trigger1=prevstateno!=2305
+		Type=VarAdd
+		Trigger1=1;prevstateno!=2305
 		var(9)=1
 		persistent=0
 
