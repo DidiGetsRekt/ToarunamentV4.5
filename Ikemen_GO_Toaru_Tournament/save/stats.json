@@ -1,0 +1,60 @@
+{
+  "modes": {
+    "training": {
+      "playtime": 0
+    },
+    "netplayversus": {
+      "playtime": 138801.22
+    },
+    "bossrush": {
+      "playtime": 6615.15,
+      "clear": 0,
+      "clearcount": [
+
+      ]
+    },
+    "freebattle": {
+      "playtime": 6351.45
+    },
+    "versus": {
+      "playtime": 2076.98
+    },
+    "arcade": {
+      "playtime": 3335.6,
+      "clear": 2,
+      "clearcount": {
+        "kanzaki": 1,
+        "kamijo": 1
+      },
+      "ranking": [
+        {
+          "score": 1692800,
+          "time": 1731.42,
+          "name": "",
+          "chars": [
+            "kamijo"
+          ],
+          "tmode": 0,
+          "ailevel": 5,
+          "win": 14,
+          "lose": 0,
+          "consecutive": 11
+        },
+        {
+          "score": 311701,
+          "time": 1604.18,
+          "name": "",
+          "chars": [
+            "kanzaki"
+          ],
+          "tmode": 0,
+          "ailevel": 5,
+          "win": 13,
+          "lose": 1,
+          "consecutive": 7
+        }
+      ]
+    }
+  },
+  "playtime": 157180.4
+}

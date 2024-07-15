@@ -1,0 +1,104 @@
+;Charge up begin
+[Statedef 6499]
+	type     = S
+	movetype = I
+	physics  = S
+	ctrl     = 0
+	velset   = 0,0
+	anim     = 850
+	sprpriority = 2
+	[State 6500, ステート変更]
+		type = ChangeState
+		triggerall= animtime=0 
+		trigger1= command ="hold_y"
+		trigger2= command ="hold_a" && command = "hold_c"
+		value = 6500
+	[State 6500, ステート変更]
+		type = ChangeState
+		trigger1 = command != "hold_y" && command !="hold_a" && command != "hold_c"
+		trigger2 = Power >= powerMax
+		value = 6501
+;Charge up
+[Statedef 6500]
+	type     = S
+	movetype = I
+	physics  = S
+	ctrl     = 0
+	velset   = 0,0
+	anim     = 850
+	sprpriority = 2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = animtime=0
+trigger1=anim=850
+value = 851
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+
+	[State 6500,Snd2]
+		Type=playSnd
+		Trigger1=AnimElemTime(1)=0
+		trigger1=anim=850
+		value=30,11
+		channel=-1
+
+	[State 6500, パワーゲージ増減]
+		type = PowerAdd
+		trigger1 = 1
+		value = 9+time/15
+
+	[State 6500, エフェクト]
+		Type=Explod
+		Trigger1=time=0
+		anim = 13270
+		postype = p1
+		pos = 0,5
+		sprpriority = 3
+		ownpal = 1
+		removetime = -1
+		bindtime=-1
+		removeongethit = 1
+		ID = 13370
+		
+	[State 6500, エフェクト消し]
+		Type=RemoveExplod
+		trigger1 = command != "hold_y" && command !="hold_a" && command != "hold_c"
+		Trigger2 = Power >= PowerMAX
+		ID = 13370
+
+	[State 6500, エフェクト]
+		Type=Explod
+		trigger1 = command != "hold_y" && command !="hold_a" && command != "hold_c"
+		Trigger2 = Power >= PowerMAX
+		anim = 13271
+		postype = p1
+		pos = 0,5
+		sprpriority = 3
+		ownpal = 1
+		bindtime=-1
+		removeongethit = 1
+		ID = 13371
+
+	[State 6500, ステート変更]
+		type = ChangeState
+		trigger1 = command != "hold_y" && command !="hold_a" && command != "hold_c"
+		trigger2 = Power >= 6000
+		value = 0
+		ctrl=1
+;Charge up end
+[Statedef 6501]
+	type     = S
+	movetype = I
+	physics  = S
+	ctrl     = 0
+	velset   = 0,0
+	anim     = 852
+	sprpriority = 2
+	[State 6500, ステート変更]
+		type = ChangeState
+		trigger1 = animtime=0
+		value = 0
+		ctrl = 1
