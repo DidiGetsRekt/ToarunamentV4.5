@@ -501,7 +501,7 @@ time = 1
 ;■メテオストライク
 [Command]
 name = "OHKO"
-command =  ~B,DB,D,DF,F,y
+command =  ~B,DB,D,DF,F,x
 time = 32
 buffer.Time=16
 
@@ -557,29 +557,34 @@ command = ~D,DB,B,b
 time = 20
 buffer.Time=10
 
+[Command]
+name = "DP_x"
+command = ~F, D, DF, x
+time = 20
+buffer.Time=10
+
 
 [Command]
-name = "F_x"
-command = F,x
+name = "F_y"
+command = F,y
 time = 25
 buffer.time = 15
 
 [Command]
-name = "B_x"
-command = B,x
+name = "B_y"
+command = B,y
 time = 25
 buffer.time = 15
 
 [Command]
-name = "U_x"
-command = U,x
+name = "U_y"
+command = U,y
 time = 25
 buffer.time = 15
 
-
 [Command]
-name = "D_x"
-command = D,x
+name = "D_y"
+command = D,y
 time = 25
 buffer.time = 15
 
@@ -817,9 +822,9 @@ triggerall=stateno!=[3000,3100]
 triggerall = ctrl ||var(1)
 triggerall = (command != "holdup" && statetype!=A) || statetype=A
 triggerall=var(7)<5
-trigger1 = command = "x"
+trigger1 = command = "y"
 trigger1 = command = "holdfwd"
-trigger2=command="F_x"
+trigger2=command="F_y"
 
 
 
@@ -833,9 +838,9 @@ triggerall=stateno!=[3000,3100]
 triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 triggerall = ctrl ||var(1)
 triggerall = command != "holdup"
-trigger1 = command = "x"
+trigger1 = command = "y"
 trigger1 = command = "holdback"
-trigger2=command="B_x"
+trigger2=command="B_y"
 
 ;Teleport Up
 [State -1]
@@ -845,7 +850,7 @@ triggerall=stateno!=[3000,3100]
 triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 ;triggerall = stateno != 1000 && stateno != 1010 && stateno!=1030
 ;triggerALL = stateno != 2200 
-triggerall = (command = "holdup" && command = "x") || (command="U_x")
+triggerall = (command = "holdup" && command = "y") || (command="U_y")
 triggerall = (command != "holdfwd" && statetype=A) || statetype!=A
 triggerall=var(7)<8
 trigger1= ctrl ||Var(1)
@@ -862,9 +867,22 @@ triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 triggerall = statetype = A
 triggerall = ctrl ||var(1)
 triggerall= pos Y <15
-trigger1 = command = "x"
+trigger1 = command = "y"
 trigger1 = command = "holddown"
-trigger2=command="D_x"
+trigger2=command="D_y"
+
+
+;■ 地上通常投げ 
+[State -1]
+type = ChangeState
+value = 900
+triggerall= var(59)=0
+triggerall = statetype != A
+triggerall = ctrl
+triggerall= var(30)>=25;テレポゲージ判定
+triggerall = (fvar(7) = 0 ||fvar(8)!=0)
+;triggerall = stateno != 100
+trigger1 = command = "DP_x"
 
 
 ;Spotdodge
@@ -999,19 +1017,6 @@ trigger2 = (stateno = [200,499]) && var(1)
 
 ;------------------------------------------------------------------------------
 
-;■ 地上通常投げ 
-[State -1]
-type = ChangeState
-value = 800
-triggerall= var(59)=0
-TriggerAll = P2BodyDist X = [-10,35+vel x*6]
-TriggerAll = P2BodyDist Y = [-60,0]
-triggerall = statetype = S
-triggerall = ctrl
-triggerall= var(30)>=25;テレポゲージ判定
-triggerall = (fvar(7) = 0 ||fvar(8)!=0)
-;triggerall = stateno != 100
-trigger1 = (command = "c") && (command = "holdfwd")
 
 
 
