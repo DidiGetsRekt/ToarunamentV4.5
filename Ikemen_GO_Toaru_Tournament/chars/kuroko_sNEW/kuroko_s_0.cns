@@ -2606,15 +2606,15 @@ type = SelfState
 trigger1 = backedgebodydist <= 10
 value = 5050 ;common1.cns参照
 
-;Throw
-[Statedef 800]
+;Special Throw
+[Statedef 900]
 type    = S
 movetype= A
 physics =S
 juggle  = 0
 ;velset = 1,0
 ctrl = 0
-anim = 800
+anim = 900
 sprpriority = 2
 poweradd = 70
 
@@ -2642,6 +2642,8 @@ volume = 255 ;音量
 
 [State 800, ヒット定義]
 type = HitDef
+TriggerAll = P2BodyDist X = [-10,35+vel x*6]
+TriggerAll = P2BodyDist Y = [-60,0]
 Trigger1 = animelem =1
 attr = S, NT
 hitflag = -MA 
@@ -2653,8 +2655,8 @@ sparkno = -1
 hitsound   = s1,1
 ;p1facing = ifelse(command = "holdfwd", -1, 1) ;攻撃が当たった時の自分の向き ★６
 p2facing = 1          ;攻撃が当たった時の相手の向き
-p1stateno =810
-p2stateno =820       ;相手を制御するステートに行かせる
+p1stateno =910
+p2stateno =920       ;相手を制御するステートに行かせる
 guard.dist = 0        ;相手がガード状態に移行出来る距離（現在は0なのでガード不可）
 fall = 1              ;1にすれば相手がダウン状態になる
 p2facing=1
@@ -2693,21 +2695,21 @@ ctrl = 1
 
 
 ;■■地上通常投げ（成功・自分）■■■■■■
-[Statedef 810]
+[Statedef 910]
 type    = S
 movetype= A
 physics =S
 juggle  = 0
 ;velset = 0,0
 ctrl = 0
-anim = 810
+anim = 910
 sprpriority = 2
 poweradd = 50
 
 [State 810, ステート変更(対上条)]
 type = ChangeState
 Trigger1 = target,name = "Kamijou Touma"
-value = 830
+value = 930
 ctrl = 0
 
 [State -1, テレポゲージ消費]
@@ -2833,7 +2835,7 @@ Peresistent = 1
 
 ;■投げられた相手■■■■■■■■■■■■■■
 
-[Statedef 820]
+[Statedef 920]
 type    = A
 movetype= H
 physics = N
@@ -2844,12 +2846,8 @@ SprPriority =1
 [State 820, 自分が上条の場合]
 type = ChangeState
 Trigger1 = name = "Kamijou Touma"
-value = 840
+value = 940
 ctrl = 0
-
-[State 820]
-type = Gravity
-trigger1 = 1
 
 [State 820]
 type = Gravity
@@ -2864,7 +2862,7 @@ movecamera = 200,0
 [State 820, 制御した相手のアニメ変更]
 type = ChangeAnim2
 Trigger1 = Time = 0
-value = 820
+value = 920
 
 [State 820, ダメージ(倒せる）]
 type = LifeAdd
@@ -2903,14 +2901,14 @@ PalMul      = .5 , .5 , .5
 Peresistent = 1
 
 ;■■地上通常投げ（成功・自分・対上条）■■■■■■
-[Statedef 830]
+[Statedef 930]
 type    = S
 movetype= A
 physics =S
 juggle  = 0
 ;velset = 0,0
 ctrl = 0
-anim = 830
+anim = 930
 sprpriority = 2
 poweradd = 50
 
@@ -2954,7 +2952,7 @@ value = 0
 ctrl = 1
 
 ;■■投げられた相手（上条の場合）■■■■■■
-[Statedef 840]
+[Statedef 940]
 type    = S
 movetype= A
 physics =S
@@ -2967,7 +2965,7 @@ poweradd = 50
 [State 840, 制御した相手のアニメ変更]
 type = ChangeAnim2
 Trigger1 = Time = 0
-value = 840
+value = 940
 
 [State -1,地上に移動]
 Type = Posset
