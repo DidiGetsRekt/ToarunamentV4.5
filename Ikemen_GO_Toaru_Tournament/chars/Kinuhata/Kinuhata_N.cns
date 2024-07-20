@@ -3290,7 +3290,7 @@ priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
 sparkno = -1          ;No spark
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
                       ;p2's sprite priority is set to 0 by default
-p1facing = 1
+p1facing = cond(command="holdback",-1,1)
 p2facing = 1          ;Force p2 to face KFM
 p1stateno = 810       ;On success, KFM changes to state 810
 p2stateno = 820       ;If hit, p2 changes to state 820 in KFM's cns
@@ -3722,7 +3722,7 @@ facing = 1
 type = RemoveExplod
 trigger1 = Roundstate != 2
 trigger2 = Power >=4000
-trigger3 = command != "hold_y" && (command!= "hold_a" && command!="hold_c")
+trigger3 = command != "hold_z" && (command!= "hold_a" && command!="hold_c")
 id = 7330
 ignorehitpause = 1
 ;persistent = 
@@ -3735,7 +3735,7 @@ channel = 0
 
 [State 1100, Voice]
 type = StopSnd
-trigger1 = command != "hold_y" && command!= "hold_a" && command != "hold_c";「hold_c」のコマンドではない時（Ｃボタンが離されたら）
+trigger1 = command != "hold_z" && command!= "hold_a" && command != "hold_c";「hold_c」のコマンドではない時（Ｃボタンが離されたら）
 trigger2 = Power >= powermax
 trigger3 = RoundState != 2
 channel = 0
@@ -3745,7 +3745,7 @@ type = ChangeState
 
 trigger1 = Roundstate != 2
 trigger2 = Power >=4000
-trigger3 = command != "hold_y"  && (command!= "hold_a" && command!="hold_c")
+trigger3 = command != "hold_z"  && (command!= "hold_a" && command!="hold_c")
 value = 0
 ctrl = 1
 ignorehitpause = 1

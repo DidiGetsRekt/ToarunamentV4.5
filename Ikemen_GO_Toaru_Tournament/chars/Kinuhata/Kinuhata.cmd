@@ -331,13 +331,17 @@ time = 11
 
 [Command]
 name = "hold_x"
-command = /y
+command = /x
 time = 1
-
 
 [Command]
 name = "hold_y"
 command = /y
+time = 1
+
+[Command]
+name = "hold_z"
+command = /z
 time = 1
 
 [Command]
@@ -804,7 +808,7 @@ trigger2 = (StateNo=[600,699]) && var(1)
 type = ChangeState
 value = 100
 triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
-triggerall = command = "FF"||(Command = "holdfwd" && Command = "y" && stateno != 4000) 
+triggerall = command = "FF"||(Command = "holdfwd" && Command = "z" && stateno != 4000) 
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -816,7 +820,7 @@ trigger2=var(7)<4;5
 type = ChangeState
 value = 105
 triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
-triggerall = command = "BB" || (Command = "holdback" && Command = "y" && stateno != 4000) 
+triggerall = command = "BB" || (Command = "holdback" && Command = "z" && stateno != 4000) 
 triggerall = statetype = S
 trigger1 = ctrl
 trigger2 = var(1)
@@ -824,7 +828,7 @@ trigger2 = var(1)
 [State -1, Charge Power]
 type = ChangeState
 value = 4000
-triggerall = ((command = "hold_y") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
+triggerall = ((command = "hold_z") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
 triggerall = power <4000
 ;triggerall = prevstateno != 100 && prevstateno!=105
 triggerall = statetype !=A
@@ -839,7 +843,7 @@ value = 700
 ;triggerall = command = "Offense"
 triggerall=stateno!=701
 triggerall = command = "holdfwd"
-triggerall = command = "x"
+triggerall = command = "y"
 triggerall = statetype !=A
 triggerall=!ishelper
 triggerall=var(26)<1
@@ -860,7 +864,7 @@ value = 701
 triggerall=stateno!=700
 ;triggerall = command = "Defense"
 triggerall = command = "holdback"
-triggerall = command = "x"
+triggerall = command = "y"
 triggerall = statetype !=A
 triggerall=var(26)<1
 triggerall=!ishelper
@@ -912,14 +916,11 @@ Type = ChangeState
 value = 800
 	TriggerAll=Alive!=0
 	TriggerAll = StateType != A
-	TriggerAll=command="Burst"
-	;TriggerAll=command="holdfwd"
-	;TriggerAll=StateNo!=100
-	Triggerall=enemynear,StateType=S||enemynear,StateType=C
-	Triggerall=enemynear,MoveType!=H
+	TriggerAll=command="x"
+	triggerall = ctrl
 	triggerall=!ishelper
-	Trigger1=Ctrl
-	;trigger2=stateno=100
+	trigger1 = command = "holdfwd"
+	trigger2 = command = "holdback"
 	
 
 ;===========================================================================
@@ -1108,7 +1109,7 @@ Trigger4 = StateNo = 630 && var(1) && var(20) = 1
 [State -1, Super Armor]
 type = ChangeState
 value = 750
-triggerall = command = "z"
+triggerall = command = "y"
 trigger1 = ctrl
 trigger1 = fvar(6) >200
 
