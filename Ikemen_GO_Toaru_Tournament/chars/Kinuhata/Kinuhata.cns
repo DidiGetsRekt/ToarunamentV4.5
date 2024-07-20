@@ -5,28 +5,16 @@
 [Data]
 ;Amount of life to start with
 life = 1000
-
 power = 4000
-
-
 attack = 100
-
 defence = 85
-
 fall.defence_up = 50
-
 liedown.time = 60
-
 airjuggle = 15
-
 sparkno = 2
-
 guard.sparkno = 40
-
 KO.echo = 0
-
 volume = 185
-
 IntPersistIndex = 0
 FloatPersistIndex = 20
 
