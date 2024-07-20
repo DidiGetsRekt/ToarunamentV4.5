@@ -7,7 +7,7 @@ anim = 29999;
 type = Explod
 triggerAll = numexplod(11600) = 0
 trigger1 = Parent,fvar(6) != 0
-trigger1 = parent,var(2) = 0
+trigger1 = parent,var(20) = 0
 anim = 11600
 ID = 11600
 pos = ifelse(teamside=1,8,205), 197
@@ -117,7 +117,7 @@ ID = 11600
 ;Red
 [State 30000, PalFX]
 type = PalFX
-trigger1 = parent,var(2) = 1
+trigger1 = parent,var(20) = 1
 time = 1
 add = 50,0,0
 mul = 200,0,0
@@ -130,7 +130,7 @@ ignorehitpause=1
 ;Blue
 [State 30000, PalFX]
 type = PalFX
-trigger1 = parent,var(2) = 2
+trigger1 = parent,var(20) = 2
 time = 1
 add = 0,40,80
 mul = 0,100,150
@@ -332,7 +332,7 @@ trigger1 = parent,var(5) = 1
     type = ChangeState ;This is so when you die or when more than one of these helpers exists, it'll destroy itself. You can add more triggers if you want. For example, a burst mode with super armor that is activated when var(50)=1. The burst mode and super armor deactivate when var(50)=0. You would want to put a "trigger3 = var(50)=0".
     trigger1 = parent,life = 0
     trigger2 = parent,numhelper(800) > 1
-	trigger3= parent,Var(2)!=2
+	trigger3= parent,var(20)!=2
     value = 852
     ;------------------------------------------------------------------------------
 ;On Hit

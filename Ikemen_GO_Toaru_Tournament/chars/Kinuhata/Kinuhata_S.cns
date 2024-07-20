@@ -241,8 +241,8 @@ GuardSound = S1,1
 Ground.Type = low
 Ground.SlideTime = 26
 Ground.HitTime  = 26
-Ground.Velocity = Cond(Var(2) = 1,-1,-5.5)
-Air.Velocity = Cond(Var(2) = 1,-1,-1.5),Cond(Var(2) = 1,-1.5,-1.5) ;Put the funny kumagawa wall splat state on Nitrogen hit
+Ground.Velocity = Cond(var(20) = 1,-1,-5.5)
+Air.Velocity = Cond(var(20) = 1,-1,-1.5),Cond(var(20) = 1,-1.5,-1.5) ;Put the funny kumagawa wall splat state on Nitrogen hit
 Down.Velocity = -1,-9
 Ground.CornerPush.VelOff = 0
 Fall.XVelocity = 0
@@ -264,7 +264,7 @@ GivePower = 20,10
 [State ]
 type = HitDef
 trigger1 = movecontact >0
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 Trigger1 = AnimElem = 7
 Attr = S, SP
 animtype = back
@@ -304,7 +304,7 @@ priority = 2
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 7
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -313,7 +313,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 7
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -339,7 +339,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(7)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -357,7 +357,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(7)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -376,9 +376,9 @@ removeongethit = 1
 		Triggerall=MoveHit=1
 		triggerall = fvar(0)>0.80
 		triggerall =target,StateType = A
-		Trigger1= Var(2) != 1 
+		Trigger1= var(20) != 1 
 		
-		trigger2 = Var(2) = 1
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(7)>0
 		
 		fvar(0)=0.80
@@ -390,9 +390,9 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		triggerall =target,StateType = A
-		Trigger1= Var(2) != 1 
+		Trigger1= var(20) != 1 
 		
-		trigger2 = Var(2) = 1
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(7)>0
 		fvar(0)=fvar(0)*0.70
 		persistent = 0
@@ -406,8 +406,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(7)>0
 		var(1)=1
 ignorehitpause = 1
@@ -523,7 +523,7 @@ GivePower = 20,10
 [State ]
 type = HitDef
 trigger1 = movecontact >0
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 Trigger1 = AnimElem = 6
 Attr = S, SP
 animtype = back
@@ -563,7 +563,7 @@ priority = 2
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 6
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -572,7 +572,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 6
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -598,7 +598,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(6)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -616,7 +616,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(6)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -635,8 +635,8 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		triggerall = fvar(0)>0.70
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		
 		fvar(0)=0.70
@@ -654,8 +654,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		var(1)=1
 ignorehitpause = 1
@@ -760,9 +760,9 @@ Ground.Type = High
 Ground.SlideTime = 25
 Ground.HitTime  = 25
 AirGuard.CtrlTime = 8
-Ground.Velocity =  Cond(Var(2) = 1,-1,-3.5)
+Ground.Velocity =  Cond(var(20) = 1,-1,-3.5)
 Guard.Velocity = -4
-Air.Velocity =  Cond(Var(2) = 1,-1,-2.5), Cond(Var(2) = 1,-1.5,-1.5)
+Air.Velocity =  Cond(var(20) = 1,-1,-2.5), Cond(var(20) = 1,-1.5,-1.5)
 AirGuard.Velocity = -4,-1
 Down.Velocity = -4,-2
 ground.cornerpush.veloff = -2.5-fvar(11)*0.222
@@ -785,7 +785,7 @@ GivePower = 20,10
 [State ]
 type = HitDef
 trigger1 = movecontact >0
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 Trigger1 = AnimElem = 9
 Attr = S, SP
 animtype = back
@@ -825,7 +825,7 @@ priority = 2
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 9
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -834,7 +834,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 9
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -860,7 +860,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(9)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -878,7 +878,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(9)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -897,8 +897,8 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		triggerall = fvar(0)>0.70
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		
 		fvar(0)=0.70
@@ -916,8 +916,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		var(1)=1
 ignorehitpause = 1
@@ -925,8 +925,8 @@ ignorehitpause = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(9)>0
 		var(1)=1
 ignorehitpause = 1
@@ -1032,8 +1032,8 @@ GivePower = 20,10
 
 		Triggerall=MoveHit=1
 		trigger1 = fvar(0)>0.70
-		;Trigger1= Var(2) != 1 
-		;trigger2 = Var(2) = 1
+		;Trigger1= var(20) != 1 
+		;trigger2 = var(20) = 1
 		;trigger2 = animelemtime(6)>0
 		
 		fvar(0)=0.70
@@ -1051,8 +1051,8 @@ GivePower = 20,10
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		var(1)=1
 ignorehitpause = 1
@@ -1187,8 +1187,8 @@ GivePower = 20,10
 
 		Triggerall=MoveHit=1
 		trigger1 = fvar(0)>0.70
-		;Trigger1= Var(2) != 1 
-		;trigger2 = Var(2) = 1
+		;Trigger1= var(20) != 1 
+		;trigger2 = var(20) = 1
 		;trigger2 = animelemtime(6)>0
 		
 		fvar(0)=0.70
@@ -1206,8 +1206,8 @@ GivePower = 20,10
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		var(1)=1
 ignorehitpause = 1
@@ -1306,9 +1306,9 @@ Ground.SlideTime = 24
 Ground.HitTime  = 24
 ;guard.SlideTime = 19
 ;guard.HitTime  = 19
-Ground.Velocity = Cond(Var(2) = 1,-1,-8.5)
+Ground.Velocity = Cond(var(20) = 1,-1,-8.5)
 Guard.Velocity = -6.5
-Air.Velocity = Cond(Var(2) = 1,-1,-7.5),Cond(Var(2) = 1,-1,-4)
+Air.Velocity = Cond(var(20) = 1,-1,-7.5),Cond(var(20) = 1,-1,-4)
 Down.Velocity = -4,-2
 Ground.CornerPush.VelOff =-fvar(11)*0.666
 Fall.XVelocity = 0
@@ -1319,7 +1319,7 @@ EnvShake.Ampl = 3
 EnvShake.Freq = 90
 YAccel = .40+fvar(11)*.00066
 ID = 1100
-Guard.Kill = (Var(2) != 1)
+Guard.Kill = (var(20) != 1)
 Fall = 0
 Fall.Recover = 0;1-(P2StateType!=A)
 Fall.RecoverTime = 42
@@ -1330,7 +1330,7 @@ GivePower = 20,10
 [State ]
 type = HitDef
 trigger1 = movecontact >0
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 Trigger1 = AnimElem = 5
 Attr = S, SP
 animtype = back
@@ -1370,7 +1370,7 @@ priority = 2
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 5
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -1379,7 +1379,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 5
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -1405,7 +1405,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(5)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -1423,7 +1423,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(5)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -1442,8 +1442,8 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		;triggerall = fvar(0)>0.70
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		
 		fvar(0)=fvar(0)*0.80
@@ -1461,8 +1461,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(6)>0
 		var(1)=1
 ignorehitpause = 1
@@ -1470,8 +1470,8 @@ ignorehitpause = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(5)>0
 		var(1)=1
 ignorehitpause = 1
@@ -1708,18 +1708,18 @@ HitFlag = MAF
 sparkno = s7002
 guard.sparkno = s10000
 sparkxy = -27,floor(-45*const(Size.yScale))
-PauseTime = Cond(Var(2) = 1,1,15),Cond(Var(2) = 1,1,16)
+PauseTime = Cond(var(20) = 1,1,15),Cond(var(20) = 1,1,16)
 Guard.PauseTime = 20,14
 HitSound = s0,7
 GuardSound = S1,1
 Ground.Type = High
-Ground.SlideTime = Cond(Var(2) = 1,1,24)
-Ground.HitTime  = Cond(Var(2) = 1,1,24)
-Ground.Velocity = Cond(Var(2) = 1,-2,-8.5),Cond(Var(2) = 1,0,-4)
+Ground.SlideTime = Cond(var(20) = 1,1,24)
+Ground.HitTime  = Cond(var(20) = 1,1,24)
+Ground.Velocity = Cond(var(20) = 1,-2,-8.5),Cond(var(20) = 1,0,-4)
 Guard.SlideTime = 20
 Guard.HitTime  = 20
-Guard.Velocity = Cond(Var(2) = 1,-1,-4.5)
-Air.Velocity = Cond(Var(2) = 1,-1,-5.5),Cond(Var(2) = 1,-3,-3)
+Guard.Velocity = Cond(var(20) = 1,-1,-4.5)
+Air.Velocity = Cond(var(20) = 1,-1,-5.5),Cond(var(20) = 1,-3,-3)
 Down.Velocity = -4,-2
 Ground.CornerPush.VelOff = -fvar(11)*0.666
 Fall.XVelocity = 0
@@ -1730,8 +1730,8 @@ EnvShake.Ampl = 3
 EnvShake.Freq = 90
 YAccel = .40+fvar(11)*.00066
 ID = 1110
-Guard.Kill = (Var(2) != 1)
-Fall = (Var(2) != 1)
+Guard.Kill = (var(20) != 1)
+Fall = (var(20) != 1)
 Fall.Recover = 0
 Fall.RecoverTime = 40
 GetPower = 20,10
@@ -1742,7 +1742,7 @@ GivePower = 20,10
 Type = HitDef
 trigger1 = movecontact >0
 Trigger1 = AnimElem = 8
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 
 Attr = S, SP
 Damage = Ceil(70*fvar(10)),15
@@ -1784,7 +1784,7 @@ GivePower = 20,10
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 8
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -1793,7 +1793,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 8
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -1820,7 +1820,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(8)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -1838,7 +1838,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(8)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -1857,7 +1857,7 @@ removeongethit = 1
 [State -2,向き直し]
 		type = TargetFacing
 		trigger1 = movehit >1
-		trigger1=var(2)=1
+		trigger1=var(20)=1
 		trigger1 = target(1111),stateno != 7000
 		trigger1 = animelemtime(8) >=4
 		ignorehitpause=1
@@ -1866,7 +1866,7 @@ removeongethit = 1
 [State 1112,??????]
 		type = TargetState
 		trigger1 = movehit >1
-		trigger1=var(2)=1
+		trigger1=var(20)=1
 		trigger1 = target(1111),stateno != 7000
 		trigger1 = animelemtime(8) >=4
 		value = 7000
@@ -1876,8 +1876,8 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		;triggerall = fvar(0)>0.70
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(8)>0
 		
 		fvar(0)=fvar(0)*0.80
@@ -1895,8 +1895,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(8)>0
 		var(1)=1
 ignorehitpause = 1
@@ -2133,9 +2133,9 @@ Ground.HitTime  = 25
 Guard.SlideTime = 23
 Guard.HitTime  = 23
 AirGuard.CtrlTime = 8
-Ground.Velocity =  Cond(Var(2) = 1,-1,-5.5)
+Ground.Velocity =  Cond(var(20) = 1,-1,-5.5)
 Guard.Velocity = -4
-Air.Velocity =  Cond(Var(2) = 1,-1,-3.5), Cond(Var(2) = 1,-1.5,-2)
+Air.Velocity =  Cond(var(20) = 1,-1,-3.5), Cond(var(20) = 1,-1.5,-2)
 AirGuard.Velocity = -4,-1
 Down.Velocity = -4,-2
 Ground.CornerPush.VelOff = -fvar(11)*0.222
@@ -2147,7 +2147,7 @@ EnvShake.Ampl = 3
 EnvShake.Freq = 90
 yaccel =.40+fvar(11)*.00066
 ID = 1200
-Guard.Kill = (Var(2) != 1)
+Guard.Kill = (var(20) != 1)
 Fall.Recover = 1-(P2MoveType=A)
 Fall.RecoverTime = 34
 GetPower = 20,10
@@ -2157,7 +2157,7 @@ GivePower = 20,10
 [State ]
 type = HitDef
 trigger1 = movecontact >0
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 Trigger1 = AnimElem = 11
 Attr = S, SP
 animtype = back
@@ -2197,7 +2197,7 @@ priority = 2
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 11
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -2206,7 +2206,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 11
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -2232,7 +2232,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(11)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -2250,7 +2250,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(11)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -2269,8 +2269,8 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		;triggerall = fvar(0)>0.70
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(11)>0
 		
 		fvar(0)=fvar(0)*0.85
@@ -2289,8 +2289,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(11)>0
 		var(1)=1
 ignorehitpause = 1
@@ -2393,9 +2393,9 @@ Ground.Type = High
 Ground.SlideTime = 24
 Ground.HitTime  = 24
 AirGuard.CtrlTime = 8
-Ground.Velocity =  Cond(Var(2) = 1,-1,-7.5),Cond(Var(2) = 1,0,-3)
+Ground.Velocity =  Cond(var(20) = 1,-1,-7.5),Cond(var(20) = 1,0,-3)
 Guard.Velocity = -4
-Air.Velocity =  Cond(Var(2) = 1,-1,-8), Cond(Var(2) = 1,-3,-2.5)
+Air.Velocity =  Cond(var(20) = 1,-1,-8), Cond(var(20) = 1,-3,-2.5)
 AirGuard.Velocity = -4,-1
 Down.Velocity = -4,-2
 Ground.CornerPush.VelOff = -fvar(11)*0.333
@@ -2407,8 +2407,8 @@ EnvShake.Ampl = 3
 EnvShake.Freq = 90
 yaccel =.40+fvar(11)*.00066
 ID = 1200
-Fall =(Var(2) != 1)
-Guard.Kill = (Var(2) != 1)
+Fall =(var(20) != 1)
+Guard.Kill = (var(20) != 1)
 Fall.Recover = 1-(P2MoveType=A)
 Fall.RecoverTime = 34
 GetPower = 20,10
@@ -2418,7 +2418,7 @@ GivePower = 20,10
 [State ]
 type = HitDef
 trigger1 = movecontact >0
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 Trigger1 = AnimElem = 16
 Attr = S, SP
 animtype = back
@@ -2458,7 +2458,7 @@ priority = 2
 [State 210,効果音]
 		Type=playSnd
 		Trigger1 = AnimElem = 16
-		Trigger1 = var(2) = 1
+		Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 		value=20,1
 		channel=2
@@ -2467,7 +2467,7 @@ trigger1 = movecontact >0
 [State 0, Explod]
 type = Explod
 Trigger1 = AnimElem = 16
-Trigger1 = var(2) = 1
+Trigger1 = var(20) = 1
 trigger1 = movecontact >0
 anim = 10220
 ID = 10220
@@ -2493,7 +2493,7 @@ removeongethit = 1
 	[State 200, 線形ヒットエフェ]
 		type = explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(16)>0
 		trigger1 = movecontact >0
 		anim = 13520+random%10
@@ -2511,7 +2511,7 @@ removeongethit = 1
 	[State 200, 拡散ヒットエフェ]
 		type = Explod
 		trigger1 = movehit=1
-		trigger1 = Var(2) = 1
+		trigger1 = var(20) = 1
 		trigger1 = animelemtime(16)>0
 		trigger1 = movecontact >0
 		anim = 13100
@@ -2529,8 +2529,8 @@ removeongethit = 1
 
 		Triggerall=MoveHit=1
 		;triggerall = fvar(0)>0.70
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(16)>0
 		
 		fvar(0)=fvar(0)*0.85
@@ -2549,8 +2549,8 @@ removeongethit = 1
 [State 200,V1=1]
 		Type=VarSet
 		triggerall = movecontact
-		Trigger1= Var(2) != 1 
-		trigger2 = Var(2) = 1
+		Trigger1= var(20) != 1 
+		trigger2 = var(20) = 1
 		trigger2 = animelemtime(16)>0
 		var(1)=1
 ignorehitpause = 1
@@ -2697,7 +2697,7 @@ pos = 0,0
 postype = p1
 bindtime = -1
 removetime = -2
-scale = 0.3+0.1*(parent,var(2)=1),0.3+0.1*(parent,var(2)=1)
+scale = 0.3+0.1*(parent,var(20)=1),0.3+0.1*(parent,var(20)=1)
 sprpriority =3
 ownpal = 1
 removeongethit = 0
@@ -2710,7 +2710,7 @@ trigger1=!movecontact
 trigger1=!movereversed
 Attr = S, SA
 AnimType  = Up
-Damage    = Ceil((45+20*(parent,var(2)=1))*parent,fvar(10))
+Damage    = Ceil((45+20*(parent,var(20)=1))*parent,fvar(10))
 HitFlag = MAF
 GuardFlag = LA
 sparkno = -1;s6005                     ;Spark anim no (Def: set above)
@@ -2723,9 +2723,9 @@ HitSound=S0,12
 Ground.Type = High
 Ground.SlideTime = 16
 Ground.HitTime  = 16
-Ground.Velocity = -0.5,-9-2*(parent,var(2)=1)
+Ground.Velocity = -0.5,-9-2*(parent,var(20)=1)
 Guard.Velocity = -7.5
-Air.Velocity =-1,-7-2*(parent,var(2)=1)
+Air.Velocity =-1,-7-2*(parent,var(20)=1)
 Down.Velocity = -4,0
 Ground.CornerPush.VelOff =  0
 Air.CornerPush.VelOff =  0
@@ -3035,7 +3035,7 @@ pos = 0,0
 postype = p1
 bindtime = -1
 removetime = -2
-scale = 0.35+0.1*(parent,var(2)=1),0.35+0.1*(parent,var(2)=1)
+scale = 0.35+0.1*(parent,var(20)=1),0.35+0.1*(parent,var(20)=1)
 sprpriority =3
 ownpal = 1
 removeongethit = 0
@@ -3048,7 +3048,7 @@ trigger1=!movecontact
 trigger1=!movereversed
 Attr = S, SA
 AnimType  = Up
-Damage    = Ceil((65+20*(parent,var(2)=1))*parent,fvar(10))
+Damage    = Ceil((65+20*(parent,var(20)=1))*parent,fvar(10))
 HitFlag = MAFD
 GuardFlag = LA
 sparkno = -1;s6005                     ;Spark anim no (Def: set above)
@@ -3061,10 +3061,10 @@ HitSound=S0,12
 Ground.Type = High
 Ground.SlideTime = 16
 Ground.HitTime  = 16
-Ground.Velocity = -0.5,-10-2*(parent,var(2)=1)
+Ground.Velocity = -0.5,-10-2*(parent,var(20)=1)
 Guard.Velocity = -7.5
-Air.Velocity =-1,-8-2*(parent,var(2)=1)
-Down.Velocity = -1,-4-4*(parent,var(2)=1)
+Air.Velocity =-1,-8-2*(parent,var(20)=1)
+Down.Velocity = -1,-4-4*(parent,var(20)=1)
 Ground.CornerPush.VelOff =  0
 Air.CornerPush.VelOff =  0
 Fall.XVelocity = 0
