@@ -19,12 +19,12 @@ or refill instantly the Nitrogen meter
 
 <#f0f000>Normals:</>
 
-Standing Punch						^LK / ^A
+Standing Punch							^LK / ^A
 
-Elbow Hit						^MK / ^B
-Strike Followup						^MK / ^B 
+Elbow Hit								^MK / ^B
+Strike Followup							^MK / ^B 
 
-Tackle							_F^MK / _F^B
+Tackle									_F^MK / _F^B
 
 Strong Palm (Buff OK)					^HK / ^C
 
@@ -34,11 +34,11 @@ Nitrogen Ball (Reversal)(Is a projectile)(Costs Nitrogen)
 _B^HK / _B^C
 
 
-Crouching Punch						^LK / ^A (Crouching)
+Crouching Punch							^LK / ^A (Crouching)
 
-Crouching Low Kick 					^MK / ^B (Crouching)
+Crouching Low Kick 						^MK / ^B (Crouching)
 
-Crouching Sweep  					^HK / ^C (Crouching)
+Crouching Sweep  						^HK / ^C (Crouching)
 
 
 Air Punch						
@@ -54,7 +54,7 @@ Air Down Double Palm (Buff OK)
 _D^HK / _D^C (Air)
 
 Grab
-^LK + ^MK / ^A + ^B
+_F^LP or _B^LP / _F^X or _B^X
 
 
 Refill Nitrogen (Uses one bottle) 			_D^LP / _D^X 
@@ -64,21 +64,21 @@ Instant Refill Nitrogen (Uses one bottle)
 _D_D^LP / _D_D^X 
 
 Offense Mode Switch (Need more than 50% Nitrogen)		
-_F^LP / _F^X 
+_F^MP / _F^Y 
 
 Defense Mode Switch (Need more than 50% Nitrogen)		
-_B^LP / _B^X 
+_B^MP / _B^Y 
 
 
-Gauge Charge 						^MP / ^Y (Held)
+Gauge Charge	 						^HP / ^Z (Held)
 
-Dash 	(Hold direction)				^MP / ^Y 
+Dash 	(Hold direction)				^HP / ^Z 
 
 Burst 
 (Uses Nitrogen bottle if you have one else full Nitrogen meter)
-^LK + ^MK + ^HK / ^A + ^B + ^C
+^LK_+^MK / ^A_+^B
 
-Nitrogen Parry	(Uses Nitrogen)				^HP / ^Z 
+Nitrogen Parry	(Uses Nitrogen)				^MP / ^Y 
 
 
 <#ff0000>Supers and Hypers:</>
