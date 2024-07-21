@@ -1197,6 +1197,99 @@ value = 0
     ignorehitpause = 1
 
 ;---------------------------------------------------------------------------
+;Counter
+;---------------------------------------------------------------------------
+[State -2]
+ 	type = Varset
+ 	trigger1 = enemynear,movetype = A
+	var(2) = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+ 	;triggerall = stateno !=[6300,6350] -> burst
+ 	;triggerall = stateno !=[6400,6425] -> parry mechanic
+ 	triggerall = stateno !=[800,849] ; -> grab states
+ 	triggerall = movetype != H
+ 	triggerall = enemynear,movetype = H 
+ 	triggerall = var(2) = 1
+ 	trigger1 = movehit
+	trigger2 = helper(1310),movehit
+	trigger3 = helper(1360),movehit
+	trigger4 = helper(2310),movehit
+	trigger5 = helper(2510),movehit
+	trigger6 = helper(2511),movehit
+	var(2) = 2
+	ignorehitpause = 1
+
+[State -2, カウンターアタックボイス]
+	type = PlaySnd
+	trigger1 = var(2)=2
+	value = 1, 33
+	ignorehitpause = 1
+
+[State -2]
+	type = Explod
+	trigger1 = var(2) = 2
+	trigger2 = numexplod(14000) = 0
+	trigger2 = var(2) = 3
+	anim = ifelse(var(2)=2,14000,14002)
+	ID = 14000
+	pos = ifelse(teamside=1,60,260),  60
+	postype = left
+	bindtime = -1
+	removetime = -1
+	supermovetime = 9999
+	pausemovetime = 9999
+	sprpriority = 9999
+	scale = .5,.5
+	ontop = 1
+	ownpal = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+ 	trigger1 = var(2) = 2
+	var(2) = 3
+	ignorehitpause = 1
+
+[State -2]
+	type = RemoveExplod
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	ID = 14000
+	ignorehitpause = 1
+	
+[State -2]
+	type = Explod
+	triggerall =var(2) != 0
+	triggerall =var(2) != 1
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	anim = 14001
+	pos = ifelse(teamside=1,60,260),  60
+	postype = left
+	bindtime = -1
+	supermovetime = 9999
+	pausemovetime = 9999
+	sprpriority = 9999
+	scale = .5,.5
+	ontop = 1
+	ownpal = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	var(2) = 0
+	ignorehitpause = 1
+
+
+;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
 

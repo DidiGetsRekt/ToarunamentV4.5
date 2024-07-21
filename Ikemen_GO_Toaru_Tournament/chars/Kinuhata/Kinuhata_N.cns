@@ -3318,7 +3318,6 @@ channel = -1
 ;ignorehitpause = 
 ;persistent = 
 
-
 [State 0, TargetState]; faz o techador entrar no state do tech
 type = TargetState
 trigger1 = time = 0
