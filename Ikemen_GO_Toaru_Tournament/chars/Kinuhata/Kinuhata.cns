@@ -1288,6 +1288,13 @@ value = 0
 	var(2) = 0
 	ignorehitpause = 1
 
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = 1 + var(2)*0.25
+;ignorehitpause = 
+;persistent = 
+
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
