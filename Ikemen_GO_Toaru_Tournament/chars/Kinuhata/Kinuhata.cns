@@ -5,28 +5,16 @@
 [Data]
 ;Amount of life to start with
 life = 1000
-
 power = 4000
-
-
 attack = 100
-
 defence = 85
-
 fall.defence_up = 50
-
 liedown.time = 60
-
 airjuggle = 15
-
 sparkno = 2
-
 guard.sparkno = 40
-
 KO.echo = 0
-
 volume = 185
-
 IntPersistIndex = 0
 FloatPersistIndex = 20
 
@@ -1022,7 +1010,7 @@ ignorehitpause = 1
 [State -2,初期ゲージ設定]
 	Type= VarSet
 	trigger1 = roundstate = 0 && roundno > 1;
-	var(2) = 0
+	var(20) = 0
 
 
 ;Gives a base amount of Nitrogen bottles at the start of the round
@@ -1038,7 +1026,7 @@ ignorehitpause = 1
 ;Nitrogen Normal Mode Add
 [State -2]
 	type=VarAdd
-	triggerall = var(2) = 0 ;Normal mode
+	triggerall = var(20) = 0 ;Normal mode
 	triggerall = stateno != [700,705]
 	triggerall = roundstate = 2
 	triggerall = !(stateno = 2200 && time <57)
@@ -1057,7 +1045,7 @@ ignorehitpause = 1
 ;Nitrogen OffenseArmor Mode Decrease
 [State -2]
 	type=VarAdd
-	triggerall = var(2) > 0 ;Defense or Attack mode
+	triggerall = var(20) > 0 ;Defense or Attack mode
 	triggerall = stateno != [700,705]
 	triggerall = roundstate = 2
 	triggerall = !(stateno = 2200 && time <57)
@@ -1071,23 +1059,23 @@ ignorehitpause = 1
 	
 	
 	fv = 6
-	value = -2*var(2)
+	value = -2*var(20)
 	ignorehitpause = 1
 	
 ;Switch back to normal mode
 [State -2, VarSet]
 	type = VarSet
 	trigger1 = fvar(6) <= 0
-	;trigger2 =  var(2) = 1 && command = "Offense" && stateno != 700
-	;trigger3 =  var(2) = 2 && command = "Defense" && stateno != 701
+	;trigger2 =  var(20) = 1 && command = "Offense" && stateno != 700
+	;trigger3 =  var(20) = 2 && command = "Defense" && stateno != 701
 	
-	v = 2   
+	v = 20   
 	value = 0
 
 ;Super Armor Mode PalFX
 [State -2, PalFX]
 type = PalFX
-trigger1 = Var(2) = 2
+trigger1 = var(20) = 2
 trigger1 = time%30 = 1
 time = 5
 add = 100,100,100
@@ -1175,7 +1163,7 @@ value = 0
     ;Feel free to add as many triggers as you want. The triggers below are just required to prevent errors.
     trigger1 = NumHelper(800) = 0 ;This is so it will only spawn if the helper doesn't already exist.
     trigger1 = alive ;This is so it will only spawn if you're not dead.
-	trigger1 = var(2) = 2
+	trigger1 = var(20) = 2
     stateno = 850
     id = 800
     name = "Super Armor"
@@ -1207,6 +1195,106 @@ value = 0
 	trigger1=var(30)!=0
     var(30) = 0
     ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+;Counter
+;---------------------------------------------------------------------------
+[State -2]
+ 	type = Varset
+ 	trigger1 = enemynear,movetype = A
+	var(2) = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+ 	;triggerall = stateno !=[6300,6350] -> burst
+ 	;triggerall = stateno !=[6400,6425] -> parry mechanic
+ 	triggerall = stateno !=[800,849] ; -> grab states
+ 	triggerall = movetype != H
+ 	triggerall = enemynear,movetype = H 
+ 	triggerall = var(2) = 1
+ 	trigger1 = movehit
+	trigger2 = helper(1310),movehit
+	trigger3 = helper(1360),movehit
+	trigger4 = helper(2310),movehit
+	trigger5 = helper(2510),movehit
+	trigger6 = helper(2511),movehit
+	var(2) = 2
+	ignorehitpause = 1
+
+[State -2, カウンターアタックボイス]
+	type = PlaySnd
+	trigger1 = var(2)=2
+	value = 1, 33
+	ignorehitpause = 1
+
+[State -2]
+	type = Explod
+	trigger1 = var(2) = 2
+	trigger2 = numexplod(14000) = 0
+	trigger2 = var(2) = 3
+	anim = ifelse(var(2)=2,14000,14002)
+	ID = 14000
+	pos = ifelse(teamside=1,60,260),  60
+	postype = left
+	bindtime = -1
+	removetime = -1
+	supermovetime = 9999
+	pausemovetime = 9999
+	sprpriority = 9999
+	scale = .5,.5
+	ontop = 1
+	ownpal = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+ 	trigger1 = var(2) = 2
+	var(2) = 3
+	ignorehitpause = 1
+
+[State -2]
+	type = RemoveExplod
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	ID = 14000
+	ignorehitpause = 1
+	
+[State -2]
+	type = Explod
+	triggerall =var(2) != 0
+	triggerall =var(2) != 1
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	anim = 14001
+	pos = ifelse(teamside=1,60,260),  60
+	postype = left
+	bindtime = -1
+	supermovetime = 9999
+	pausemovetime = 9999
+	sprpriority = 9999
+	scale = .5,.5
+	ontop = 1
+	ownpal = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	var(2) = 0
+	ignorehitpause = 1
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = 1 + var(2)*0.25
+;ignorehitpause = 
+;persistent = 
+
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
@@ -1336,12 +1424,12 @@ channel = 2
 
 ;Var explanations:
 ;Var(1) > 0 means you can combo with another move
-;Var(2) is the Offense Armor mode you're on (0 is normal, 1 is offense, 2 is defense)
 ;Var(3) is the number of Nitrogen bottles left for the round
 ;Var(5) is for the super jump 0 is normal 1 is super
 ;Var(6) is to confirm super jump
 ;Var(7) is the dash cancel count
 ;Var(9) is for the superarmor
+;var(20) is the Offense Armor mode you're on (0 is normal, 1 is offense, 2 is defense)
 ;Var(25) is a temp var for var(3) in burst
 ;var(26) is for the mode change in combo
 ;Var(30) is for the reverse beat

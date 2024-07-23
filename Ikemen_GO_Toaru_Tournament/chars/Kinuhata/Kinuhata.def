@@ -30,7 +30,7 @@ sprite  = Kinuhata.sff           ;Sprite
 anim    = Kinuhata.air           ;Animation
 sound   = Kinuhata.snd           ;Sound
 ai      = Kinuhata.ai            ;AI hints data (not used)
-Movelist = Kinuhata_Movelist.dat
+movelist = Kinuhata.dat
 
 ; Maps character selection buttons to palette numbers.
 [Palette Keymap]

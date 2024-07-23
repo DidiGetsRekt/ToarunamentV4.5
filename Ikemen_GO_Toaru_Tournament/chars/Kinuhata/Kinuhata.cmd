@@ -331,13 +331,17 @@ time = 11
 
 [Command]
 name = "hold_x"
-command = /y
+command = /x
 time = 1
-
 
 [Command]
 name = "hold_y"
 command = /y
+time = 1
+
+[Command]
+name = "hold_z"
+command = /z
 time = 1
 
 [Command]
@@ -528,15 +532,15 @@ triggerall = command = "a" && command ="holdfwd"
 triggerall = statetype !=A
 trigger1 = stateno = 1050 
 trigger1 =var(1) ||animelemtime(8) >=0
-trigger1= Var(2) = 1
+trigger1= var(20) = 1
 trigger2 =stateno = 1050 
-trigger2 = Var(2) != 1
+trigger2 = var(20) != 1
 trigger2 =var(1) ||animelemtime(6) >=0
 trigger3 = stateno = 1055 
-trigger3=Var(2) = 1
+trigger3=var(20) = 1
 trigger3=var(1) ||animelemtime(12) >=0
 trigger4=stateno = 1055 
-trigger4=Var(2) != 1
+trigger4=var(20) != 1
 trigger4=var(1) ||animelemtime(9) >=0
 
 
@@ -555,15 +559,15 @@ triggerall = command = "a" && command ="holdback"
 triggerall = statetype !=A
 trigger1 = stateno = 1050 
 trigger1 =var(1) ||animelemtime(8) >=0
-trigger1= Var(2) = 1
+trigger1= var(20) = 1
 trigger2 =stateno = 1050 
-trigger2 = Var(2) != 1
+trigger2 = var(20) != 1
 trigger2 =var(1) ||animelemtime(6) >=0
 trigger3 = stateno = 1055 
-trigger3=Var(2) = 1
+trigger3=var(20) = 1
 trigger3=var(1) ||animelemtime(12) >=0
 trigger4=stateno = 1055 
-trigger4=Var(2) != 1
+trigger4=var(20) != 1
 trigger4=var(1) ||animelemtime(9) >=0
 
 
@@ -582,15 +586,15 @@ triggerall = command = "b" && command ="holdfwd"
 triggerall = statetype !=A
 trigger1 = stateno = 1050 
 trigger1 =var(1) ||animelemtime(8) >=0
-trigger1= Var(2) = 1
+trigger1= var(20) = 1
 trigger2 =stateno = 1050 
-trigger2 = Var(2) != 1
+trigger2 = var(20) != 1
 trigger2 =var(1) ||animelemtime(6) >=0
 trigger3 = stateno = 1055 
-trigger3=Var(2) = 1
+trigger3=var(20) = 1
 trigger3=var(1) ||animelemtime(12) >=0
 trigger4=stateno = 1055 
-trigger4=Var(2) != 1
+trigger4=var(20) != 1
 trigger4=var(1) ||animelemtime(9) >=0
 
 
@@ -608,15 +612,15 @@ triggerall = command = "b" && command ="holdback"
 triggerall = statetype !=A
 trigger1 = stateno = 1050 
 trigger1 =var(1) ||animelemtime(8) >=0
-trigger1= Var(2) = 1
+trigger1= var(20) = 1
 trigger2 =stateno = 1050 
-trigger2 = Var(2) != 1
+trigger2 = var(20) != 1
 trigger2 =var(1) ||animelemtime(6) >=0
 trigger3 = stateno = 1055 
-trigger3=Var(2) = 1
+trigger3=var(20) = 1
 trigger3=var(1) ||animelemtime(12) >=0
 trigger4=stateno = 1055 
-trigger4=Var(2) != 1
+trigger4=var(20) != 1
 trigger4=var(1) ||animelemtime(9) >=0
 
 
@@ -638,10 +642,10 @@ triggerall = statetype !=A
 trigger1 = stateno = 1000 
 trigger1= var(1) || animelemtime(8)>=0
 trigger2 = stateno = 1005 
-trigger2=var(2)=1
+trigger2=var(20)=1
 trigger2= var(1) ||animelemtime(9) >=0
 trigger3 = stateno = 1005 
-trigger3=var(2)!=1
+trigger3=var(20)!=1
 trigger3= var(1) ||animelemtime(7) >=0
 
 ;Rekka QCB A Mid
@@ -653,10 +657,10 @@ triggerall = statetype !=A
 trigger1 = stateno = 1000 
 trigger1= var(1) || animelemtime(8)>=0
 trigger2 = stateno = 1005 
-trigger2=var(2)=1
+trigger2=var(20)=1
 trigger2= var(1) ||animelemtime(9) >=0
 trigger3 = stateno = 1005 
-trigger3=var(2)!=1
+trigger3=var(20)!=1
 trigger3= var(1) ||animelemtime(7) >=0
 
 ;Rekka QCF B Mid
@@ -668,10 +672,10 @@ triggerall = statetype !=A
 trigger1 = stateno = 1000 
 trigger1= var(1) || animelemtime(8)>=0
 trigger2 = stateno = 1005 
-trigger2=var(2)=1
+trigger2=var(20)=1
 trigger2= var(1) ||animelemtime(9) >=0
 trigger3 = stateno = 1005 
-trigger3=var(2)!=1
+trigger3=var(20)!=1
 trigger3= var(1) ||animelemtime(7) >=0
 
 ;Rekka QCB B Mid
@@ -683,10 +687,10 @@ triggerall = statetype !=A
 trigger1 = stateno = 1000 
 trigger1= var(1) || animelemtime(8)>=0
 trigger2 = stateno = 1005 
-trigger2=var(2)=1
+trigger2=var(20)=1
 trigger2= var(1) ||animelemtime(9) >=0
 trigger3 = stateno = 1005 
-trigger3=var(2)!=1
+trigger3=var(20)!=1
 trigger3= var(1) ||animelemtime(7) >=0
 
 
@@ -803,8 +807,8 @@ trigger2 = (StateNo=[600,699]) && var(1)
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
-triggerall=ifelse(var(2) = 1,1,stateno!=[2000,3999])
-triggerall = command = "FF"||(Command = "holdfwd" && Command = "y" && stateno != 4000) 
+triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
+triggerall = command = "FF"||(Command = "holdfwd" && Command = "z" && stateno != 4000) 
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -815,8 +819,8 @@ trigger2=var(7)<4;5
 [State -1, Run Back]
 type = ChangeState
 value = 105
-triggerall=ifelse(var(2) = 1,1,stateno!=[2000,3999])
-triggerall = command = "BB" || (Command = "holdback" && Command = "y" && stateno != 4000) 
+triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
+triggerall = command = "BB" || (Command = "holdback" && Command = "z" && stateno != 4000) 
 triggerall = statetype = S
 trigger1 = ctrl
 trigger2 = var(1)
@@ -824,7 +828,7 @@ trigger2 = var(1)
 [State -1, Charge Power]
 type = ChangeState
 value = 4000
-triggerall = ((command = "hold_y") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
+triggerall = ((command = "hold_z") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
 triggerall = power <4000
 ;triggerall = prevstateno != 100 && prevstateno!=105
 triggerall = statetype !=A
@@ -839,19 +843,19 @@ value = 700
 ;triggerall = command = "Offense"
 triggerall=stateno!=701
 triggerall = command = "holdfwd"
-triggerall = command = "x"
+triggerall = command = "y"
 triggerall = statetype !=A
 triggerall=!ishelper
 triggerall=var(26)<1
 trigger1 = fvar(6)>800
-trigger1 =  var(2) !=1
+trigger1 =  var(20) !=1
 trigger1 = ctrl
-trigger2 = var(2) = 1
+trigger2 = var(20) = 1
 trigger2 = ctrl
 trigger3 = fvar(6)>800
-trigger3 =  var(2) !=1
+trigger3 =  var(20) !=1
 trigger3 = var(1)
-trigger4 = var(2) = 1
+trigger4 = var(20) = 1
 trigger4 = var(1)
 
 [State -1, Defense Mode Switch]
@@ -860,19 +864,19 @@ value = 701
 triggerall=stateno!=700
 ;triggerall = command = "Defense"
 triggerall = command = "holdback"
-triggerall = command = "x"
+triggerall = command = "y"
 triggerall = statetype !=A
 triggerall=var(26)<1
 triggerall=!ishelper
 trigger1 = fvar(6)>800
-trigger1 =  var(2) !=2
+trigger1 =  var(20) !=2
 trigger1 = ctrl
-trigger2 = var(2) = 2
+trigger2 = var(20) = 2
 trigger2 = ctrl
 trigger3 = fvar(6)>800
-trigger3 =  var(2) !=2
+trigger3 =  var(20) !=2
 trigger3 = var(1)
-trigger4 = var(2) = 2
+trigger4 = var(20) = 2
 trigger4=  var(1)
 
 [State -1, Bottle EX]
@@ -912,14 +916,11 @@ Type = ChangeState
 value = 800
 	TriggerAll=Alive!=0
 	TriggerAll = StateType != A
-	TriggerAll=command="Burst"
-	;TriggerAll=command="holdfwd"
-	;TriggerAll=StateNo!=100
-	Triggerall=enemynear,StateType=S||enemynear,StateType=C
-	Triggerall=enemynear,MoveType!=H
+	TriggerAll=command="x"
+	triggerall = ctrl
 	triggerall=!ishelper
-	Trigger1=Ctrl
-	;trigger2=stateno=100
+	trigger1 = command = "holdfwd"
+	trigger2 = command = "holdback"
 	
 
 ;===========================================================================
@@ -978,7 +979,7 @@ triggerall = statetype !=A
 trigger1 = ctrl
 ;trigger2 = (stateno = 200) && var(1)
 ;trigger3 = (stateno = 100) && var(1)
-;trigger4 = (stateno = 230) && var(1) && Var(2) =1
+;trigger4 = (stateno = 230) && var(1) && var(20) =1
 
 ;Nitrogen Ball
 [State -1, Ball]
@@ -992,7 +993,7 @@ triggerall = statetype !=A
 trigger1 = ctrl
 ;trigger2 = (stateno = 200) && var(1)
 ;trigger3 = (stateno = 100) && var(1)
-;trigger4 = (stateno = 230) && var(1) && Var(2) =1
+;trigger4 = (stateno = 230) && var(1) && var(20) =1
 
 
 ;Heavy Palm
@@ -1073,7 +1074,7 @@ triggerall = command = "b"
 trigger1 = statetype = A
 trigger1 = ctrl
 Trigger2 = StateNo = 600 && var(1)
-Trigger3 = StateNo = 630 && var(1) && var(2) = 1
+Trigger3 = StateNo = 630 && var(1) && var(20) = 1
 
 
 ;---------------------------------------------------------------------------
@@ -1098,7 +1099,7 @@ trigger1 = statetype = A
 trigger1 = ctrl
 Trigger2 = StateNo = 600 && var(1)
 Trigger3 = StateNo = 610 && var(1)
-Trigger4 = StateNo = 630 && var(1) && var(2) = 1
+Trigger4 = StateNo = 630 && var(1) && var(20) = 1
 
 
 ;---------------------------------------------------------------------------
@@ -1108,7 +1109,7 @@ Trigger4 = StateNo = 630 && var(1) && var(2) = 1
 [State -1, Super Armor]
 type = ChangeState
 value = 750
-triggerall = command = "z"
+triggerall = command = "y"
 trigger1 = ctrl
 trigger1 = fvar(6) >200
 
