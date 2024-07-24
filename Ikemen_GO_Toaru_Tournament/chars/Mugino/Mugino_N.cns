@@ -674,7 +674,7 @@ Attr = S, NA
 AnimType  = Hard
 Damage    = Ceil(55*fvar(0)),5
 HitFlag = MAF
-GuardFlag = M
+GuardFlag = MA
 PauseTime = 15,15
 Guard.PauseTime = 10,11
 HitSound=S0,9
@@ -754,7 +754,35 @@ Trigger1 = AnimElem = 4
 Trigger2 = AnimElem = 5
 X = -10
 
+		[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = anim = 233
+value = S1,27
+channel = -1
+ignorehitpause = 1
+persistent = 0
 
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = anim = 233
+time = 8
+freq = 40
+ampl = -7
+phase = 90
+ignorehitpause =1 
+persistent = 0
+
+[State ]
+Type = VelAdd
+triggerall = anim = 233
+Trigger1 = AnimElem = 1
+X = 8
+
+[State ]
+Type = VelAdd
+triggerall = anim = 232
+Trigger1 = AnimElem = 1
+X = 5
 
 
 
@@ -767,7 +795,7 @@ trigger1 = anim = 233
 Trigger1 = animelem = 1
 Attr = S, NA
 AnimType  = Hard
-Damage    = Ceil(75*fvar(0))
+Damage    = Ceil(100*fvar(0))
 HitFlag = MAF
 GuardFlag = M
 PauseTime = 10,11
@@ -1092,12 +1120,14 @@ Type = SelfState
 Trigger1 = Time > 12 && P2MoveType != A
 trigger1 = alive
 Value = 5120
+ctrl=0
 
 [State ]
 Type = SelfState
 Trigger1 = Time > 12 && P2MoveType != A
 trigger1 = !alive
 Value = 5110
+ctrl=0
 ;---------------------------------------------------------------------------
 ;Low Jab
 [Statedef 400]

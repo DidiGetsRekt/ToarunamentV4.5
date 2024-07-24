@@ -410,9 +410,9 @@ Facep2 = 1
 
 [State 0, CtrlSet]
 type = Varadd
-trigger1 = var(1) && time=0
+trigger1 = time=0
 v = 7
-value = 1
+value = 1+1*(p2stateno=[120,160])
 ignorehitpause = 1
 persistent = 0
 

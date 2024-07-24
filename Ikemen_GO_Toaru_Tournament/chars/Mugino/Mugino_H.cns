@@ -3785,6 +3785,15 @@ anim = 13105
 ctrl = 0
 sprpriority = 4
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+;trigger1=facing
+v = 10    ;fv = 10
+value = cond(P2Dist X >=0,-1,1)
+ignorehitpause = 1
+;persistent = 
+
 [State 0, PlayerPush]
 type = PlayerPush
 trigger1 = 1
@@ -3837,7 +3846,7 @@ ground.type = High      ;Low,Trip,None
 ground.slidetime = 10
 ground.hittime = 15
 air.hittime = 20
-ground.velocity = -5
+ground.velocity = cond(var(10)=1,5,-5)
 Ground.CornerPush.VelOff = 0
 air.CornerPush.VelOff = 0
 

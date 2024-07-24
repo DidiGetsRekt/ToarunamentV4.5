@@ -1012,6 +1012,21 @@ pausemovetime = 0
 ;ignorehitpause = 
 persistent = 0
 
+[State 0, VelAdd]
+type = VelAdd
+triggerall=time>=10
+		trigger1=helper(1100),movecontact=1
+		trigger1 = anim = 1102
+		trigger2=helper(1100),movecontact=1
+		trigger2 = anim = 1103
+		trigger3=helper(1101),movecontact=1
+triggerall=enemynear,backedgedist <20
+x = -fvar(11)*0.222
+ignorehitpause = 1
+persistent = 1 
+
+
+
  	[State -1,カウンター補正]
 		Type=VarSet
 		triggerall=time>=10
@@ -1036,7 +1051,7 @@ persistent = 0
 		trigger2=animelemtime(12)>=0
 		trigger2 = anim = 1103
 		trigger3=helper(1101),movecontact
-		fVar(11) = 4+(2*anim=1103)
+		fVar(11) = 5+(2*anim=1103)
 		persistent = 0
  		ignorehitpause = 1
 
@@ -1055,7 +1070,6 @@ value = 1
 ignorehitpause = 1
 persistent = 0
  
-
 
 
 
@@ -1152,10 +1166,10 @@ pausetime = 1,9
 sparkno = -1
 guard.sparkno = -1
 ground.type = High      ;Low,Trip,None
-ground.slidetime = 25
-ground.hittime = 25
-guard.slidetime = 15
-guard.hittime = 15
+ground.slidetime = 21
+ground.hittime = 21
+guard.slidetime = 13
+guard.hittime = 13
 ground.velocity = -5
 air.velocity = -4,-2.5
 sprpriority = 3
@@ -4395,6 +4409,7 @@ trigger1 = AnimTime = 0
 trigger2 = SysVar(0) ;SysVar(0) = 1 avoids hit ground frame
 trigger3 = Anim = [5110,5119]
 value = 5150
+ctrl=0
 
 [StateDef 1600, Long Gorilla Grab]
 Type    = S

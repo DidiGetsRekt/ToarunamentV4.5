@@ -973,7 +973,7 @@ ignorehitpause = 1
 [State -2]
 	type = Varset
 	trigger1 = enemy,movetype != H
-	trigger2 = enemy,stateno = [120,155]
+	;trigger2 = enemy,stateno = [120,155]
 	v = 7
 	value = 0
 	ignorehitpause = 1
