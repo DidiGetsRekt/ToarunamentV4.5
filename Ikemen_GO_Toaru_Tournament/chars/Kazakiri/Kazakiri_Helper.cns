@@ -4,6 +4,14 @@
 anim = 7
 sprpriority=-1
 
+[State 0, Turn]
+type = Turn
+trigger1 = facing!=root,facing
+ignorehitpause = 1
+;persistent = 
+
+;----------IDLE----------
+
 [State 0, ChangeAnim]
 type = ChangeAnim
 trigger1 = root,stateno=0
@@ -12,6 +20,8 @@ value = 7
 ;elem = 1
 ignorehitpause = 1
 ;persistent = 
+
+;----------WALK----------
 
 [State 0, ChangeAnim]
 type = ChangeAnim
@@ -22,6 +32,45 @@ value = 27
 ignorehitpause = 1
 ;persistent = 
 
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = root,anim=26
+trigger1=anim!=28
+value = 28
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+;----------CROUCH----------
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = root,anim=15
+trigger1=anim!=18
+value = 18
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = root,anim=16
+trigger1=anim!=14
+value = 14
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = root,anim=17
+trigger1=anim!=19
+value = 19
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+;---------------------------------------
 
 [State 0, BindToParent]
 type = BindToParent
@@ -35,7 +84,8 @@ ignorehitpause = 1
 [State 0, AssertSpecial]
 type = AssertSpecial
 trigger1 = root,stateno!=0
-trigger1=root,anim!=25
+trigger1=root,anim!=[25,26]
+trigger1=root,anim!=[15,19]
 ;flag = intro
 flag = invisible
 ;flag3 = roundnotover

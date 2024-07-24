@@ -98,7 +98,7 @@ ctrl = 0
 [Statedef 10]
 type    = C
 physics = C
-anim = 10
+anim = 10+5*(var(2)=1)
 
 [State 10, 1]
 type = VelMul
@@ -120,13 +120,13 @@ value = 11
 [Statedef 11]
 type    = C
 physics = C
-anim = 11
+anim = 11+5*(var(2)=1)
 sprpriority = 0
 
 [State 11, 1] ;Change from turning animation
 type = ChangeAnim
 trigger1 = Anim = 6 && AnimTime = 0
-value = 11
+value = 11+5*(var(2)=1)
 
 [State 11, 2] ;Stop moving if low velocity
 type = VelSet
@@ -138,7 +138,7 @@ x = 0
 [Statedef 12]
 type    = S
 physics = S
-anim = 12
+anim = 12+5*(var(2)=1)
 
 [State 12, 1]
 type = ChangeState
