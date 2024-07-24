@@ -1750,8 +1750,8 @@ animtype = Med
 ground.type = High
 ground.slidetime = 15
 ground.hittime  = 20
-Guard.SlideTime = 17
-Guard.HitTime  = 17
+Guard.SlideTime = 22
+Guard.HitTime  = 22
 ground.velocity = -5
 air.velocity = -4.5,-4
 envshake.time = 4
@@ -1782,14 +1782,15 @@ animtype = Med
 ground.type = High
 ground.slidetime = 15
 ground.hittime  = 20
-Guard.SlideTime = 17
-Guard.HitTime  = 17
+Guard.SlideTime =22
+Guard.HitTime  = 22
 ground.velocity = -5
 air.velocity = -4.5,-4
 envshake.time = 4
 air.fall=1
 fall.recover=1
 fall.recovertime=30
+p2facing=1
 
 
 
@@ -1812,8 +1813,8 @@ animtype = Med
 ground.type = High
 ground.slidetime = 15
 ground.hittime  = 25
-Guard.SlideTime = 21
-Guard.HitTime  = 21
+Guard.SlideTime = 17
+Guard.HitTime  = 17
 ground.velocity = -5
 air.velocity = -4.5,-4
 envshake.time = 4
@@ -1822,6 +1823,7 @@ fall.recover=1
 fall.recovertime=30
 ground.cornerpush.veloff = -fvar(11)*0.555
 Air.cornerpush.veloff= -fvar(11)*0.555
+p2facing=1
 
 [State 910, ヒット定義]
 type = HitDef
@@ -1845,8 +1847,8 @@ animtype = Med
 ground.type = High
 ground.slidetime = 15
 ground.hittime  = 25
-Guard.SlideTime = 21
-Guard.HitTime  = 21
+Guard.SlideTime = 17
+Guard.HitTime  = 17
 ground.velocity = -5
 air.velocity = -4.5,-4
 envshake.time = 4
@@ -1855,6 +1857,7 @@ fall.recover=1
 fall.recovertime=30
 ground.cornerpush.veloff = -fvar(11)*0.555
 Air.cornerpush.veloff= -fvar(11)*0.555
+p2facing=1
 
 [State 910, エフェクト]
 Type = null;Explod
@@ -2046,7 +2049,7 @@ animtype = Med
 ground.type = High
 ground.slidetime = 1
 ground.hittime  = 15
-guard.hittime  = 17
+guard.hittime  = 17+3*(animelem!=6)
 ground.velocity = -6,-6
 air.velocity = -6,-6
 envshake.time = 4
@@ -2073,7 +2076,7 @@ animtype = Med
 ground.type = High
 ground.slidetime = 1
 ground.hittime  = 15
-guard.hittime  = 17
+guard.hittime  = 17+3*(animelem!=6)
 ground.velocity = -6,-6
 air.velocity = -6,-6
 envshake.time = 4
@@ -2276,6 +2279,13 @@ y = -9.5
 Type = velset
 Trigger1 = AnimElem = 7
 x = 2
+
+[State 470,velset]
+Type = StatetypeSet
+Trigger1 = AnimElem = 7
+movetype=I
+ignorehitpause=1
+persistent=0
 
 [State 200,V1=1]
 		Type=VarSet

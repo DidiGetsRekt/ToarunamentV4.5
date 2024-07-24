@@ -876,6 +876,7 @@ triggerall = command = "y"
 triggerall = command = "holdback"
 triggerall = movetype != H
 triggerall = var(8) = 0
+triggerall=power>199
 trigger1 = ctrl
 trigger2 = Var(2) >1
 trigger3=stateno=934
@@ -888,6 +889,7 @@ triggerall = command = "y"
 triggerall = command = "holdfwd"
 triggerall = movetype != H
 triggerall=var(9)<3
+triggerall=power>199
 trigger1 = var(8) = 0
 trigger1 = ctrl
 trigger1=statetype=A

@@ -594,6 +594,7 @@ anim = 930
 ctrl = 0
 sprpriority = 2
 facep2 = 0
+poweradd=-200
 
 [State 1200]
 type = playerpush
@@ -734,6 +735,7 @@ ctrl = 0
 velset = 0,0
 sprpriority = 2
 facep2 = 0
+poweradd=-200
 
 [State 1203]
 type = playerpush
@@ -821,6 +823,7 @@ anim = 934
 ctrl = 0
 velset = 0,0
 sprpriority = 2
+poweradd=-200
 
 [State 1212]
 type = playerpush
