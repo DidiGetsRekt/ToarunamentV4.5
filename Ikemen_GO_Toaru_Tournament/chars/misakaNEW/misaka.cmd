@@ -581,7 +581,7 @@ triggerall = power >= 1000
 triggerall = statetype !=A 
 trigger1 = ctrl = 1
 trigger2=var(1) && stateno!=3000
-trigger3=var(1) && stateno=3000 && animelemtime(39)>=0
+trigger3=var(1) && stateno=3000 && animelemtime(33)>=0
 
 
 
@@ -652,6 +652,7 @@ value = 1850
 triggerall = command = "QCF_b"
 triggerall = statetype =A
 triggerall = numProjID(6131)=0
+triggerall=cond(vel Y <0,pos Y <=-49,1)
 trigger1 = ctrl 
 Trigger2 = StateNo = [600,699] 
 trigger2 = var(1)

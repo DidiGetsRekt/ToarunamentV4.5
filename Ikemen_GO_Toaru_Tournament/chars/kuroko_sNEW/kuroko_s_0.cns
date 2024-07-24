@@ -1312,8 +1312,10 @@ sparkxy = -28, -63
 hitsound = s1,1
 guardsound = s6, 3
 ground.type = low
-ground.slidetime = 22
-ground.hittime  = 22
+ground.slidetime = 23
+ground.hittime  = 23
+guard.slidetime = 19
+guard.hittime  = 19
 ground.velocity = -5,0
 airguard.velocity = -1.6,-3.6
 air.type = High
@@ -2616,7 +2618,7 @@ juggle  = 0
 ctrl = 0
 anim = 900
 sprpriority = 2
-poweradd = 70
+
 
 [State 200,V1=0]
 		Type=VarSet
@@ -2642,11 +2644,11 @@ volume = 255 ;音量
 
 [State 800, ヒット定義]
 type = HitDef
+Trigger1 = animelem =1
 TriggerAll = P2BodyDist X = [-10,35+vel x*6]
 TriggerAll = P2BodyDist Y = [-60,0]
-Trigger1 = animelem =1
-attr = S, NT
-hitflag = -MA 
+attr = S, ST
+hitflag = MA- 
 ;guardflag = MA    
 priority = 3, miss
 pausetime = 0, 0 
@@ -2656,12 +2658,38 @@ hitsound   = s1,1
 ;p1facing = ifelse(command = "holdfwd", -1, 1) ;攻撃が当たった時の自分の向き ★６
 p2facing = 1          ;攻撃が当たった時の相手の向き
 p1stateno =910
-p2stateno =920       ;相手を制御するステートに行かせる
+p2stateno =920    ;相手を制御するステートに行かせる
 guard.dist = 0        ;相手がガード状態に移行出来る距離（現在は0なのでガード不可）
 fall = 1              ;1にすれば相手がダウン状態になる
 p2facing=1
 ;fall.recovertime =30
 fall.recover=0
+ID=900
+
+[State 800, ヒット定義]
+type = HitDef
+Trigger1 = animelem =1
+trigger1=p2movetype=H && p2stateno!=[120,169]
+;TriggerAll = P2BodyDist X = [-10,35+vel x*6]
+;TriggerAll = P2BodyDist Y = [-60,0]
+attr = S, ST
+hitflag = MAF+
+;guardflag = MA    
+priority = 3, miss
+pausetime = 0, 0 
+sparkno = -1
+;sprpriority = 1 
+hitsound   = s1,1
+;p1facing = ifelse(command = "holdfwd", -1, 1) ;攻撃が当たった時の自分の向き ★６
+p2facing = 1          ;攻撃が当たった時の相手の向き
+p1stateno =910
+p2stateno =920    ;相手を制御するステートに行かせる
+guard.dist = 0        ;相手がガード状態に移行出来る距離（現在は0なのでガード不可）
+fall = 1              ;1にすれば相手がダウン状態になる
+p2facing=1
+;fall.recovertime =30
+fall.recover=0
+ID=900
 
 [State 200,V1=1]
 		Type=VarSet
@@ -2704,7 +2732,7 @@ juggle  = 0
 ctrl = 0
 anim = 910
 sprpriority = 2
-poweradd = 50
+poweradd = 120
 
 [State 810, ステート変更(対上条)]
 type = ChangeState
@@ -2854,6 +2882,10 @@ type = Gravity
 trigger1 = 1
 
 [State 820]
+type = Gravity
+trigger1 = 1
+
+[State 820]
 type = ScreenBound
 trigger1 = 1
 value = 1
@@ -2965,7 +2997,7 @@ poweradd = 50
 [State 840, 制御した相手のアニメ変更]
 type = ChangeAnim2
 Trigger1 = Time = 0
-value = 940
+value = 920
 
 [State -1,地上に移動]
 Type = Posset

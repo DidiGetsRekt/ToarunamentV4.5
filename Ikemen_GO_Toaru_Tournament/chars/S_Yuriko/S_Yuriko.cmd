@@ -686,6 +686,12 @@ name = "z_up"
 command = ~z
 time = 1
 
+
+[Command]
+	name="hold_z"
+	command=/z
+	time = 1
+
 ;------------------------------------------------------------------------------
 ;-| •ûŒüƒL[ |-----------------------------------------------------------------
 
@@ -970,14 +976,16 @@ time = 1
 
 [State -1, “S‹ØC]
 	type = ChangeState
-	value = 2002
+	value = 2030
 	triggerAll = Fvar(10) >= 50
+	triggerall=power>999
 	triggerAll = Var(9) = 0
 	TriggerAll = Var(59) = [0,1]
 	triggerall = command = "“S‹ØC"
 	triggerall = statetype != A
+	triggerall=!(stateno=2030 && time<20)
 	trigger1 = ctrl
-	trigger2 = stateno = [200,699]
+	;trigger2 = stateno = [200,699]
 	trigger2 = Var(2) = 1
 
 
@@ -1007,12 +1015,14 @@ time = 1
 [State -1, “ËiC]
 	type = ChangeState
 	value = 2102
+	triggerall=power>999
+	triggerall=stateno!=[2100,2120]
 	triggerAll = Fvar(10) >= 50
 	triggerAll = Var(9) = 0
 	TriggerAll = Var(59) = [0,1]
 	triggerall = command = "“ËiC"
 	trigger1 = ctrl
-	trigger2 = stateno = [200,699]
+	;trigger2 = stateno = [200,699]
 	trigger2 = Var(2) = 1
 
 ;Throw 
@@ -1022,6 +1032,7 @@ value = 800
 	TriggerAll=Alive!=0
 	TriggerAll = StateType != A
 	TriggerAll=command="a+b"
+	triggerAll = Var(9) = 0
 	;TriggerAll=command="holdfwd"
 	;TriggerAll=StateNo!=100
 	Triggerall=enemynear,StateType=S||enemynear,StateType=C
@@ -1093,6 +1104,7 @@ value = 800
 	triggerAll = Fvar(10) >= 20
 	triggerAll = Var(9) = 0
 	TriggerAll = Var(59) = [0,1]
+	triggerall=var(16)<=7
 	triggerall = command = "b"
 	triggerall = command != "holddown"
 	triggerall = command = "holdfwd"
@@ -1107,6 +1119,7 @@ value = 800
 	triggerAll = Fvar(10) >= 30
 	triggerAll = Var(9) = 0
 	TriggerAll = Var(59) = [0,1]
+	triggerall=var(16)<=7
 	triggerall = command = "c"
 	triggerall = command != "holddown"
 	triggerall = command = "holdfwd"
@@ -1126,6 +1139,13 @@ value = 800
 	trigger1 = ctrl
 	trigger2 = stateno = 200
 	trigger2 = Var(2) = 1
+	trigger3 = stateno = 2130 && var(19)=1
+	trigger3=anim=2120 && animelemtime(4)>=0
+	trigger3 = Var(2) = 1
+	trigger4 = stateno = 2130 && var(19)=3
+	trigger4=anim=2120 && animelemtime(4)>=0
+	trigger4 = Var(2) = 1
+
 
 [State -1, —§‚¿’†]
 	type = ChangeState
@@ -1138,7 +1158,12 @@ value = 800
 	trigger1 = ctrl
 	trigger2 = stateno = 200
 	trigger2 = Var(2) = 1
-
+	trigger3 = stateno = 2130 && var(19)=1
+	trigger3=anim=2120 && animelemtime(4)>=0
+	trigger3 = Var(2) = 1
+	trigger4 = stateno = 2130 && var(19)=3
+	trigger4=anim=2120 && animelemtime(4)>=0
+	trigger4 = Var(2) = 1
 [State -1, —§‚¿‹­]
 	type = ChangeState
 	value = 220
@@ -1150,6 +1175,12 @@ value = 800
 	trigger1 = ctrl
 	trigger2 = stateno = [200,210]
 	trigger2 = Var(2) = 1
+	trigger3 = stateno = 2130 && var(19)=1
+	trigger3=anim=2120 && animelemtime(4)>=0
+	trigger3 = Var(2) = 1
+	trigger4 = stateno = 2130 && var(19)=3
+	trigger4=anim=2120 && animelemtime(4)>=0
+	trigger4 = Var(2) = 1
 
 ;------------------------------------------------------------------------------
 [State -1, ‚µ‚á‚ª‚ÝŽãEX]
@@ -1175,6 +1206,7 @@ value = 800
 	triggerall = command = "b"
 	triggerall = command = "holddown"
 	triggerall = command = "holdfwd"
+	triggerall=var(16)<=7
 	triggerall = statetype = C
 	trigger1 = ctrl
 	trigger2 = stateno = [400,420]
@@ -1189,6 +1221,7 @@ value = 800
 	triggerall = command = "c"
 	triggerall = command = "holddown"
 	triggerall = command = "holdfwd"
+	triggerall=var(16)<=7
 	triggerall = statetype = C
 	trigger1 = ctrl
 	trigger2 = stateno = [400,420]
@@ -1253,6 +1286,7 @@ value = 800
 	triggerall = command = "b"
 	triggerall = statetype = A
 	triggerall = command = "holdfwd"
+	triggerall=var(16)<=7
 	trigger1 = ctrl
 	trigger2 = stateno = [600,620]
 	trigger2 = Var(2) = 1
@@ -1266,6 +1300,7 @@ value = 800
 	triggerall = command = "c"
 	triggerall = statetype = A
 	triggerall = command = "holdfwd" || command = "holddown"
+	triggerall=var(16)<=7
 	trigger1 = ctrl
 	trigger2 = stateno = [600,620]
 	trigger2 = Var(2) = 1

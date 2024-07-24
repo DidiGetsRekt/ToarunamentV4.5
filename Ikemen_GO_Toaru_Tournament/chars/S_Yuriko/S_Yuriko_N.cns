@@ -486,6 +486,14 @@
 		p2facing = 1
 		getpower = 20 * helper(20000),Fvar(2)
 
+			[State 250, 地上コンボ限界管理]
+		type = VarAdd
+		trigger1 = movehit
+		var(16)=1
+		persistent=0
+		ignorehitpause=1
+
+
 	[State 240,攻撃係数減少]
 		Type = VarAdd
 		trigger1 = movehit = 1
@@ -604,6 +612,14 @@
 		getpower = 50 * helper(20000),Fvar(2)
 		ID = 250
 		p2facing = 1
+		
+		[State 250, 地上コンボ限界管理]
+		type = VarAdd
+		trigger1 = movehit
+		var(16)=1
+		persistent=0
+		ignorehitpause=1
+
 
 	[State 250,ステート奪取]
 		Type = targetState
@@ -1125,6 +1141,14 @@
 
 		getpower = 30 * helper(20000),Fvar(2)
 
+		[State 250, 地上コンボ限界管理]
+		type = VarAdd
+		trigger1 = movehit
+		var(16)=1
+		persistent=0
+		ignorehitpause=1
+
+
 	[State 440,ステート奪取]
 		Type = targetState
 		trigger1 = movehit = 1
@@ -1241,6 +1265,14 @@
 		fall.recover = 0
 
 		getpower = 20 * helper(20000),Fvar(2)
+
+		[State 250, 地上コンボ限界管理]
+		type = VarAdd
+		trigger1 = movehit
+		var(16)=1
+		persistent=0
+		ignorehitpause=1
+
 
 	[State 450,攻撃係数減少]
 		Type = VarAdd
@@ -1733,6 +1765,14 @@
 		ID = 640
 		p2facing = 1
 
+		[State 250, 地上コンボ限界管理]
+		type = VarAdd
+		trigger1 = movehit
+		var(16)=1
+		persistent=0
+		ignorehitpause=1
+
+
 	[State 640,ステート奪取]
 		Type = targetState
 		trigger1 = movehit = 1
@@ -1847,6 +1887,14 @@
 		getpower = 20 * helper(20000),Fvar(2)
 		ID = 650
 		p2facing = 1
+
+		[State 250, 地上コンボ限界管理]
+		type = VarAdd
+		trigger1 = movehit
+		var(16)=1
+		persistent=0
+		ignorehitpause=1
+
 
 	[State 650,ステート奪取]
 		Type = targetState
@@ -2372,7 +2420,7 @@ Value = 5100
 	[State 850,溜め]
 		Type = PowerAdd
 		Trigger1 = 1
-		value = 8
+		value = 7+time/19
 
 	[State 850, ステート変更]
 		type = ChangeState

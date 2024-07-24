@@ -102,6 +102,7 @@
 		trigger2 = Root,Var(9) != 0
 		trigger3 = Root,MoveType = H
 		trigger4 = Root,StateNo = 900
+		trigger5=root,fvar(10)=0
 
 ;--------------------------------------------------------------
 [Statedef 8010,”½Ëƒwƒ‹ƒp[‹ò‚ç‚¢A]
@@ -428,6 +429,230 @@
 		trigger4 = Root,StateNo = 900
 
 ;---------------------------------------------------------------------------
+;Accel Reflect
+[Statedef 8040]
+type = A
+movetype = H
+physics = N
+
+[State 6410, 0]; ?s???öe???
+type = ChangeState
+trigger1 = !IsHelper
+value = 0
+ctrl = 1
+
+[State 6410, 0]; h????????u?????d??h?fe?????‘????????gG
+type = null;NotHitBy
+trigger1 = Time = 0
+value = SCA
+time = 1
+
+[State 6410, 0]; h???g??????O??gG
+type = NotHitBy
+trigger1 =1
+value = ,AT
+time = 1
+
+[State 6410, 0]; g˜???{ñe????
+type = AssertSpecial
+trigger1 = 1
+flag = Invisible
+flag2 = NoShadow
+
+[State 6410, 0]; ?{e???f??]
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
+
+[State 6410, 0]; h?f???e?????
+type = ChangeAnim
+trigger1 = SelfAnimExist(Parent,Anim)
+value = Parent,Anim
+elem = Parent,AnimElemNo(0)
+
+[State 6410, 0];
+type = HitOverRide
+trigger1 = IsHelper(8000)
+attr = SCA,AP,AA
+stateno = 8041
+
+[State 6410, 0]; ?{e???h????p?[?g??ñ??Ê????????
+type = null;DestroySelf
+trigger1 = root,command!="hold_z"
+trigger2=parent,movetype=H
+
+[State 6410, 0]
+type = DestroySelf
+trigger1 = enemynear,Name = "Kamijou Touma"
+trigger1 = enemynear,var(50) = 666
+
+[State 8000,Destroy]
+		type = DestroySelf
+		trigger1 = MoveReversed
+		trigger2 = Root,Var(9) != 0
+		trigger3 = Root,MoveType = H
+		trigger4 = Root,StateNo = 900
+		trigger5=root,fvar(10)=0
+		trigger6=root,var(20)=5
+
+	
+;---------------------------------------------------------------------------
+[Statedef 8041,?????p]
+type = A
+movetype= H
+;physics = S ;           
+velset = 0,0
+anim = 29999 ;
+sprpriority = 10
+
+	[State 6411, ñe????]
+		type = AssertSpecial
+		trigger1 = 1
+		flag = Noshadow
+
+[State 0, ParentVarAdd]
+type = ParentVarAdd
+trigger1 = time=0
+v =  7   ;fv = 
+value = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 6410, 0]; ?s???öe???
+type = ChangeState
+trigger1 = time=0
+value = 8040
+ctrl = 0
+
+[State 8000,Destroy]
+		type = DestroySelf
+		trigger1 = MoveReversed
+		trigger2 = Root,Var(9) != 0
+		trigger3 = Root,MoveType = H
+		trigger4 = Root,StateNo = 900
+		trigger5=root,fvar(10)=0
+
+
+
+;---------------------------------------------------------------------------
+[Statedef 8045,h????U???w???p?[]
+	type = A ;
+	movetype= A ;
+	velset = 0,0
+	anim = 6450 ;
+	sprpriority = 10
+
+
+
+	[State 6415, e???f??]]
+		type = posset
+		trigger1 = 1
+		x=enemynear,pos x
+		y=enemynear,pos y
+
+	[State 6415, ñe????]
+		type = AssertSpecial
+		trigger1 = 1
+		flag = Noshadow
+
+	[State 6415, g˜ñ?]
+		type = Trans
+		trigger1 = 1
+		trans = Add
+
+	[State 6415, SE]
+		type = PlaySnd
+		trigger1 = time = 0
+		value = 400,0
+
+	[State 6415,?ih[]
+	 	type = Varset
+	 	trigger1 = time = 0
+		fvar(8) = root,fvar(8)
+		ignorehitpause = 1
+
+	[State 6415, h?f?]
+		type = HitDef
+		triggerall = !moveGuarded && !moveReversed
+		trigger1 = hitCount < 1
+		trigger1 = time >= 5
+		attr = S, HP
+		damage = Ceil(fvar(8)*0.5),10
+		getpower = 0
+		animtype = Light
+		pausetime = 0,0
+		guardflag = MA
+		hitflag = MAF
+		priority = 2
+		sparkno =  S16010+ifelse(root,Facing = enemynear,Facing,1,0)
+		guard.sparkno = S10000
+		sparkxy = 0,-50
+		hitsound = S400,2
+		guardsound = S200,4
+		ground.type = Low
+		ground.slidetime = 17
+		guard.slidetime = 15
+		ground.hittime  = 17
+		guard.hittime  = 15
+		guard.ctrltime = 15
+		ground.velocity =-3*ifelse(root,Facing = enemynear,Facing,-1,1),-2
+		air.velocity = -3*ifelse(root,Facing = enemynear,Facing,-1,1),-2
+		getpower = 0
+		fall = 0;1
+		sprpriority =10
+		ground.cornerpush.veloff =0
+		id =6435
+		persistent = 0
+
+
+	[State 6415, ?q?b?g?J?E?g?g??e}]
+		type = ChangeState
+		trigger1 = numtarget(6435)
+		trigger1 = movehit
+		value = 6436
+
+	[State 6415, ????]
+		type = DestroySelf
+		trigger1 = animtime=0;root,command!="hold_z"
+
+[Statedef 6436,ƒqƒbƒgƒJƒEƒ“ƒg—p]
+type = A ;           ’Êí
+movetype= I ;         UŒ‚
+;physics = S ;           
+velset = 0,0
+anim = 29999 ;
+sprpriority = 10
+
+	[State 6416, ‰e‚È‚µ]
+		type = AssertSpecial
+		trigger1 = 1
+		flag = Noshadow
+
+	[State 6416, ˆÊ’uİ’è]
+		type = posset
+		trigger1 = time = 0
+		x = 9999
+
+	[State 6416, ƒ^[ƒQƒbƒgƒtƒ‰ƒO‰Šú‰»]
+		type = ParentVarSet
+		trigger1 = !numtarget(6435)
+		var(5) = 0
+
+	[State 6416, Á–Å]
+		type = DestroySelf
+		trigger1 = !numtarget(6435)
+
+[State 8000,Destroy]
+		type = DestroySelf
+		trigger1 = MoveReversed
+		trigger2 = Root,Var(9) != 0
+		trigger3 = Root,MoveType = H
+		trigger4 = Root,StateNo = 900
+		trigger5=root,fvar(10)=0
+
+
 ;---------------------------------------------------------------------------
 ;ƒvƒ‰ƒYƒ}ƒwƒ‹ƒp[
 [Statedef 8200,ƒvƒ‰ƒYƒ}ƒwƒ‹ƒp[]

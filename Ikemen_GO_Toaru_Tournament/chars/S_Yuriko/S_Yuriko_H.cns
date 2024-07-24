@@ -19,6 +19,14 @@
 		trigger1 = Time = 0
 		var(10) = -100
 
+	[State -2, ?????????] ;On Off Switch
+	type = VarSet
+	TriggerAll = NumHelper(20000) > 0
+	TriggerAll = Helper(20000),var(0) = 1
+	triggerall = Var(9)=0
+	trigger1 = time=0
+	var(20) = 5
+
 	[State 3000, キャンセルフラグ初期化]
 		type = VarSet
 		trigger1 = Time = 0
@@ -49,6 +57,7 @@
 		ctrl = 1
 
 ;---------------------------------------------------------------------------
+
 ;---------------------------------------------------------------------------
 ;黒翼
 [Statedef 3100,黒翼]
@@ -61,6 +70,14 @@
 	anim = 3100
 	poweradd = -3000
 
+
+	[State -2, ?????????] ;On Off Switch
+	type = VarSet
+	TriggerAll = NumHelper(20000) > 0
+	TriggerAll = Helper(20000),var(0) = 1
+	triggerall = Var(9)=0
+	trigger1 = time=0
+	var(20) = 5
 [State 0, SuperPause]
 type = SuperPause
 trigger1 = time=0
@@ -119,9 +136,10 @@ ignorehitpause = 1
 
 	[State 3105,無敵]
 		type = NotHitBy
-		trigger1 = 1
+		trigger1 = time=0
 		value = SCA
-		time = 1
+		time = 15
+		ignorehitpause=1
 
 	[State 3105,カットイン]
 		Type = Explod
@@ -243,6 +261,14 @@ ignorehitpause = 1
 		type = PlaySnd
 		trigger1 = Time = 2
 		value = 4000, 0
+
+[State -2, ?????????] ;On Off Switch
+	type = VarSet
+	TriggerAll = NumHelper(20000) > 0
+	TriggerAll = Helper(20000),var(0) = 1
+	triggerall = Var(9)=0
+	trigger1 = time=0
+	var(20) = 5
 
 	[State 3200, フラグ初期化]
 		type = VarSet

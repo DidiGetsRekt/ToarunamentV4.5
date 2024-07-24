@@ -41,7 +41,7 @@ ignorehitpause = 1
 [State -2];ヒットバック
 	type = Varset
 	trigger1 = enemy,movetype != H
-	trigger2 = enemy,stateno = [120,155]
+	;trigger2 = enemy,stateno = [120,155]
 	var(7)=0
 	ignorehitpause = 1
 

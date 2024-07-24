@@ -518,6 +518,12 @@ time = 32
 buffer.Time=16
 
 [Command]
+name = "DP_x"
+command = ~F,D,DF,x
+time = 20
+buffer.Time=10
+
+[Command]
 name = "QCF_c"
 command = ~D,DF,F,c
 time = 20
@@ -557,12 +563,6 @@ command = ~D,DB,B,b
 time = 20
 buffer.Time=10
 
-[Command]
-name = "DP_x"
-command = ~F, D, DF, x
-time = 20
-buffer.Time=10
-
 
 [Command]
 name = "F_y"
@@ -581,6 +581,7 @@ name = "U_y"
 command = U,y
 time = 25
 buffer.time = 15
+
 
 [Command]
 name = "D_y"
@@ -872,27 +873,6 @@ trigger1 = command = "holddown"
 trigger2=command="D_y"
 
 
-;■ 地上通常投げ 
-[State -1]
-type = ChangeState
-value = 900
-triggerall= var(59)=0
-triggerall = statetype != A
-triggerall = ctrl
-triggerall= var(30)>=25;テレポゲージ判定
-triggerall = (fvar(7) = 0 ||fvar(8)!=0)
-;triggerall = stateno != 100
-trigger1 = command = "DP_x"
-
-
-;Spotdodge
-[State -1]
-type = ChangeState
-value = 1040
-triggerall=statetype!=A
-triggerall = ctrl
-trigger1 = command = "x"
-
 
 
 ;------------------------------------------------------------------------------
@@ -931,7 +911,7 @@ type = ChangeState
 value = 2150
 triggerall= var(59)=0
 triggerall = command = "QCF_b"
-triggerall = (fvar(7) = 0 ||fvar(8)!=0)
+triggerall = (fvar(7) = 0 ||fvar(8)!=0) || (target(900),movetype=H)
 trigger1 = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,499]) && var(1)
@@ -1016,6 +996,31 @@ trigger2 = (stateno = [200,499]) && var(1)
 ;------------------------------------------------------------------------------
 
 ;------------------------------------------------------------------------------
+
+;■ 地上通常投げ 
+[State -1]
+type = ChangeState
+value = 900
+triggerall= var(59)=0
+;TriggerAll = P2BodyDist X = [-10,35+vel x*6]
+;TriggerAll = P2BodyDist Y = [-60,0]
+triggerall = statetype !=A
+
+triggerall= var(30)>=25;テレポゲージ判定
+triggerall = (fvar(7) = 0 ||fvar(8)!=0)
+;triggerall = stateno != 100
+triggerall = (command = "DP_x")
+trigger1 = ctrl
+trigger2= var(1) && stateno=[200,499]
+
+
+;Spotdodge
+[State -1]
+type = ChangeState
+value = 1040
+triggerall=statetype!=A
+triggerall = ctrl
+trigger1 = command = "x"
 
 
 
