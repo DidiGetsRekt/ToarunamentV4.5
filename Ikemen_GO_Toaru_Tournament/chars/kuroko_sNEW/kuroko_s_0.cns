@@ -4466,7 +4466,7 @@ type = ChangeState
 triggerall = var(59) = 0
 Trigger1 = command != "hold_c"
 Trigger1 = command != "hold_a"
-Trigger1 = command != "hold_z"
+Trigger1 = command != "hold_y"
 trigger1 =time >12
 trigger2= Power =Powermax
 value = 0

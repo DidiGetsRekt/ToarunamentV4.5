@@ -481,8 +481,8 @@ command = /$D
 time = 1
 
 [Command]
-name = "hold_z"
-command = /z
+name = "hold_y"
+command = /y
 time = 1
 
 [Command]
@@ -678,7 +678,7 @@ value = 1050
 triggerall= var(59)=0
 triggerall = statetype != A
 triggerall = power >= 5000
-triggerall = command = "y"
+triggerall = command = "z"
 
 ;triggerall= var(30)>=25;テレポゲージ判定
 trigger1 = ctrl
@@ -888,9 +888,10 @@ triggerall=roundstate=2
 triggerall = statetype != A
 triggerall= ctrl
 triggerall=power<powermax
+triggerall = !(command =  "holdback" || command = "holdfwd")
 trigger1 = command = "hold_a" 
 trigger1=command= "hold_c"
-Trigger2=command="hold_z"
+Trigger2=command="hold_y"
 
 
 

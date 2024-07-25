@@ -3860,7 +3860,7 @@ facing = 1
 type = RemoveExplod
 trigger1 = Roundstate != 2
 trigger2 = Power >=4000
-trigger3 = command != "hold_z" && (command!= "hold_a" && command!="hold_c")
+trigger3 = command != "hold_y" && (command!= "hold_a" && command!="hold_c")
 id = 7330
 ignorehitpause = 1
 ;persistent = 
@@ -3873,7 +3873,7 @@ channel = 0
 
 [State 1100, Voice]
 type = StopSnd
-trigger1 = command != "hold_z" && command!= "hold_a" && command != "hold_c";「hold_c」のコマンドではない時（Ｃボタンが離されたら）
+trigger1 = command != "hold_y" && command!= "hold_a" && command != "hold_c";「hold_c」のコマンドではない時（Ｃボタンが離されたら）
 trigger2 = Power >= powermax
 trigger3 = RoundState != 2
 channel = 0
@@ -3883,7 +3883,7 @@ type = ChangeState
 
 trigger1 = Roundstate != 2
 trigger2 = Power >=4000
-trigger3 = command != "hold_z"  && (command!= "hold_a" && command!="hold_c")
+trigger3 = command != "hold_y"  && (command!= "hold_a" && command!="hold_c")
 value = 0
 ctrl = 1
 ignorehitpause = 1
