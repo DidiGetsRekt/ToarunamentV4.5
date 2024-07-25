@@ -1215,30 +1215,24 @@ trigger3=stateno=700
 	trigger2=stateno!=[3000,3999]
 
 ;Forward Throw
-[State -1, Back Throw]
+[State -1]
 Type = ChangeState
 value = 800
 	TriggerAll=Alive!=0
 	TriggerAll = StateType != A
 	TriggerAll=command="x"
 	TriggerAll=command="holdfwd"
-	;TriggerAll=StateNo!=100
-	Triggerall=enemynear,StateType=S||enemynear,StateType=C
-	Triggerall=enemynear,MoveType!=H
 	Trigger1=Ctrl
 	trigger2=stateno=[100,101]
 
 ;Back Throw
-[State -1, Back Throw]
+[State -1]
 Type = ChangeState
 value = 900
 	TriggerAll=Alive!=0
 	TriggerAll = StateType != A
 	TriggerAll=command="x"
 	TriggerAll=command="holdback"
-	;TriggerAll=StateNo!=100
-	Triggerall=enemynear,StateType=S||enemynear,StateType=C
-	Triggerall=enemynear,MoveType!=H
 	Trigger1=Ctrl
 	trigger2=stateno=[100,101]
 

@@ -709,6 +709,13 @@ type    = S
 movetype= H
 physics = N
 
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
 [State 0, TargetState]; faz o techador entrar no state do tech
 type = TargetState
 trigger1 = time = 0

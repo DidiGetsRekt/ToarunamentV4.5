@@ -752,7 +752,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 800
 triggerall = command = "x"
-triggerall = statetype = S
+triggerall = statetype != A
 triggerall = ctrl
 trigger1 = command = "holdfwd"
 trigger2 = command = "holdback"

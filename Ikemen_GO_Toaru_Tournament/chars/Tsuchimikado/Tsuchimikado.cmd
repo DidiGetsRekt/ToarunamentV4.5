@@ -777,10 +777,10 @@ trigger4 =(StateNo=1300) && var(1)
 Type = ChangeState
 Value = 800
 triggerall = command = "x"
-triggerall = statetype = S
-triggerall = ctrl
-trigger1 = command = "holdfwd"
-trigger2 = command = "holdback" 
+triggerall = statetype != A
+triggerall = command = "holdfwd" || command = "holdback" 
+trigger1 = ctrl
+trigger2 = stateno=[100,101]
 
 ;Run Fwd
 [State -1, Run Fwd]
