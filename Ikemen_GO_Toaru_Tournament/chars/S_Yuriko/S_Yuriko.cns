@@ -1482,7 +1482,7 @@ IgnoreHitPause = 1
 	Type = VarSet
 	Trigger1 = FVar(1) != FVar(2)
 	Trigger1 = MoveType = H
-	Trigger2 = Palno>=9
+	;Trigger2 = Palno>=9
 	fvar(1)= FVar(2)
 
 [State -2,UŒ‚ŒW”‰ñ•œ]
@@ -1494,7 +1494,7 @@ IgnoreHitPause = 1
 	fvar(1) = IfElse(EnemyNear(Var(40)),MoveType = H ,1,2 )
 
 [State -2,UŒ‚ŒW”‰ñ•œ]
-	Type = VarAdd
+	Type = null;VarAdd
 	TriggerAll = Palno>=9
 	TriggerAll = FVar(1) < FVar(2)
 	Trigger1 = MoveType = I

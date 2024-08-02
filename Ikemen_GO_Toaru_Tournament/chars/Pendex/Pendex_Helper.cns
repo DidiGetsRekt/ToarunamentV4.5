@@ -1618,11 +1618,100 @@ ignorehitpause = 1
 [Statedef 30000]
 anim = 29999;
 
-;Symbol slot 1
+
+
+
+
+;Incrementation var physical
+[State 0, VarSet]
+type = VarSet
+trigger1 = time=0
+var(6)=root,var(6)+1
+ignorehitpause = 1
+persistent = 0
+
+;Incrementation var magical
+[State 0, VarSet]
+type = VarSet
+trigger1 = time=0
+var(7)=root,var(7)+1
+ignorehitpause = 1
+persistent = 0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)!=0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)!=0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+
+
+;Symbol slot 1 roundstart
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11705) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=1
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11705
+pos = ifelse(teamside=1,38,205), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 1 roundstart
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11705) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=1
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11705
+pos = ifelse(teamside=1,38,205), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 1 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11705) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=1
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11705
 pos = ifelse(teamside=1,38,205), 40
@@ -1642,11 +1731,80 @@ triggerAll = numexplod(11705)
 trigger1 = Parent,var(9) != 0
 ID = 11705
 
-;Symbol slot 2
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)!=0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)!=0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+
+
+;Symbol slot 2 roundstart
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11706) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=2
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11706
+pos = ifelse(teamside=1,48,215), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 2 roundstart
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11706) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=2
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11706
+pos = ifelse(teamside=1,48,215), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 2 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11706) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=2
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11706
 pos = ifelse(teamside=1,48,215), 40
@@ -1666,11 +1824,79 @@ triggerAll = numexplod(11706)
 trigger1 = Parent,var(9) != 0
 ID = 11706
 
-;Symbol slot 3
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)>0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)>0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+;Symbol slot 3 roundstart
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11707) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=3
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11707
+pos = ifelse(teamside=1,58,225), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+
+;Symbol slot 3 roundstart
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11707) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=3
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11707
+pos = ifelse(teamside=1,58,225), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 3 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11707) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=3
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11707
 pos = ifelse(teamside=1,58,225), 40
@@ -1690,11 +1916,79 @@ triggerAll = numexplod(11707)
 trigger1 = Parent,var(9) != 0
 ID = 11707
 
-;Symbol slot 4
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)>0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)>0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+;Symbol slot 4 roundstart
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11708) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=4
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11708
+pos = ifelse(teamside=1,68,235), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+
+;Symbol slot 4 roundstart
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11708) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=4
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11708
+pos = ifelse(teamside=1,68,235), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 4 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11708) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=4
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11708
 pos = ifelse(teamside=1,68,235), 40
@@ -1714,11 +2008,78 @@ triggerAll = numexplod(11708)
 trigger1 = Parent,var(9) != 0
 ID = 11708
 
-;Symbol slot 5
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)>0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)>0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+;Symbol slot 5 roundtsrat
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11709) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=5
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11709
+pos = ifelse(teamside=1,78,245), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 5 roundtsrat
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11709) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=5
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11709
+pos = ifelse(teamside=1,78,245), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 5 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11709) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=5
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11709
 pos = ifelse(teamside=1,78,245), 40
@@ -1738,11 +2099,78 @@ triggerAll = numexplod(11709)
 trigger1 = Parent,var(9) != 0
 ID = 11709
 
-;Symbol slot 6
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)>0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)>0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+;Symbol slot 6 roundstart
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11710) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=6
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11710
+pos = ifelse(teamside=1,88,255), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 6 roundstart
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11710) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=6
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11710
+pos = ifelse(teamside=1,88,255), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 6 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11710) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=6
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11710
 pos = ifelse(teamside=1,88,255), 40
@@ -1762,11 +2190,78 @@ triggerAll = numexplod(11710)
 trigger1 = Parent,var(9) != 0
 ID = 11710
 
-;Symbol slot 7
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)>0
+var(5)=1
+ignorehitpause = 1
+persistent=0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(7)>0
+var(5)=2
+ignorehitpause = 1
+persistent=0
+
+
+[State 0, VarSet]
+type = VarSet
+trigger1 =  var(6)=0
+trigger1=var(7)=0
+trigger1=var(5)!=0
+var(5)=-1
+ignorehitpause = 1
+persistent=0
+
+;Symbol slot 7 roundtsrat
 [State 30000] 
 type = Explod
 trigger1 = numexplod(11711) = 0
 trigger1 = (Parent,var(6)+parent,var(7))>=7
+trigger1=roundstate<2
+trigger1=var(5)=1
+trigger1=var(6):=var(6)-1
+anim = 770+var(5)
+ID = 11711
+pos = ifelse(teamside=1,98,265), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 7 roundtsrat
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11711) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=7
+trigger1=roundstate<2
+trigger1=var(5)=2
+trigger1=var(7):=var(7)-1
+anim = 770+var(5)
+ID = 11711
+pos = ifelse(teamside=1,98,265), 40
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = -1
+scale = 0.25,0.1
+ownpal = 0
+ignorehitpause = 1
+
+;Symbol slot 7 runtime
+[State 30000] 
+type = Explod
+trigger1 = numexplod(11711) = 0
+trigger1 = (Parent,var(6)+parent,var(7))>=7
+trigger1=roundstate=2
 anim = 770+parent,var(8)
 ID = 11711
 pos = ifelse(teamside=1,98,265), 40

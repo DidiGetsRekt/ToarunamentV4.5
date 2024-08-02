@@ -665,5 +665,5 @@ persistent = 1
 ;Var(5) is the number of swords)
 ;Var(6) is the number of phys parries
 ;Var(7) is the number of proj parries
-;var(8) is the last parry
+;var(8) is the last parry 1 is phys 2 is proj
 ;var(9) is the install type (1 is phys 2 is proj)

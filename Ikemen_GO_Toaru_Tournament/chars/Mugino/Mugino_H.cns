@@ -413,7 +413,7 @@ trigger1 = !movereversed
 trigger1=!movecontact
 ;trigger1 = anim = 1002
 ; HitDef
-attr = S,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = S,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFP        ;HLAFD+-
 guardflag = MA         ;HLA
 getpower = 20,10
@@ -1038,7 +1038,7 @@ trigger1 = !movereversed
 trigger1=!movecontact
 ;trigger1 = anim = 1002
 ; HitDef
-attr = S,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = S,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFP        ;HLAFD+-
 guardflag = MA         ;HLA
 getpower = 20,10
@@ -1989,7 +1989,7 @@ y = 0
 Type = HitDef
 trigger1 = anim = 1455
 Trigger1 = animelem = 2
-Attr = S, NA
+Attr = S, HA
 Damage = Ceil(135*fvar(10)),25
 AnimType = Medium
 GuardFlag = M
@@ -2999,7 +2999,7 @@ trigger1 = !movereversed
 trigger1=!movecontact
 ;trigger1 = anim = 1002
 ; HitDef
-attr = S,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = S,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFP        ;HLAFD+-
 guardflag = MA         ;HLA
 getpower = 20,10

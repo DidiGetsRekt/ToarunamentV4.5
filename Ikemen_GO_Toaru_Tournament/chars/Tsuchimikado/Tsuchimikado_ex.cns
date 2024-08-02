@@ -576,8 +576,12 @@ ground.type = High
 ground.slidetime = 5
 ground.hittime  = 5
 ground.velocity = 0
-air.velocity = 0,0
+air.hittime=20
+air.velocity = -3,1
 p2facing = -1
+fall=0
+fall.recover=1
+fall.recovertime=20
 
 [State 1520, targetstate]
 type = targetstate
@@ -625,6 +629,30 @@ trigger1 = time = 0
 ;ignorehitpause = 
 ;persistent = 0
 
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = statetype=A
+trigger1=pos Y <0
+y = 0.44
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+trigger1 =pos Y >=0
+y = 0
+ignorehitpause =1 
+;persistent = 
+
+[State 0, VelSet]
+type = PosSet
+trigger1 =pos Y >=0
+y = 0
+ignorehitpause =1 
+;persistent = 
+
+
+
 
 [State 1570]
 type = nothitby
@@ -639,6 +667,7 @@ value = 5010
 [State 1570]
 type = ChangeAnim
 trigger1 = anim = 5010 && animtime = 0
+TRIGGER1=pos Y>=0
 value = 5070
 
 

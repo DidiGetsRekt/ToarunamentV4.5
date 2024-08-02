@@ -232,6 +232,7 @@ IgnoreHitPause = 1
 type = DestroySelf
 trigger1 = parent,movetype=H
 trigger2=animtime=0
+trigger3=movereversed
 ignorehitpause = 1
 ;persistent = 
 
@@ -497,6 +498,7 @@ IgnoreHitPause = 1
 type = DestroySelf
 trigger1 = parent,movetype=H
 trigger2=animtime=0
+trigger3=movereversed
 ignorehitpause = 1
 ;persistent = 
 
@@ -652,6 +654,7 @@ IgnoreHitPause = 1
 type = DestroySelf
 trigger1 = parent,movetype=H
 trigger2=animtime=0
+trigger3=movereversed
 ignorehitpause = 1
 ;persistent = 
 
