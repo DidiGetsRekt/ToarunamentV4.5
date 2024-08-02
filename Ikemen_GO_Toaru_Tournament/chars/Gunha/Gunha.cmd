@@ -233,7 +233,7 @@ time = 32
 buffer.Time=16
 
 
-
+;------------------------------------
 
 [Command]
 name = "QCBHCF_c"  
@@ -264,6 +264,74 @@ name = "QCBHCF_c"
 command = ~D, DB, DB, D, DF, F, c
 time = 40
 buffer.Time=20
+
+;----------------------------------
+
+[Command]
+name = "QCBHCF_b"  
+command = ~D, DB, B, DB, D, DF, F, b
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_b"  
+command = ~D, B, D, F, b
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_b"  
+command = ~B, DB, B, D, F, b
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_b"  
+command = ~B, DB, B, DB, D, DF, F, b
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_b"  
+command = ~D, DB, DB, D, DF, F, b
+time = 40
+buffer.Time=20
+
+
+;------------------------------
+
+[Command]
+name = "QCBHCF_a"  
+command = ~D, DB, B, DB, D, DF, F, a
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_a"  
+command = ~D, B, D, F, a
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_a"  
+command = ~B, DB, B, D, F, a
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_a"  
+command = ~B, DB, B, DB, D, DF, F, a
+time = 40
+buffer.Time=20
+
+[Command]
+name = "QCBHCF_a"  
+command = ~D, DB, DB, D, DF, F, a
+time = 40
+buffer.Time=20
+
+
+;------------------------------
 
 [Command]
 name = "HCF_a+b"  
@@ -748,7 +816,7 @@ trigger1 = stateno=106
 [State -1, Electric Amazing Punch]
 type = ChangeState
 value = 2850
-triggerall = command = "HCF_b"
+triggerall = command ="QCBHCF_b" ;"HCF_b"
 triggerall = command != "DP_b"
 triggerall = statetype !=A
 TriggerAll = Power>1999 || (fvar(8)!=0)
@@ -763,7 +831,7 @@ trigger2 =var(1)
 [State -1, Huge Ass Punch]
 type = ChangeState
 value = 2800
-triggerall = command = "HCF_a"
+triggerall = command = "QCBHCF_a";"HCF_a"
 triggerall = statetype !=A
 TriggerAll = Power>1999 || (fvar(8)!=0)
 TriggerAll = stateno != [3000,3199] 

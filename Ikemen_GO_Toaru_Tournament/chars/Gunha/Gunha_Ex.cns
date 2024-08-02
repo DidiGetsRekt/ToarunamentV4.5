@@ -2251,7 +2251,7 @@ P1StateNo     = cond(time>=8,952,951)
 [State 0, Width]
 type = Width
 trigger1 = animelemno(0)=[2,5]
-value=65,65
+value=65,0
 ignorehitpause = 1
 ;persistent = 
 
