@@ -1762,7 +1762,7 @@
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.25
-		fvar(10)= 0.25*ifelse(fVar(11) < 30,1,.5)
+		fvar(10)= 0.20*ifelse(fVar(11) < 30,1,.5)
 		persistent = 0
  		ignorehitpause = 1
 
@@ -1919,19 +1919,29 @@
 		AirGuard.velocity=-2.5,-5
 		Ground.cornerpush.veloff=0
 		Guard.cornerpush.veloff=-10
-		Air.cornerpush.veloff=0
+		Air.cornerpush.veloff=-fvar(11)*0.111
 		AirGuard.cornerpush.veloff=0
 		Yaccel=0.475
 		fall=1
 		fall.recover=0
 		persistent=0
 
+[State -1,攻撃補正]
+		Type=VarSet
+		Trigger1=AnimElemTime(11)>=0
+		Trigger1=AnimElemTime(12)<0
+		Trigger1=Movehit
+		Trigger1=var(10)=0
+		fvar(0)=fvar(0)*0.80
+		persistent = 0
+ 		ignorehitpause = 1
+
 	[State 200 ノックバックカウント]
 		type = Varadd
 		Trigger1=AnimElemTime(11)>=0
 		Trigger1=AnimElemTime(12)<0
 		Trigger1=Movehit
-		fvar(11) = 1
+		fvar(11) = 5
 		persistent = 0
  		ignorehitpause = 1
 

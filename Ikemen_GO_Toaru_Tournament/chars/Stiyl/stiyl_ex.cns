@@ -107,7 +107,7 @@ ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = animtime = 0 || parent,var(23)=0
-trigger1=root,movetype =H && (root,stateno!=[120,159])
+trigger2=root,movetype =H && (root,stateno!=[120,159])
 value = 710
 ctrl = 0
 ;anim =
@@ -689,7 +689,7 @@ persistent = 0
 		y = .45
 
 [State ]
-Type = SelfState
+Type = null;SelfState
 Trigger1 = Alive && CanRecover
 Trigger1 = Time >= 27
 Trigger1 = Command != "holddown" && (Command != "holdup" && (Command = "holdfwd" || Command = "holdback")) || Command != "holdfwd" && Command != "holdback" && Command = "holdup"
@@ -700,6 +700,7 @@ Value = 5200
 		Trigger1=Pos Y>=0
 		Trigger1=Vel Y >0
 		value=5100
+		ctrl=0
 
 ;---------------------------------------------------------------------------
 ; Teched Going Back - attacker state

@@ -182,7 +182,7 @@ anim = 11
 sprpriority = 0
 
 [State 0, 移動速度] ;低速になるか4フレーム経過で停止
-type = VelSet
+type = null;VelSet
 trigger1 = abs(vel x) < 1
 x = floor(vel x/2)
 

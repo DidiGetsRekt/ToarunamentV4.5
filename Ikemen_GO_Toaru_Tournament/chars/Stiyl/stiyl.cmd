@@ -550,6 +550,19 @@ trigger1=ctrl
 trigger2=var(1)
 
 ;---------------------------------------------------------------------------
+
+
+[State -1,623c]
+type = ChangeState
+value = 2200
+triggerall=stateno!=3000
+triggerall=stateno!=2500
+triggerall=power>=1000
+triggerall = command = "623c" && var(20)>=75 * -(var(21)-1);you have 30 card at least
+triggerall = statetype!=A
+trigger1=ctrl
+trigger2=var(1)
+
 [State -1,236c]
 type = ChangeState
 value = 1070
@@ -566,16 +579,6 @@ triggerall = statetype=A
 trigger1=ctrl
 trigger2=var(1)
 
-[State -1,623c]
-type = ChangeState
-value = 2200
-triggerall=stateno!=3000
-triggerall=stateno!=2500
-triggerall=power>=1000
-triggerall = command = "623c" && var(20)>=75 * -(var(21)-1);you have 30 card at least
-triggerall = statetype!=A
-trigger1=ctrl
-trigger2=var(1)
 
 [State -1,22c]
 type = ChangeState
