@@ -703,6 +703,8 @@ triggerall = command = "QCF_a"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = (StateNo=[200,499]) && var(1)
+trigger3 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger4 = StateNo = 1250 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch B
 
 ;Rekka B Starter
 [State -1, Rekka B Starter]
@@ -712,7 +714,8 @@ triggerall = command = "QCF_b"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = (StateNo=[200,499]) && var(1)
-trigger3 = stateno = 1250 && var(1)
+trigger3 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger4 = stateno = 1250 && var(1)
 
 
 

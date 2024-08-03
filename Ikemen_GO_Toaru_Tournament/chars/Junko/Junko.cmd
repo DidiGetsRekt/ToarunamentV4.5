@@ -711,6 +711,9 @@ Trigger7 = StateNo = 1150
 trigger7 = var(1)
 trigger8=stateno=[1510,1529]
 trigger8=var(1)
+trigger9 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger10 = StateNo = 1250 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch B
+trigger11 = StateNo = 1280 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch EX
 
 
 
@@ -736,6 +739,9 @@ trigger3 = var(1)
 trigger4=stateno=[100,101]
 Trigger5 = StateNo = 1150
 trigger5 = var(1)
+trigger6 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger7 = StateNo = 1250 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch B
+trigger8 = StateNo = 1280 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch EX
 
 ;Scissor Kick A Second Kick
 [State -1, Scissor Kick A]
@@ -760,6 +766,9 @@ trigger3 = var(1)
 trigger4=stateno=[100,101]
 Trigger5 = StateNo = 1150
 trigger5 = var(1)
+trigger6 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger7 = StateNo = 1250 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch B
+trigger8 = StateNo = 1280 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch EX
 
 
 ;Scissor Kick B Second Kick
