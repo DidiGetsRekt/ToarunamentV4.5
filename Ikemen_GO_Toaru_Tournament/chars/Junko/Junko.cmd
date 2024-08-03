@@ -565,8 +565,8 @@ type = ChangeState
 value = 3100
 triggerall = command = "HCB_c"
 triggerall = statetype !=A
-TriggerAll = (var(2)=2 && power>2999) || (var(2)=1 && power>3999)
-triggerall=var(2)!=0
+TriggerAll = (var(20)=2 && power>2999) || (var(20)=1 && power>3999)
+triggerall=var(20)!=0
 TriggerAll = stateno != [3000,3199] 
 trigger1 = ctrl
 trigger2 =var(1)
@@ -679,7 +679,7 @@ trigger1 = animelemtime(6)>=0
 type = ChangeState
 value = 2000
 triggerall = command = "QCB_c"
-triggerall=(var(2)!=0 && power>2999 &&  command!= "HCB_c") || !(var(2)!=0 && power>2999)
+triggerall=(var(20)!=0 && power>2999 &&  command!= "HCB_c") || !(var(20)!=0 && power>2999)
 triggerall = statetype !=A
 TriggerAll = Power>999 
 TriggerAll = stateno != [2000,2099] 
@@ -697,7 +697,7 @@ value = 1370
 triggerall = command = "hold_y"
 triggerall = command = "DP_a" || command = "DP_b"
 triggerall = statetype !=A
-triggerall=cond(var(2)=0,power>499,1)
+triggerall=cond(var(20)=0,power>499,1)
 trigger1 = ctrl
 Trigger2 = StateNo = [200,499] 
 trigger2 = var(1)
@@ -780,7 +780,7 @@ value = 1280
 triggerall = command = "QCB_a" || command = "QCB_b"
 triggerall = command = "hold_y"
 triggerall = statetype !=A
-triggerall=cond(var(2)=0,power>499,1)
+triggerall=cond(var(20)=0,power>499,1)
 trigger1 = ctrl
 Trigger2 = StateNo = [200,499] 
 trigger2 = var(1)
@@ -833,8 +833,8 @@ triggerall = command = "hold_y"
 triggerall=command!="DP_b"
 triggerall=command!="DP_a"
 triggerall = statetype !=A
-triggerall=cond(var(2)=0,power>499,1)
-triggerall=var(2)!=0 ;Stage 1-2
+triggerall=cond(var(20)=0,power>499,1)
+triggerall=var(20)!=0 ;Stage 1-2
 trigger1 = ctrl
 Trigger2 = StateNo = [200,499] 
 trigger2 = var(1)
@@ -903,7 +903,7 @@ triggerall = (command = "holdback") || (command = "B_c+y")
 triggerall = (command = "hold_y") || (command = "B_c+y")
 triggerall = statetype !=A && stateno!=105
 triggerall=stateno!=250
-triggerall=cond(var(2)=0,power>499,1)
+triggerall=cond(var(20)=0,power>499,1)
 trigger1 = ctrl
 Trigger2 =(StateNo = [200,499]) && (var(1))
 trigger3=stateno=[100,101]
@@ -923,7 +923,7 @@ trigger8=stateno=105 && time<=5
 	triggerall=command="holdup"
 	triggerall = command = "hold_y"
 	TriggerAll = StateType = A
-	triggerall=cond(var(2)=0,power>499,1)
+	triggerall=cond(var(20)=0,power>499,1)
 	triggerall=stateno!=640
 	Trigger1 = Ctrl
 	Trigger2 = (StateNo = [600,699])
@@ -946,8 +946,8 @@ value = 1050
 triggerall = command = "c"
 triggerall = command = "hold_y"
 triggerall = command != "holdback"
-triggerall=cond(var(2)=0,power>499,1)
-triggerall=var(2)>0 ;Stage 1-2
+triggerall=cond(var(20)=0,power>499,1)
+triggerall=var(20)>0 ;Stage 1-2
 triggerall = statetype !=A
 triggerall= var(32)>=5
 trigger1 = ctrl
@@ -973,8 +973,8 @@ trigger7=var(1)
 	triggerall = command = "hold_y"
 	TriggerAll = StateType = A
 	;TriggerAll = (pos Y <= -15 && stateno = 630) || pos Y <= -25;-15
-	triggerall=cond(var(2)=0,power>499,1)
-	triggerall=stateno!=640 || var(2)=2
+	triggerall=cond(var(20)=0,power>499,1)
+	triggerall=stateno!=640 || var(20)=2
 	Trigger1 = Ctrl
 	Trigger2 = (StateNo = [600,699])
 	Trigger2 = var(1)
@@ -1026,10 +1026,10 @@ trigger7=var(1)
 	TriggerAll =command = "QCB_a" || command = "QCB_b"
 	triggerall = command = "hold_y"
 	TriggerAll = StateType = A
-	triggerall=cond(var(2)=0,power>499,1)
-	;triggerall=var(2)>0 ;Stage 1-2
+	triggerall=cond(var(20)=0,power>499,1)
+	;triggerall=var(20)>0 ;Stage 1-2
 	TriggerAll = (pos Y <= -30 && stateno = 630) || pos Y <= -45;-15
-	triggerall=stateno!=640 || var(2)=2
+	triggerall=stateno!=640 || var(20)=2
 	Trigger1 = Ctrl
 	Trigger2 = (StateNo = [600,699])
 	Trigger2 = var(1)
@@ -1159,7 +1159,7 @@ triggerall=command!="QCF_c"
 triggerall=command!="DP_a"
 triggerall=command!="DP_b"
 triggerall=command!="DP_c"
-triggerall=var(2)!=0
+triggerall=var(20)!=0
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2=stateno=[100,101]
@@ -1187,7 +1187,7 @@ value = 995
 triggerall = command = "DD_y"
 triggerall = statetype !=A
 triggerall=power>=1000
-triggerall=var(2)=1
+triggerall=var(20)=1
 trigger1 = ctrl
 trigger2= var(1)
 trigger3=stateno=700
@@ -1209,9 +1209,9 @@ trigger3=stateno=700
 	trigger1 = stateno != [1370,1380]
 	trigger1 = stateno != 250
 	trigger1=stateno!=[2000,3999]
-	trigger1=var(2)=1
+	trigger1=var(20)=1
 	trigger2 = var(1)
-	trigger2=var(2)=2
+	trigger2=var(20)=2
 	trigger2=stateno!=[3000,3999]
 
 ;Forward Throw
@@ -1241,7 +1241,7 @@ value = 900
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
-;triggerall=var(2)=0
+;triggerall=var(20)=0
 triggerall = command = "FF"
 triggerall = statetype = S
 trigger1 = ctrl
@@ -1249,15 +1249,15 @@ trigger2=stateno= 2400 && var(1)
 trigger3=stateno= 6700 && var(1)
 trigger4=stateno= 990 && var(1)
 trigger5=stateno= 995 && var(1)
-trigger6=stateno=1520  && var(2)!=0
-trigger7=stateno=1399  && var(2)!=0
+trigger6=stateno=1520  && var(20)!=0
+trigger7=stateno=1399  && var(20)!=0
 
 
 ;Run Fwd Button
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
-;triggerall=var(2)=0
+;triggerall=var(20)=0
 triggerall=(Command = "holdfwd" && Command = "y" )
 triggerall=command!="QCF_a"
 triggerall=command!="QCF_b"
@@ -1272,8 +1272,8 @@ trigger2=stateno= 2400 && var(1)
 trigger3=stateno= 6700 && var(1)
 trigger4=stateno= 990 && var(1)
 trigger5=stateno= 995 && var(1)
-trigger6=stateno=1520  && var(2)!=0
-trigger7=stateno=1399  && var(2)!=0
+trigger6=stateno=1520  && var(20)!=0
+trigger7=stateno=1399  && var(20)!=0
 
 ;---------------------------------------------------------------------------
 ;Run Back
@@ -1292,7 +1292,7 @@ trigger5=stateno= 995 && var(1)
 [State -1, Run Back]
 type = ChangeState
 value = 105
-;triggerall=var(2)=0
+;triggerall=var(20)=0
 triggerall=(Command = "holdback" && Command = "y" )
 triggerall=command!="QCB_a"
 triggerall=command!="QCB_b"
@@ -1313,7 +1313,7 @@ trigger5=stateno= 995 && var(1)
 [State -1, Run Down]
 type = ChangeState
 value = 103
-triggerall=var(2)!=0
+triggerall=var(20)!=0
 triggerall = command = "DD"
 triggerall= statetype = A
 trigger1 = ctrl
@@ -1323,7 +1323,7 @@ trigger2=stateno=6700 && var(1)
 [State -1, Run Down]
 type = ChangeState
 value = 103
-triggerall=var(2)!=0
+triggerall=var(20)!=0
 triggerall = (Command = "holddown" && Command = "y" )
 triggerall= statetype = A
 trigger1 = ctrl
@@ -1352,7 +1352,7 @@ ignorehitpause=1
 	trigger3=stateno=100
 	trigger4=stateno=106
 	;trigger5=stateno=1180 && var(1)
-	;trigger6=stateno=1520  && var(2)!=0
+	;trigger6=stateno=1520  && var(20)!=0
 	trigger5=stateno=1399  && prevstateno=1360
 
 ;Handstand to Crouch

@@ -33,7 +33,7 @@ ignorehitpause=1
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.35
-		fvar(10)= ifelse(var(2)=2,0.55,ifelse(var(2)=1,0.42,0.35)) 
+		fvar(10)= ifelse(var(20)=2,0.55,ifelse(var(20)=1,0.42,0.35)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -462,7 +462,7 @@ ignorehitpause=1
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.35
-		fvar(10)= ifelse(var(2)=2,0.55,ifelse(var(2)=1,0.42,0.35)) 
+		fvar(10)= ifelse(var(20)=2,0.55,ifelse(var(20)=1,0.42,0.35)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -803,7 +803,7 @@ ignorehitpause=1
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.35
-		fvar(10)=  ifelse(var(2)=2,0.50,ifelse(var(2)=1,0.42,0.35)) 
+		fvar(10)=  ifelse(var(20)=2,0.50,ifelse(var(20)=1,0.42,0.35)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -1053,7 +1053,7 @@ SprPriority = 2
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.35
-		fvar(10)= ifelse(var(2)=2,0.50,ifelse(var(2)=1,0.42,0.35)) 
+		fvar(10)= ifelse(var(20)=2,0.50,ifelse(var(20)=1,0.42,0.35)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -1232,7 +1232,7 @@ ignorehitpause=1
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.35
-		fvar(10)= fvar(10)= fvar(10)= ifelse(var(2)=2,0.55,ifelse(var(2)=1,0.42,0.35)) 
+		fvar(10)= fvar(10)= fvar(10)= ifelse(var(20)=2,0.55,ifelse(var(20)=1,0.42,0.35)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -1654,7 +1654,7 @@ poweradd= -2000
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.45
-		fvar(10)= ifelse(var(2)=2,0.60,ifelse(var(2)=1,0.52,0.45)) 
+		fvar(10)= ifelse(var(20)=2,0.60,ifelse(var(20)=1,0.52,0.45)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -2292,7 +2292,7 @@ ignorehitpause=1
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.35
-		fvar(10)= ifelse(var(2)=2,0.55,ifelse(var(2)=1,0.42,0.35)) 
+		fvar(10)= ifelse(var(20)=2,0.55,ifelse(var(20)=1,0.42,0.35)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -3365,7 +3365,7 @@ poweradd= -2000
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.45
-		fvar(10)=ifelse(var(2)=2,0.60,ifelse(var(2)=1,0.52,0.45)) 
+		fvar(10)=ifelse(var(20)=2,0.60,ifelse(var(20)=1,0.52,0.45)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -5302,7 +5302,7 @@ ignorehitpause=1
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.55
-		fvar(10)= ifelse(var(2)=2,0.70,ifelse(var(2)=1,0.63,0.55)) ;0.55
+		fvar(10)= ifelse(var(20)=2,0.70,ifelse(var(20)=1,0.63,0.55)) ;0.55
 		persistent = 0
  		ignorehitpause = 1
 
@@ -5795,7 +5795,7 @@ Anim = 3100
 SprPriority = 2
 Facep2 = 1
 velset=0,0
-poweradd= cond(var(2)=2,-3000,-4000)
+poweradd= cond(var(20)=2,-3000,-4000)
 
 [State 200,V1=0]
 		Type=VarSet
@@ -5813,7 +5813,7 @@ poweradd= cond(var(2)=2,-3000,-4000)
 		type = Varset
 		Trigger1=Time=0
 		Trigger1=fvar(0)<=0.65
-		fvar(10)=ifelse(var(2)=2,0.65,ifelse(var(2)=1,0.75,0.75)) 
+		fvar(10)=ifelse(var(20)=2,0.65,ifelse(var(20)=1,0.75,0.75)) 
 		persistent = 0
  		ignorehitpause = 1
 
@@ -6049,7 +6049,7 @@ ignorehitpause=1
 [State -1]
 Type = null;ChangeState
 triggerall=time<=10
-trigger1=var(2)=0
+trigger1=var(20)=0
 Value = 0
 Ctrl = 1
 ignorehitpause=1

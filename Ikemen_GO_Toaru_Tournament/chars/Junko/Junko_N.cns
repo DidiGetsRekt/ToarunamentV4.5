@@ -572,7 +572,7 @@ Ctrl = 0
 Anim = 250
 SprPriority = 2
 Facep2 = 1
-poweradd= cond(var(2)=0,-500,0)
+poweradd= cond(var(20)=0,-500,0)
 
 
 
@@ -2172,7 +2172,7 @@ Physics = N
 Ctrl = 0
 Anim = 640
 SprPriority = 2
-poweradd= cond(var(2)=0,-500,0)
+poweradd= cond(var(20)=0,-500,0)
 
 [State 0, VelSet]
 type = VelSet

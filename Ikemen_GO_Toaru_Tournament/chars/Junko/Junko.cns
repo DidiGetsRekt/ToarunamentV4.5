@@ -342,7 +342,7 @@ ignorehitpause = 1
 [State -2,初期ゲージ設定]
 	Type= VarSet
 	trigger1 = fvar(7)=0
-	var(2) = 0;
+	var(20) = 0;
 
 ;DamageDampening Reset
 [State -2]
@@ -539,8 +539,8 @@ channel = 2
 ;persistent = 
 
 
-;var(2) is RD mode (0 is none, 1 is normal, 2 is advanced)
 ;var(6) is ground bounce counter for tekken stuff
+;var(20) is RD mode (0 is none, 1 is normal, 2 is advanced)
 ;var(31) is the kick flurry button push counter for B(3 unlocks the move)
 ;var(32) is the kick flurry button push counter for C(3 unlocks the move)
 ;fvar(7) is RD timer

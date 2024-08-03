@@ -10,7 +10,7 @@ sprpriority = 1
 [State 700, ????????]
 type = PowerAdd
 trigger1 = 1
-value = 5+(time/15)+var(2)*1.5
+value = 5+(time/15)+var(20)*1.5
 
 [State 700, ?????];???????.txt???
 type = Explod
@@ -620,7 +620,7 @@ facep2=1
 [State 6300,V1=0]
 		Type=VarSet
 		Trigger1=Time=0
-		var(8)=var(2)
+		var(8)=var(20)
 		ignorehitpause=1
 
 
@@ -1812,7 +1812,7 @@ velset = 0,0
 [State 6300,V1=0]
 		Type=VarSet
 		Trigger1=Time=0
-		var(2)=1
+		var(20)=1
 		ignorehitpause=1
 
 [State 2000,SE]
@@ -1917,7 +1917,7 @@ persistent=0
 [State 6300,V1=0]
 		Type=VarAdd
 		Trigger1=animelem=5 && command = "hold_y" && power>999
-		var(2)=1
+		var(20)=1
 		ignorehitpause=1
 		persistent=0
 
@@ -2193,7 +2193,7 @@ velset = 0,0
 [State 6300,V1=0]
 		Type=VarSet
 		Trigger1=Time=0
-		var(2)=2
+		var(20)=2
 		ignorehitpause=1
 
 [State 6300, VarSet]
