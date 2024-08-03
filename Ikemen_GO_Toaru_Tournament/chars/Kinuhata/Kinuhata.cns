@@ -912,6 +912,14 @@ value = 5100 ;Downed get-hit (hit ground from fall)
 ;---------------------------------------------------------------------------
 [statedef -2]
 
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "fvar(2) = %f"
+params = fvar(2)
+;ignorehitpause = 
+;persistent = 
+
 [State -2, DefenceMulSet]
 Type = DefenceMulSet
 Trigger1 = Life <= 300
@@ -1291,7 +1299,14 @@ value = 0
 [State 0, AttackMulSet]
 type = AttackMulSet
 trigger1 = 1
-value = 1 + var(2)*0.25
+value = 1 + (var(2)>0)*0.25
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = 1 + (var(2)>0)*0.25
 ;ignorehitpause = 
 ;persistent = 
 
@@ -1424,6 +1439,7 @@ channel = 2
 
 ;Var explanations:
 ;Var(1) > 0 means you can combo with another move
+;var(2) for counter attack
 ;Var(3) is the number of Nitrogen bottles left for the round
 ;Var(5) is for the super jump 0 is normal 1 is super
 ;Var(6) is to confirm super jump
@@ -1438,6 +1454,7 @@ channel = 2
 
 ;fvar(0) is for damage dampening (raw)
 ;fvar(1) is for damage dampening (modified)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(6) is the Nitrogen meter
 ;fvar(8) is to transfer damage from the super armor to the character
 ;fvar(10) is the "guaranteed damage" var, it counters damage dampening
