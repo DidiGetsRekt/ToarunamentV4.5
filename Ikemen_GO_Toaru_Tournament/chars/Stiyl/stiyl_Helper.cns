@@ -4148,6 +4148,165 @@ trigger1 = animtime = 0
 ;ignorehitpause = 
 ;persistent = 
 
+;---------------------------------------------------------------------------
+;Magic circuit random waves
+[Statedef 8030]
+SprPriority = 5
+Anim = 10966
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [8,23]
+V = 5
+Value = 16
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [8,15]
+V = 6
+Value = 30
+
+[State ]
+Type = Null
+Trigger1 = Time = 0
+Trigger1 = Var(9):= -15-Random%11 && Var(10):= -15-Random%11
+
+[State ]
+Type = Trans
+Trigger1 = 1
+Trans = Add
+Alpha = 256-Var(5),256
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,17]
+FV = 1
+Value = 0.068
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,5]
+FV = 2
+Value = 0.2
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [5,7]
+FV = 3
+Value = 0.15-(Time-5)*0.05
+
+[State ]
+Type = Null
+Trigger1 = Time > 4
+Trigger1 = FVar(6):= FVar(6)+Cond(Time>10,0.02,0.2)
+Trigger1 = Time > 7
+Trigger1 = FVar(7):= FVar(7)+Cond(Time>13,0.02,0.2) && FVar(3):= FVar(3)-Cond(Time>14,0.025,0.1)
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,6]
+FV = 4
+Value = 0.07
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,17]
+FV = 5
+Value = Cond((Time=[4,5]),0.05,Cond((Time=[6,7]),0.035,0.03))
+
+[State ]
+Type = AngleDraw
+Trigger1 = 1
+Scale = 0.1+FVar(2),0.1+FVar(2)
+
+[State ]
+Type = AngleSet
+Trigger1 = Time = 0
+Value = -12+Random%11*2
+
+[State ]
+Type = AngleAdd
+Trigger1 = Time > 3
+Value = Cond(Time>14,-2,-4)
+
+[State ]
+Type = Explod
+Trigger1 = Time = 4 || Time = 7
+Anim = 10962+(Time=7)*2
+ID = 10962+(Time=7)*2
+PosType = P1
+SprPriority = 6-(Time=7)
+SuperMoveTime = 99
+PauseMoveTime = 99
+
+[State ]
+Type = Explod
+Trigger1 = Time = 0
+Anim = 10963
+ID = 10963
+PosType = P1
+SprPriority = 5
+SuperMoveTime = 99
+PauseMoveTime = 99
+
+[State ]
+Type = Explod
+Trigger1 = Time = 0 || Time = 4 || Time = 7
+Anim = Cond(Time=0,10967,8010+Random%4)
+ID = 10967+(Time=4)+(Time=7)*2
+PosType = P1
+Angle = Cond(Time=0,0,Random%180+(Time=7)*180)
+SprPriority = 5
+SuperMoveTime = 99
+PauseMoveTime = 99
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10962
+Scale = 0.6+FVar(3),0.6+FVar(3)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10963
+Trans = Add
+Alpha = 256-Var(6),256
+Angle = Cond(Time<4,80,80-(Time-3)*4)
+Scale = 0.14+FVar(4),0.14+FVar(4)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10964
+Scale = 0.25+Cond(Time<8,0,(Time-7)*0.075),0.25+Cond(Time<8,0,(Time-7)*0.075)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10967
+Scale = 0.5-FVar(5),0.5-FVar(5)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10968
+Scale = (0.25+Var(9)*0.006)*(0.5+FVar(6)),(0.25-Var(9)*0.006)*(0.5+FVar(6))
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10969
+Scale = (0.25+Var(10)*0.006)*(0.5+FVar(7)),(0.25-Var(10)*0.006)*(0.5+FVar(7))
+
+[State ]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = Noshadow
+
+[State ]
+Type = DestroySelf
+Trigger1 = AnimTime = 0
 
 ;Fire
 [Statedef 8600]
@@ -4199,7 +4358,158 @@ trigger1 = animtime = 0
 ;ignorehitpause = 
 ;persistent = 
 
+;---------------------------------------------------------------------------
+;Magic circuit Stop/Resume time
+[Statedef 10968]
+Anim = 9999
 
+[State ]
+Type = EnvShake
+Trigger1 = IsHelper(10968)
+Trigger1 = Time = 0
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Explod
+Trigger1 = IsHelper(10968)
+Trigger1 = Time = 3
+Anim = 10965
+ID = 10965
+Postype = Left
+Pos = 160,0
+Scale = 0.5,0.5
+Ownpal = 1
+BindTime = -1
+SprPriority = 5
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = Explod
+Trigger1 = Time = 1
+Anim = 10968
+ID = 10968+IsHelper(10969)
+Postype = Left
+Pos = 160,24
+BindTime = -1
+SprPriority = 4
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10968
+Scale = 0.25+(Time-1)*0.025,0.25+(Time-1)*0.025
+
+[State ]
+Type = ModifyExplod
+Trigger1 = Time = [1,21]
+ID = 10969
+Scale = 0.8-(Time-1)*0.0275,0.8-(Time-1)*0.0275
+
+[State ]
+Type = PalFX
+Trigger1 = IsHelper(10968)
+Mul = 256-(Time-1)*8,256-(Time-1)*8,256-(Time-1)*8
+Time = 1
+
+[State ]
+Type = PalFX
+Trigger1 = IsHelper(10969)
+Trigger1 = Time = [0,19]
+Mul = Time*13,Time*13,Time*13
+Time = 1
+
+[State ]
+Type = PalFX
+Trigger1 = IsHelper(10969)
+Trigger1 = Time = [21,32]
+Mul = 256-(Time-20)*21,256-(Time-20)*21,256-(Time-20)*21
+Time = 1
+
+[State ]
+Type = DestroySelf
+Trigger1 = Time = 33
+
+;---------------------------------------------------------------------------
+;Magic circuit veil
+[Statedef 10980]
+Anim = 9999
+
+[State ]
+Type = VarSet
+Trigger1 = RoundState = 2 && Parent,Var(21) = 1
+V = 1
+Value = 11
+
+[State ]
+Type = VarAdd
+Trigger1 = Var(1) > 0
+Trigger1 = RoundState != 2 || Parent,Var(21) != 1
+V = 1
+Value = -1;-((Parent,FVar(7)=[1,39]) && EnemyNear(Parent,Var(3)),NumHelper(10980) = 1 && IsHomeTeam = 1)*(Var(1)-1)
+
+[State ]
+Type = Explod
+Trigger1 = 1
+Anim = 10980
+ID = 10980
+PosType = Left
+Pos = 160, ScreenHeight/2
+BindTime = -1
+Trans = Add
+Alpha = 8*Var(1),256
+Scale = 0.625+FVar(1),0.625+FVar(2)
+SprPriority = -10
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = Explod
+Trigger1 = 1
+Anim = 10985
+ID = 10985
+PosType = Left
+Pos = 160, ScreenHeight/2
+BindTime = -1
+Trans = Add
+Alpha = 8*Var(1),256
+Scale = 0.625,0.625
+SprPriority = -10
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = VarAdd
+Trigger1 = (Time%240= [0,99]) || Time%240= [120,219]
+FV = 1
+Value = 0.0021*(1-(Time%240=[120,219])*2)
+
+[State ]
+Type = VarAdd
+Trigger1 = (Time%240= [60,159]) || (Time%240= [0,39]) || Time%240= [180,239]
+FV = 2
+Value = 0.0021*(1-(Time%240=[60,159])*2)
+
+[State ]
+Type = PalFX
+Trigger1 = 1
+Add = -80,-80,-80
+Time = 1
+
+[State ]
+Type = AssertSpecial
+Trigger1 = Parent,Var(21) = 1
+Flag = NoFG
+
+[State ]
+Type = DestroySelf
+Trigger1 = Var(1) <= 0
+Trigger1 = RoundState != 2 || Parent,Var(21) != 1
+RemoveExplods = 1
 
 
 ;UI Helper
