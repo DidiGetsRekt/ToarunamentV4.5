@@ -4392,7 +4392,7 @@ Trigger1 = Time = 1
 Anim = 10968
 ID = 10968+IsHelper(10969)
 Postype = Left
-Pos = 160,24
+Pos = 160,20
 BindTime = -1
 SprPriority = 4
 SuperMoveTime = 999
