@@ -467,7 +467,7 @@ Value = 11
 [State ]
 Type = VarAdd
 Trigger1 = Var(1) > 0
-Trigger1 = RoundState != 2 || (Parent,var(18) = 0 || parent,var(20) = 0)
+Trigger1 = RoundState != 2 || (Parent,var(18) = 0 && parent,var(20) = 0)
 V = 1
 Value = -1;-((Parent,FVar(7)=[1,39]) && EnemyNear(Parent,Var(3)),NumHelper(10980) = 1 && IsHomeTeam = 1)*(Var(1)-1)
 
@@ -527,7 +527,7 @@ Flag = NoFG
 [State ]
 Type = DestroySelf
 Trigger1 = Var(1) <= 0
-Trigger1 = RoundState != 2 || (parent,var(18)=0 || parent,var(20)=0)
+Trigger1 = RoundState != 2 || (parent,var(18)=0 && parent,var(20)=0)
 RemoveExplods = 1
 
 

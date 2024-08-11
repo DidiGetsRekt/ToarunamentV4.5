@@ -1320,14 +1320,14 @@ channel = 0
 
 [State ]
 Type = EnvShake
-Trigger1 = time = 16
+Trigger1 = time = 19
 Time  = 16
 Ampl  = 4
 Freq  = 90
 
 [State ]
 Type = Helper
-Trigger1 = time=13
+Trigger1 = time=16
 StateNo = 10968
 SuperMoveTime = 9999
 PauseMoveTime = 9999
@@ -1351,7 +1351,7 @@ ID = 10968
 
 [State ]
 Type = Helper
-Trigger1 = time = 17
+Trigger1 = time = 20
 StateNo = 8030
 PosType = P1
 Pos = 0, -75
@@ -1448,14 +1448,14 @@ channel = 0
 
 [State ]
 Type = EnvShake
-Trigger1 = AnimElemtime(5) = 0
+Trigger1 = time = 13
 Time  = 16
 Ampl  = 4
 Freq  = 90
 
 [State ]
 Type = Helper
-Trigger1 = animelemtime(4)=0
+Trigger1 = time=10
 StateNo = 10968
 SuperMoveTime = 9999
 PauseMoveTime = 9999
@@ -1480,7 +1480,7 @@ ID = 10968
 
 [State ]
 Type = Helper
-Trigger1 = animelemtime(6) = 0
+Trigger1 = time = 14
 StateNo = 8030
 PosType = P1
 Pos = 0, -75

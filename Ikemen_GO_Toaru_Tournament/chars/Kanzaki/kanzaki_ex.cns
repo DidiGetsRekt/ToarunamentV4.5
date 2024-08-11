@@ -1102,11 +1102,42 @@ sprpriority = 2
 facep2 = 1
 velset=0,0
 
-
 [State 0, VarSet]
 type = VarSet
 trigger1 = animelem=3
 var(20) = -1
+
+[State ]
+Type = EnvShake
+triggerall = var(21) = 1
+Trigger1 = time = 9
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+triggerall = var(21) = 1
+Trigger1 = time=6
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
+[State ]
+Type = Helper
+triggerall = var(21) = 1
+Trigger1 = time = 10
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 [State 0, Helper]
 type = Helper
@@ -1422,6 +1453,40 @@ velset=0,0
 Type=VarSet
 Trigger1=time=0
 var(1)=0
+
+[State ]
+Type = EnvShake
+triggerall=anim=6000
+triggerall = var(20) = -1
+Trigger1 = time = 17
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+triggerall=anim=6000
+triggerall = var(20) = -1
+Trigger1 = time=14
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
+[State ]
+Type = Helper
+triggerall = var(20) = -1
+Trigger1 = time = 18
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 [State 0, EnvShake]
 type = EnvShake

@@ -1102,14 +1102,35 @@ Trigger1 = var(20)=-1 && var(21)=1
 Flag = TimerFreeze
 IgnoreHitPause = 1
 
-;[State -2]
-;Type = AssertInput
-;trigger1 = roundno = 1
-;Trigger1 = timeelapsed <= 600
-;trigger2 = roundno >= 2
-;Trigger2 = timeelapsed <= 300
-;Flag = a
-;IgnoreHitPause = 1
+[State 0, VarSet]
+type = VarSet
+trigger1 = !(var(20)!=-1 || var(21)=0) && var(12) = 0
+var(12) = 1
+
+[State ]
+Type = Helper
+TriggerAll = NumExplod(10969) = 0
+Trigger1 = (var(20)!=-1 || var(21)=0) && var(12)=1; || var(20)
+StateNo = 10968
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10969
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = (var(20)!=-1 || var(21)=0) && var(12) = 1
+var(12) = 0
+
+[State ]
+Type = Helper
+Trigger1 = NumHelper(10980) = 0
+Trigger1 = var(20)=-1 && var(21)=1
+StateNo = 10980
+PauseMoveTime = 9**9
+Ownpal = 1
+ID = 10980
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
