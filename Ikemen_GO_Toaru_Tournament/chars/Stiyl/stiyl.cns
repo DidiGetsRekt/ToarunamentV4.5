@@ -893,16 +893,27 @@ Trigger1 = var(21)=1
 Flag = TimerFreeze
 IgnoreHitPause = 1
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(21) = 1 && var(12) = 0
+var(12) = 1
+
 [State ]
 Type = Helper
 TriggerAll = NumExplod(10969) = 0
-trigger1 = var(20)<=1 && var(21)=1
+trigger1 = var(21) = 0 && var(12) = 1
 StateNo = 10968
 IgnoreHitPause = 1
 SuperMoveTime = 9999
 PauseMoveTime = 9999
 Ownpal = 1
 ID = 10969
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(21) = 0 && var(12) = 1
+var(12) = 0
+
 
 [State ]
 Type = Helper
@@ -961,6 +972,8 @@ PauseMoveTime = 9999
 ;var(5) is the ex charge checker (-1 is normal charge, 1 is ex charge)
 ;var(10) is intro decider
 ;var(11) is timer for intros
+;var(12) is the magic name users
+;var(13) is the conditionality for the heat mode to end
 ;var(17) is the air dash count
 ;Var(19) is the card preventer
 ;var(20) is the card counter

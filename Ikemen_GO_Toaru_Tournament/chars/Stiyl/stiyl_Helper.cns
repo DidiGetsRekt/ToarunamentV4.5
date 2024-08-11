@@ -4413,6 +4413,7 @@ Scale = 0.8-(Time-1)*0.0275,0.8-(Time-1)*0.0275
 [State ]
 Type = PalFX
 Trigger1 = IsHelper(10968)
+add = ifelse(p2name="Stiyl Magnus" && teamside=2,64,128),0,ifelse(p2name="Stiyl Magnus" && teamside=2,128,0)
 Mul = 256-(Time-1)*8,256-(Time-1)*8,256-(Time-1)*8
 Time = 1
 
@@ -4420,6 +4421,7 @@ Time = 1
 Type = PalFX
 Trigger1 = IsHelper(10969)
 Trigger1 = Time = [0,19]
+add = ifelse(p2name="Stiyl Magnus" && teamside=2,64,128),0,ifelse(p2name="Stiyl Magnus" && teamside=2,128,0)
 Mul = Time*13,Time*13,Time*13
 Time = 1
 
@@ -4427,6 +4429,7 @@ Time = 1
 Type = PalFX
 Trigger1 = IsHelper(10969)
 Trigger1 = Time = [21,32]
+add = ifelse(p2name="Stiyl Magnus" && teamside=2,64,128),0,ifelse(p2name="Stiyl Magnus" && teamside=2,128,0)
 Mul = 256-(Time-20)*21,256-(Time-20)*21,256-(Time-20)*21
 Time = 1
 

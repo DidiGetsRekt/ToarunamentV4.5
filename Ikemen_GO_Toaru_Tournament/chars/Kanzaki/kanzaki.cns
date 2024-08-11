@@ -1163,6 +1163,8 @@ channel = 0
 ;var(7) amount of wires
 ;var(10) is intro decider
 ;var(11) is timer for intros
+;var(12) is the magic name users
+;var(13) is the conditionality for the heat mode to end
 ;var(17) is the air dash count and dodge
 ;var(20) is the stance
 ;var(21) is the godbreaker mode checker

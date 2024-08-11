@@ -2148,6 +2148,26 @@ type = VarSet
 trigger1 = Time >= 4
 var(24) = 0
 
+[State ]
+Type = EnvShake
+Trigger1 = time = 3
+trigger1 = fvar(18) = 0
+trigger1 = var(20) = 0
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+Trigger1 = time=0
+trigger1 = fvar(18) = 0
+trigger1 = var(20) = 0
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
 
 [State 0, Helper]
 type = Helper
@@ -2168,6 +2188,21 @@ size.xscale = 1
 size.yscale = 1
 ignorehitpause = 1
 ;persistent = 
+
+[State ]
+Type = Helper
+Trigger1 = time = 4
+trigger1 = fvar(18) = 0
+trigger1 = var(20) = 0
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 
 [State 900, SuperPause]
@@ -2250,6 +2285,22 @@ type = PosFreeze
 trigger1 = 1
 value = 1
 
+[State ]
+Type = EnvShake
+Trigger1 = time = 3
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+Trigger1 = time=0
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
 [State 0, Helper]
 type = Helper
 trigger1 = time = 4
@@ -2268,6 +2319,19 @@ pausemovetime = 9999
 size.xscale = 1
 size.yscale = 1
 ignorehitpause = 1
+
+[State ]
+Type = Helper
+Trigger1 = time = 4
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 [State 900, SuperPause]
 type = SuperPause
@@ -2307,7 +2371,14 @@ anim = 196
 velSet = 0,0
 ctrl = 0
 sprPriority = 2
-powerAdd = -1000
+
+[State 0, PowerAdd]
+type = PowerAdd
+trigger1 = time = 4
+value = -1000
+;ignorehitpause = 
+;persistent = 
+
 
 [State 200,V1=0]
 		Type=VarSet
@@ -2363,6 +2434,26 @@ type = VarSet
 trigger1 = Time >= 4
 var(24) = 0
 
+[State ]
+Type = EnvShake
+Trigger1 = time = 3
+trigger1 = fvar(20) = 0
+trigger1 = var(20) = 0
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+Trigger1 = time=0
+trigger1 = fvar(20) = 0
+trigger1 = var(20) = 0
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
 [State 0, Helper]
 type = Helper
 trigger1 = time = 4
@@ -2381,6 +2472,21 @@ pausemovetime = 9999
 size.xscale = 1
 size.yscale = 1
 ignorehitpause = 1
+
+[State ]
+Type = Helper
+Trigger1 = time = 4
+trigger1 = fvar(20) = 0
+trigger1 = var(20) = 0
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 [State 900, SuperPause]
 type = SuperPause

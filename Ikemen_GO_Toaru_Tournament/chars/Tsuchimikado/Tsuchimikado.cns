@@ -573,10 +573,14 @@ ctrl = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "fvar(10) = %f, fvar(0)=%f, facing = %d, life = %d"
-params = fvar(24),fvar(20),NumHelper(5605),prevstateno
+params = fvar(18),fvar(20),var(20),(helper(10980),parent,fvar(18)>0)
 ;ignorehitpause = 
 ;persistent = 
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+var(18) = !(fvar(18) = 0. && fvar(20) = 0.)
 
 [State 0, VarSet]
 type = VarSet
@@ -941,6 +945,36 @@ Trigger1 = fvar(18)>0 || fvar(20)>0 || var(20)
 Flag = TimerFreeze
 IgnoreHitPause = 1
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = !(var(18)=0 && var(20)=0) && var(12) = 0
+var(12) = 1
+
+[State ]
+Type = Helper
+TriggerAll = NumExplod(10969) = 0
+Trigger1 = (var(18)=0 && var(20)=0) && var(12)=1; || var(20)
+StateNo = 10968
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10969
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = (var(18)=0 && var(20)=0) && var(12) = 1
+var(12) = 0
+
+[State ]
+Type = Helper
+Trigger1 = NumHelper(10980) = 0
+Trigger1 = var(18) || var(20)
+StateNo = 10980
+PauseMoveTime = 9**9
+Ownpal = 1
+ID = 10980
+
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
 ;---------------------------------------------------------------------------
@@ -1055,6 +1089,8 @@ channel = 2
 ;Var(6) is to keep track of how many magic attacks you used in the combo
 ;var(10) is intro decider
 ;var(11) is timer for intros
+;var(12) is the magic name users
+;var(13) is the conditionality for the heat mode to end
 ;Var(14) is for the burst
 ;var(17) is the air dash count
 ;var(19) is trigger for entering state once for fallere825 in superpause
