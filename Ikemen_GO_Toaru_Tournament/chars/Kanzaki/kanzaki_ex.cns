@@ -375,6 +375,13 @@ type    = S
 movetype= H
 physics = N
 
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
 [State 2601, SelfState]
 type = removeexplod
 trigger1 = time=0

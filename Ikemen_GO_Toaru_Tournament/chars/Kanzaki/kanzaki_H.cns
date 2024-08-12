@@ -32,7 +32,7 @@ var(1)=0
 [State 0, LifeAdd]
 type = LifeAdd
 trigger1 = time = 0 && var(21)=1
-value = -ceil(150*fvar(0))
+value = -ceil(230*fvar(0))
 kill = 0
 absolute = 0
 ;ignorehitpause = 

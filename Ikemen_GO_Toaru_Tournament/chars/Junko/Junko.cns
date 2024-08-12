@@ -516,10 +516,6 @@ ID = 130
  	triggerall = var(2) = 1
  	trigger1 = movehit
 	trigger2 = helper(2420),movehit
-;	trigger3 = helper(1360),movehit
-;	trigger4 = helper(2310),movehit
-;	trigger5 = helper(2510),movehit
-;	trigger6 = helper(2511),movehit
 	var(2) = 2
 	ignorehitpause = 1
 

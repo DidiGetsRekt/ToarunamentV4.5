@@ -1163,6 +1163,7 @@ triggerall = stateno != [2400,2700]
 trigger1 = stateno=2000 || stateno=2001
 trigger2 = stateno = 2200 || stateno = 2201
 trigger3 = stateno = [1120,1122]
+trigger4 = ctrl
 ;---------------------------------------------------------------------------
 [State -1, 5c st0]
 type = ChangeState
