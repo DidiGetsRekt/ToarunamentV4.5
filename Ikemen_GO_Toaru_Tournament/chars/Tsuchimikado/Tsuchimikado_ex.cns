@@ -146,8 +146,8 @@ trigger1 = anim = 206
 trigger1 = numtarget(5600)=1
 trigger1 = animelemtime(3) >= 0
 trigger1 = movehit
-trigger1 = enemy, stateno!=[5600,5603]
-value = 5600
+trigger1 = enemy, stateno!=[5599,5603]
+value = 5599
 IgnoreHitPause = 1
 Persistent = 1
 
