@@ -768,15 +768,6 @@ type = VarSet
 trigger1 = 1
 var(7) = numhelper(2101)+numhelper(2405)+numhelper(2505)+numhelper(2506)+numhelper(3206)*7+numhelper(2701)+numhelper(2702)+numhelper(2703)+numhelper(2704)+numhelper(2705)+numhelper(2706)+numhelper(2707)
 
-
-;Godbreaker attack buff
-[State 0, AttackMulSet]
-type = AttackMulSet
-trigger1 = 1
-value = 1+var(21)
-;ignorehitpause = 
-;persistent = 
-
 ;Power drain in stance 3
 [State 0, PowerAdd]
 type = PowerAdd
@@ -1096,10 +1087,11 @@ value = F7, 2
 	var(2) = 0
 	ignorehitpause = 1
 
+;Godbreaker attack buff + counter attack buff
 [State 0, AttackMulSet]
 type = AttackMulSet
 trigger1 = 1
-value = 1 + (var(2)>0)*0.25
+value = 1 + var(21) + (var(2)>0)*0.25
 ;ignorehitpause = 
 ;persistent = 
 
