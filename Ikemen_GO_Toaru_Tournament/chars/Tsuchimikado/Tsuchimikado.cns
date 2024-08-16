@@ -939,6 +939,20 @@ persistent = 1
 	var(2) = 0
 	ignorehitpause = 1
 
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = 1 + (var(2)>0)*0.25
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = 1 + (var(2)>0)*0.25
+;ignorehitpause = 
+;persistent = 
+
 [State -2]
 Type = AssertSpecial
 Trigger1 = fvar(18)>0 || fvar(20)>0 || var(20)
@@ -1105,6 +1119,7 @@ channel = 2
 
 ;fvar(0) is for damage dampening (raw)
 ;fvar(1) is for damage dampening (modified)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(10) is the "guaranteed damage" var, it counters damage dampening
 ;fvar(11) is the cornerpush veloff var
 ;fvar(18) is the heat mode meter

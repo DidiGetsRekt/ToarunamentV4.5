@@ -1209,6 +1209,8 @@ channel = 0
 ;var(37) slash finer "choice register"
 ;var(38) slash finer "choice counter"
 ;var(39) slash finer "going through the slashes"
+
 ;fvar(0) is for damage dampening (raw)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(10) is the "guaranteed damage" var, it counters damage dampening
 ;fvar(11) is the cornerpush veloff var
