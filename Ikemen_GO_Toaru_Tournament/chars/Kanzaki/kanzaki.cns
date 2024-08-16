@@ -1001,11 +1001,10 @@ value = F7, 2
 	trigger11 = helper(2405),movehit
 	trigger12 = helper(2410),movehit
 	trigger13 = helper(2411),movehit
-	trigger14 = helper(2413),movehit
+	trigger14 = helper(2412),movehit
 	trigger15 = helper(2505),movehit
-	trigger16 = helper(2506),movehit
-	trigger17 = helper(3001),movehit
-	trigger18 = helper(3206),movehit
+	trigger16 = helper(3001),movehit
+	trigger17 = helper(3206),movehit
 	var(2) = 2
 	ignorehitpause = 1
 
