@@ -628,19 +628,6 @@ ignorehitpause = 1
 	trigger1 = roundsexisted = 0 && roundstate = 0 && roundno = 1;
 	value = 1000 ; 0〜6000で設定可能 1000単位で1本 デフォルトは1000
 
-
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 300
-Value = 0.8
-IgnoreHitPause = 1
-
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 150
-Value = 0.6
-IgnoreHitPause = 1
-
 ;Magic attack count Reset
 [State -2]
 	type = Varset
@@ -939,18 +926,25 @@ persistent = 1
 	var(2) = 0
 	ignorehitpause = 1
 
-[State 0, AttackMulSet]
-type = AttackMulSet
+[State 0, DefenceMulSet]
+type = DefenceMulSet
 trigger1 = 1
-value = 1 + (var(2)>0)*0.25
-;ignorehitpause = 
+value = 1 - 0.2*(life<=300) - 0.2*(life<=150)
+ignorehitpause = 1
 ;persistent = 
 
 [State 0, VarSet]
 type = VarSet
 trigger1 = 1
 fvar(2) = 1 + (var(2)>0)*0.25
-;ignorehitpause = 
+ignorehitpause = 1
+;persistent = 
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = fvar(2)
+ignorehitpause = 1
 ;persistent = 
 
 [State -2]

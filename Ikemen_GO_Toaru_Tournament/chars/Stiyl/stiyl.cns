@@ -535,18 +535,6 @@ ctrl = 1
 
 [Statedef -2]
 
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 300
-Value = 0.7
-IgnoreHitPause = 1
-
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 150
-Value = 0.5
-IgnoreHitPause = 1
-
 [State 0, Width]
 type = Width
 trigger1 = stateno!=[2000,3999]
@@ -640,8 +628,6 @@ triggerall = var(23)>0 && stateno != 195
 trigger1=movetype!=H 
 trigger2=stateno=[120,159]
 flag = invisible
- 
-
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
@@ -679,23 +665,6 @@ trigger1 = var(21)=0
 fvar(26)=0
 ;ignorehitpause = 
 ;persistent =
-
-[State 0, DefenceMulSet]
-type = DefenceMulSet
-trigger1 = 1
-value = ifelse(var(21)=1,ifelse(fvar(26)>=333,1.5,1+(fvar(26)/333)*0.5),1)
-;ignorehitpause = 
-;persistent = 
-
-[State 0, DefenceMulSet]
-type = AttackMulSet
-trigger1 = 1
-value = ifelse(var(21)=1,ifelse(fvar(26)>=333,2,1+fvar(26)/333),1)
-;ignorehitpause = 
-;persistent = 
-
-
-
 
 
 [State 0, VarSet]
@@ -887,6 +856,27 @@ persistent = 1
 	var(2) = 0
 	ignorehitpause = 1
 
+[State 0, DefenceMulSet]
+type = DefenceMulSet
+trigger1 = 1
+value = 1 - 0.3*(life<=300) - 0.2*(life<=150) + 0.5*(var(21)=1)*ifelse(fvar(26)>=333,1,(fvar(26)/333))
+ignorehitpause = 1
+;persistent = 
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = 1 + (var(2)>0)*0.25
+ignorehitpause = 1
+;persistent = 
+
+[State 0, DefenceMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = fvar(2) + (var(21)=1)*ifelse(fvar(26)>=333,1,(fvar(26)/333))
+ignorehitpause = 1
+;persistent = 
+
 [State -2]
 Type = AssertSpecial
 Trigger1 = var(21)=1
@@ -983,6 +973,8 @@ PauseMoveTime = 9999
 ;var(24) is transparency reversal signal
 ;var(25) is teamside for cards
 ;var(26) is for trap card charge
+
 ;fvar(0) is for damage dampening (raw)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(26) is heat mode counter (how much time have we been in it)
 ;var(50) is testing for launcher

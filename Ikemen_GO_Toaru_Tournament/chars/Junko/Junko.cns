@@ -585,18 +585,25 @@ ID = 130
 	var(2) = 0
 	ignorehitpause = 1
 
-[State 0, AttackMulSet]
-type = AttackMulSet
+[State 0, DefenceMulSet]
+type = DefenceMulSet
 trigger1 = 1
-value = 1 + (var(2)>0)*0.25
-;ignorehitpause = 
+value = 1 - 0.3*(life<=300) - 0.2*(life<=150)
+ignorehitpause = 1
 ;persistent = 
 
 [State 0, VarSet]
 type = VarSet
 trigger1 = 1
 fvar(2) = 1 + (var(2)>0)*0.25
-;ignorehitpause = 
+ignorehitpause = 1
+;persistent = 
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = fvar(2)
+ignorehitpause = 1
 ;persistent = 
 
 
