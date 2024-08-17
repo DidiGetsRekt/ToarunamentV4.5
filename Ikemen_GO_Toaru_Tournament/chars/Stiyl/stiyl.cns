@@ -637,6 +637,7 @@ params = isHometeam,var(21),roundstate,screenpos y,fvar(0), var(20)
 ;ignorehitpause = 
 ;persistent = 
 
+;card amount decreasing while in fortis931
 [State 0, VarAdd]
 type = VarAdd
 trigger1 = var(20)>0 && var(21)=1 && time%2=0 && roundstate=2
@@ -648,6 +649,7 @@ var(20)=-1
 ;ignorehitpause = 
 ;persistent = 
 
+;amount of time increasing while in fortis931 (considering whether this is actually useless)
 [State 0, VarAdd]
 type = VarAdd
 trigger1 = var(20)>0 && var(21)=1 && time%2=0 && roundstate=2

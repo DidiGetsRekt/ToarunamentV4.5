@@ -824,7 +824,7 @@ type = ChangeState
 value = 105
 triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
 triggerall = command = "BB" || (Command = "holdback" && Command = "y" && stateno != 4000) 
-triggerall = statetype = S
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 
@@ -832,7 +832,7 @@ trigger2 = var(1)
 type = ChangeState
 value = 4000
 triggerall = ((command = "hold_y") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
-triggerall = power <4000
+triggerall = power<powermax
 ;triggerall = prevstateno != 100 && prevstateno!=105
 triggerall = statetype !=A
 trigger1 = ctrl

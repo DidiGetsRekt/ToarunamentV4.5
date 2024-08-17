@@ -384,7 +384,7 @@ var(20)=cond(var(20)<985,15,999-var(20))
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = (command="x" && var(21)=0) || command = "y"
+trigger1 = (command="x" && var(21)=0) || command = "z"
 value = 105,0
 channel = 0
 
@@ -410,7 +410,7 @@ size.yscale = 0.5
 [State 0, Helper]
 type = Helper
 trigger1 = var(20)>=1
-trigger1 = command="y"
+trigger1 = command="z"
 helpertype = normal ;player
 name = "card throw close"
 ID = 4115
@@ -428,7 +428,7 @@ persistent = 1
 [State 0, VarAdd]
 type = VarAdd
 trigger1 =var(20)>=1 && var(21)=0
-trigger1=command="y"
+trigger1=command="z"
 var(20)=-1
 ignorehitpause = 1
 persistent = 1
@@ -509,7 +509,7 @@ var(20)=cond(var(20)<985,15,999-var(20))
 
 [State 0, PlaySnd]
 type = PlaySnd
-trigger1 = (command="x" && var(21)=0) || command = "y"
+trigger1 = (command="x" && var(21)=0) || command = "z"
 value = 105,0
 channel = 0
 
@@ -535,7 +535,7 @@ size.yscale = 0.5
 [State 0, Helper]
 type = Helper
 trigger1 = var(20)>=1
-trigger1 = command="y"
+trigger1 = command="z"
 helpertype = normal ;player
 name = "card throw close"
 ID = 4115
@@ -553,7 +553,7 @@ persistent = 1
 [State 0, VarAdd]
 type = VarAdd
 trigger1 =var(20)>=1 && var(21)=0
-trigger1=command="y"
+trigger1=command="z"
 var(20)=-1
 ignorehitpause = 1
 persistent = 1

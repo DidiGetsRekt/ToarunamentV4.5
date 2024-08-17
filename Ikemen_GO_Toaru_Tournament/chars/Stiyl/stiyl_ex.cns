@@ -865,7 +865,7 @@ pausemovetime = 0
 
 [State 0, ChangeAnim]
 type = ChangeAnim
-trigger1 = animtime=0 && command = "hold_a" && command = "hold_c"
+trigger1 = animtime=0 && ((command = "hold_y") || (command = "hold_a" && command = "hold_c"))
 value = 850
 elem = 6
 ;ignorehitpause = 
@@ -873,13 +873,13 @@ elem = 6
 
 [State 6500, ??????]
 		type = Ctrlset
-		trigger1 = command != "hold_a" || command != "hold_c"
+		trigger1 = command != "hold_y" && (command!= "hold_a" && command!="hold_c")
 		trigger2 = Power >= powerMax
 		value = 1
 
 [State 6500, ??????]
 		type = ChangeState
-		trigger1 = command != "hold_a" || command != "hold_c"
+		trigger1 = command != "hold_y" && (command!= "hold_a" && command!="hold_c")
 		trigger2 = Power >= powerMax
 		value = 851
 
@@ -1107,7 +1107,7 @@ time = 50
 [State 0, ChangeAnim]
 type = ChangeAnim
 triggerall = anim=1070
-trigger1 = command!="hold_z"
+trigger1 = command!="hold_x"
 trigger2 = var(20)>=999
 value = 1071
 ;elem = 1
