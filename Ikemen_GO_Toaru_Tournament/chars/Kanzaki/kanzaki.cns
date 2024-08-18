@@ -781,19 +781,6 @@ value = -5
 ;ignorehitpause = 
 ;persistent = 
 
-[State 0, BGPalFX]
-type = BGPalFX
-;triggerall= stateno!=1600
-trigger1 = var(20)=-1 && var(21)=1 && var(25)=0
-time = 1
-;add = 0,0,0
-;mul = 256,256,256
-;sinadd = 0,0,0,10
-;invertall = 0
-color = ifelse(gametime%128<64,gametime%128,128-gametime%128)+ifelse(power<1920 && var(20)=-1,192-power/10,0)
-ignorehitpause = 1
-persistent = 1
-
 ;When no power in stance -1 go back to stance 0
 [State 0, VarSet]
 type = VarSet
@@ -1003,8 +990,9 @@ value = F7, 2
 	trigger13 = helper(2411),movehit
 	trigger14 = helper(2412),movehit
 	trigger15 = helper(2505),movehit
-	trigger16 = helper(3001),movehit
-	trigger17 = helper(3206),movehit
+	trigger16 = helper(2506),movehit
+	trigger17 = helper(3001),movehit
+	trigger18 = helper(3206),movehit
 	var(2) = 2
 	ignorehitpause = 1
 
@@ -1104,13 +1092,13 @@ IgnoreHitPause = 1
 
 [State 0, VarSet]
 type = VarSet
-trigger1 = !(var(20)!=-1 || var(21)=0) && var(12) = 0
-var(12) = 1
+trigger1 = !(var(20)!=-1 || var(21)=0) && var(13) = 0
+var(13) = 1
 
 [State ]
 Type = Helper
 TriggerAll = NumExplod(10969) = 0
-Trigger1 = (var(20)!=-1 || var(21)=0) && var(12)=1; || var(20)
+Trigger1 = (var(20)!=-1 || var(21)=0) && var(13)=1; || var(20)
 StateNo = 10968
 IgnoreHitPause = 1
 SuperMoveTime = 9999
@@ -1120,8 +1108,8 @@ ID = 10969
 
 [State 0, VarSet]
 type = VarSet
-trigger1 = (var(20)!=-1 || var(21)=0) && var(12) = 1
-var(12) = 0
+trigger1 = (var(20)!=-1 || var(21)=0) && var(13) = 1
+var(13) = 0
 
 [State ]
 Type = Helper
@@ -1131,6 +1119,15 @@ StateNo = 10980
 PauseMoveTime = 9**9
 Ownpal = 1
 ID = 10980
+
+;------------------------------------------------------------------------------------------
+;Magic name chars
+[State ]
+Type = Null
+trigger1 = 1 && var(12):= 0
+trigger2 = enemynear,name = "Stiyl Magnus" && var(12):= 1
+trigger3 = enemynear,name = "Tsuchimikado Motoharu" && var(12):= 2
+trigger4 = enemynear,name = "Kanzaki Kaori" && var(12):= 3
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)

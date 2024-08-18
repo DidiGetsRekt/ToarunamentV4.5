@@ -813,21 +813,6 @@ Pos = 0, 0
 Ownpal = 0
 ID = 5605
 
-[State 0, BGPalFX]
-type = BGPalFX
-trigger1 = fvar(18) > 0
-trigger2 = fvar(20) > 0
-trigger3 = var(20)
-time = 1
-;add = 95,12,0
-;mul = 256,256,256
-;sinadd = 0,0,0,10
-;invertall = 0
-color = ifelse(gametime%128<64,gametime%128,128-gametime%128)+ifelse(var(20),0,ifelse(fvar(18)<=192 || fvar(20)<=192,192-fvar(18)-fvar(20),0))
-ignorehitpause = 1
-persistent = 1
-
-
 ;---------------------------------------------------------------------------
 ;Counter
 ;---------------------------------------------------------------------------
@@ -955,13 +940,13 @@ IgnoreHitPause = 1
 
 [State 0, VarSet]
 type = VarSet
-trigger1 = !(var(18)=0 && var(20)=0) && var(12) = 0
-var(12) = 1
+trigger1 = !(var(18)=0 && var(20)=0) && var(13) = 0
+var(13) = 1
 
 [State ]
 Type = Helper
 TriggerAll = NumExplod(10969) = 0
-Trigger1 = (var(18)=0 && var(20)=0) && var(12)=1; || var(20)
+Trigger1 = (var(18)=0 && var(20)=0) && var(13)=1; || var(20)
 StateNo = 10968
 IgnoreHitPause = 1
 SuperMoveTime = 9999
@@ -971,8 +956,8 @@ ID = 10969
 
 [State 0, VarSet]
 type = VarSet
-trigger1 = (var(18)=0 && var(20)=0) && var(12) = 1
-var(12) = 0
+trigger1 = (var(18)=0 && var(20)=0) && var(13) = 1
+var(13) = 0
 
 [State ]
 Type = Helper
@@ -982,6 +967,15 @@ StateNo = 10980
 PauseMoveTime = 9**9
 Ownpal = 1
 ID = 10980
+
+;------------------------------------------------------------------------------------------
+;Magic name chars
+[State ]
+Type = Null
+trigger1 = 1 && var(12):= 0
+trigger2 = enemynear,name = "Stiyl Magnus" && var(12):= 1
+trigger3 = enemynear,name = "Tsuchimikado Motoharu" && var(12):= 2
+trigger4 = enemynear,name = "Kanzaki Kaori" && var(12):= 3
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
