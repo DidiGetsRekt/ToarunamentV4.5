@@ -3943,7 +3943,7 @@ triggerall=!movecontact && !movereversed
 triggerall=parent,var(3)!=1
 trigger1 = Time = 0
 attr = S, HA
-damage    = ceil(23*fvar(0)),2
+damage    = ceil(10*parent,fvar(10)*parent,fvar(2)),2
 priority  = 3
 animtype  = Light
 hitflag = MAF
