@@ -1456,7 +1456,7 @@ trigger1=!movecontact
 trigger1=!movereversed
 Attr = S, HA
 AnimType  = Up
-Damage    = Ceil((135+30*(parent,var(20)=1)*(1+parent,var(2)*0.25))*parent,fvar(10))
+Damage    = Ceil((135+30*(parent,var(20)=1))*parent,fvar(2)*parent,fvar(10))
 HitFlag = MAFD
 GuardFlag = LA
 sparkno = -1;s6005                     ;Spark anim no (Def: set above)

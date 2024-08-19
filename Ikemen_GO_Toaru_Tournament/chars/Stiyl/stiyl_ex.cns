@@ -285,8 +285,8 @@ ignorehitpause = 1
 [State 0, Explod]
 type = Explod
 trigger1 = time=0
-anim = 8000
-ID = 8000
+anim = 80000
+ID = 80000
 pos = 50,-100
 postype = p1  ;p2,front,back,left,right
 facing = 1
@@ -444,8 +444,8 @@ pos = 55, -1
 [State 0, Explod]
 type = Explod
 trigger1 = animelem=2
-anim = 8000
-ID = 8000
+anim = 80000
+ID = 80000
 pos = 50,-100
 postype = p1  ;p2,front,back,left,right
 facing = 1
@@ -709,6 +709,13 @@ type    = S
 movetype= H
 physics = N
 
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
 [State 0, TargetState]; faz o techador entrar no state do tech
 type = TargetState
 trigger1 = time = 0
@@ -858,7 +865,7 @@ pausemovetime = 0
 
 [State 0, ChangeAnim]
 type = ChangeAnim
-trigger1 = animtime=0 && command = "hold_a" && command = "hold_c"
+trigger1 = animtime=0 && ((command = "hold_y") || (command = "hold_a" && command = "hold_c"))
 value = 850
 elem = 6
 ;ignorehitpause = 
@@ -866,13 +873,13 @@ elem = 6
 
 [State 6500, ??????]
 		type = Ctrlset
-		trigger1 = command != "hold_a" || command != "hold_c"
+		trigger1 = command != "hold_y" && (command!= "hold_a" && command!="hold_c")
 		trigger2 = Power >= powerMax
 		value = 1
 
 [State 6500, ??????]
 		type = ChangeState
-		trigger1 = command != "hold_a" || command != "hold_c"
+		trigger1 = command != "hold_y" && (command!= "hold_a" && command!="hold_c")
 		trigger2 = Power >= powerMax
 		value = 851
 
@@ -1100,7 +1107,7 @@ time = 50
 [State 0, ChangeAnim]
 type = ChangeAnim
 triggerall = anim=1070
-trigger1 = command!="hold_z"
+trigger1 = command!="hold_x"
 trigger2 = var(20)>=999
 value = 1071
 ;elem = 1
@@ -1311,6 +1318,22 @@ channel = 0
 		volume=255
 		channel=-1
 
+[State ]
+Type = EnvShake
+Trigger1 = time = 19
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+Trigger1 = time=16
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
 	[State 6661,]
 		type = Explod
 		trigger1 = AnimElemtime(6) = 0
@@ -1325,6 +1348,19 @@ channel = 0
 		sprpriority = 3
 		ownpal = 1
 		removeongethit = 1
+
+[State ]
+Type = Helper
+Trigger1 = time = 20
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 [State 0, VarSet]
 type = VarSet
@@ -1410,6 +1446,23 @@ channel = 0
 		volume=255
 		channel=-1
 
+[State ]
+Type = EnvShake
+Trigger1 = time = 13
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Helper
+Trigger1 = time=10
+StateNo = 10968
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10968
+
+
 	[State 6661,]
 		type = Explod
 		trigger1 = AnimElemtime(5) = 0
@@ -1424,6 +1477,19 @@ channel = 0
 		sprpriority = 3
 		ownpal = 1
 		removeongethit = 1
+
+[State ]
+Type = Helper
+Trigger1 = time = 14
+StateNo = 8030
+PosType = P1
+Pos = 0, -75
+Ownpal = 1
+IgnoreHitPause = 1
+Persistent = 0
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+ID = 8030
 
 [State 0, VarSet]
 type = VarSet

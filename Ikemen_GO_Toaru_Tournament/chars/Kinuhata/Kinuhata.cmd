@@ -703,6 +703,8 @@ triggerall = command = "QCF_a"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = (StateNo=[200,499]) && var(1)
+trigger3 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger4 = StateNo = 1250 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch B
 
 ;Rekka B Starter
 [State -1, Rekka B Starter]
@@ -712,7 +714,8 @@ triggerall = command = "QCF_b"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = (StateNo=[200,499]) && var(1)
-trigger3 = stateno = 1250 && var(1)
+trigger3 = StateNo = 1200 && var(1) && Var(2) >= 2;When counter attacking and doing a lunge punch A
+trigger4 = stateno = 1250 && var(1)
 
 
 
@@ -808,7 +811,7 @@ trigger2 = (StateNo=[600,699]) && var(1)
 type = ChangeState
 value = 100
 triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
-triggerall = command = "FF"||(Command = "holdfwd" && Command = "z" && stateno != 4000) 
+triggerall = command = "FF"||(Command = "holdfwd" && Command = "y" && stateno != 4000) 
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = var(1)
@@ -820,16 +823,16 @@ trigger2=var(7)<4;5
 type = ChangeState
 value = 105
 triggerall=ifelse(var(20) = 1,1,stateno!=[2000,3999])
-triggerall = command = "BB" || (Command = "holdback" && Command = "z" && stateno != 4000) 
-triggerall = statetype = S
+triggerall = command = "BB" || (Command = "holdback" && Command = "y" && stateno != 4000) 
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = var(1)
 
 [State -1, Charge Power]
 type = ChangeState
 value = 4000
-triggerall = ((command = "hold_z") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
-triggerall = power <4000
+triggerall = ((command = "hold_y") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
+triggerall = power<powermax
 ;triggerall = prevstateno != 100 && prevstateno!=105
 triggerall = statetype !=A
 trigger1 = ctrl
@@ -843,7 +846,7 @@ value = 700
 ;triggerall = command = "Offense"
 triggerall=stateno!=701
 triggerall = command = "holdfwd"
-triggerall = command = "y"
+triggerall = command = "z"
 triggerall = statetype !=A
 triggerall=!ishelper
 triggerall=var(26)<1
@@ -864,7 +867,7 @@ value = 701
 triggerall=stateno!=700
 ;triggerall = command = "Defense"
 triggerall = command = "holdback"
-triggerall = command = "y"
+triggerall = command = "z"
 triggerall = statetype !=A
 triggerall=var(26)<1
 triggerall=!ishelper
@@ -1109,7 +1112,7 @@ Trigger4 = StateNo = 630 && var(1) && var(20) = 1
 [State -1, Super Armor]
 type = ChangeState
 value = 750
-triggerall = command = "y"
+triggerall = command = "z"
 trigger1 = ctrl
 trigger1 = fvar(6) >200
 

@@ -535,18 +535,6 @@ ctrl = 1
 
 [Statedef -2]
 
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 300
-Value = 0.7
-IgnoreHitPause = 1
-
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 150
-Value = 0.5
-IgnoreHitPause = 1
-
 [State 0, Width]
 type = Width
 trigger1 = stateno!=[2000,3999]
@@ -640,17 +628,16 @@ triggerall = var(23)>0 && stateno != 195
 trigger1=movetype!=H 
 trigger2=stateno=[120,159]
 flag = invisible
- 
-
 
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
 text = "var(20)=%d, var(21)=%d, roundstate=%d, numexplods = %f, var(22)=%f, fvar(26)=%d"
-params = var(5),var(21),roundstate,screenpos y,fvar(0), var(20)
+params = isHometeam,var(21),roundstate,screenpos y,fvar(0), var(20)
 ;ignorehitpause = 
 ;persistent = 
 
+;card amount decreasing while in fortis931
 [State 0, VarAdd]
 type = VarAdd
 trigger1 = var(20)>0 && var(21)=1 && time%2=0 && roundstate=2
@@ -662,6 +649,7 @@ var(20)=-1
 ;ignorehitpause = 
 ;persistent = 
 
+;amount of time increasing while in fortis931 (considering whether this is actually useless)
 [State 0, VarAdd]
 type = VarAdd
 trigger1 = var(20)>0 && var(21)=1 && time%2=0 && roundstate=2
@@ -679,23 +667,6 @@ trigger1 = var(21)=0
 fvar(26)=0
 ;ignorehitpause = 
 ;persistent =
-
-[State 0, DefenceMulSet]
-type = DefenceMulSet
-trigger1 = 1
-value = ifelse(var(21)=1,ifelse(fvar(26)>=333,1.5,1+(fvar(26)/333)*0.5),1)
-;ignorehitpause = 
-;persistent = 
-
-[State 0, DefenceMulSet]
-type = AttackMulSet
-trigger1 = 1
-value = ifelse(var(21)=1,ifelse(fvar(26)>=333,2,1+fvar(26)/333),1)
-;ignorehitpause = 
-;persistent = 
-
-
-
 
 
 [State 0, VarSet]
@@ -753,18 +724,6 @@ var(20)=0
 ignorehitpause = 1
 ;persistent = 
 
-[State 0, BGPalFX]
-type = BGPalFX
-trigger1 = var(21) = 1
-time = 1
-;add = 95,12,0
-;mul = 256,256,256
-;sinadd = 0,0,0,10
-;invertall = 0
-color = ifelse(gametime%128<64,gametime%128,128-gametime%128)+ifelse(var(20)<=192,192-var(20),0)
-ignorehitpause = 1
-persistent = 1
-
 ;---------------------------------------------------------------------------
 ;Counter
 ;---------------------------------------------------------------------------
@@ -793,30 +752,17 @@ persistent = 1
 	trigger8 = helper(1251),movehit
 	trigger9 = helper(1300),movehit
 	trigger10 = helper(1350),movehit
- 	trigger11 = helper(1402),movehit
- 	trigger12 = helper(1412),movehit
- 	trigger13 = helper(1422),movehit
- 	trigger14 = helper(1462),movehit
- 	trigger15 = helper(1472),movehit
- 	trigger16 = helper(1482),movehit
- 	trigger17 = helper(1605),movehit
-	trigger18 = helper(2101),movehit
-	trigger19 = helper(2201),movehit
-	trigger20 = helper(2300),movehit
-	trigger21 = helper(2301),movehit
-	trigger22 = helper(2302),movehit
-	trigger23 = helper(2405),movehit
-	trigger24 = helper(2410),movehit
-	trigger25 = helper(2411),movehit
-	trigger26 = helper(2413),movehit
-	trigger27 = helper(2505),movehit
-	trigger28 = helper(2506),movehit
-	trigger29 = helper(2510),movehit
-	trigger30 = helper(3001),movehit
-	trigger31 = helper(3206),movehit
-	trigger32 = helper(4020),movehit
-	trigger33 = helper(4021),movehit
-	trigger34 = helper(4017),movehit
+	trigger11 = helper(2201),movehit
+	trigger12 = helper(2300),movehit
+	trigger13 = helper(2301),movehit
+	trigger14 = helper(2302),movehit
+	trigger19 = helper(2505),movehit
+	trigger20 = helper(2506),movehit
+	trigger21 = helper(2510),movehit
+	trigger22 = helper(3001),movehit
+	trigger23 = helper(4020),movehit
+	trigger24 = helper(4021),movehit
+	trigger25 = helper(4017),movehit
 	var(2) = 2
 	ignorehitpause = 1
 
@@ -887,10 +833,72 @@ persistent = 1
 	var(2) = 0
 	ignorehitpause = 1
 
+[State 0, DefenceMulSet]
+type = DefenceMulSet
+trigger1 = 1
+value = 1 - 0.3*(life<=300) - 0.2*(life<=150) + 0.5*(var(21)=1)*ifelse(fvar(26)>=333,1,(fvar(26)/333))
+ignorehitpause = 1
+;persistent = 
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = 1 + (var(2)>0)*0.25
+ignorehitpause = 1
+;persistent = 
+
+[State 0, DefenceMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = fvar(2) + (var(21)=1)*ifelse(fvar(26)>=333,1,(fvar(26)/333))
+ignorehitpause = 1
+;persistent = 
+
 [State -2]
 Type = AssertSpecial
 Trigger1 = var(21)=1
 Flag = TimerFreeze
+IgnoreHitPause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(21) = 1 && var(13) = 0
+var(13) = 1
+
+[State ]
+Type = Helper
+TriggerAll = NumExplod(10969) = 0
+trigger1 = var(21) = 0 && var(13) = 1
+StateNo = 10968
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10969
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(21) = 0 && var(13) = 1
+var(13) = 0
+
+
+[State ]
+Type = Helper
+Trigger1 = NumHelper(10980) = 0
+Trigger1 = Var(21) = 1
+StateNo = 10980
+PauseMoveTime = 9**9
+Ownpal = 1
+ID = 10980
+
+;------------------------------------------------------------------------------------------
+;Magic name chars
+[State ]
+Type = Null
+trigger1 = 1 && var(12):= 0
+trigger2 = enemynear,name = "Stiyl Magnus" && var(12):= 1
+trigger3 = enemynear,name = "Tsuchimikado Motoharu" && var(12):= 2
+trigger4 = enemynear,name = "Kanzaki Kaori" && var(12):= 3
 IgnoreHitPause = 1
 
 ;---------------------------------------------------------------------------
@@ -941,6 +949,8 @@ PauseMoveTime = 9999
 ;var(5) is the ex charge checker (-1 is normal charge, 1 is ex charge)
 ;var(10) is intro decider
 ;var(11) is timer for intros
+;var(12) is the magic name users
+;var(13) is the conditionality for the heat mode to end
 ;var(17) is the air dash count
 ;Var(19) is the card preventer
 ;var(20) is the card counter
@@ -950,6 +960,8 @@ PauseMoveTime = 9999
 ;var(24) is transparency reversal signal
 ;var(25) is teamside for cards
 ;var(26) is for trap card charge
+
 ;fvar(0) is for damage dampening (raw)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(26) is heat mode counter (how much time have we been in it)
 ;var(50) is testing for launcher

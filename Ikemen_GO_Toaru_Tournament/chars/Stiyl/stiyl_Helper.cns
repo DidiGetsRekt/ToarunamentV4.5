@@ -172,7 +172,7 @@ trigger1 = time%2 = 0
 trigger1=!movereversed
 attr = A, NP
 animtype  = Hard
-damage    = Ceil((10+ln(1+numhelper(4017)**3))*root,fvar(0)),2
+damage    = Ceil((10+ln(1+numhelper(4017)**3))*root,fvar(0)*parent,fvar(2)),2
 guardflag = MA
 pausetime = 2,3
 sparkno = -1
@@ -447,7 +447,7 @@ value = 10843
 type = HitDef
 trigger1 = time>=0
 attr = S, SP
-damage    = Ceil(root,fvar(10)*(5+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),1
+damage    = Ceil(root,fvar(10)*(5+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),1
 animtype  = Light
 hitflag = MAF
 guardflag = MA
@@ -536,7 +536,7 @@ elem = ifelse(time<26,12,1)
 type = HitDef
 trigger1 = time>=0
 attr = S, SP
-damage    = Ceil(root,fvar(10)*(5+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),1
+damage    = Ceil(root,fvar(10)*(5+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),1
 animtype  = Light
 hitflag = MAF
 guardflag = MA
@@ -622,7 +622,7 @@ elem = ifelse(time<40,12,1)
 type = HitDef
 trigger1 = time>=0
 attr = S, HP
-damage    = Ceil(root,fvar(10)*(5+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),1
+damage    = Ceil(root,fvar(10)*(5+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),1
 animtype  = Light
 hitflag = MAF
 guardflag = MA
@@ -734,7 +734,7 @@ ignorehitpause = 1
 type = HitDef
 trigger1 = hitcount<2
 attr = S, SP
-damage    = Ceil(root,fvar(10)*(30+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(root,fvar(10)*(30+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = diagup
 hitflag = MAFP
 guardflag = MA
@@ -869,7 +869,7 @@ ignorehitpause = 1
 type = HitDef
 trigger1 = hitcount<5
 attr = S, SP
-damage    = Ceil(root,fvar(10)*(30+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(root,fvar(10)*(30+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = diagup
 hitflag = MAFP
 guardflag = MA
@@ -1004,7 +1004,7 @@ ignorehitpause = 1
 type = HitDef
 trigger1 = hitcount<7
 attr = S, HP
-damage    = Ceil(root,fvar(10)*(25+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(root,fvar(10)*(25+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = diagup
 hitflag = MAFP
 guardflag = MA
@@ -1415,7 +1415,7 @@ sprpriority = 5
 type = HitDef
 trigger1 = time%2=0 && time<6
 attr = S, HP
-damage    = Ceil(root,fvar(10)*(60+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(root,fvar(10)*(60+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = Light
 hitflag = MAF
 guardflag = MA
@@ -1944,7 +1944,7 @@ ignorehitpause = 1
 type = HitDef
 trigger1 = time%2=0
 attr = S, SP 
-damage = Ceil((3+ln(1+numhelper(4017)**3))*fvar(10)),1
+damage = Ceil((3+ln(1+numhelper(4017)**3))*fvar(10)*parent,fvar(2)),1
 ;getpower = 110,45
 animtype = Hard
 pausetime = 0,3
@@ -2063,7 +2063,7 @@ triggerall=!ishelper(2301)
 triggerall=!ishelper(2302)
 trigger1 = hitcount<2
 attr = S, SP
-damage    = Ceil(fvar(10)*(25+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(fvar(10)*(25+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = up
 hitflag = MAFDP
 guardflag = MA
@@ -2095,7 +2095,7 @@ triggerall=!ishelper(1300)
 triggerall=!ishelper(1350)
 trigger1 = hitcount<2
 attr = S, HP
-damage    = Ceil(fvar(10)*(15+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(fvar(10)*(15+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = up
 hitflag = MAFDP
 guardflag = MA
@@ -2275,7 +2275,7 @@ triggerall=!ishelper(2301)
 triggerall=!ishelper(2302)
 trigger1 = hitcount<2
 attr = S, SP
-damage    = Ceil(fvar(10)*(25+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(fvar(10)*(25+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = Hard
 hitflag = MAFDP
 guardflag = MA
@@ -2308,7 +2308,7 @@ triggerall=!ishelper(1300)
 triggerall=!ishelper(1350)
 trigger1 = hitcount<2
 attr = S, HP
-damage    = Ceil(fvar(10)*(15+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(fvar(10)*(15+5*(var(14)=0)+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 animtype  = Hard
 hitflag = MAFDP
 guardflag = MA
@@ -2443,7 +2443,7 @@ triggerall=!movecontact && !movereversed
 trigger1 = var(1)=1
 trigger1 = Time = 0
 attr = A, NP
-damage    = ceil(root,fvar(0)*(100+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),10
+damage    = ceil(root,fvar(0)*(100+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),10
 priority  = 3
 animtype  = Heavy
 hitflag = MAF
@@ -2604,7 +2604,7 @@ type = HitDef
 trigger1 = hitcount<3
 trigger1=var(14)<3
 attr = S, HP
-damage    = Ceil(root,fvar(10)*(85+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),9
+damage    = Ceil(root,fvar(10)*(85+ln(1+numhelper(4017)**3))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),9
 animtype  = diagup
 hitflag = MAFP
 guardflag = MA
@@ -2982,7 +2982,7 @@ trigger1 = !movehit
 trigger1=!movereversed
 trigger1=!moveguarded
 attr = S, HP
-damage    = Ceil(root,fvar(10)*(100+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),10
+damage    = Ceil(root,fvar(10)*(100+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),10
 animtype  = Hard
 hitflag = MAF
 guardflag = MA
@@ -3240,7 +3240,7 @@ trigger1=!moveguarded
 trigger1=animelemtime(5)>=0
 trigger1=animelemtime(7)<=0
 attr = S, HP
-damage    = Ceil(root,fvar(10)*(300+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),10
+damage    = Ceil(root,fvar(10)*(300+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),10
 animtype  = Hard
 hitflag = MAF
 guardflag = MA
@@ -3763,7 +3763,7 @@ animtype = Up       ;light,medium,hard,back,up,diagup
 air.animtype = Up
 ;fall.animtype = Back
 ;priority = 4,Hit
-damage = Ceil(root,fvar(0)*(30+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),1
+damage = Ceil(root,fvar(0)*(30+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),1
 pausetime = 0 ,5
 ;guard.pausetime = 0,0
 sparkno=-1
@@ -3840,7 +3840,7 @@ type = HitDef
 trigger1 = time = 0
 attr = A, SP
 animtype  = Light
-damage    = Ceil(root,fvar(10)*(ifelse(parent,p2dist x > 100,60,30)-(parent,prevstateno=1050)*10+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),3
+damage    = Ceil(root,fvar(10)*(ifelse(parent,p2dist x > 100,60,30)-(parent,prevstateno=1050)*10+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),3
 guardflag = MA
 pausetime = 9,9
 sparkno=-1
@@ -3953,7 +3953,7 @@ type = HitDef
 trigger1 = time = 0
 attr = A, SP
 animtype  = Hard
-damage    = Ceil(root,fvar(10)*(ifelse(parent,p2dist x > 100,100,50)+(parent,prevstateno=1050)*20+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)),5
+damage    = Ceil(root,fvar(10)*(ifelse(parent,p2dist x > 100,100,50)+(parent,prevstateno=1050)*20+numhelper(4017))*ifelse(root,var(21)=1,ifelse(root,fvar(26)>=333,2,1+root,fvar(26)/333),1)*parent,fvar(2)),5
 guardflag = MA
 pausetime = 1,5
 sparkno=-1
@@ -4148,6 +4148,165 @@ trigger1 = animtime = 0
 ;ignorehitpause = 
 ;persistent = 
 
+;---------------------------------------------------------------------------
+;Magic circuit random waves
+[Statedef 8030]
+SprPriority = 5
+Anim = 10966
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [8,23]
+V = 5
+Value = 16
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [8,15]
+V = 6
+Value = 30
+
+[State ]
+Type = Null
+Trigger1 = Time = 0
+Trigger1 = Var(9):= -15-Random%11 && Var(10):= -15-Random%11
+
+[State ]
+Type = Trans
+Trigger1 = 1
+Trans = Add
+Alpha = 256-Var(5),256
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,17]
+FV = 1
+Value = 0.068
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,5]
+FV = 2
+Value = 0.2
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [5,7]
+FV = 3
+Value = 0.15-(Time-5)*0.05
+
+[State ]
+Type = Null
+Trigger1 = Time > 4
+Trigger1 = FVar(6):= FVar(6)+Cond(Time>10,0.02,0.2)
+Trigger1 = Time > 7
+Trigger1 = FVar(7):= FVar(7)+Cond(Time>13,0.02,0.2) && FVar(3):= FVar(3)-Cond(Time>14,0.025,0.1)
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,6]
+FV = 4
+Value = 0.07
+
+[State ]
+Type = VarAdd
+Trigger1 = Time = [4,17]
+FV = 5
+Value = Cond((Time=[4,5]),0.05,Cond((Time=[6,7]),0.035,0.03))
+
+[State ]
+Type = AngleDraw
+Trigger1 = 1
+Scale = 0.1+FVar(2),0.1+FVar(2)
+
+[State ]
+Type = AngleSet
+Trigger1 = Time = 0
+Value = -12+Random%11*2
+
+[State ]
+Type = AngleAdd
+Trigger1 = Time > 3
+Value = Cond(Time>14,-2,-4)
+
+[State ]
+Type = Explod
+Trigger1 = Time = 4 || Time = 7
+Anim = 10962+(Time=7)*2
+ID = 10962+(Time=7)*2
+PosType = P1
+SprPriority = 6-(Time=7)
+SuperMoveTime = 99
+PauseMoveTime = 99
+
+[State ]
+Type = Explod
+Trigger1 = Time = 0
+Anim = 10963
+ID = 10963
+PosType = P1
+SprPriority = 5
+SuperMoveTime = 99
+PauseMoveTime = 99
+
+[State ]
+Type = Explod
+Trigger1 = Time = 0 || Time = 4 || Time = 7
+Anim = Cond(Time=0,10967,8010+Random%4)
+ID = 10967+(Time=4)+(Time=7)*2
+PosType = P1
+Angle = Cond(Time=0,0,Random%180+(Time=7)*180)
+SprPriority = 5
+SuperMoveTime = 99
+PauseMoveTime = 99
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10962
+Scale = 0.6+FVar(3),0.6+FVar(3)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10963
+Trans = Add
+Alpha = 256-Var(6),256
+Angle = Cond(Time<4,80,80-(Time-3)*4)
+Scale = 0.14+FVar(4),0.14+FVar(4)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10964
+Scale = 0.25+Cond(Time<8,0,(Time-7)*0.075),0.25+Cond(Time<8,0,(Time-7)*0.075)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10967
+Scale = 0.5-FVar(5),0.5-FVar(5)
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10968
+Scale = (0.25+Var(9)*0.006)*(0.5+FVar(6)),(0.25-Var(9)*0.006)*(0.5+FVar(6))
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10969
+Scale = (0.25+Var(10)*0.006)*(0.5+FVar(7)),(0.25-Var(10)*0.006)*(0.5+FVar(7))
+
+[State ]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = Noshadow
+
+[State ]
+Type = DestroySelf
+Trigger1 = AnimTime = 0
 
 ;Fire
 [Statedef 8600]
@@ -4199,7 +4358,174 @@ trigger1 = animtime = 0
 ;ignorehitpause = 
 ;persistent = 
 
+;---------------------------------------------------------------------------
+;Magic circuit Stop/Resume time
+[Statedef 10968]
+Anim = 9999
 
+[State ]
+Type = EnvShake
+Trigger1 = IsHelper(10968)
+Trigger1 = Time = 0
+Time  = 16
+Ampl  = 4
+Freq  = 90
+
+[State ]
+Type = Explod
+Trigger1 = IsHelper(10968)
+Trigger1 = Time = 3
+Anim = 10965
+ID = 10965
+Postype = Left
+Pos = 160,0
+Scale = 0.5,0.5
+Ownpal = 1
+BindTime = -1
+SprPriority = 5
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = Explod
+Trigger1 = Time = 1
+Anim = 10968
+ID = 10968+IsHelper(10969)
+Postype = Left
+Pos = 160,20
+BindTime = -1
+SprPriority = 4
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = ModifyExplod
+Trigger1 = 1
+ID = 10968
+Scale = 0.25+(Time-1)*0.025,0.25+(Time-1)*0.025
+
+[State ]
+Type = ModifyExplod
+Trigger1 = Time = [1,21]
+ID = 10969
+Scale = 0.8-(Time-1)*0.0275,0.8-(Time-1)*0.0275
+
+[State ]
+Type = PalFX
+Trigger1 = IsHelper(10968)
+add = ifelse(p2name="Stiyl Magnus" && teamside=2,64,128),0,ifelse(p2name="Stiyl Magnus" && teamside=2,128,0)
+Mul = 256-(Time-1)*8,256-(Time-1)*8,256-(Time-1)*8
+Time = 1
+
+[State ]
+Type = PalFX
+Trigger1 = IsHelper(10969)
+Trigger1 = Time = [0,19]
+add = ifelse(p2name="Stiyl Magnus" && teamside=2,64,128),0,ifelse(p2name="Stiyl Magnus" && teamside=2,128,0)
+Mul = Time*13,Time*13,Time*13
+Time = 1
+
+[State ]
+Type = PalFX
+Trigger1 = IsHelper(10969)
+Trigger1 = Time = [21,32]
+add = ifelse(p2name="Stiyl Magnus" && teamside=2,64,128),0,ifelse(p2name="Stiyl Magnus" && teamside=2,128,0)
+Mul = 256-(Time-20)*21,256-(Time-20)*21,256-(Time-20)*21
+Time = 1
+
+[State ]
+Type = DestroySelf
+Trigger1 = Time = 33
+
+;---------------------------------------------------------------------------
+;Magic circuit veil
+[Statedef 10980]
+Anim = 9999
+
+[State ]
+Type = VarSet
+Trigger1 = RoundState = 2 && Parent,Var(21) = 1
+V = 1
+Value = 11
+
+[State ]
+Type = VarAdd
+Trigger1 = Var(1) > 0
+Trigger1 = RoundState != 2 || Parent,Var(21) = 0
+V = 1
+Value = -1-((parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 1 && IsHomeTeam = 1)*(Var(1)-1)
+
+[State ]
+Type = Explod
+Trigger1 = (parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,3]) && IsHomeTeam = 0 || IsHomeTeam = 1
+Anim = 10980
+ID = 10980
+PosType = Left
+Pos = 160, ScreenHeight/2
+BindTime = -1
+Trans = Add
+Alpha = 8*Var(1),256
+Scale = 0.625+FVar(1),0.625+FVar(2)
+SprPriority = -10
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = Explod
+Trigger1 = (parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,3]) && IsHomeTeam = 0 || IsHomeTeam = 1
+Anim = 10985
+ID = 10985
+PosType = Left
+Pos = 160, ScreenHeight/2
+BindTime = -1
+Trans = Add
+Alpha = 8*Var(1),256
+Scale = 0.625,0.625
+SprPriority = -10
+SuperMoveTime = 999
+PauseMoveTime = 999
+
+[State ]
+Type = VarAdd
+Trigger1 = (Time%240= [0,99]) || Time%240= [120,219]
+FV = 1
+Value = 0.0021*(1-(Time%240=[120,219])*2)
+
+[State ]
+Type = VarAdd
+Trigger1 = (Time%240= [60,159]) || (Time%240= [0,39]) || Time%240= [180,239]
+FV = 2
+Value = 0.0021*(1-(Time%240=[60,159])*2)
+
+;Character specific bgpalfx
+[State 0, BGPalFX]
+type = BGPalFX
+Trigger1 = (parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,3]) && IsHomeTeam = 0 || IsHomeTeam = 1
+time = 1
+;add = 95,12,0
+;mul = 256,256,256
+;sinadd = 0,0,0,10
+;invertall = 0
+color = ifelse(gametime%128<64,gametime%128,128-gametime%128)+ifelse(parent,var(20)<=192,192-parent,var(20),0)
+ignorehitpause = 1
+persistent = 1
+
+[State ]
+Type = PalFX
+Trigger1 = 1
+Add = -80,-80,-80
+Time = 1
+
+[State ]
+Type = AssertSpecial
+Trigger1 = Parent,Var(21) = 1
+Flag = NoFG
+
+[State ]
+Type = DestroySelf
+Trigger1 = Var(1) <= 0
+Trigger1 = RoundState != 2 || Parent,Var(21) = 0
+RemoveExplods = 1
 
 
 ;UI Helper

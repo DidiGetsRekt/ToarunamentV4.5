@@ -702,7 +702,7 @@ Trigger1 =! MoveContact
 Trigger1 =! MoveReversed
 Trigger1 = Time >= 1
 Attr = S, SP
-Damage = Ceil(30*parent,fvar(10)),5
+Damage = Ceil(30*parent,fvar(10)*parent,fvar(2)),5
 AnimType  = Hard
 HitFlag = HAF
 GuardFlag = MA
@@ -758,7 +758,7 @@ Triggerall =! MoveContact
 Triggerall =! MoveReversed
 Triggerall = Time >= 1
 Attr = S, SA
-Damage = Ceil(30*parent,fvar(10)),5
+Damage = Ceil(30*parent,fvar(10)*parent,fvar(2)),5
 AnimType  = Hard
 HitFlag = HAF
 GuardFlag = MA
@@ -1198,7 +1198,7 @@ Trigger1 =! MoveContact
 Trigger1 =! MoveReversed
 Trigger1 = Time >= 1
 Attr = S, SP
-Damage = Ceil(25*parent,fvar(10)),5
+Damage = Ceil(25*parent,fvar(10)*parent,fvar(2)),5
 AnimType  = Medium
 HitFlag = MAF
 GuardFlag = LA
@@ -1254,7 +1254,7 @@ Triggerall =! MoveContact
 Triggerall =! MoveReversed
 Triggerall = Time >= 1
 Attr = S, SA
-Damage = Ceil(25*parent,fvar(10)),5
+Damage = Ceil(25*parent,fvar(10)*parent,fvar(2)),5
 AnimType  = Medium
 HitFlag = MAF
 GuardFlag = LA
@@ -2414,7 +2414,7 @@ Trigger1 =! MoveContact
 Trigger1 =! MoveReversed
 Trigger1 = Time >= 1
 Attr = S, SP
-Damage = Ceil(30*parent,fvar(10)),10
+Damage = Ceil(30*parent,fvar(10)*parent,fvar(2)),10
 AnimType  = Hard
 HitFlag = MAFD
 GuardFlag = HA
@@ -2470,7 +2470,7 @@ Triggerall =! MoveContact
 Triggerall =! MoveReversed
 Triggerall = Time >= 1
 Attr = S, SA
-Damage = Ceil(30*parent,fvar(10)),10
+Damage = Ceil(30*parent,fvar(10)*parent,fvar(2)),10
 AnimType  = Hard
 HitFlag = MAFD
 GuardFlag = HA

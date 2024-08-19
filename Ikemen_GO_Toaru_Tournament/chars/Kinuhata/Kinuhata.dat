@@ -64,21 +64,21 @@ Instant Refill Nitrogen (Uses one bottle)
 _D_D^LP / _D_D^X 
 
 Offense Mode Switch (Need more than 50% Nitrogen)		
-_F^MP / _F^Y 
+_F^HP / _F^Z 
 
 Defense Mode Switch (Need more than 50% Nitrogen)		
-_B^MP / _B^Y 
+_B^HP / _B^Z 
 
 
-Gauge Charge	 						^HP / ^Z (Held)
+Gauge Charge	 						^MP / ^Y (Held)
 
-Dash 	(Hold direction)				^HP / ^Z 
+Dash 	(Hold direction)				^MP / ^Y 
 
 Burst 
 (Uses Nitrogen bottle if you have one else full Nitrogen meter)
 ^LK_+^MK / ^A_+^B
 
-Nitrogen Parry	(Uses Nitrogen)				^MP / ^Y 
+Nitrogen Parry	(Uses Nitrogen)				^HP / ^Z 
 
 
 <#ff0000>Supers and Hypers:</>

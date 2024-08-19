@@ -282,13 +282,13 @@ var(23) = 1
 
 [State 50, 1]
 type = VelAdd
-trigger1 = cond((var(20)=-1 && var(21)=1),1,Time = [12,26] && Vel X <= 2.6 && sysvar(1) = 0 && command != "holdup" && command != "holddown")
+trigger1 = cond((var(20)=-1 && var(21)=1),1,(Time = [12,26]) && Vel X <= 2.6 && sysvar(1) = 0 && command != "holdup" && command != "holddown")
 trigger1 = command = "holdfwd"
 x = .2+.3*(var(20)=-1 && var(21)=1) 
 
 [State 50, 1]
 type = VelAdd
-trigger1 = cond((var(20)=-1 && var(21)=1),1,Time = [12,26] && Vel X >= -2.6 && sysvar(1) = 0 && command != "holdup" && command != "holddown")
+trigger1 = cond((var(20)=-1 && var(21)=1),1,(Time = [12,26]) && Vel X >= -2.6 && sysvar(1) = 0 && command != "holdup" && command != "holddown")
 trigger1 = command = "holdback"
 x = -.2-.3*(var(20)=-1 && var(21)=1)
 

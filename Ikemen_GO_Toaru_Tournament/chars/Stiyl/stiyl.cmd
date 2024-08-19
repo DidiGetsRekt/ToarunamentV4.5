@@ -334,7 +334,7 @@ time = 10
 
 [Command]
 name = "toronzon"
-command = x+z
+command = y+c
 time = 1
 
 [Command]
@@ -707,8 +707,8 @@ trigger2=var(1)
 [State -1, Run Fwd]
 type = ChangeState
 value = 100
-trigger1 = command = "FF"
-trigger1 = statetype = S
+trigger1 = command = "FF" || (command = "holdfwd" && command = "y")
+trigger1 = statetype != A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
@@ -716,8 +716,8 @@ trigger1 = ctrl
 [State -1, Run Back]
 type = ChangeState
 value = 105
-trigger1 = command = "BB"
-trigger1 = statetype = S
+trigger1 = command = "BB" || (command = "holdback" && command = "y")
+trigger1 = statetype != A
 trigger1 = ctrl
 
 
@@ -725,7 +725,7 @@ trigger1 = ctrl
 	Type=ChangeState
 	value=115
 	TriggerAll = Alive
-	TriggerAll = command="BB"
+	TriggerAll = command="BB" || (command = "holdback" && command = "y")
 	TriggerAll = StateType=A
 	TriggerAll = pos Y<=-30+(vel y>0)*20
 	TriggerAll = var(17) < 2
@@ -752,12 +752,19 @@ trigger1 = ctrl
 type = ChangeState
 value = 800
 triggerall = command = "x"
-triggerall = statetype = S
+triggerall = statetype != A
 triggerall = ctrl
 trigger1 = command = "holdfwd"
 trigger2 = command = "holdback"
 
 
+[State -1, 5a+c]
+	Type=ChangeState
+	value=850
+	TriggerAll = StateType != A
+	triggerall = ((command = "hold_y") || (command = "hold_a" && command = "hold_c")) && !(command =  "holdback" || command = "holdfwd")
+	TriggerAll = Power < PowerMax
+	trigger1 = ctrl
 
 ;===========================================================================
 
@@ -806,21 +813,14 @@ trigger4 = stateno = 5020 && time > 0
 trigger5 = stateno = 5070 && time > 0
 trigger6 = stateno != 5000 && stateno != 5010 && stateno != 5020 && stateno != 5070
 trigger6 = stateno = [5001,5099]
-[State -1, 5a+c]
-	Type=ChangeState
-	value=850
-	TriggerAll = StateType != A
-	TriggerAll = command = "hold_a"
-	TriggerAll = command = "hold_c"
-	TriggerAll = Power < PowerMax
-	trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 ;Card charge EX
-[State -1, 5z]
+[State -1, 2x]
 type = ChangeState
 value = 6250
-triggerall = command = "z"
+triggerall = command = "holddown"
+triggerall = command = "x"
 triggerall = var(21)=0 && var(20)<999
 triggerall = power >= 750
 triggerall=stateno!=2200
@@ -828,7 +828,7 @@ triggerall=stateno!=2500
 triggerall=stateno!=6200
 triggerall=stateno!=3000
 triggerall=stateno!=[1070,1099]
-triggerall = statetype !=A
+triggerall = statetype = C
 trigger1 = ctrl
 trigger2 = var(1)
 
@@ -844,23 +844,23 @@ triggerall=stateno!=2500
 triggerall=stateno!=6200
 triggerall=stateno!=3000
 triggerall=stateno!=[1070,1099]
-triggerall = statetype !=A
+triggerall = statetype = S
 trigger1 = ctrl
 trigger2 = var(1)
 
-[State -1, 5y_hold]
+[State -1, 5z_hold]
 type = ChangeState
 value = 703
-triggerall = command = "hold_y" && var(24)=-1 && power>=500
+triggerall = command = "hold_z" && var(24)=-1 && power>=500
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = stateno=[120,169]
 
 
-[State -1, 5y]
+[State -1, 5z]
 type = ChangeState
 value = 700
-triggerall = command = "y" && var(20)>=20 * -(var(21)-1)
+triggerall = command = "z" && var(20)>=20 * -(var(21)-1)
 triggerall=numhelper(701)<3
 trigger1 = statetype != A
 trigger1 = ctrl

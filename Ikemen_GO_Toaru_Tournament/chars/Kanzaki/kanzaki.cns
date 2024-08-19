@@ -768,15 +768,6 @@ type = VarSet
 trigger1 = 1
 var(7) = numhelper(2101)+numhelper(2405)+numhelper(2505)+numhelper(2506)+numhelper(3206)*7+numhelper(2701)+numhelper(2702)+numhelper(2703)+numhelper(2704)+numhelper(2705)+numhelper(2706)+numhelper(2707)
 
-
-;Godbreaker attack buff
-[State 0, AttackMulSet]
-type = AttackMulSet
-trigger1 = 1
-value = 1+var(21)
-;ignorehitpause = 
-;persistent = 
-
 ;Power drain in stance 3
 [State 0, PowerAdd]
 type = PowerAdd
@@ -789,19 +780,6 @@ trigger1 = stateno!=[3000,3030]
 value = -5
 ;ignorehitpause = 
 ;persistent = 
-
-[State 0, BGPalFX]
-type = BGPalFX
-;triggerall= stateno!=1600
-trigger1 = var(20)=-1 && var(21)=1 && var(25)=0
-time = 1
-;add = 0,0,0
-;mul = 256,256,256
-;sinadd = 0,0,0,10
-;invertall = 0
-color = ifelse(gametime%128<64,gametime%128,128-gametime%128)+ifelse(power<1920 && var(20)=-1,192-power/10,0)
-ignorehitpause = 1
-persistent = 1
 
 ;When no power in stance -1 go back to stance 0
 [State 0, VarSet]
@@ -818,18 +796,6 @@ text = "var(20)=%d, p2dist x=%d, p2bodydist x=%d, var(24)=%d, var(23)=%d,facing=
 params = var(20),(helper(19110),pos x), p2bodydist x,var(7),var(20),(helper(19110),parentdist x)
 ;ignorehitpause = 
 ;persistent = 
-
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 300
-Value = 0.7
-IgnoreHitPause = 1
-
-[State -2, DefenceMulSet]
-Type = DefenceMulSet
-Trigger1 = Life <= 150
-Value = 0.5
-IgnoreHitPause = 1
 
 ;Gives 1000 at the start of the battle
 [State -2,初期ゲージ設定]
@@ -1022,7 +988,7 @@ value = F7, 2
 	trigger11 = helper(2405),movehit
 	trigger12 = helper(2410),movehit
 	trigger13 = helper(2411),movehit
-	trigger14 = helper(2413),movehit
+	trigger14 = helper(2412),movehit
 	trigger15 = helper(2505),movehit
 	trigger16 = helper(2506),movehit
 	trigger17 = helper(3001),movehit
@@ -1096,20 +1062,72 @@ value = F7, 2
 	var(2) = 0
 	ignorehitpause = 1
 
+[State 0, DefenceMulSet]
+type = DefenceMulSet
+trigger1 = 1
+value = 1 - 0.3*(life<=300) - 0.2*(life<=150)
+ignorehitpause = 1
+;persistent = 
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = 1 + (var(2)>0)*0.25
+ignorehitpause = 1
+;persistent = 
+
+;Godbreaker attack buff + counter attack buff
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = fvar(2) + var(21)
+ignorehitpause = 1
+;persistent = 
+
 [State -2]
 Type = AssertSpecial
 Trigger1 = var(20)=-1 && var(21)=1
 Flag = TimerFreeze
 IgnoreHitPause = 1
 
-;[State -2]
-;Type = AssertInput
-;trigger1 = roundno = 1
-;Trigger1 = timeelapsed <= 600
-;trigger2 = roundno >= 2
-;Trigger2 = timeelapsed <= 300
-;Flag = a
-;IgnoreHitPause = 1
+[State 0, VarSet]
+type = VarSet
+trigger1 = !(var(20)!=-1 || var(21)=0) && var(13) = 0
+var(13) = 1
+
+[State ]
+Type = Helper
+TriggerAll = NumExplod(10969) = 0
+Trigger1 = (var(20)!=-1 || var(21)=0) && var(13)=1; || var(20)
+StateNo = 10968
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10969
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = (var(20)!=-1 || var(21)=0) && var(13) = 1
+var(13) = 0
+
+[State ]
+Type = Helper
+Trigger1 = NumHelper(10980) = 0
+Trigger1 = var(20)=-1 && var(21)=1
+StateNo = 10980
+PauseMoveTime = 9**9
+Ownpal = 1
+ID = 10980
+
+;------------------------------------------------------------------------------------------
+;Magic name chars
+[State ]
+Type = Null
+trigger1 = 1 && var(12):= 0
+trigger2 = enemynear,name = "Stiyl Magnus" && var(12):= 1
+trigger3 = enemynear,name = "Tsuchimikado Motoharu" && var(12):= 2
+trigger4 = enemynear,name = "Kanzaki Kaori" && var(12):= 3
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
@@ -1163,6 +1181,8 @@ channel = 0
 ;var(7) amount of wires
 ;var(10) is intro decider
 ;var(11) is timer for intros
+;var(12) is the magic name users
+;var(13) is the conditionality for the heat mode to end
 ;var(17) is the air dash count and dodge
 ;var(20) is the stance
 ;var(21) is the godbreaker mode checker
@@ -1180,6 +1200,8 @@ channel = 0
 ;var(37) slash finer "choice register"
 ;var(38) slash finer "choice counter"
 ;var(39) slash finer "going through the slashes"
+
 ;fvar(0) is for damage dampening (raw)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(10) is the "guaranteed damage" var, it counters damage dampening
 ;fvar(11) is the cornerpush veloff var

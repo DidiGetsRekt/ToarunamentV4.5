@@ -298,6 +298,13 @@ ctrl = 1
 ;////////////////////////////////////////////////////////////////////:
 [Statedef -2]
 
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "fvar(2) = %f"
+params = fvar(2)
+;ignorehitpause = 
+;persistent = 
 
 
 [State -2, DefenceMulSet]
@@ -342,7 +349,7 @@ ignorehitpause = 1
 [State -2,初期ゲージ設定]
 	Type= VarSet
 	trigger1 = fvar(7)=0
-	var(2) = 0;
+	var(20) = 0;
 
 ;DamageDampening Reset
 [State -2]
@@ -490,6 +497,114 @@ ID = 130
 	fvar(32)=-1
 	ignorehitpause = 1
 
+;---------------------------------------------------------------------------
+;Counter
+;---------------------------------------------------------------------------
+[State -2]
+ 	type = Varset
+ 	trigger1 = enemynear,movetype = A
+	var(2) = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+ 	;triggerall = stateno !=[6300,6350] -> burst
+ 	;triggerall = stateno !=[6400,6425] -> parry mechanic
+ 	triggerall = stateno !=[800,849] ; -> grab states
+ 	triggerall = movetype != H
+ 	triggerall = enemynear,movetype = H 
+ 	triggerall = var(2) = 1
+ 	trigger1 = movehit
+	trigger2 = helper(2420),movehit
+	var(2) = 2
+	ignorehitpause = 1
+
+[State -2, カウンターアタックボイス]
+	type = PlaySnd
+	trigger1 = var(2)=2
+	value = 1, 33
+	ignorehitpause = 1
+
+[State -2]
+	type = Explod
+	trigger1 = var(2) = 2
+	trigger2 = numexplod(14000) = 0
+	trigger2 = var(2) = 3
+	anim = ifelse(var(2)=2,14000,14002)
+	ID = 14000
+	pos = ifelse(teamside=1,60,260),  60
+	postype = left
+	bindtime = -1
+	removetime = -1
+	supermovetime = 9999
+	pausemovetime = 9999
+	sprpriority = 9999
+	scale = .5,.5
+	ontop = 1
+	ownpal = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+ 	trigger1 = var(2) = 2
+	var(2) = 3
+	ignorehitpause = 1
+
+[State -2]
+	type = RemoveExplod
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	ID = 14000
+	ignorehitpause = 1
+	
+[State -2]
+	type = Explod
+	triggerall =var(2) != 0
+	triggerall =var(2) != 1
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	anim = 14001
+	pos = ifelse(teamside=1,60,260),  60
+	postype = left
+	bindtime = -1
+	supermovetime = 9999
+	pausemovetime = 9999
+	sprpriority = 9999
+	scale = .5,.5
+	ontop = 1
+	ownpal = 1
+	ignorehitpause = 1
+
+[State -2]
+ 	type = Varset
+	trigger1 = enemynear,movetype = I
+	trigger2 = target,stateno =[5110,5120]
+	trigger3 = RoundState = 3
+	var(2) = 0
+	ignorehitpause = 1
+
+[State 0, DefenceMulSet]
+type = DefenceMulSet
+trigger1 = 1
+value = 1 - 0.3*(life<=300) - 0.2*(life<=150)
+ignorehitpause = 1
+;persistent = 
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+fvar(2) = 1 + (var(2)>0)*0.25
+ignorehitpause = 1
+;persistent = 
+
+[State 0, AttackMulSet]
+type = AttackMulSet
+trigger1 = 1
+value = fvar(2)
+ignorehitpause = 1
+;persistent = 
 
 
 [Statedef -3]
@@ -539,10 +654,12 @@ channel = 2
 ;persistent = 
 
 
-;var(2) is RD mode (0 is none, 1 is normal, 2 is advanced)
+;var(2) for counter attack
 ;var(6) is ground bounce counter for tekken stuff
+;var(20) is RD mode (0 is none, 1 is normal, 2 is advanced)
 ;var(31) is the kick flurry button push counter for B(3 unlocks the move)
 ;var(32) is the kick flurry button push counter for C(3 unlocks the move)
+;fvar(2) for counter attack attack multiplier for helpers
 ;fvar(7) is RD timer
 ;fvar(31) is the kick flurry button push timer for B (ends after 15 ticks)
 ;fvar(32) is the kick flurry button push timer for C (ends after 15 ticks)

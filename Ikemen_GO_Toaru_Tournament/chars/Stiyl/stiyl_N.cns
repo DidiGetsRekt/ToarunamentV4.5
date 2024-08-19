@@ -795,7 +795,7 @@ physics = N
 juggle  = 0
 Poweradd=FVar(11)
 ctrl = 0
-anim = 1151
+anim = ifelse(var(21)=1,1150,1151)
 sprpriority = 2
 
 [State 0, ChangeAnim]

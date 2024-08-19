@@ -496,7 +496,7 @@ under = 1
 
 [State 0, VarAdd]
 type = VarAdd
-trigger1 = anim=2071 && animelemtime(14)=0
+trigger1 = anim=2071 && animelemtime(14)=0 && var(21)=0
 var(20)=-60
 ;ignorehitpause = 
 ;persistent = 
@@ -583,7 +583,7 @@ under = 1
 
 [State 0, VarAdd]
 type = VarAdd
-trigger1 = anim=2071 && animelemtime(14)=0 
+trigger1 = anim=2071 && animelemtime(14)=0 && var(21)=0
 var(20)=-120
 ;ignorehitpause = 
 ;persistent = 
@@ -692,7 +692,7 @@ under = 1
 
 [State 0, VarAdd]
 type = VarAdd
-trigger1 = anim=2071 && animelemtime(14)=0 
+trigger1 = anim=2071 && animelemtime(14)=0 && var(21)=0
 var(20)=-180
 ;ignorehitpause = 
 ;persistent = 

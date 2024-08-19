@@ -829,7 +829,7 @@ triggerall = stateno!=[920,930]
 triggerall = stateno!=1503 && stateno!=1513
 triggerall = stateno!=1601 && stateno!=1612 && stateno!=1613
 triggerall = stateno!=[1850,1851]
-triggerall = !(stateno=[2500,2510] && var(1)=0)
+triggerall = !((stateno=[2500,2510]) && var(1)=0)
 triggerall = stateno!=2600
 triggerall = stateno!=2700
 triggerall = stateno!=3000 && stateno!=3010 && stateno!=3011 && stateno!=3013
@@ -847,7 +847,7 @@ triggerall = stateno!=[920,930]
 triggerall = stateno!=1500 && stateno!=1510
 triggerall = stateno!=1600 && stateno!=1610 && stateno!=1611
 triggerall = stateno!=[1850,1851]
-triggerall =!(stateno=[2500,2510] && var(1)=0)
+triggerall =!((stateno=[2500,2510]) && var(1)=0)
 triggerall = stateno!=2600
 triggerall = stateno!=2700
 triggerall = stateno!=3020 && stateno!=3021
@@ -866,7 +866,7 @@ triggerall = stateno!=[920,930]
 triggerall = stateno!=1503 && stateno!=1513
 triggerall = stateno!=1601 && stateno!=1612 && stateno!=1613
 triggerall = stateno!=[1850,1851]
-triggerall =!(stateno=[2500,2510] && var(1)=0)
+triggerall =!((stateno=[2500,2510]) && var(1)=0)
 triggerall = stateno!=3020 && stateno!=3021
 triggerall = stateno!=3000 && stateno!=3010 && stateno!=3011 && stateno!=3013
 triggerall = movetype!=H
@@ -883,7 +883,7 @@ triggerall = stateno!=[920,930]
 triggerall = stateno!=1500 && stateno!=1510
 triggerall = stateno!=1600 && stateno!=1610 && stateno!=1611
 triggerall = stateno!=[1850,1851]
-triggerall =!(stateno=[2500,2510] && var(1)=0)
+triggerall =!((stateno=[2500,2510]) && var(1)=0)
 triggerall = stateno!=2600
 triggerall = stateno!=2700
 triggerall = stateno!=3020 && stateno!=3021
@@ -899,7 +899,7 @@ value = ifelse(statetype!=A,2030,2230)
 triggerall = stateno!=6000
 triggerall = stateno!=805 && stateno!=810 && stateno!=812 && stateno!=814
 triggerall = stateno!=[920,930]
-triggerall =!(stateno=[2500,2510] && var(1)=0)
+triggerall =!((stateno=[2500,2510]) && var(1)=0)
 triggerall = stateno!=2600
 triggerall = stateno!=2700
 triggerall = stateno!=3020 && stateno!=3021
@@ -920,7 +920,7 @@ triggerall = stateno!=1600 && stateno!=1610 && stateno!=1611
 triggerall = stateno!=1503 && stateno!=1513
 triggerall = stateno!=1601 && stateno!=1612 && stateno!=1613
 triggerall = stateno!=[1850,1851]
-triggerall =!(stateno=[2500,2510] && var(1)=0)
+triggerall =!((stateno=[2500,2510]) && var(1)=0)
 triggerall = stateno!=2600
 triggerall = stateno!=2700
 triggerall = stateno!=3020 && stateno!=3021
@@ -952,7 +952,7 @@ trigger1 = stateno!=[920,930]
 trigger1 = stateno!=[1500,1520]
 trigger1 = stateno!=[1600,1650]
 trigger1 = stateno!=[1850,1851]
-trigger1 =!(stateno=[2500,2510] && var(1)=0)
+trigger1 =!((stateno=[2500,2510]) && var(1)=0)
 trigger1 = stateno!=2600
 trigger1 = stateno!=2700
 trigger1 = stateno!=3020 && stateno!=3021
@@ -981,7 +981,7 @@ trigger1 = stateno!=[920,930]
 trigger1 = stateno!=[1500,1520]
 trigger1 = stateno!=[1600,1650]
 trigger1 = stateno!=[1850,1851]
-trigger1 =!(stateno=[2500,2510] && var(1)=0)
+trigger1 =!((stateno=[2500,2510]) && var(1)=0)
 trigger1 = stateno!=2600
 trigger1 = stateno!=2700
 trigger1 = stateno!=3020 && stateno!=3021
@@ -1163,6 +1163,7 @@ triggerall = stateno != [2400,2700]
 trigger1 = stateno=2000 || stateno=2001
 trigger2 = stateno = 2200 || stateno = 2201
 trigger3 = stateno = [1120,1122]
+trigger4 = ctrl
 ;---------------------------------------------------------------------------
 [State -1, 5c st0]
 type = ChangeState
