@@ -1113,6 +1113,7 @@ var(13) = 0
 
 [State ]
 Type = Helper
+;triggerall = stateno!=1510 && stateno!=3011 && stateno!=[3021,3022]
 Trigger1 = NumHelper(10980) = 0
 Trigger1 = var(20)=-1 && var(21)=1
 StateNo = 10980
