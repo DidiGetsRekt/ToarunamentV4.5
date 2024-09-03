@@ -924,9 +924,9 @@ trigger4 = StateNo = 903 || StateNo = 913 || StateNo = 923
 type = ChangeState
 value = 800
 TriggerAll = Var(59) <= 0
-triggerall = command = "y" || command = "a+z"
+triggerall = command = "x" || command = "a+z"
 triggerall = command = "holdfwd" || command = "holdback"
-triggerall = statetype = S
+triggerall = statetype != A
 triggerall = MoveType != H
 trigger1 = ctrl
 trigger1 = stateno != 105
@@ -938,7 +938,7 @@ trigger3 = Var(2) =[900,920]
 type = ChangeState
 value = 810
 TriggerAll = Var(59) <= 0
-triggerall = command = "y" || command = "a+z"
+triggerall = command = "x" || command = "a+z"
 triggerall = command = "holdfwd" || command = "holdback"
 triggerall = statetype = A
 triggerall = movetype != H
