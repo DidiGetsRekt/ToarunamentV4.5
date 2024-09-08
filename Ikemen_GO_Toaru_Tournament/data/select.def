@@ -469,3 +469,42 @@ ratio.AIramp.end   = 3, 2
 
 ;survival.AIramp.start = 0, -3
 ;survival.AIramp.end   = 16, 4
+
+;-------------------------------------------------------------------------------
+[StoryMode]
+ ;Story Mode arcs declaration. Assigned arcs are selectable via Story Mode
+ ;submenu ('menu.itemname.storymode' parameter in screenpack DEF file)
+ ;
+ ;Declaring arcs consists of setting up following parameters:
+ ; - name
+ ;   IKEMEN feature: Set to name that should be returned by GameMode trigger.
+ ;   This parameter also initiates new story arc declaration, so it has to be
+ ;   assigned before any other parameter used by the same arc. All arcs should
+ ;   have unique names.
+ ;
+ ; - displayname
+ ;   IKEMEN feature: Set to name that should be displayed in Story Mode submenu.
+ ;
+ ; - path
+ ;   IKEMEN feature: Path to file with lua extension (relative to game
+ ;   directory), containing story mode arc coded in Lua language.
+ ;   https://github.com/K4thos/Ikemen_GO/wiki/Miscellaneous-Info#arcs
+ ;
+ ; - unlock
+ ;   IKEMEN feature: Pure Lua code, executed exactly as is, each time upon
+ ;   loading main menu. If it evaluates to boolean 'true' the story arc will be
+ ;   selectable from story mode submenu, or hidden on 'false'. Default: true.
+ ;   https://github.com/K4thos/Ikemen_GO/wiki/Miscellaneous-Info#lua_unlock
+ ;
+ ;Examples:
+ name = test_story
+ displayname = Storyboard example
+ path = story/Storyboard_example/test_story.lua
+ unlock = true
+ ;
+ name = test_story2
+ displayname = Storyboard example 2 for testing
+ path = story/Storyboard_example/test_story.lua
+ unlock = true
+ ;
+ ;Declare your Story Mode arcs below.
