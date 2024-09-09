@@ -3458,6 +3458,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 22,-17
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3469,6 +3470,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 951
 pos = 22,-17
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3729,6 +3731,7 @@ type = Explod
 trigger1 = numexplod(951) = 0 && anim = 902
 anim = 951
 pos = 22,-17
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3962,6 +3965,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3973,6 +3977,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 951
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4244,6 +4249,7 @@ type = Explod
 trigger1 = numexplod(951) = 0 && anim = 912
 anim = 951
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4478,6 +4484,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 18,-19
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4489,6 +4496,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 951
 pos = 18,-19
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4695,6 +4703,7 @@ type = Explod
 trigger1 = numexplod(951) = 0 && anim = 922
 anim = 951
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4897,6 +4906,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 12,-14
+postype = p1
 sprpriority = 3
 removeongethit = 1
 ownpal = 1
@@ -5044,6 +5054,7 @@ trigger1 = numtarget > 0 && hitpausetime = 9
 trigger2 = numtarget = 0
 anim = 960
 pos = 12,-14
+postype = p1
 sprpriority = 3
 removeongethit = 1
 ownpal = 1
@@ -5539,6 +5550,7 @@ type = Explod
 trigger1 = animelemno(0) = 1 && time < 20
 anim = 1101
 pos = -7,-12
+postype = p1
 removetime = 1
 ID = 1101
 sprpriority = 3
@@ -5549,6 +5561,7 @@ type = Explod
 trigger1 = animelemno(0) = 2
 anim = 1102
 pos = -11,-25
+postype = p1
 removetime = 1
 ID = 1102
 sprpriority = 3
@@ -5559,6 +5572,7 @@ type = Explod
 trigger1 = animelemno(0) = 3
 anim = 1103
 pos = -5,-26
+postype = p1
 removetime = 1
 ID = 1103
 sprpriority = 3
@@ -5740,6 +5754,7 @@ type = Explod
 trigger1 = animelemno(0) = 1 && time < 20
 anim = 1101
 pos = -7,-12
+postype = p1
 removetime = 1
 ID = 1101
 sprpriority = 3
@@ -5750,6 +5765,7 @@ type = Explod
 trigger1 = animelemno(0) = 2
 anim = 1102
 pos = -11,-25
+postype = p1
 removetime = 1
 ID = 1102
 sprpriority = 3
@@ -5760,6 +5776,7 @@ type = Explod
 trigger1 = animelemno(0) = 3
 anim = 1103
 pos = -5,-26
+postype = p1
 removetime = 1
 ID = 1103
 sprpriority = 3
@@ -7851,6 +7868,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 0
 anim = 1231+random%3
 pos = 12,-37
+postype = p1
 scale = .3,.3
 supermovetime = 36
 ID = 1231
@@ -7862,6 +7880,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 0
 anim = 1231+random%3
 pos = -12,-37
+postype = p1
 scale = .3,.3
 facing = -1
 supermovetime = 36
@@ -7874,6 +7893,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 1
 anim = 1234+random%3
 pos = 12,-37
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 supermovetime = 36
@@ -7886,6 +7906,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 1
 anim = 1234+random%3
 pos = -12,-37
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 supermovetime = 36
@@ -7898,6 +7919,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 2
 anim = 1231+random%3
 pos = 12,-37
+postype = p1
 scale = .3,.3
 facing = -1
 supermovetime = 36
@@ -7910,6 +7932,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 2
 anim = 1231+random%3
 pos = -12,-37
+postype = p1
 scale = .3,.3
 supermovetime = 36
 ID = 1231
@@ -7921,6 +7944,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = [3,5]
 anim = 2021+random%3
 pos = 24,-80+AnimElemTime(1)%6*15
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 vfacing = 1-random%2*2
@@ -7934,6 +7958,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = [3,5]
 anim = 2021+random%3
 pos = -24,-80+AnimElemTime(1)%6*15
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 vfacing = 1-random%2*2
@@ -8061,6 +8086,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 2025+random%2
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = 1,.5
@@ -8073,6 +8099,7 @@ type = Explod
 trigger1 = Time%2 = 0 && time != 0 && Pos X = [-160,160]
 anim = 2025+random%5
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 random = 0,5
@@ -8087,6 +8114,7 @@ trigger1 = time%2 && random%3 = 0
 anim = 2030+random%2
 ID = 2030+random%2
 pos = 0, 0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 random = 60,20
@@ -8204,6 +8232,7 @@ type = explod
 trigger1 = time%5 = 0 && animelemtime(3) = [0,24]
 anim = 2800+random%6
 pos = 19, -16
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 bindtime = 6
@@ -8290,6 +8319,7 @@ type = explod
 trigger1 = time%2
 anim = 2800+random%6
 pos = 5-random%10,5-random%10
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 bindtime = 6
@@ -10505,6 +10535,7 @@ type = Explod
 trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 102
 ID = 102
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -10514,6 +10545,7 @@ trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 3004
 ID = 3004
 pos = 0, 0
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -10534,6 +10566,7 @@ trigger1 = time = 78
 anim = 3006
 ID = 3006
 pos = 25, -22
+postype = p1
 scale = 1.25, .75
 sprpriority = 3
 ownpal = 1
@@ -10713,6 +10746,7 @@ trigger1 = time = [2,5]
 anim = 3005
 ID = 3005
 pos = -105-time*35, 22
+postype = p1
 scale = .3+time*.1, .3+time*.1
 sprpriority = 3
 ownpal = 1
@@ -10723,6 +10757,7 @@ trigger1 = time%2 = 0
 anim = 103
 ID = 103
 pos = 0,22
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -10915,6 +10950,7 @@ trigger1 = AnimElemTime(4) = 0
 anim = 3005
 ID = 3005
 pos = 30, 0
+postype = p1
 scale = .5, .5
 facing = -1
 sprpriority = 3
@@ -10947,6 +10983,7 @@ trigger1 = animelemtime(8) = 0 || animtime= 0
 anim = 3006
 ID = 3006
 pos = 25, -22
+postype = p1
 scale = 1.25, 1
 sprpriority = 3
 ownpal = 1
@@ -11161,6 +11198,7 @@ trigger1 = time = [33,35]
 anim = 3005
 ID = 3005
 pos = -(time-31)*35, 20
+postype = p1
 scale = .5+(time-33)*.1, .5+(time-33)*.1
 sprpriority = 3
 ownpal = 1
@@ -11171,6 +11209,7 @@ trigger1 = time > 32
 anim = 103
 ID = 103
 pos = 0,20
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -11462,6 +11501,7 @@ type = Explod
 trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 102
 ID = 102
+postype = p1
 sprpriority = 3
 supermovetime = 10
 ownpal = 1
@@ -11472,6 +11512,7 @@ trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 3004
 ID = 3004
 pos = 0, 0
+postype = p1
 sprpriority = 3
 supermovetime = 100
 ownpal = 1
@@ -11493,6 +11534,7 @@ trigger1 = time = 78
 anim = 3006
 ID = 3006
 pos = 25, -22
+postype = p1
 scale = 1.25, .75
 sprpriority = 3
 supermovetime = 10
