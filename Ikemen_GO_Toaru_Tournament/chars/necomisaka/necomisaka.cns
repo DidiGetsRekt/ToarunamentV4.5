@@ -259,18 +259,27 @@ type = S
 movetype = I
 physics = S
 ctrl = 0
-anim = 195
+anim = 195+random%2
 velset = 0,0
 sprpriority = 2
 
 [State 195, 音を鳴らす]
 type = PlaySnd
+trigger1 = anim = 195
 trigger1 = Time < 50
 value = 0, 5
 persistent = 12
 
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = anim = 196
+trigger1 = time = 0
+value = S196,0
+channel = 0
+
 [State 195]
 type = explod
+trigger1 = anim = 195
 trigger1 = Time < 50
 anim = 2806+random%6
 pos = 0, -25
@@ -285,6 +294,15 @@ supermovetime = 9999
 ownpal = 1
 removeongethit = 1
 persistent = 6
+
+[State 195]
+type = explod
+trigger1 = anim = 196
+trigger1 = Time < 50
+anim = 4551
+pos = 50, -100
+removetime = 75
+postype = p1
 
 [State 195]
 type = varset
@@ -2763,6 +2781,12 @@ guard.dist = 0 ;相手のガード態勢に入る距離を０にしてるので、ガード不可
 fall = 1
 fall.yvelocity = 0
 id = StateNo
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+value = S800,0
+channel = 0
 
 [State 800, ステート変更]
 type = ChangeState
@@ -5583,6 +5607,12 @@ type = PlaySnd
 trigger1 = AnimElem = 4
 value = 0, 3
 
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = S1100,0
+channel = 0
+
 [State 1100]
 type = Helper
 trigger1 = AnimElem = 4
@@ -5786,6 +5816,12 @@ ownpal = 1
 type = PlaySnd
 trigger1 = AnimElem = 4
 value = 0, 3
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = S1100,0
+channel = 0
 
 [State 1110]
 type = Helper
@@ -8246,6 +8282,12 @@ ownpal = 1
 type = PlaySnd
 trigger1 = time%5 = 0 && animelemtime(3) = [0,24]
 value = 0, 5
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 5
+value = S1100,0
+channel = 0
 
 [State 2120, 超必殺技暗転時間停止]
 type = SuperPause
@@ -12245,6 +12287,16 @@ ctrl = 1
 ;===========================================================================
 
 [Statedef -3]
+
+;Gethit sounds
+[State -3, Get Hit Sounds]
+type = PlaySnd
+triggerall = alive && time = 1
+trigger1 = (stateno = 5000 || stateno = 5010 || stateno = 5020 || stateno = 5070 || stateno = 5080)
+trigger1 = enemynear,hitdefattr = SCA,NA,SA,HA
+value = S5000,0+(random%2)
+volume = 255
+channel = 0
 
 [State 3101, ステート変更]
 type = null
