@@ -307,6 +307,29 @@ IgnoreHitPause = 1
 	var(2) = 0
 	ignorehitpause = 1
 
+;カウンターリードアップ
+[State 0, PalFX]
+type = PalFX
+triggerall = var(2)>=2
+trigger1 = StateNo = 1125 && var(1)
+trigger2 = StateNo = 1252 && var(1)
+trigger3 = StateNo = 1600 && var(1)
+trigger4 = StateNo = 1650 && var(1)
+time = 1
+add = 0,-128,-128
+ignorehitpause = 1
+
+;カウンターアタック
+[State 0, PalFX]
+type = PalFX
+triggerall = var(2)>=2
+trigger1 = StateNo = 230 && var(1)
+time = 5
+add = 0,64,128
+ignorehitpause = 1
+persistent = 0
+
+
 ;---------------------------------------------------------------------------
 ;アーマー
 ;---------------------------------------------------------------------------
