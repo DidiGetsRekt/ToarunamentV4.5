@@ -1775,6 +1775,14 @@ Clsn2: 1
 800,10, 0,0, 4
 800,11, 0,0, 4
 
+; Back throw begin
+[Begin Action 811]
+802,0, 0,0, 4
+802,1, 0,0, 5
+802,2, 0,0, 5
+802,3, 0,0, 4
+802,4, 0,0, 4
+
 ; Thrown State
 [Begin Action 820]
 Clsn2:1
@@ -1795,6 +1803,12 @@ Clsn2: 1
 Clsn2: 1
  Clsn2[0] = -40,-20, 45,  0
 5042,10, 0,5, -1
+
+; Backthrown anim
+[Begin Action 821]
+Clsn2:1
+  Clsn2[0] = -13, -10, 38, 77
+5002,0, 0,-1, -1
 
 ; Kick Throw Attempt
 [Begin Action 850]

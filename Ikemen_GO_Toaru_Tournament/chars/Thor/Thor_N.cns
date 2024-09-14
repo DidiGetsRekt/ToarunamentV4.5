@@ -1703,8 +1703,24 @@ ctrl = 1
 type    = S
 movetype= A
 physics = S
-anim = 810
+anim = 810+(command = "holdback")
 Poweradd=FVar(11)
+
+[State 0, Turn]
+type = Turn
+trigger1 = anim = 811
+trigger1 = animtime = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = 811
+trigger1 = animtime = 0
+value = 810
+;elem = 1
+;ignorehitpause = 
+;persistent = 
 
 [State 3400,•Ý’è]
 		type = Width
@@ -1726,28 +1742,32 @@ Poweradd=FVar(11)
 	;	value = 105, 2
 [State 810,Snd2]
 Type=playSnd
-Trigger1=AnimElemTime(1)=0
+Trigger1=time=0
 value=1,8
 
 
 [State 810,Snd2]
 Type=playSnd
+triggerall = anim = 810
 Trigger1=animelemtime(4)=0
 value=0,12
 
 [State 810,Snd2]
 Type=playSnd
+triggerall = anim = 810
 Trigger1=animelemtime(3)=0
 value=800,0
 channel=0
 
 [State 810,Snd2]
 Type=playSnd
+triggerall = anim = 810
 Trigger1=animelemtime(5)=0
 value=0,13
 
 [State -1,Explod]
 Type=Explod
+triggerall = anim = 810
 Trigger1=animelemtime(4)=0
 Anim=6025
 PosType=p1
@@ -1764,6 +1784,7 @@ PauseMoveTime=9**8
 
 [State -1,Explod]
 Type=Explod
+triggerall = anim = 810
 Trigger1=animelemtime(4)=1
 Anim=6060
 PosType=p1
@@ -1780,6 +1801,7 @@ PauseMoveTime=9**8
 
 [State 820,shake]
 Type=EnvShake
+triggerall = anim = 810
 Trigger1=AnimElemTime(4)=0
 Time=20
 
@@ -1789,13 +1811,15 @@ Time=20
 
 [State 0, VelSet]
 type = VelAdd
-trigger1 = time=0
+triggerall = anim = 810
+trigger1 = animelemtime(1)=0
 x = 12+8*(var(13))
 ignorehitpause = 1
 persistent = 0
 
 [State 0, VelSet]
 type = VelSet
+triggerall = anim = 810
 trigger1 = animelem = 3
 x = 0
 ignorehitpause = 1
@@ -1803,6 +1827,7 @@ persistent = 0
 
 [State 0, PosAdd]
 type = PosAdd
+triggerall = anim = 810
 trigger1 = animelemtime(3) = 0
 x = 20
 
@@ -1814,25 +1839,53 @@ persistent = 0
 
 ;=============================================================
 ;Attack
+
 [State 810, ????????1]
 		type = TargetBind
+		triggerall = anim = 811
+		trigger1 = AnimElemTime(1) >=0
+		trigger1 = AnimElemTime(3) <0
+		pos = 50, -55
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 811
+		trigger1 = AnimElemTime(3) >=0
+		trigger1 = AnimElemTime(4) <0
+		pos = 35, -45
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 811
+		trigger1 = AnimElemTime(4) >=0
+		pos = 10, -45
+
+[State 0, TargetFacing]
+type = TargetFacing
+trigger1 = anim = 811
+trigger1 = animtime = 1
+value = 1
+ID = -1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 810
 		trigger1 = AnimElemTime(3) < 0
 		pos = 5, -75
 
 [State 810, ????????1]
 		type = TargetBind
-		trigger1 = AnimElemTime(3) >=0
-		trigger1 = AnimElemTime(4) <0
-		pos = 35, -55
-
-[State 810, ????????1]
-		type = TargetBind
+		triggerall = anim = 810
 		trigger1 = AnimElemTime(3) >=0
 		trigger1 = AnimElemTime(4) <0
 		pos = 35, -60
 
 [State 810, ????????1]
 		type = TargetBind
+		triggerall = anim = 810
 		trigger1 = AnimElemTime(4) >=0
 		trigger1 = AnimElemTime(9) <0
 		pos = 40, -13
@@ -1841,6 +1894,7 @@ persistent = 0
 	
 	[State 810, ???????????]
 		type = TargetLifeAdd
+		triggerall = anim = 810
 		trigger1 = AnimElem = 4
 		value = Ceil(-91*fvar(10))
 		kill = 1
@@ -1849,6 +1903,7 @@ persistent = 0
 
 [State -1,UŒ‚•â³]
 Type=VarSet
+triggerall = anim = 810
 Trigger1=AnimElem = 5
 fvar(0)=fvar(0)*0.45
 persistent = 0
@@ -1865,6 +1920,7 @@ ignorehitpause = 1
 
 	[State 810, ??????]
 		type = ChangeState
+		triggerall = anim = 810
 		trigger1 = AnimTime = 0
 		value = 0
 		ctrl = 1
@@ -1875,7 +1931,14 @@ type    = A
 movetype= H
 physics = N
 velset = 0,0
-sprpriority=-1
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = 1+(enemy,anim = 811)*4
+;ignorehitpause = 
+;persistent = 
+
 
 	[State 1250, ??]
 		type = NotHitBy
@@ -1884,9 +1947,23 @@ sprpriority=-1
 		time = 2;???
  		ignorehitpause = 1
 
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = anim = 821
+value = -35
+;scale = 
+;ignorehitpause = 
+;persistent = 
+
+
 	[State 820, ????????]
 		type = ChangeAnim2
-		trigger1 = Time = 0
+		trigger1 = enemy,anim = 811 && enemy,animelemtime(1) = 0
+		value = 821
+
+	[State 820, ????????]
+		type = ChangeAnim2
+		trigger1 = enemy,anim = 810 && enemy,animelemtime(1) = 0
 		value = 820
 
 [State 0, StateTypeSet]
