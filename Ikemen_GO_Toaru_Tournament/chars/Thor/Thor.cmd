@@ -1130,20 +1130,15 @@ triggerall=var(3)=0
 triggerall=fvar(6)=2400
 trigger1 = ctrl
 
-;Throw 
+;Grab
 [State -1, Throw]
-Type = ChangeState
+type = ChangeState
 value = 800
-	TriggerAll=Alive!=0
-	TriggerAll = StateType != A
-	TriggerAll=command="x"
-	;TriggerAll=command="holdfwd"
-	;TriggerAll=StateNo!=100
-	Triggerall=enemynear,StateType=S||enemynear,StateType=C
-	Triggerall=enemynear,MoveType!=H
-	Trigger1=Ctrl
-	trigger2=stateno=100
-	
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl || stateno=100
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"	
 
 ;===========================================================================
 ;Crouching Low Kick

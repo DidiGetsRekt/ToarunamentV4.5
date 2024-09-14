@@ -374,7 +374,521 @@ ctrl = 1
 ;persistent = 
 ;===================================================
 
+;==============================================================
+;Throw Attempt
+[Statedef 800]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+velset = 0,0
+ctrl = 0
+anim = 800
+sprpriority = 2
 
+[State 800,v1=0]
+Type=varSet
+Trigger1=Time=0
+var(1)=0
+; Notes: The '-' symbol in the hitflag field means that it only affects
+;   players who are not in a hit state. This prevents KFM from combo-ing
+;   into the throw. The priority should be set to a low number, such as
+;   1 or 2, so that the throw does not take precedence over normal attacks.
+;   The type of priority must always be set to "Miss" or "Dodge" for throws,
+;   otherwise strange behavior can result.
+[State -1,”Ä—pŠi”[]
+		type = Varset
+		Trigger1=Time=0
+		fvar(10)= fvar(0)
+		persistent = 0
+ 		ignorehitpause = 1
+
+	[State -1,Å’áUŒ‚•Ûá]
+		type = Varset
+		Trigger1=Time=0
+		Trigger1=fvar(0)<=0.27
+		fvar(10)= 0.27
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time=0
+var(13) =prevstateno=100
+ignorehitpause = 1
+;persistent = 
+
+
+[State 800, 1]
+type = HitDef
+;Trigger1 = Time = 0
+trigger1=p2dist X <60
+attr = S, NT          ;Attributes: Standing, Normal Throw
+hitflag = M-          ;Affect only ground people who are not being hit
+priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
+sparkno = -1          ;No spark
+p1sprpriority = 1     ;Draw p1's sprite in front of p2
+                      ;p2's sprite priority is set to 0 by default
+p1facing = 1
+p2facing = 1          ;Force p2 to face KFM
+p1stateno = 810       ;On success, KFM changes to state 810
+p2stateno = 820       ;If hit, p2 changes to state 820 in KFM's cns
+guard.dist = 0        ;This prevents p2 from going into a guard state if close
+fall = 1              ;Force p2 into falling down
+persistent=0
+
+[State 800, 2]
+type = ChangeState
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Teched Going Back - attacker state
+[Statedef 805]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, TargetState]; faz o techador entrar no state do tech
+type = TargetState
+trigger1 = time = 0
+value = 806
+
+[State 200, PlaySnd];som de grito(?)
+type = PlaySnd
+trigger1 = time = 0
+value = 0,14
+
+	[State 3501,Hit Explod]
+		Type=Explod
+		Trigger1=time = 0
+		Anim=20026
+		Pos=0,0
+		bindTime=-1
+		PosType=back
+		sprPriority=-1
+		SuperMoveTime=30
+		PauseMoveTime=30
+		Persistent=0
+ 		ignorehitpause = 1
+
+	[State 3000,????]
+		Type=envColor
+		Trigger1= time = 0
+		value=0,0,0
+		Time=13
+		under=1
+		Persistent=0
+ 		ignorehitpause = 1
+
+[State 150, 1];anima?o
+type = ChangeAnim
+trigger1 = 1
+value = 120
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 0, ChangeState]
+type = selfState
+trigger1 = time = 30
+value = 0
+ctrl = 1
+
+;==================================================================================
+; Throw Escape - victim state
+[Statedef 806]
+type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
+physics = S                      ;Physics: S-stand, C-crouch, A-air
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+poweradd = 0                    ;Power to add (Def: 0)
+sprpriority = 2                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 120
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, PosSet];fique no ch? agora
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 200, 3]; vai pro state 0 e faz tudo voltar ao normal (n?)
+type = selfState
+trigger1 = time = 33
+value = 0
+ctrl = 1
+
+;Throw Success
+[Statedef 810]
+type    = S
+movetype= A
+physics = S
+anim = 810+(command = "holdback")
+Poweradd=FVar(11)
+
+[State 0, Turn]
+type = Turn
+trigger1 = anim = 811
+trigger1 = animtime = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = 811
+trigger1 = animtime = 0
+value = 810
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 3400,•Ý’è]
+		type = Width
+		Trigger1=1;Time>=120
+		edge=64,36
+		player=0,36
+
+
+[State 1250, ??]
+		type = NotHitBy
+		value = SCA
+		trigger1 = 1
+ 		ignorehitpause = 1
+
+	;[State 810, ????]
+	;	type = PlaySnd
+	;	trigger1 = AnimElem = 1
+	;	trigger2 = AnimElem = 3
+	;	value = 105, 2
+[State 810,Snd2]
+Type=playSnd
+Trigger1=time=0
+value=1,8
+
+
+[State 810,Snd2]
+Type=playSnd
+triggerall = anim = 810
+Trigger1=animelemtime(4)=0
+value=0,12
+
+[State 810,Snd2]
+Type=playSnd
+triggerall = anim = 810
+Trigger1=animelemtime(3)=0
+value=800,0
+channel=0
+
+[State 810,Snd2]
+Type=playSnd
+triggerall = anim = 810
+Trigger1=animelemtime(5)=0
+value=0,13
+
+[State -1,Explod]
+Type=Explod
+triggerall = anim = 810
+Trigger1=animelemtime(4)=0
+Anim=6025
+PosType=p1
+Pos=40, 10
+Ownpal=0
+SprPriority=5
+OnTop=0
+RemoveTime=-2
+;scale=.5,.5
+IgnoreHitPause=1
+Persistent=0
+SuperMoveTime=9**8
+PauseMoveTime=9**8
+
+[State -1,Explod]
+Type=Explod
+triggerall = anim = 810
+Trigger1=animelemtime(4)=1
+Anim=6060
+PosType=p1
+Pos=40, 10
+Ownpal=0
+SprPriority=-1
+OnTop=0
+RemoveTime=-2
+scale=.5,.5
+IgnoreHitPause=1
+Persistent=0
+SuperMoveTime=9**8
+PauseMoveTime=9**8
+
+[State 820,shake]
+Type=EnvShake
+triggerall = anim = 810
+Trigger1=AnimElemTime(4)=0
+Time=20
+
+;=============================================================
+;Move
+
+
+[State 0, VelSet]
+type = VelAdd
+triggerall = anim = 810
+trigger1 = animelemtime(1)=0
+x = 12+8*(var(13))
+ignorehitpause = 1
+persistent = 0
+
+[State 0, VelSet]
+type = VelSet
+triggerall = anim = 810
+trigger1 = animelem = 3
+x = 0
+ignorehitpause = 1
+persistent = 0
+
+[State 0, PosAdd]
+type = PosAdd
+triggerall = anim = 810
+trigger1 = animelemtime(3) = 0
+x = 20
+
+ignorehitpause = 1
+persistent = 0
+
+
+
+
+;=============================================================
+;Attack
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 811
+		trigger1 = AnimElemTime(1) >=0
+		trigger1 = AnimElemTime(3) <0
+		pos = 50, -55
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 811
+		trigger1 = AnimElemTime(3) >=0
+		trigger1 = AnimElemTime(4) <0
+		pos = 35, -45
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 811
+		trigger1 = AnimElemTime(4) >=0
+		pos = 10, -45
+
+[State 0, TargetFacing]
+type = TargetFacing
+trigger1 = anim = 811
+trigger1 = animtime = 1
+value = 1
+ID = -1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 810
+		trigger1 = AnimElemTime(3) < 0
+		pos = 5, -75
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 810
+		trigger1 = AnimElemTime(3) >=0
+		trigger1 = AnimElemTime(4) <0
+		pos = 35, -60
+
+[State 810, ????????1]
+		type = TargetBind
+		triggerall = anim = 810
+		trigger1 = AnimElemTime(4) >=0
+		trigger1 = AnimElemTime(9) <0
+		pos = 40, -13
+
+;=====================================================
+	
+	[State 810, ???????????]
+		type = TargetLifeAdd
+		triggerall = anim = 810
+		trigger1 = AnimElem = 4
+		value = Ceil(-91*fvar(10))
+		kill = 1
+		absolute=0
+
+
+[State -1,UŒ‚•â³]
+Type=VarSet
+triggerall = anim = 810
+Trigger1=AnimElem = 5
+fvar(0)=fvar(0)*0.45
+persistent = 0
+ignorehitpause = 1
+	
+
+	;[State 1310,????????????????]
+	;	Type = VarSet
+	;	Trigger1=AnimElem = 12
+	;	Trigger1=var(1) := 1
+	;	fvar(0) = fvar(0) * 0.45
+	;	ignorehitpause = 1
+	;	persistent=0
+
+[State 0, ChangeState]; confere se o alvo apertou o bot? pra techar, se sim, te leva pro state de tomar o tech
+type = ChangeState
+triggerall = NumTarget;()
+triggerall = time <= 8
+trigger1 = target,AILevel=0
+trigger1 = target, command = "x" && (target, command = "holdfwd" || target,command = "holdback")
+trigger2 = target,AILevel>0
+trigger2 = random <=floor(AILevel*100/1.5)
+value = 805
+ctrl = 0
+
+	[State 810, ??????]
+		type = ChangeState
+		triggerall = anim = 810
+		trigger1 = AnimTime = 0
+		value = 0
+		ctrl = 1
+
+;Thrown
+[Statedef 820]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = 1+(enemy,anim = 811)*4
+;ignorehitpause = 
+;persistent = 
+
+
+	[State 1250, ??]
+		type = NotHitBy
+		value = SCA
+		trigger1 = 1
+		time = 2;???
+ 		ignorehitpause = 1
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = anim = 821
+value = -35
+;scale = 
+;ignorehitpause = 
+;persistent = 
+
+
+	[State 820, ????????]
+		type = ChangeAnim2
+		trigger1 = enemy,anim = 811 && enemy,animelemtime(1) = 0
+		value = 821
+
+	[State 820, ????????]
+		type = ChangeAnim2
+		trigger1 = enemy,anim = 810 && enemy,animelemtime(1) = 0
+		value = 820
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = animelem=7
+statetype = L       ;S,A,C,L
+ignorehitpause = 1
+persistent = 0
+
+
+[State 7070]
+		type = Posset
+		trigger1 = time=99
+		y = 0
+
+[State 7070]
+		type = Velset
+		trigger1 = time=99
+		x=0
+		y = 0
+
+[State 7070]
+		type = PosAdd
+		trigger1 = time=100
+		trigger1=!alive
+		x = 40
+
+[State 2953, Ž€–SƒXƒe[ƒg•ÏX]
+		type = changeState
+		Trigger1=time=100
+		trigger1 = !alive
+		value = 5150
+
+
+
+	[State 3502,End]
+		Type=SelfState
+		Trigger1=time=100
+		trigger1=alive
+		value=5120
 
 ;Almighty Install
 [Statedef 960] 
