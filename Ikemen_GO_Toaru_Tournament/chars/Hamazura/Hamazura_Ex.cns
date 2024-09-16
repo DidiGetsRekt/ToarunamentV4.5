@@ -637,13 +637,289 @@ trigger2=prevstateno=790
 ignorehitpause = 1
 ;persistent = 
 
+;Throw
+[Statedef 800]
+Type    = S
+MoveType= A
+Physics = S
+Ctrl = 0
+Anim = 800
+SprPriority = 2
+Facep2 = 1
 
+[State 600,V1=0]
+		Type=VarSet
+		Trigger1=Time=0
+		var(1)=0
+
+[State ]
+Type = VelSet
+TriggerAll = Time = 0
+Trigger1 = PrevStateNo != [100,103]
+X = 0
+Y = 0
+
+[State ]
+Type = VarSet
+Trigger1 = Time = 0
+V = 55
+Value = Facing
+
+
+[State ]
+Type = HitDef
+Trigger1 = P2MoveType != H || P2StateNo = [120,159]
+Trigger1 = P2BodyDist X = [-32,32]
+Trigger1 = Time = 2
+Attr = S, NT
+HitFlag = M-
+Priority = 1, Miss
+HitSound = s10,0
+SprPriority = 1
+sparkno=-1
+P1Facing = 1
+P2Facing = 1
+P1StateNo = 810
+P2StateNo = 811
+NumHits = 0
+Fall.XVelocity = 0
+Fall.YVelocity = 0
+Down.Bounce = 1
+
+
+[State ]
+Type = AttackDist
+Trigger1 = 1
+Value = 0
+
+[State ]
+Type = ChangeState
+Trigger1 = AnimTime = 0
+Value = 0
+Ctrl = 1
+
+;---------------------------------------------------------------------------
+;Throw Success
+[Statedef 810]
+Type    = S
+MoveType= A
+Physics = S
+Anim = 810
+
+
+
+[State 810,Snd2]
+Type=playSnd
+Trigger1=AnimElemTime(1)=0
+value=1,8
+
+[State ]
+Type = NotHitBy
+Trigger1 = 1
+Value = SAC
+Time = 1
+
+[State ]
+Type = VarSet
+Trigger1 = Time < 9
+Trigger1 = NumTarget
+Trigger1 = Target,StateNo != [811,812]
+Trigger2 = Time = 9
+V = 54
+Value = 1-(Time=9)
+
+[State ]
+Type = VarSet
+Trigger1 = Time = 0 || AnimElem = 6
+FV = 39
+Value = Cond(Target,Const(Size.Head.Pos.Y)>-90,-Target,Const(Size.Head.Pos.Y)-60,30)*(Time=0)
+
+[State ]
+Type = Turn
+Trigger1 = AnimElem = 5
+
+[State ]
+Type = TargetBind
+Trigger1 = AnimElem = 1, = [0,7]
+Pos = 39, -18+FVar(39)
+
+[State ]
+Type = Width
+Trigger1 = AnimElem = 5, <= 0
+Edge = 35,34
+
+[State ]
+Type = Width
+Trigger1 = AnimElem = 5, > 0
+Edge = 45,34
+
+[State ]
+Type = TargetBind
+Trigger1 = AnimElem = 2, = [0,5]
+Pos = 24, -38+FVar(39)
+
+[State ]
+Type = TargetBind
+Trigger1 = AnimElem = 3, = [0,2]
+Pos = 8, -88
+
+[State ]
+Type = TargetBind
+Trigger1 = AnimElem = 4, = [0,1]
+Pos = -26, -64
+
+[State ]
+Type = TargetBind
+Trigger1 = AnimElem = 5
+Pos = 88, -40
+
+[State ]
+Type = TargetLifeAdd
+Trigger1 = AnimElem = 5
+Value = -Ceil(FVar(0)*80)
+
+[State ]
+Type = TargetState
+Trigger1 = Time < 15
+Value = Cond(Time=14,812,811)
+
+[State ]
+Type = TargetState
+Trigger1 = Time = 19
+Value = 7050
+
+[State 200,効果音]
+		Type=PlaySnd
+		Trigger1=animelem=5
+		value=800,0
+		channel=0
+		persistent=0
+
+[State ]
+Type = StateTypeSet
+Trigger1 = AnimElem = 10
+MoveType= I
+
+[State ]
+Type = CtrlSet
+Trigger1 = AnimElem = 10
+Value = 1
+
+[State ]
+Type = AttackDist
+Trigger1 = 1
+Value = 0
+
+[State 200 ノックバックカウント]
+		type = Varadd
+		trigger1 = Time = 23
+		fVar(11) = 5
+		persistent = 0
+ 		ignorehitpause = 1
+
+	[State -1,攻撃補正,上書き]
+		type = Varset
+		Trigger1=Time = 23
+		fvar(0)= fvar(0)*0.80
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State ]
+Type = VarSet
+Trigger1 = Time = 23
+trigger1=var(3)>1
+V =1
+Value = 1;Cond(Var(57)/10%10=4,814,813)
+ignorehitpause=1
+
+
+[State ]
+Type = ChangeState
+Trigger1 = AnimTime = 0
+Value = 0
+Ctrl = 1
+
+
+
+;---------------------------------------------------------------------------
+;投げ・投げられている相手
+[Statedef 811]
+Type    = S
+MoveType= H
+Physics = N
+Anim = 5010
+VelSet = 0,0
+
+[State ]
+Type = HitOverRide
+Trigger1 = 1
+Attr = , NT, ST, HT
+Time = 1
+
+[State ]
+Type = PlayerPush
+Trigger1 = 1
+Value = 0
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 9 && P2MoveType != A
+Value = 5035
+
+;---------------------------------------------------------------------------
+;投げ・投げられている相手2
+[Statedef 812]
+Type    = S
+MoveType= H
+Physics = N
+VelSet = 0,0
+
+[State ]
+Type = HitOverRide
+Trigger1 = 1
+Attr = , NT, ST, HT
+Time = 1
+
+[State ]
+Type = PlayerPush
+Trigger1 = 1
+Value = 0
+
+[State ]
+Type = ChangeAnim2
+Trigger1 = 1
+Value = 811
+
+[State ]
+Type = AngleDraw
+Trigger1 = Time <= 5
+
+[State ]
+Type = AngleSet
+Trigger1 = Time = 0
+Value = -39
+
+[State ]
+Type = AngleSet
+Trigger1 = Time = 3
+Value = -141
+
+[State ]
+Type = ScreenBound
+Trigger1 = 1
+Value = 1
+MoveCamera = 1,0
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 9 && P2MoveType != A
+Value = 5035
 
 ;----------------------------------------------------------------
-[Statedef 800, Reload]
+[Statedef 900, Reload]
 type = S
 ctrl = 0
-anim = 800
+anim = 900
 velset = 0,0
 movetype = I
 physics = S
@@ -652,8 +928,8 @@ sprpriority = 2
 [State -1]
 Type = Helper
 Trigger1 = AnimElem = 4
-StateNo = 805
-ID = 805
+StateNo = 905
+ID = 905
 PosType = P1
 Pos = -12,-60
 Ownpal = 1
@@ -716,11 +992,11 @@ Persistent = 0
 		Ctrl=1
 
 ; Magazine Helper
-[Statedef 805]
+[Statedef 905]
 Type = A
 Physics = N
 SprPriority = 5
-Anim = 805
+Anim = 905
 
 [State -1]
 Type = NotHitBy
