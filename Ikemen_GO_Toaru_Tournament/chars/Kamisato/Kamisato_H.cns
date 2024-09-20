@@ -2027,7 +2027,6 @@ ignorehitpause=1
 		SparkNo=-1
 		Guard.SparkNo=-1
 		Sparkxy=-10,floor(-70*const(Size.yScale))
-		HitSound=S0,14
 		GuardSound=S1,1
 		Damage=Ceil(450*fvar(10)),24
 		Priority=6,Hit

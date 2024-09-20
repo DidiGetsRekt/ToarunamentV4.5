@@ -869,19 +869,15 @@ trigger1=stateno=100
 	trigger2=movecontact && stateno = [1200,1205]
 	
 ;---------------------------------------------------------------------------
-;Throw Kick
-[State -1, Throw Kick]
-Type = ChangeState
+;Throw kick
+[State -1, Throw]
+type = ChangeState
 value = 800
-	TriggerAll=Alive!=0
-	TriggerAll = StateType != A
-	TriggerAll=Ctrl
-	TriggerAll=command="x"
-	TriggerAll=command="holdfwd"
-	TriggerAll=StateNo!=100
-	Trigger1=Ctrl
-	Trigger1=enemynear,StateType=S||enemynear,StateType=C
-	Trigger1=enemynear,MoveType!=H
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
 
 
 
