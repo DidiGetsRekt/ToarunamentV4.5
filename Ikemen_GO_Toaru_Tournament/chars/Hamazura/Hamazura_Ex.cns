@@ -1527,11 +1527,6 @@ var(3)=2   ;GoodLuck
 		volume=255
 		channel=-1
 
-[State 6300, ?????]
-type = ChangeAnim
-trigger1 = Anim = 6300 && time = 170
-value = 6301
-
 [State 2000,V1=1]
 		Type=VarSet
 		Trigger1= time = 381
