@@ -814,7 +814,7 @@ trigger1 = var(1)
 [State -1, Phase Out]
 type = ChangeState
 value = 750
-triggerall = command = "hold_x"
+triggerall = command = "hold_z"
 triggerall = statetype!=A
 triggerall=stateno!=750
 trigger1 = ctrl
@@ -824,7 +824,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 760
 triggerall = var(2)=1
-triggerall = command = "hold_x"
+triggerall = command = "hold_z"
 triggerall = statetype=A
 triggerall=stateno!=760
 trigger1 = ctrl
@@ -839,17 +839,26 @@ trigger1 = ctrl
 	Trigger1=command="hold_c"
 	TriggerAll=Power<PowerMax
 	Trigger1=Ctrl
+	
+;---------------------------------------------------------------------------
+;Throw
+[State -1, Throw]
+type = ChangeState
+value = 800
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl || stateno=[100,102]
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
 
-
-[State -1,Charge];Scales Summon
+;Scales Summon
+[State -1,Scales Summon]
 	Type=ChangeState
 	value=725
 	TriggerAll=StateType!=A
-	Triggerall=command="hold_z"
+	Triggerall=command="hold_x"
 	triggerall=!((numhelper(725)!=0) && (numhelper(726)!=0))
 	Trigger1=Ctrl
-	
-
 
 
 ;===========================================================================
