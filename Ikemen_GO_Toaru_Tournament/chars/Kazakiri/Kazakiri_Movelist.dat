@@ -39,18 +39,20 @@ Air Down Kick						_D^HK / _D^C (Air)
 (Ground bounce if target is airborne)
 
 
-Phase Out			^LP / ^X (Air OK in Angel Mode)
-(Drains HP but not hittable)
+Scales							^LP / ^X 
+(They block projectiles)
 
-Dashes				Dir+ ^MP / Dir +^Y 
+Scared Throw					_B / _F _+ ^LP / ^X
+
+Dashes							Dir+ ^MP / Dir +^Y 
 
 Homing Angel Dash				^MP / ^Y (Air Ok)
 (Angel Mode)
 
-Gauge Charge 						^LK + ^HK / ^A + ^C (Held)
+Phase Out						^HP / ^Z (Air OK in Angel Mode)
+(Drains HP but not hittable)
 
-Scales							^HP / ^Z 
-(They block projectiles)
+Gauge Charge 						^LK + ^HK / ^A + ^C (Held)
 
 
 
@@ -172,6 +174,6 @@ _F_DF_D_DB_B ^HK / _F_DF_D_DB_B ^C (Air OK)
 
 Credits:
 
-Writing : DidiGetsRekt
+Writing : DidiGetsRekt, Seb368
 
 

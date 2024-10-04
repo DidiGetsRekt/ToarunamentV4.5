@@ -33,7 +33,7 @@ You consume <#ff0000>30-cards</>/sec during it.
 Here are the effects of the install :
 _`It makes your attack increase twofold after consuming
 <#ff0000>333-cards</>.
-_`It also decreases your defence twofold after consuming
+_`It also decreases your defence 1.5-fold after consuming
 <#ff0000>333-cards</>.
 _`Your charge up animation changes and deals damage.
 _`During <#ff0000>Heat Mode</>, all the specials requiring <#ff0000>cards</>
@@ -52,10 +52,15 @@ Back Dash								_B_B (air)
 Card charge								^LP / ^X
 (As its name implies you get to charge your cards.
 The rate of which you charge <#ff0000>cards</> is <#ff0000>60-cards</>/sec.)
+<#00ff00>Lvl-0.75</>
+EX Card charge							_D^LP / _D^X
+(As its name implies you get to charge your cards.
+The rate of this version is <#ff0000>240-cards</>/sec.)
 <#00ff00>Lvl-1.5</>
-Instant Card Charge						^LP_+^HK / ^X_+^C
+Instant Card Charge						^MP_+^HK / ^Y_+^C
 (Gives <#ff0000>200-cards</> instantly)
-Grab Explosion							_F^LP or _B^LP / _F^X or _B^X
+
+Grab Explosion							_B / _F  _+ ^LP / ^X
 
 Back Charge								_B_B^LP / _B_B^X (air OK)
 (During a Back Hop, you can press ^LP / ^X
@@ -65,10 +70,16 @@ Heat Mode								_D_D^LP / _D_D^X
 or by pressing ^LK_+^MK / ^A_+^B when hit by the
 opponent.)
 
+Charge up	 							^MP / ^LK_+^HK / ^Y / ^A_+^B (Held)
+(The more trap cards he has on the ground,
+the faster his charge up speed)
+
+Dash 	(Hold direction)				^MP / ^Y 
+
 <#ff0000>20-cards</>
-Mirage									^MP / ^Y
+Mirage									^HP / ^Z
 <#00ff00>Lvl-0.5</>
-_!Mirage Counter						^MP / ^Y (hold)
+_!Mirage Counter						^HP / ^Z (hold)
 (if Mirage is hit and Stiyl isn't hit)
 
 <#ffff00>About Mirage :</>
@@ -88,18 +99,14 @@ _`The mirage is more likely to say "Good Grief"
 "Yare yare"
 
 Also if you are both on the ground and holding
-down ^MP / ^Y and have enough meter,
+down ^HP / ^Z and have enough meter,
 it will make Stiyl go behind the opponent and
 immobilise them if it connects
 while consuming meter.
 
-Back Trap								_B_B^MP / _B_B^Y
-(During a Back Hop, you can press ^MP / ^Y
+Back Trap								_B_B^HP / _B_B^Z
+(During a Back Hop, you can press ^HP / ^Z
 as many times as possible to set down trap cards)
-
-Charge up								^LK_+^HK / ^A_+^C
-(The more trap cards he has on the ground,
-the faster his charge up speed)
 
 
 <#f0f000>Normals :</>

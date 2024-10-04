@@ -855,7 +855,6 @@ TriggerAll = StateType != A
 triggerall = command = "z"
 triggerall=command!="holdfwd"
 triggerall=command!="holdback"
-triggerall=command!="holddown"
 trigger1 = ctrl
 trigger2 = stateno=6300 && time<170
 
