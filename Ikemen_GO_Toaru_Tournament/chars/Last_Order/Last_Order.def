@@ -3,7 +3,7 @@
 name ="Last_Order"
 displayname ="Last Order"
 versiondate =10,04,2005
-mugenversion =04,14,2002
+mugenversion =1.1;04,14,2002
 author ="Blankly_Rabbit_Boody"
 pal.defaults =1, 2, 3, 4
 
