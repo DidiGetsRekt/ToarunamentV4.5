@@ -1,16 +1,18 @@
 <#f0f000>Moveset :</>
 
-Run				_F_F
+Run					_F_F
 Air Dash			_F_F (air)
 Back Hop			_B_B
 
-Spot Dodge			^LP / ^X
-Roll forward			_F^LP / _F^X
-Roll backward			_B^LP / _B^X
+Grab 					_B / _F  _+ ^LP / ^X
 
-Magnetic Pull Forward			_F^MP / _F^Y (Air)
-Magnetic Pull Backwards			_B^MP / _B^Y (Air OK)
-Fall From Magnetic Pull			^MP / ^Y 
+Spot Dodge				_. / _D _+ ^MP / ^Y
+Roll forward			_F^MP / _F^Y
+Roll backward			_B^MP / _B^Y
+
+Magnetic Pull Forward			_F^HP / _F^Z (Air)
+Magnetic Pull Backwards			_B^HP / _B^Z (Air OK)
+Fall From Magnetic Pull			^LP or ^MP / ^X or ^Y
 
 Magnetic Parry			_F^HP / _F^Z
 (Projectile Only)
@@ -33,8 +35,6 @@ Air Jab				^LK / ^A (air)
 Air Punch			^MK / ^B (air)
 Air Kick			^HK / ^C (air)
 Air Axe Kick			_D^HK / _D^C (air)
-
-Grab				_F^MP / _F^Y
 
 <#ff0000>Specials, Supers and Hypers:</>
 
@@ -120,4 +120,4 @@ Hyper Railgun			_F_DF_D_DB_B^HK / _F_DF_D_DB_B^C
 
 Credits :
 
-Writing : DidiGetsRekt,Seb368
+Writing : DidiGetsRekt, Seb368

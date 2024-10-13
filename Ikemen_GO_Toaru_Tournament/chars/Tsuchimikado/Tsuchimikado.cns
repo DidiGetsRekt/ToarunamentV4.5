@@ -573,7 +573,7 @@ ctrl = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "fvar(10) = %f, fvar(0)=%f, facing = %d, life = %d"
-params = fvar(18),fvar(20),var(20),(helper(10980),parent,fvar(18)>0)
+params = fvar(18),fvar(20),var(20),time
 ;ignorehitpause = 
 ;persistent = 
 

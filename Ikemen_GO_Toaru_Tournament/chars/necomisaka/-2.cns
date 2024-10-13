@@ -1647,6 +1647,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6025
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .5,.5
@@ -1696,6 +1697,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6025
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .5,.5
@@ -1745,6 +1747,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6025
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .5,.5
@@ -1794,6 +1797,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6025
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .75,.75
@@ -1891,6 +1895,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6075
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .5,.5
@@ -1940,6 +1945,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6075
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .5,.5
@@ -1989,6 +1995,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6075
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .75,.75
@@ -2038,6 +2045,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 6075
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = .75,.75

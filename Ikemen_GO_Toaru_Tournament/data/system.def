@@ -79,6 +79,11 @@ menu.itemname.menuversus.back = "BACK"
 
                    ;Ikemen feature
 
+; Submenu: Story Mode
+menu.itemname.storymode = "STORY MODE"                       ;Ikemen feature
+; story arcs menu items are automatically added before storymode.back
+menu.itemname.storymode.back = "BACK"                        ;Ikemen feature
+
 ; Submenu: Network
 menu.itemname.menunetwork = "NETWORK"                        ;Ikemen feature
 menu.itemname.menunetwork.serverhost = "HOST GAME"           ;Ikemen feature

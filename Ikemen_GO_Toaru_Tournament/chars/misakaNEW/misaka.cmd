@@ -419,6 +419,11 @@ time = 1
 	command=/x
 	time = 1
 
+[Command]
+	name="hold_y"
+	command=/y
+	time = 1
+
 
 ;------------------------------------------------------------------------------
 ;-| 方向キー |-----------------------------------------------------------------
@@ -857,7 +862,8 @@ trigger4=stateno= 1305 && var(1) && !moveguarded
 [State -1, Super Armor]
 type = ChangeState
 value = 750
-triggerall = command = "F_z"
+triggerall = command = "z"
+triggerall = command = "holdfwd"
 triggerall= statetype !=A
 trigger1 = ctrl
 
@@ -872,7 +878,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 930+ifelse(statetype = A,3,0)
 TriggerAll = Var(59) <= 0
-triggerall = command = "y"
+triggerall = command = "z"
 triggerall = command = "holdback"
 triggerall = movetype != H
 triggerall = var(8) = 0
@@ -885,7 +891,7 @@ trigger3=stateno=934
 type = ChangeState
 value = 934;+ifelse(statetype = A,3,0)
 TriggerAll = Var(59) <= 0
-triggerall = command = "y"
+triggerall = command = "z"
 triggerall = command = "holdfwd"
 triggerall = movetype != H
 triggerall=var(9)<3
@@ -903,7 +909,7 @@ value = 939
 TriggerAll = Var(59) <= 0
 trigger1 = 0;command = "y"
 trigger2 = command = "x"
-trigger3 = command = "z"
+trigger3 = command = "y"
 ;triggerall = command != "holdfwd"
 ;triggerall = command != "holdback"
 ;triggerall = command = "holddown"
@@ -921,7 +927,7 @@ triggerall=time>=10
 [State -1, 回避]
 type = ChangeState
 value = 850
-triggerall = command = "x"
+triggerall = command = "y"
 triggerall=command!="holdfwd"
 triggerall=command!="holdback"
 triggerall = statetype != A
@@ -931,44 +937,42 @@ trigger2=stateno=100
 ;Roll
 [State -1, 前転]
 type = ChangeState
-value = ifelse(command = "holdback",870,860)
-triggerall = command = "x"
+value = 860
+triggerall = command = "y"
 triggerall = statetype != A
+triggerall = command = "holdback" || command = "holdfwd"
 trigger1 = ctrl 
 trigger2=stateno=100
 
 
 
 ;Throw
-[State -1, カンフースルー];投げ技
-type = null;ChangeState
-value = 800
-triggerall = command = "x"
-triggerall = statetype = S
-triggerall = ctrl
-triggerall = stateno != 100
-trigger1 = command = "holdfwd"
-trigger1 = p2bodydist X < 3
-trigger1 = (p2statetype = S) || (p2statetype = C)
-trigger1 = p2movetype != H
-trigger2 = command = "holdback"
-trigger2 = p2bodydist X < 5
-trigger2 = (p2statetype = S) || (p2statetype = C)
-trigger2 = p2movetype != H
+;[State -1, カンフースルー];投げ技
+;type = null;ChangeState
+;value = 800
+;triggerall = command = "x"
+;triggerall = statetype = S
+;triggerall = ctrl
+;triggerall = stateno != 100
+;trigger1 = command = "holdfwd"
+;trigger1 = p2bodydist X < 3
+;trigger1 = (p2statetype = S) || (p2statetype = C)
+;trigger1 = p2movetype != H
+;trigger2 = command = "holdback"
+;trigger2 = p2bodydist X < 5
+;trigger2 = (p2statetype = S) || (p2statetype = C)
+;trigger2 = p2movetype != H
+
 ;------------------------------------------------------------------------------
 ;Grab
-[State -1,S_k];投げ
-	Type=ChangeState
-	value=800
-	TriggerAll=Alive!=0
-	TriggerAll=StateType=S
-	TriggerAll=Ctrl
-	TriggerAll=command="y"
-	TriggerAll=command="holdfwd"
-	TriggerAll=StateNo!=100
-	Trigger1=p2bodydist x<=ceil(30*const(size.xscale))
-	Trigger1=enemynear,StateType=S||enemynear,StateType=C
-	Trigger1=enemynear,MoveType!=H
+[State -1, Throw]
+type = ChangeState
+value = 800
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
 ;------------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
@@ -998,9 +1002,8 @@ trigger5 = stateno = [5001,5099]
 [State -1, ゲージ溜め];ちょっとこ丸が追加した技
 type = ChangeState
 value = 700
-TriggerAll=StateType!=A
-	TriggerAll=command="hold_a"
-	TriggerAll=command="hold_c"
+	TriggerAll = StateType != A
+	triggerall = (command = "hold_a" && command = "hold_c") && !(command =  "holdback" || command = "holdfwd")
 	TriggerAll=Power<PowerMax
 	Trigger1=Ctrl
 

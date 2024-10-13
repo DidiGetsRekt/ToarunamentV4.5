@@ -24,7 +24,9 @@
 		"data/score.zss",
 		"data/tag.zss",
 		"data/training.zss",
-		"data/turtlewax.zss"
+		"data/turtlewax.zss",
+		"data/mods/intro-outro.zss",
+		"data/mods/intro-outro-config.zss"
 	],
 	"ControllerStickSensitivity": 0.4,
 	"Credits": 10,

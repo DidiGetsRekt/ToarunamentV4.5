@@ -708,6 +708,7 @@ Value = 5200
 type    = S
 movetype= H
 physics = N
+velset = 0,0
 
 [State 0, StopSnd]
 type = StopSnd

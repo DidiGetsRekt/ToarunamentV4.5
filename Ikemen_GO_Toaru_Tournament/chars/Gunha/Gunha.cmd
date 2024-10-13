@@ -1330,14 +1330,14 @@ trigger1 = var(1)
 
 ;=======================================
 
-[State -1,Endure];Grab
+[State -1,Grab];Grab
 	Type=ChangeState
 	value=800
-	TriggerAll=StateType!=A
-	TriggerAll=(command="x") && (command="holdfwd")
-	Trigger1=Ctrl
-	trigger2 = stateno=1020
-	trigger2=animelemtime(6)>=0 
+	triggerall = command = "x"
+	triggerall = statetype != A
+	triggerall = ctrl || (stateno=1020 && animelemtime(6)>=0)
+	trigger1 = command = "holdfwd"
+	trigger2 = command = "holdback"
 	;trigger2=animelemtime(8)<=0
 
 

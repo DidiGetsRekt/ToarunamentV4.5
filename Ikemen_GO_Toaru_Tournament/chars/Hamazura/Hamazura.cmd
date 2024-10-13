@@ -453,7 +453,7 @@ time = 1
 ;===========================================================================
 ;HYPERS
 
-;Dragon Rider
+;Processor Suit
 [State -1, Processor Suit]
 type = ChangeState
 value = 3100
@@ -802,7 +802,7 @@ trigger1=time>=3
 
 [State -1, Reload]
 type = ChangeState
-value = 800
+value = 900
 TriggerAll = StateType != A
 triggerall=var(5)<14
 triggerall=var(4)>0
@@ -817,14 +817,14 @@ trigger1 = ctrl
 type = ChangeState
 value = 780
 TriggerAll = StateType = A
-triggerall = command = "x"
+triggerall = command = "z"
 trigger1 = ctrl
 
 [State -1, Run Roll]
 type = ChangeState
 value = 770
 ;TriggerAll = StateType != A
-triggerall = command = "x"
+triggerall = command = "z"
 trigger1 = stateno=100
 trigger2= stateno=107
 
@@ -832,7 +832,7 @@ trigger2= stateno=107
 type = ChangeState
 value = 760
 TriggerAll = StateType != A
-triggerall = command = "x"
+triggerall = command = "z"
 triggerall=command="holdfwd"
 triggerall=command!="holdback"
 ;triggerall=command!="holddown"
@@ -842,7 +842,7 @@ trigger1 = ctrl
 type = ChangeState
 value = 761
 TriggerAll = StateType != A
-triggerall = command = "x"
+triggerall = command = "z"
 triggerall=command!="holdfwd"
 triggerall=command="holdback"
 ;triggerall=command!="holddown"
@@ -852,26 +852,21 @@ trigger1 = ctrl
 type = ChangeState
 value = 750
 TriggerAll = StateType != A
-triggerall = command = "x"
+triggerall = command = "z"
 triggerall=command!="holdfwd"
 triggerall=command!="holdback"
-triggerall=command!="holddown"
 trigger1 = ctrl
 trigger2 = stateno=6300 && time<170
 
-;Throw 
+;Grab
 [State -1, Throw]
-Type = ChangeState
-value = 900
-	TriggerAll=Alive!=0
-	TriggerAll = StateType != A
-	TriggerAll=command="z"
-	;TriggerAll=command="holdfwd"
-	;TriggerAll=StateNo!=100
-	Triggerall=enemynear,StateType=S||enemynear,StateType=C
-	Triggerall=enemynear,MoveType!=H
-	Trigger1=Ctrl
-	trigger2=stateno=100
+type = ChangeState
+value = 800
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl || stateno=100
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"	
 	
 
 ;===========================================================================

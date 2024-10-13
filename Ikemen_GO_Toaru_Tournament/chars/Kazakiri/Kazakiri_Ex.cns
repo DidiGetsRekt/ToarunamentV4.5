@@ -122,7 +122,7 @@ ignorehitpause = 1
 
 [State 700, ??????]
 type = ChangeState
-Trigger1 = command != "hold_z"
+Trigger1 = command != "hold_x"
 trigger2=time=42
 ;trigger2 = Power >= powermax
 value = 0
@@ -276,7 +276,7 @@ absolute = 1
 
 [State 0, ChangeState]
 type = ChangeState
-trigger1 = command !="hold_x"
+trigger1 = command !="hold_z"
 value = 751
 ctrl = 0
 ;anim =
@@ -411,7 +411,7 @@ absolute = 1
 type = ChangeState
 Trigger1=Pos Y>=0
 Trigger1=Vel Y >0
-value = 761+(command="hold_x")
+value = 761+(command="hold_z")
 ctrl = 0
 ;anim =
 ignorehitpause = 1
@@ -515,7 +515,7 @@ ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time >=20
-trigger1=command="hold_x"
+trigger1=command="hold_z"
 value = 750
 ctrl = 0
 ;anim =
@@ -525,7 +525,7 @@ ignorehitpause = 1
 [State 0, ChangeState]
 type = ChangeState
 trigger1 = time >=20
-trigger1=command!="hold_x"
+trigger1=command!="hold_z"
 value = 751
 ctrl = 0
 ;anim =
@@ -1144,6 +1144,305 @@ trigger4=parent,anim=760
 ignorehitpause = 1
 ;persistent = 
 
+;Throw
+[Statedef 800]
+Type    = S
+MoveType= A
+Physics = S
+Ctrl = 0
+Anim = 800
+SprPriority = 2
+Facep2 = 1
+velset = 0,0
+
+[State 600,V1=0]
+		Type=VarSet
+		Trigger1=Time=0
+		var(1)=0
+
+
+[State ]
+Type = HitDef
+Trigger1 = P2MoveType != H || P2StateNo = [120,159]
+Trigger1 = P2BodyDist X = [-34,34]
+Trigger1 = Time = 2
+Attr = S, NT
+HitFlag = M-
+Priority = 1, Miss
+SprPriority = 1
+sparkno=-1
+p1facing = cond(command="holdback",-1,1)
+P2Facing = 1
+P1StateNo = 810
+P2StateNo = 811
+NumHits = 0
+Fall.XVelocity = 0
+Fall.YVelocity = 0
+Down.Bounce = 1
+
+[State 2000,Voice]
+		Type=playSnd
+		trigger1=animelem = 3
+		value=200,random%3*2
+		channel=0
+		ignorehitpause=1
+		persistent=0
+
+[State ]
+Type = ChangeState
+Trigger1 = AnimTime = 0
+Value = 0
+Ctrl = 1
+
+;---------------------------------------------------------------------------
+; Teched Going Back - attacker state
+[Statedef 805]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, TargetState]; faz o techador entrar no state do tech
+type = TargetState
+trigger1 = time = 0
+value = 806
+
+[State 200, PlaySnd];som de grito(?)
+type = PlaySnd
+trigger1 = time = 0
+value = 0,14
+
+	[State 3501,Hit Explod]
+		Type=Explod
+		Trigger1=time = 0
+		Anim=20026
+		Pos=0,0
+		bindTime=-1
+		PosType=back
+		sprPriority=-1
+		SuperMoveTime=30
+		PauseMoveTime=30
+		Persistent=0
+ 		ignorehitpause = 1
+
+	[State 3000,????]
+		Type=envColor
+		Trigger1= time = 0
+		value=0,0,0
+		Time=13
+		under=1
+		Persistent=0
+ 		ignorehitpause = 1
+
+[State 150, 1];anima?o
+type = ChangeAnim
+trigger1 = 1
+value = 120
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 0, ChangeState]
+type = selfState
+trigger1 = time = 30
+value = 0
+ctrl = 1
+
+;==================================================================================
+; Throw Escape - victim state
+[Statedef 806]
+type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
+physics = S                      ;Physics: S-stand, C-crouch, A-air
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+poweradd = 0                    ;Power to add (Def: 0)
+sprpriority = 2                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 120
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, PosSet];fique no ch? agora
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 200, 3]; vai pro state 0 e faz tudo voltar ao normal (n?)
+type = selfState
+trigger1 = time = 33
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Throw Success
+[Statedef 810]
+Type    = S
+MoveType= A
+Physics = S
+Anim = 810
+
+[State 0, TargetBind]
+type = TargetBind
+trigger1 = time = 0
+pos = 50,0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, TargetLifeAdd]
+type = TargetLifeAdd
+trigger1=animelem = 6
+value = -55*fvar(0)
+ID = -1
+kill = 1
+absolute = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelemtime(4) = 0
+value = S0,0+random%2 
+channel = -1
+;lowpriority = -1
+freqmul = 1.0
+loop = 0
+pan = 0
+;abspan = 
+;ignorehitpause = 
+;persistent = 
+
+[State 2000,Voice]
+		Type=playSnd
+		trigger1=animelemtime(4) = 0
+		value=1000,0
+		channel=0
+		ignorehitpause=1
+		persistent=0
+
+[State 0, ChangeState]; confere se o alvo apertou o bot? pra techar, se sim, te leva pro state de tomar o tech
+type = ChangeState
+triggerall = NumTarget;()
+triggerall = time <= 8
+trigger1 = target,AILevel=0
+trigger1 = target, command = "x" && (target, command = "holdfwd" || target,command = "holdback")
+trigger2 = target,AILevel>0
+trigger2 = random <=floor(AILevel*100/1.5)
+value = 805
+ctrl = 0
+
+[State ]
+Type = ChangeState
+Trigger1 = AnimTime = 0
+Value = 0
+Ctrl = 1
+
+;---------------------------------------------------------------------------
+;Thrown
+[Statedef 811]
+Type    = S
+MoveType= H
+Physics = N
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = enemy,animelemtime(4)=0
+x = -6
+y = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim2
+trigger1 = time = 0
+value = 811
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = enemy,animelemtime(4)=0
+trigger1 = anim = 811
+value = 5002
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 5002
+trigger1 = animtime = 0
+trigger2 = animelemtime(1) = 20
+value = 5007
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = anim = 5007
+x = 0
+y = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, SelfState]
+type = SelfState
+trigger1 = anim = 5007
+trigger1 = animelemtime(1) = 20
+value = 0
+;anim =
+ctrl = 1
+;ignorehitpause = 0
+;persistent = 1
 
 
 ;================================================================================

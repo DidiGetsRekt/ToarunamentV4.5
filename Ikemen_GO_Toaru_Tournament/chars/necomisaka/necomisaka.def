@@ -2,7 +2,7 @@
 Name         = "neco-misaka"  ;キャラクターの名前（必要な項目なので省略不可）
 DisplayName  = "neco-misaka"  ;M.U.G.E.Nで実際に表示される名前（省略可能）
 VersionDate  = 04,15,2011     ;キャラクターの最終更新日（変えなくてもＯＫ）
-MugenVersion = 04,15,2011     ;キャラクターが動作出来るM.U.G.E.Nの改訂版
+MugenVersion = 1.1     ;キャラクターが動作出来るM.U.G.E.Nの改訂版
 Author       = "Elecbyte"     ;キャラクターの作成者（必要な項目なので省略不可）
 Pal.Defaults = 1,2,3,4        ;ＣＰＵで出てきた時のカラーパレットの順番
 

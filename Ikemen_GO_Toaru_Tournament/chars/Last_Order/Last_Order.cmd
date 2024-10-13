@@ -789,8 +789,8 @@ trigger1 = ctrl
 trigger2 = var(1)
 
 ;---------------------------------------------------------------------------
-;63214a
-[State -1, 63214a]
+;63214b
+[State -1, 63214b]
 type = ChangeState
 value = 1450
 triggerall = !var(59)
@@ -1003,6 +1003,18 @@ trigger1 = Command = "BL_DB" && command != "holdfwd"&& Command != "holdup"
 var(21) = 1
 
 ;---------------------------------------------------------------------------
+;Throw
+[State -1, Throw]
+type = ChangeState
+value = 800
+triggerall = !var(59)
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
+
+;---------------------------------------------------------------------------
 ;Power Charge
 [State -1 ,Power Charge]
 type = ChangeState
@@ -1012,17 +1024,6 @@ triggerall = statetype = S
 triggerall = Power < 6000
 triggerall = ctrl = 1
 trigger1 = command = "holdx"
-
-;---------------------------------------------------------------------------
-;Throw
-[State -1, Throw]
-type = ChangeState
-value = 800
-triggerall = !var(59)
-triggerall = command = "y"
-triggerall = command != "holddown"
-trigger1 = statetype = S
-trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 [State -1, Burst]

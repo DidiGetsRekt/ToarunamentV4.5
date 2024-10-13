@@ -1832,6 +1832,7 @@ value = 9,0
 type = Explod
 trigger1 = time = 2
 anim = 15000
+postype = p1
 pos = 0, 0
 sprpriority = -10
 ownpal = 1
@@ -1841,6 +1842,7 @@ supermove = 1
 [State 15000, Effect]
 type = Explod
 trigger1 = time = 12
+postype = p1
 anim = 15001
 pos = 0, 0
 sprpriority = 10
@@ -1883,6 +1885,7 @@ value = 9,1
 type = Explod
 trigger1 = time = 2
 anim = 15100
+postype = p1
 pos = 0, 0
 sprpriority = -10
 ownpal = 1
@@ -1893,6 +1896,7 @@ supermove = 1
 type = Explod
 trigger1 = time = 12
 anim = 15101
+postype = p1
 pos = 0, 0
 sprpriority = 10
 ownpal = 1
@@ -1934,6 +1938,7 @@ value = 9,2
 type = Explod
 trigger1 = time = 2
 anim = 15200
+postype = p1
 pos = 0, 0
 sprpriority = -10
 ownpal = 1
@@ -1944,6 +1949,7 @@ supermove = 1
 type = Explod
 trigger1 = time = 12
 anim = 15201
+postype = p1
 pos = 0, 0
 sprpriority = 10
 ownpal = 1

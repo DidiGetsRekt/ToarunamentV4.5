@@ -96,31 +96,20 @@ Taunt									^S
 (Is cancellable into dodges, feints,
 supers, setups and Headbutt for feinting)
 
-Throw									_B^LP / _B^X 
+Throw									_B / _F  _+ ^LP / ^X
 _!Slam									_D
 <#ff7700>Consume :</> <#ffffff>Byakko</>
 <#0000ff>Magic</> effect
 _!Ushi no Koku Mairi					^LP / ^X (hold)
 <#ffffff>(White Ceremony)</>
 
-Dodge Feint								^LP / ^X
-Ducking									_F^LP / _F^X
-
-Expelled Breath							^LK / ^A during Dodge Feint / Ducking
-Evolved Clever Feet						^MK / ^B during Dodge Feint / Ducking
-Go To Sleep								^HK / ^C during Dodge Feint / Ducking
-
-About the Feint Series :
-This kind of series of movements and attacks can be
-thought of like the mechanic Thor has in which he has
-moves available only when he is running.
-Here, the same principle applies but only from feints.
-Where Dodge Feint is a sort of spot dodge and Ducking is a
-forward dodge.
-Both of them don't have invincibility.
-You can cancel Dodge Feint into Ducking but not vice versa.
-You can cancel into ^K / ^A, ^B or ^C or actual dodges
-(which are defined later on)
+<#0000ff>Magic</> effect
+Blue Spell								^LP / ^X 
+(Magic Parry)
+<#ff7700>Consume :</> <#0000ff>Seiryu</>
+<#0000ff>Magic</> effect
+_!Blue Spell Extension					^LP / ^X (hold)
+<#0000ff>(Blue Ceremony)</>
 
 <#ff7700>Consume :</> <#000000>Genbu</>_+<#ffffff>Byakko</>_+<#ff0000>Suzaku</>_+<#0000ff>Seiryu</>
 <#ffffff>Custom Combo</>				^LP_+^LK / ^X_+^A
@@ -137,13 +126,23 @@ You can cancel into ^K / ^A, ^B or ^C or actual dodges
 Spot Dodge								^MP / ^Y
 Forward Dodge							_F^MP / _F^Y
 
-<#0000ff>Magic</> effect
-Blue Spell								^HP / ^Z 
-(Magic Parry)
-<#ff7700>Consume :</> <#0000ff>Seiryu</>
-<#0000ff>Magic</> effect
-_!Blue Spell Extension					^HP / ^Z (hold)
-<#0000ff>(Blue Ceremony)</>
+Dodge Feint								^HP / ^Z
+Ducking									_F^HP / _F^Z
+
+Expelled Breath							^LK / ^A during Dodge Feint / Ducking
+Evolved Clever Feet						^MK / ^B during Dodge Feint / Ducking
+Go To Sleep								^HK / ^C during Dodge Feint / Ducking
+
+About the Feint Series :
+This kind of series of movements and attacks can be
+thought of like the mechanic Thor has in which he has
+moves available only when he is running.
+Here, the same principle applies but only from feints.
+Where Dodge Feint is a sort of spot dodge and Ducking is a
+forward dodge.
+Both of them don't have invincibility.
+You can cancel Dodge Feint into Ducking but not vice versa.
+You can cancel into ^K / ^A, ^B or ^C or actual dodges
 
 Charge up								^LK_+^HK / ^A_+^C
 

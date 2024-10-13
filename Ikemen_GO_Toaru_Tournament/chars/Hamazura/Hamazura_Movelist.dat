@@ -1,15 +1,11 @@
 
 <#f0f000>Movelist :</>
 
-Run					_F_F
+Run						_F_F
 Back Hop				_B_B
 Back Run (Hold _B after Back Hop)
 
-Spot Dodge				^LP / ^X
-Roll					Direction _+ ^LP / ^X
-Run Roll 				^LP / ^X (While Run or Back Run)
-Air Roll				^LP / ^X (air)
-
+Throw 					_B / _F  _+ ^LP / ^X
 Reload 					_D^LP / _D^X
 
 Charge up				^LK_+^HK / ^A_+^C
@@ -20,7 +16,10 @@ Luck Change				^MP / ^Y
 (Lvl 3 for <#00ffff>Great Luck</>)
 (Can be cancelled by dodge)
 
-Throw 					^HP / ^Z
+Spot Dodge				_. / _D _+ ^HP / ^Z
+Roll					_B / _F _+ ^HP / ^Z
+Run Roll 				^HP / ^Z (While Run or Back Run)
+Air Roll				^HP / ^Z (air)
 
 <#f0f000>Information :</>
 Bullet system:

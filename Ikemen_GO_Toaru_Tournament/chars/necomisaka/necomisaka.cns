@@ -259,18 +259,27 @@ type = S
 movetype = I
 physics = S
 ctrl = 0
-anim = 195
+anim = 195+random%2
 velset = 0,0
 sprpriority = 2
 
 [State 195, 音を鳴らす]
 type = PlaySnd
+trigger1 = anim = 195
 trigger1 = Time < 50
 value = 0, 5
 persistent = 12
 
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = anim = 196
+trigger1 = time = 0
+value = S196,0
+channel = 0
+
 [State 195]
 type = explod
+trigger1 = anim = 195
 trigger1 = Time < 50
 anim = 2806+random%6
 pos = 0, -25
@@ -285,6 +294,15 @@ supermovetime = 9999
 ownpal = 1
 removeongethit = 1
 persistent = 6
+
+[State 195]
+type = explod
+trigger1 = anim = 196
+trigger1 = Time < 50
+anim = 4551
+pos = 50, -100
+removetime = 75
+postype = p1
 
 [State 195]
 type = varset
@@ -2764,6 +2782,12 @@ fall = 1
 fall.yvelocity = 0
 id = StateNo
 
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+value = S800,0
+channel = 0
+
 [State 800, ステート変更]
 type = ChangeState
 Trigger1 = AnimTime = 0
@@ -2863,6 +2887,17 @@ type = PlaySnd
 trigger1 = time = 49
 value = 1, 5
 
+[State 0, ChangeState]; confere se o alvo apertou o bot? pra techar, se sim, te leva pro state de tomar o tech
+type = ChangeState
+triggerall = NumTarget;()
+triggerall = time <= 8
+trigger1 = target,AILevel=0
+trigger1 = target, command = "x" && (target, command = "holdfwd" || target,command = "holdback")
+trigger2 = target,AILevel>0
+trigger2 = random <=floor(AILevel*100/1.5)
+value = 805
+ctrl = 0
+
 [State 801, ステート変更]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -2957,6 +2992,135 @@ Type = SelfState
 Trigger1 = Vel Y > 5
 Trigger1 = Pos Y >= 0
 Value = 5100
+
+;---------------------------------------------------------------------------
+; Teched Going Back - attacker state
+[Statedef 805]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, TargetState]; faz o techador entrar no state do tech
+type = TargetState
+trigger1 = time = 0
+value = 806
+
+[State 200, PlaySnd];som de grito(?)
+type = PlaySnd
+trigger1 = time = 0
+value = 0,14
+
+	[State 3501,Hit Explod]
+		Type=Explod
+		Trigger1=time = 0
+		Anim=20026
+		Pos=0,0
+		bindTime=-1
+		PosType=back
+		sprPriority=-1
+		SuperMoveTime=30
+		PauseMoveTime=30
+		Persistent=0
+ 		ignorehitpause = 1
+
+	[State 3000,????]
+		Type=envColor
+		Trigger1= time = 0
+		value=0,0,0
+		Time=13
+		under=1
+		Persistent=0
+ 		ignorehitpause = 1
+
+[State 150, 1];anima?o
+type = ChangeAnim
+trigger1 = 1
+value = 120
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 0, ChangeState]
+type = selfState
+trigger1 = time = 30
+value = 0
+ctrl = 1
+
+;==================================================================================
+; Throw Escape - victim state
+[Statedef 806]
+type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
+physics = S                      ;Physics: S-stand, C-crouch, A-air
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+poweradd = 0                    ;Power to add (Def: 0)
+sprpriority = 2                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 120
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, PosSet];fique no ch? agora
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 200, 3]; vai pro state 0 e faz tudo voltar ao normal (n?)
+type = selfState
+trigger1 = time = 33
+value = 0
+ctrl = 1
 
 ;---------------------------------------------------------------------------
 ;空投げ
@@ -3319,6 +3483,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 22,-17
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3330,6 +3495,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 951
 pos = 22,-17
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3590,6 +3756,7 @@ type = Explod
 trigger1 = numexplod(951) = 0 && anim = 902
 anim = 951
 pos = 22,-17
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3823,6 +3990,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -3834,6 +4002,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 951
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4105,6 +4274,7 @@ type = Explod
 trigger1 = numexplod(951) = 0 && anim = 912
 anim = 951
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4339,6 +4509,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 18,-19
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4350,6 +4521,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 951
 pos = 18,-19
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4556,6 +4728,7 @@ type = Explod
 trigger1 = numexplod(951) = 0 && anim = 922
 anim = 951
 pos = 18,-14
+postype = p1
 bindtime = -1
 sprpriority = 3
 removeongethit = 1
@@ -4758,6 +4931,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 950
 pos = 12,-14
+postype = p1
 sprpriority = 3
 removeongethit = 1
 ownpal = 1
@@ -4905,6 +5079,7 @@ trigger1 = numtarget > 0 && hitpausetime = 9
 trigger2 = numtarget = 0
 anim = 960
 pos = 12,-14
+postype = p1
 sprpriority = 3
 removeongethit = 1
 ownpal = 1
@@ -5400,6 +5575,7 @@ type = Explod
 trigger1 = animelemno(0) = 1 && time < 20
 anim = 1101
 pos = -7,-12
+postype = p1
 removetime = 1
 ID = 1101
 sprpriority = 3
@@ -5410,6 +5586,7 @@ type = Explod
 trigger1 = animelemno(0) = 2
 anim = 1102
 pos = -11,-25
+postype = p1
 removetime = 1
 ID = 1102
 sprpriority = 3
@@ -5420,6 +5597,7 @@ type = Explod
 trigger1 = animelemno(0) = 3
 anim = 1103
 pos = -5,-26
+postype = p1
 removetime = 1
 ID = 1103
 sprpriority = 3
@@ -5429,6 +5607,12 @@ ownpal = 1
 type = PlaySnd
 trigger1 = AnimElem = 4
 value = 0, 3
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = S1100,0
+channel = 0
 
 [State 1100]
 type = Helper
@@ -5601,6 +5785,7 @@ type = Explod
 trigger1 = animelemno(0) = 1 && time < 20
 anim = 1101
 pos = -7,-12
+postype = p1
 removetime = 1
 ID = 1101
 sprpriority = 3
@@ -5611,6 +5796,7 @@ type = Explod
 trigger1 = animelemno(0) = 2
 anim = 1102
 pos = -11,-25
+postype = p1
 removetime = 1
 ID = 1102
 sprpriority = 3
@@ -5621,6 +5807,7 @@ type = Explod
 trigger1 = animelemno(0) = 3
 anim = 1103
 pos = -5,-26
+postype = p1
 removetime = 1
 ID = 1103
 sprpriority = 3
@@ -5630,6 +5817,12 @@ ownpal = 1
 type = PlaySnd
 trigger1 = AnimElem = 4
 value = 0, 3
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = S1100,0
+channel = 0
 
 [State 1110]
 type = Helper
@@ -7712,6 +7905,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 0
 anim = 1231+random%3
 pos = 12,-37
+postype = p1
 scale = .3,.3
 supermovetime = 36
 ID = 1231
@@ -7723,6 +7917,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 0
 anim = 1231+random%3
 pos = -12,-37
+postype = p1
 scale = .3,.3
 facing = -1
 supermovetime = 36
@@ -7735,6 +7930,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 1
 anim = 1234+random%3
 pos = 12,-37
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 supermovetime = 36
@@ -7747,6 +7943,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 1
 anim = 1234+random%3
 pos = -12,-37
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 supermovetime = 36
@@ -7759,6 +7956,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 2
 anim = 1231+random%3
 pos = 12,-37
+postype = p1
 scale = .3,.3
 facing = -1
 supermovetime = 36
@@ -7771,6 +7969,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = 2
 anim = 1231+random%3
 pos = -12,-37
+postype = p1
 scale = .3,.3
 supermovetime = 36
 ID = 1231
@@ -7782,6 +7981,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = [3,5]
 anim = 2021+random%3
 pos = 24,-80+AnimElemTime(1)%6*15
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 vfacing = 1-random%2*2
@@ -7795,6 +7995,7 @@ type = Explod
 trigger1 = AnimElemTime(1) = [3,5]
 anim = 2021+random%3
 pos = -24,-80+AnimElemTime(1)%6*15
+postype = p1
 scale = .3,.3
 facing = 1-random%2*2
 vfacing = 1-random%2*2
@@ -7922,6 +8123,7 @@ type = Explod
 trigger1 = Time = 0
 anim = 2025+random%2
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 scale = 1,.5
@@ -7934,6 +8136,7 @@ type = Explod
 trigger1 = Time%2 = 0 && time != 0 && Pos X = [-160,160]
 anim = 2025+random%5
 pos = 0,0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 random = 0,5
@@ -7948,6 +8151,7 @@ trigger1 = time%2 && random%3 = 0
 anim = 2030+random%2
 ID = 2030+random%2
 pos = 0, 0
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 random = 60,20
@@ -8065,6 +8269,7 @@ type = explod
 trigger1 = time%5 = 0 && animelemtime(3) = [0,24]
 anim = 2800+random%6
 pos = 19, -16
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 bindtime = 6
@@ -8078,6 +8283,12 @@ ownpal = 1
 type = PlaySnd
 trigger1 = time%5 = 0 && animelemtime(3) = [0,24]
 value = 0, 5
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 5
+value = S1100,0
+channel = 0
 
 [State 2120, 超必殺技暗転時間停止]
 type = SuperPause
@@ -8151,6 +8362,7 @@ type = explod
 trigger1 = time%2
 anim = 2800+random%6
 pos = 5-random%10,5-random%10
+postype = p1
 facing = 1-random%2*2
 vfacing = 1-random%2*2
 bindtime = 6
@@ -10366,6 +10578,7 @@ type = Explod
 trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 102
 ID = 102
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -10375,6 +10588,7 @@ trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 3004
 ID = 3004
 pos = 0, 0
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -10395,6 +10609,7 @@ trigger1 = time = 78
 anim = 3006
 ID = 3006
 pos = 25, -22
+postype = p1
 scale = 1.25, .75
 sprpriority = 3
 ownpal = 1
@@ -10574,6 +10789,7 @@ trigger1 = time = [2,5]
 anim = 3005
 ID = 3005
 pos = -105-time*35, 22
+postype = p1
 scale = .3+time*.1, .3+time*.1
 sprpriority = 3
 ownpal = 1
@@ -10584,6 +10800,7 @@ trigger1 = time%2 = 0
 anim = 103
 ID = 103
 pos = 0,22
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -10776,6 +10993,7 @@ trigger1 = AnimElemTime(4) = 0
 anim = 3005
 ID = 3005
 pos = 30, 0
+postype = p1
 scale = .5, .5
 facing = -1
 sprpriority = 3
@@ -10808,6 +11026,7 @@ trigger1 = animelemtime(8) = 0 || animtime= 0
 anim = 3006
 ID = 3006
 pos = 25, -22
+postype = p1
 scale = 1.25, 1
 sprpriority = 3
 ownpal = 1
@@ -11022,6 +11241,7 @@ trigger1 = time = [33,35]
 anim = 3005
 ID = 3005
 pos = -(time-31)*35, 20
+postype = p1
 scale = .5+(time-33)*.1, .5+(time-33)*.1
 sprpriority = 3
 ownpal = 1
@@ -11032,6 +11252,7 @@ trigger1 = time > 32
 anim = 103
 ID = 103
 pos = 0,20
+postype = p1
 sprpriority = 3
 ownpal = 1
 
@@ -11323,6 +11544,7 @@ type = Explod
 trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 102
 ID = 102
+postype = p1
 sprpriority = 3
 supermovetime = 10
 ownpal = 1
@@ -11333,6 +11555,7 @@ trigger1 = AnimElemTime(6) = 0 && anim = 3000
 anim = 3004
 ID = 3004
 pos = 0, 0
+postype = p1
 sprpriority = 3
 supermovetime = 100
 ownpal = 1
@@ -11354,6 +11577,7 @@ trigger1 = time = 78
 anim = 3006
 ID = 3006
 pos = 25, -22
+postype = p1
 scale = 1.25, .75
 sprpriority = 3
 supermovetime = 10
@@ -12060,10 +12284,20 @@ value = 0
 ctrl = 1
 
 ;===========================================================================
-; 準常時監視ステート（－３）
+; 準常時監視ステート（‐３）
 ;===========================================================================
 
 [Statedef -3]
+
+;Gethit sounds
+[State -3, Get Hit Sounds]
+type = PlaySnd
+triggerall = alive && time = 1
+trigger1 = (stateno = 5000 || stateno = 5010 || stateno = 5020 || stateno = 5070 || stateno = 5080)
+trigger1 = enemynear,hitdefattr = SCA,NA,SA,HA
+value = S5000,0+(random%2)
+volume = 255
+channel = 0
 
 [State 3101, ステート変更]
 type = null

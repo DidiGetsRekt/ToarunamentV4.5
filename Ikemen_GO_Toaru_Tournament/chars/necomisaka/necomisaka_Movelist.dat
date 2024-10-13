@@ -4,6 +4,8 @@
 Necomisaka can do one air jump 
 and can air dash in both directions
 
+Taunt							^S
+
 <#f0f000>Normals:</>
 
 Spark							^LK / ^A
@@ -18,6 +20,9 @@ Reverse Neco Chaser  					_B^HK / _B^C
 Crouching Spark						^LK / ^A (Crouching)
 
 Crouching Iron Sand Sword				^MK / ^B (Crouching)
+
+Crouching Iron Sand Whip				_F^MK / _F^B (Crouching)
+(launcher)
 
 Crouching Iron Sand Chainsaw (Can be Held)  		
 ^HK / ^C (Crouching)
@@ -34,14 +39,12 @@ Air Elec Slash			 			^HK / ^C (Air)
 Air Elec Ball						_D^HK / _D^C (Air)
 
 
+Elec Throw 					_B / _F  _+ ^LP / ^X
+
 Heat Mode (More than 1 bar)				^MP / ^Y 
 (You can use any SP in heat mode)
 
 Spot Dodge						_D^MP / _D^Y 
-
-Elec Throw						_F^MP / _F^Y 
-
-Backwards Elec Throw					_B^MP / _B^Y 
 
 
 
@@ -96,10 +99,8 @@ _D_D ^HK / _D_D ^C
 
 Wall Magnetism 						
 _B_D_DB ^LK / _B_D_DB ^A (Air OK)
-Wall Switch (When on Wall)		
-_D_DF_F ^LK / _D_DF_F ^A
-Discharge (When on Wall)		
-_D_DB_B ^LK / _D_DB_B ^A
+_!Wall Switch			_D_DF_F ^K / _D_DF_F ^A/^B/^C
+_!Discharge				_D_DB_B ^K / _D_DB_B ^A/^B/^C
 
 
 Magnet Jump					
@@ -119,7 +120,7 @@ _D_DB_B ^HP / _D_DB_B ^Z
 Railgun					
 _B_DB_D_DF_F ^HK / _B_DB_D_DF_F ^C
 
-<#00ff00>Lvl-3</>
+<#00ff00>Lvl-3</> (during heat mode)
 Hyper Railgun					
 _B_DB_D_DF_F ^HK / _B_DB_D_DF_F ^C
 
@@ -142,5 +143,5 @@ _D_DF_F_D_DF_F ^HK / _D_DF_F_D_DF_F ^C
 
 Credits:
 
-Writing: DidiGetsRekt
+Writing: DidiGetsRekt, Seb368
 

@@ -2048,7 +2048,7 @@ priority = 1, Miss    ;Throw has low priority, must be miss or dodge type.
 sparkno = -1          ;No spark
 p1sprpriority = 1     ;Draw p1's sprite in front of p2
                       ;p2's sprite priority is set to 0 by default
-p1facing = 1
+p1facing = cond(command="holdback",-1,1)
 p2facing = 1          ;Force p2 to face KFM
 p1stateno = 810       ;On success, KFM changes to state 810
 p2stateno = 820       ;If hit, p2 changes to state 820 in KFM's cns
@@ -2060,6 +2060,470 @@ type = ChangeState
 Trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
+
+;---------------------------------------------------------------------------
+; Teched Going Back - attacker state
+[Statedef 805]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, TargetState]; faz o techador entrar no state do tech
+type = TargetState
+trigger1 = time = 0
+value = 806
+
+[State 200, PlaySnd];som de grito(?)
+type = PlaySnd
+trigger1 = time = 0
+value = 0,14
+
+	[State 3501,Hit Explod]
+		Type=Explod
+		Trigger1=time = 0
+		Anim=20026
+		Pos=0,0
+		bindTime=-1
+		PosType=back
+		sprPriority=-1
+		SuperMoveTime=30
+		PauseMoveTime=30
+		Persistent=0
+ 		ignorehitpause = 1
+
+	[State 3000,????]
+		Type=envColor
+		Trigger1= time = 0
+		value=0,0,0
+		Time=13
+		under=1
+		Persistent=0
+ 		ignorehitpause = 1
+
+[State 150, 1];anima?o
+type = ChangeAnim
+trigger1 = 1
+value = 120
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 0, ChangeState]
+type = selfState
+trigger1 = time = 30
+value = 0
+ctrl = 1
+
+;==================================================================================
+; Throw Escape - victim state
+[Statedef 806]
+type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
+physics = S                      ;Physics: S-stand, C-crouch, A-air
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+poweradd = 0                    ;Power to add (Def: 0)
+sprpriority = 2                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 120
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, PosSet];fique no ch? agora
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 200, 3]; vai pro state 0 e faz tudo voltar ao normal (n?)
+type = selfState
+trigger1 = time = 33
+value = 0
+ctrl = 1
+
+;Grab Kick
+; Description: In this state, KFM throws the opponent by binding him to
+;     various offsets based on his current frame of animation. For
+;     example, [State 810, Bind 1] binds the opponent to an offset of
+;     28 pixels in front of KFM. That puts him around where KFM's hand
+;     is at. Is is important to keep the opponent bound using a
+;     TargetBind controller at all times, until you let him go. This
+;     is especially important if your player has a Clsn2 box that
+;     allows him to get hit while throwing someone. Each time a player
+;     gets hit, all his bound targets will be set to a fall state. If
+;     the opponent is not bound, then he may get stuck in his thrown
+;     state when his attacker is knocked out of the throw halfway.
+; Notes: There is a TargetLifeAdd controller to decrease the opponent's
+;     life, and a TargetState controller to change his state to a
+;     falling state when KFM lets go of him.
+[Statedef 810]
+type    = S
+movetype= A
+physics = N
+anim = 810
+Poweradd=FVar(11)
+
+[State 810,Snd2]
+Type=playSnd
+Trigger1=time =1
+value=1,8
+channel=1
+
+[State 1250, ??]
+		type = NotHitBy
+		value = SCA
+		trigger1 = 1
+ 		ignorehitpause = 1
+
+	;[State 810, ????]
+	;	type = PlaySnd
+	;	trigger1 = AnimElem = 1
+	;	trigger2 = AnimElem = 3
+	;	value = 105, 2
+
+	
+	[State ????]
+		type = posadd
+		trigger1 = AnimElemtime(10) = 0
+		x = -39-fvar(11)
+
+	
+
+	;[State 810, ??1]
+	;	type = PlaySnd
+	;	trigger1 = AnimElem = 8
+	;	value = 105, 27
+
+	;[State 810, ??2]
+	;	type = PlaySnd
+	;	trigger1 = AnimElem = 10
+	;	value = 105, 28
+
+	
+	
+
+	[State 810, ????????1]
+		type = TargetBind
+		trigger1 = AnimElemTime(2) < 0
+		pos = 35, 0
+
+	[State 810, ????????2]
+		type = TargetBind
+		trigger1 = AnimElemTime(2) >= 0 && AnimElemTime(8) < 0
+		pos = 52, 0
+
+	[State 810, ????????3]
+		type = TargetBind
+		trigger1 = AnimElemTime(8) >= 0 && AnimElemTime(10) < 0
+		pos = 56, 0
+
+	
+	
+[State 810,Snd2]
+Type=playSnd
+Trigger1=animelem =11
+value=1,9
+channel=1
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 10
+value = S1200,1
+	[State 810, ???????????]
+		type = TargetLifeAdd
+		trigger1 = AnimElem = 11
+		value = Ceil(-91*fvar(10))
+		kill = 1
+
+	[State 810, ????????????]
+		type = TargetState
+		trigger1 = AnimElem = 10
+		value = 830
+[State -1,UŒ‚•â³]
+Type=VarSet
+Trigger1=AnimElem = 11
+fvar(0)=fvar(0)*0.45
+persistent = 0
+ignorehitpause = 1
+	
+
+	;[State 1310,????????????????]
+	;	Type = VarSet
+	;	Trigger1=AnimElem = 12
+	;	Trigger1=var(1) := 1
+	;	fvar(0) = fvar(0) * 0.45
+	;	ignorehitpause = 1
+	;	persistent=0
+
+[State 0, ChangeState]; confere se o alvo apertou o bot? pra techar, se sim, te leva pro state de tomar o tech
+type = ChangeState
+triggerall = NumTarget;()
+triggerall = time <= 8
+trigger1 = target,AILevel=0
+trigger1 = target, command = "x" && (target, command = "holdfwd" || target,command = "holdback")
+trigger2 = target,AILevel>0
+trigger2 = random <=floor(AILevel*100/1.5)
+value = 805
+ctrl = 0
+
+	[State 810, ??????]
+		type = ChangeState
+		trigger1 = AnimTime = 0
+		value = 0
+		ctrl = 1
+;---------------------------------------------------------------------------
+;Thrown by Grab Kick
+; (a custom gethit state)
+; Description: This is the state that the opponent changes to after being
+;     hit by KFM's throw HitDef. The important thing here is to use a
+;     ChangeAnim2 controller. The difference between ChangeAnim2 and
+;     ChangeAnim is that ChangeAnim2 changes the player's animation to
+;     an action in the AIR file of the attacker (in this case, kfm.air),
+;     whereas ChangeAnim always changes the player to an action in his
+;     own AIR file. Look at Action 820 in kfm.air for some extra
+;     comments.
+[Statedef 820]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+	[State 1250, ??]
+		type = NotHitBy
+		value = SCA
+		trigger1 = 1
+		time = 2;???
+ 		ignorehitpause = 1
+
+	[State 820, ????????]
+		type = ChangeAnim2
+		trigger1 = Time = 0
+		value = 820
+
+	[State 820, ?????????]
+		type = SelfState
+		trigger1 = !GetHitVar(IsBound) ;(?3)
+		value = 5050
+
+[Statedef 830,????]
+	type = A
+	movetype = H
+	physics = N
+
+	[State 831]
+		type = velSet
+		trigger1 = time = 0
+		x = -6
+
+	[State 832]
+		type = Width
+		trigger1 = time = 0
+		edge = 0,18
+		player = 12,0
+
+	[State 1250, ??];???
+		type = NotHitBy
+		value = SCA
+		trigger1 = 1
+		time = 3
+ 		ignorehitpause = 1
+
+	[State 831]
+		type = velSet
+		trigger1 = time = 1
+		x = -20
+
+	[State 831]
+		type = screenbound
+		trigger1 = 1
+		value = 1
+		movecamera = 0,1
+
+	[State 831]
+		type = playerpush
+		trigger1 = 1
+		value = 0
+
+	[State 831]
+		type = changeanim
+		trigger1 = Time = 0
+		value = 5050
+
+	[State 832]
+		type = velset
+		trigger1 = backedgebodydist<=11 || frontedgebodydist<=11
+		x = -1
+
+	[State 831]
+		type = changestate
+		trigger1 = backedgebodydist<=10 || frontedgebodydist<=10
+		value = 831
+
+	[State 831]
+		type = selfstate
+		triggerall = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value=5100
+
+	[State 7010,????]
+		type = SelfState
+		trigger1 = Time >= 150
+		value = 5050
+
+[Statedef 831,?????]
+	type = A
+	movetype = H
+	physics = N
+
+	[State 832]
+		type = velset
+		trigger1 = time = 0
+		x = 0
+		y = 0
+
+	[State 832]
+		type = posset
+		trigger1 = time = 0
+		x = -160*facing
+
+	[State 832]
+		type = posadd
+		trigger1 = time = 2
+		x = 1
+
+	[State 832]
+		type = Width
+		trigger1 = time = 3
+		trigger1 = backedgebodydist <10
+		edge = 0,12
+		player = 12,0
+
+	[State 1250, ??];???
+		type = NotHitBy
+		value = SCA
+		trigger1 = time = 0
+		time = 3
+ 		ignorehitpause = 1
+
+	[State 832, ????]
+		type = EnvShake
+		trigger1 = Time = 0
+		time = 20
+		freq = 50
+		ampl = -16
+		phase = 0
+
+	[State 832]
+		type = posfreeze
+		trigger1 = 1
+;		x = 1
+		y = 1
+
+	[State 832]
+		type = playerpush
+		trigger1 = 1
+		value = 1
+
+	[State 832]
+		type = changeanim
+		trigger1 = 1
+		value = 5000
+
+	[State 832]
+		type=changestate
+		trigger1 = time>=3;4;???
+		value = 832
+
+
+[Statedef 832,???????]
+	type = A
+	movetype = H
+	physics = N
+
+	[State 833]
+		type = veladd
+		trigger1 = 1
+		y = 0.3
+
+	[State 833]
+		type = velset
+		trigger1 = Time = 0
+		x = 0
+		y = -5.25
+
+	[State 833]
+		type = changeanim
+		trigger1 = Time = 0
+		value = ifelse(selfanimexist(5051),5051,5030)
+
+	[State 833]
+		type = changeanim
+		trigger1 = anim=5030 && AnimTime = 0
+		value = 5050
+
+	[State 833]
+		type = changeanim
+		trigger1 = vel y>-3 && anim = 5051
+		value = 5061
+
+	[State 833]
+		type = playerpush
+		trigger1 = 1
+		value = 0
+
+	[State 833]
+		type=selfstate
+		triggerall = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value = 5100
 
 ;---------------------------------------------------------------------------
 ;Ground Bounce Normals
