@@ -120,6 +120,7 @@
 		Type=Explod
 		Trigger1=Time=0
 		Anim=4300
+		Postype = p1
 		Pos=floor(0*const(Size.xScale)),floor(-50*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -449,6 +450,7 @@
 		Type=Explod
 		Trigger1=Time=0
 		Anim=4300
+		Postype = p1
 		Pos=floor(5*const(Size.xScale)),floor(-85*const(Size.yScale))
 		SuperMove=1
 		sprPriority=4
@@ -539,6 +541,7 @@
 		Type=Explod
 		Trigger1=AnimElem=4
 		Anim=2110
+		Postype = p1
 		Pos=floor(-26*const(Size.xScale)),floor(-76*const(Size.yScale))
 		SuperMove=1
 		sprPriority=4
@@ -767,6 +770,7 @@
 		Type=Explod
 		Trigger1=Time=0
 		Anim=4300
+		Postype = p1
 		Pos=floor(-36*const(Size.xScale)),floor(-76*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -1353,6 +1357,7 @@
 		Type=Explod
 		Trigger1=AnimElemTime(10)=30
 		Anim=4110
+		Postype = p1
 		Pos=floor(-35*const(Size.xScale)),floor(-40*const(Size.yScale))
 		SuperMove=1
 		sprPriority=-3
@@ -1365,6 +1370,7 @@
 		Type=Explod
 		Trigger1=AnimElemTime(10)=30
 		Anim=4120
+		Postype = p1
 		Pos=floor(-35*const(Size.xScale)),floor(-40*const(Size.yScale))
 		SuperMove=1
 		sprPriority=-4
@@ -1582,6 +1588,7 @@
 		Type=Explod
 		Trigger1=AnimElemTime(3)=50
 		Anim=4110
+		Postype = p1
 		Pos=floor(25*const(Size.xScale)),floor(-55*const(Size.yScale))
 		SuperMove=1
 		sprPriority=-3
@@ -1594,6 +1601,7 @@
 		Type=Explod
 		Trigger1=AnimElemTime(3)=50
 		Anim=4120
+		Postype = p1
 		Pos=floor(25*const(Size.xScale)),floor(-55*const(Size.yScale))
 		SuperMove=1
 		sprPriority=-4
@@ -1635,6 +1643,7 @@
 		Trigger1=animelemTime(3)=0
 		Anim=2401
 		ID=2401
+		Postype = p1
 		Pos=0,0
 		SuperMove=1
 		sprPriority=3
@@ -1648,6 +1657,7 @@
 		Type=Explod
 		Trigger1=animelemTime(6)=0
 		Anim=2402
+		Postype = p1
 		Pos=5,0
 		bindtime = -1
 		SuperMove=1
@@ -1898,6 +1908,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=Time=28
 		Anim=4110
+		Postype = p1
 		Pos=floor(-12*const(Size.xScale)),floor(-65*const(Size.yScale))
 		SuperMove=1
 		sprPriority=-3
@@ -1910,6 +1921,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=Time=28
 		Anim=4120
+		Postype = p1
 		Pos=floor(-12*const(Size.xScale)),floor(-65*const(Size.yScale))
 		SuperMove=1
 		sprPriority=-4
@@ -1922,6 +1934,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=Time=28
 		Anim=4130
+		Postype = p1
 		Pos=floor(-12*const(Size.xScale)),floor(-65*const(Size.yScale))
 		SuperMove=1
 		sprPriority=5
@@ -1952,6 +1965,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=AnimElem=5
 		Anim=3150
+		Postype = p1
 		Pos=0,-7
 		sprPriority=1
 		Ownpal=1
@@ -1964,6 +1978,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=AnimElem=4
 		Anim=1054
+		Postype = p1
 		Pos=-40,0
 		sprPriority=3
 		Ownpal=1
@@ -4822,6 +4837,7 @@ sprpriority = 10
 		trigger1 = Anim=3301
 		Trigger1=AnimElemTime(11)=0
 		Anim=4300
+		Postype = p1
 		Pos=floor(0*const(Size.xScale)),floor(-50*const(Size.yScale))
 		sprPriority=5
 		ontop = 1

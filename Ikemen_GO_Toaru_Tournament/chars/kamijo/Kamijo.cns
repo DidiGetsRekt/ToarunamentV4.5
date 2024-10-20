@@ -100,6 +100,7 @@
 		Type=Explod
 		Trigger1=AnimElem=3
 		Anim=6025
+		Postype = p1
 		Pos=0,0
 		SuperMove=1
 		sprPriority=5

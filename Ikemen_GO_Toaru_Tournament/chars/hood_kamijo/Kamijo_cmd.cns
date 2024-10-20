@@ -898,16 +898,15 @@ ignorehitpause = 1
 	Trigger1 = Ctrl
 	trigger2=  numhelper(6800) !=0
 
+;Grab
 [State -1,S_k];“Š‚°
 	Type=ChangeState
 	value=800
-	TriggerAll = StateType = S
-	TriggerAll = command = "x"
-	TriggerAll = command = "holdfwd"
-	TriggerAll = StateNo != 100
-	Trigger1 = Ctrl
-	Trigger1 = enemynear,StateType != A
-	Trigger1 = enemynear,MoveType != H
+	triggerall = command = "x"
+	triggerall = statetype != A
+	triggerall = ctrl
+	trigger1 = command = "holdfwd"
+	trigger2 = command = "holdback"
 	
 [State -1,AirThrow];‹ó’†“Š‚°
 	Type=ChangeState
