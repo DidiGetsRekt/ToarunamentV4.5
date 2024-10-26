@@ -80,7 +80,7 @@ ignorehitpause if roundstate = 3 && !ishelper && alive && teamleader < 3 {
 	ignorehitpause if map(io_ko_hud) { assertSpecial{flag:nobardisplay} }
 	}
 	
-Ignorehitpause if roundstate < 2 &&  !ishelper && && teamleader < 3 { 
+Ignorehitpause if roundstate < 2 &&  !ishelper && teamleader < 3 { 
 	# Makes intros un-skippable
 	if map(io_intro_skip) { assertSpecial{flag:roundnotskip} }
 	}

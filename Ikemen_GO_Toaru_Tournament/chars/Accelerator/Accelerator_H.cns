@@ -102,6 +102,7 @@
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(0*const(Size.xScale)),floor(-50*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -796,6 +797,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(0*const(Size.xScale)),floor(-60*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -1610,6 +1612,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(0*const(Size.xScale)),floor(-60*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -2145,6 +2148,7 @@ color = 0
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(0*const(Size.xScale)),floor(-70*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -2400,6 +2404,7 @@ postype = p1
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(0*const(Size.xScale)),floor(-70*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -3020,6 +3025,7 @@ movecamera = 1,0
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(-0*const(Size.xScale)),floor(-75*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -3962,6 +3968,7 @@ movecamera = 1,0
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(0*const(Size.xScale)),floor(-70*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -4463,6 +4470,7 @@ movecamera = 1,0
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(5*const(Size.xScale)),floor(-45*const(Size.yScale))
 		sprPriority=4
 		Ownpal=1
@@ -5070,6 +5078,7 @@ sprpriority = 10
 		Type=Explod
 		Trigger1=Time=0
 		Anim=12000
+		postype =p1
 		Pos=floor(5*const(Size.xScale)),floor(-65*const(Size.yScale))
 		sprPriority=5
 		Ownpal=1
@@ -6164,6 +6173,7 @@ Ctrl = 1
 		Type=Explod
 		Trigger1=Time=15
 		Anim=12000
+		postype =p1
 		Pos=floor(-40*const(Size.xScale)),floor(-92*const(Size.yScale))
 		sprPriority=5
 		Ownpal=1

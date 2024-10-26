@@ -604,14 +604,14 @@ time = 1
 [State -1, 走る]
 	type = ChangeState
 	value = 100
-	TriggerAll = command = "FF"
+	TriggerAll = command = "FF"||(Command = "holdfwd" && Command = "y" )
 	TriggerAll = statetype != A
 	trigger1 = ctrl
 
 [State -1, バックステップ]
 	type = ChangeState
 	value = 105
-	TriggerAll = command = "BB"
+	TriggerAll = command = "BB"||(Command = "holdback" && Command = "y" )
 	TriggerAll = statetype != A
 	trigger1 = ctrl
 
@@ -619,7 +619,7 @@ time = 1
 	Type=ChangeState
 	value=110
 	TriggerAll = Alive
-	TriggerAll = command="FF"
+	TriggerAll = command="FF"||(Command = "holdfwd" && Command = "y" )
 	TriggerAll = StateType=A
 	TriggerAll = pos Y<=-30+(vel y>0)*20
 	TriggerAll = anim != 110
@@ -631,7 +631,7 @@ time = 1
 	Type=ChangeState
 	value=115
 	TriggerAll = Alive
-	TriggerAll = command="BB"
+	TriggerAll = command="BB"||(Command = "holdback" && Command = "y" )
 	TriggerAll = StateType=A
 	TriggerAll = pos Y<=-30+(vel y>0)*20
 	TriggerAll = anim!=115
@@ -770,12 +770,11 @@ time = 1
 [State -1,S_k];投げ
 	Type=ChangeState
 	value=800
-	TriggerAll=Alive!=0
-	TriggerAll = command != "holddown"
-	TriggerAll = StateType != A
-	TriggerAll = command != "y"
-	TriggerAll=Ctrl
-	Trigger1=command="x"
+	triggerall = command = "x"
+	triggerall = statetype != A
+	triggerall = ctrl || stateno=100
+	trigger1 = command = "holdfwd"
+	trigger2 = command = "holdback"
 
 ;==============================================================================
 ; 通常攻撃
