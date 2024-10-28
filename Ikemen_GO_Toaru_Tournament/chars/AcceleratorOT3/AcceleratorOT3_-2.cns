@@ -759,8 +759,6 @@ persistent = 0
 		trigger1 = Numexplod(13100) = 0
 		trigger1 = PrevStateNo=400&&movetype=H
 		trigger1 = movehit=1
-		type = Explod
-		trigger1 = movehit
 		anim = 13100
 		id=13100
 		postype = p1
@@ -859,8 +857,6 @@ persistent = 0
 		trigger1 = Numexplod(13100) = 0
 		trigger1 = PrevStateNo=600&&movetype=H
 		trigger1 = movehit=1
-		type = Explod
-		trigger1 = movehit
 		anim = 13100
 		id=13100
 		postype = p1

@@ -7,7 +7,7 @@
 name = "Accelerator (Sisters)"
 displayname = "Accelerator (Sisters)"
 versiondate = 04,14,2002
-mugenversion = 04,14,2002
+mugenversion = 1.1
 author = "otika, DidiGetsRekt(edit)"
 pal.defaults = 1,2,3,4,5,7,6
 
