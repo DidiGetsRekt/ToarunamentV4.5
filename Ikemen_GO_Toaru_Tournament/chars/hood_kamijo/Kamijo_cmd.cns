@@ -38,7 +38,7 @@
 
 [Command]
 	name="ê_èÚ"
-	command=~F,DF,D,DB,B,x
+	command=~B,DB,D,DF,F,x
 	Time=32
 	buffer.Time=16
 

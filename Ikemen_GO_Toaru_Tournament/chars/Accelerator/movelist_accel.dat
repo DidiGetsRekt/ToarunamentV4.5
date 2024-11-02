@@ -42,17 +42,20 @@ Up to <#ff0000>2% Battery Use</>
 Rasengan						(Hold) ^MK / ^B
 Gun							_F^HK / _F^C
 
+Dashes				Dir+ ^MP / Dir +^Y 
+
 <#ff0000>10% Battery Use</>
 Vector teleport forward					_D_DF_F^MP / _D_DF_F^Y
 <#ff0000>10% Battery Use</>
 Vector teleport backward				_D_DB_B^MP / _D_DB_B^Y
+
 <#ff0000>10% Battery Use</>
 Vector counter (physical)				^MP^MP / ^Y^Y
 <#ff0000>10% Battery Use</>
 Vector counter (projectile)				_D_D^MP / _D_D^Y
 (can be held down)
 
-Grab							^LP / ^X
+Grab					_B / _F  _+ ^LP / ^X
 (throws guy to the other side)
 
 Low Vector Whirlwind					_D_DF_F^LK / _D_DF_F^A

@@ -27,9 +27,12 @@ Air Vector Circle					^HK / ^C (air)
 Reverse Blood Flow					(Hold) ^MK / ^B
 Football kick						_F^HK / _F^C
 
+Dashes								Dir+ ^MP / Dir +^Y 
+
 <#ff0000>These vector moves use a little SP</>
 Vector teleport forward					_D_DF_F^MP / _D_DF_F^Y
 Vector teleport backward				_D_DB_B^MP / _D_DB_B^Y
+
 Vector counter (physical)				^MP^MP / ^Y^Y
 
 Vector counter (projectile)				_D_D^MP / _D_D^Y
@@ -39,7 +42,7 @@ Vector shield (Super Armor)				^HP/ ^Z
 (can be held down)
 
 
-Grab							^LP / ^X
+Grab					_B / _F  _+ ^LP / ^X
 (throws guy to the other side)
 
 Rail Uppercut					_D_DF_F^LK / _D_DF_F^A
