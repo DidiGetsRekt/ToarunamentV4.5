@@ -147,6 +147,15 @@ type = AssertSpecial
 trigger1 = 1
 flag = Intro
 
+[State 191, ?????]
+type = Explod
+trigger1 = AnimElemTime(13) = 0
+anim = 6800
+postype = p1
+pos = 0,0
+sprpriority = 3
+ownpal = 1
+
 [State 190, 4]
 type = ChangeState
 trigger1 = AnimTime = 0
