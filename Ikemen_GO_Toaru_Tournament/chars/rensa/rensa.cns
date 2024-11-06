@@ -152,7 +152,7 @@ type = Explod
 trigger1 = AnimElemTime(13) = 0
 anim = 6800
 postype = p1
-pos = 0,0
+pos = 0,5
 sprpriority = 3
 ownpal = 1
 
@@ -160,6 +160,24 @@ ownpal = 1
 type = ChangeState
 trigger1 = AnimTime = 0
 value = 0
+
+;---------------------------------------------------------------------------
+; Taunt
+; CNS difficulty: easy
+[Statedef 195]
+type = U
+ctrl = 0
+anim = 195
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 2
+
+[State 195, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(pos y<0,50,0)
+ctrl = 1
 
 ;---------------------------------------------------------------------------
 ; Override common states (use same number to override) :

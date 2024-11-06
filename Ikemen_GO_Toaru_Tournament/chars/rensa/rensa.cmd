@@ -412,3 +412,12 @@ value = 105
 trigger1 = command = "BB"
 trigger1 = statetype = S
 trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+;Knitting needles
+[State -1, Taunt]
+type = ChangeState
+value = 195
+triggerall = command = "start"
+trigger1 = ctrl
+trigger2 = var(1)
