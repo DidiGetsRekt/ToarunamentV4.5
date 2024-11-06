@@ -234,6 +234,11 @@ buffer.Time=16
 
 
 ;------------------------------------
+[Command]
+name = "QCBHCF_c"  
+command = ~D, DB, B, DB, F, c
+time = 40
+buffer.Time=20
 
 [Command]
 name = "QCBHCF_c"  
@@ -266,6 +271,11 @@ time = 40
 buffer.Time=20
 
 ;----------------------------------
+[Command]
+name = "QCBHCF_b"  
+command = ~D, DB, B, DB, F, b
+time = 40
+buffer.Time=20
 
 [Command]
 name = "QCBHCF_b"  
@@ -299,6 +309,11 @@ buffer.Time=20
 
 
 ;------------------------------
+[Command]
+name = "QCBHCF_a"  
+command = ~D, DB, B, DB, F, a
+time = 40
+buffer.Time=20
 
 [Command]
 name = "QCBHCF_a"  

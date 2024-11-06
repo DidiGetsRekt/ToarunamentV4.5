@@ -31,7 +31,7 @@ ignorehitpause = 1
 	type = VarSet
 	trigger1 = RoundsExisted = 0
 	var(18) = 0 ;‚±‚±‚Ì”š‚ğ•Ï‚¦‚é‚±‚Æ‚Åİ’è‰Â”\
-				;0‚Å“d’r§ŒÀ‚ ‚èA1‚Å“d’r§ŒÀ‚È‚µ ƒfƒtƒHƒ‹ƒg‚Í0
+				;0‚Å“d’r§ŒÀ‚ ‚èA1‚Å“d’r§ŒÀ‚È‚µ ƒfƒtƒHƒ‹ƒg‚Í0
 	
 [State -2, “d’r‰Šúİ’è]
 	type = VarSet
@@ -721,8 +721,6 @@ persistent = 0
 		trigger1 = Numexplod(13100) = 0
 		trigger1 = PrevStateNo=400&&movetype=H
 		trigger1 = movehit=1
-		type = Explod
-		trigger1 = movehit
 		anim = 13100
 		id=13100
 		postype = p1
@@ -821,8 +819,6 @@ persistent = 0
 		trigger1 = Numexplod(13100) = 0
 		trigger1 = PrevStateNo=600&&movetype=H
 		trigger1 = movehit=1
-		type = Explod
-		trigger1 = movehit
 		anim = 13100
 		id=13100
 		postype = p1

@@ -599,19 +599,55 @@ time = 1
 	Trigger3 = StateNo = 2300 && var(1)
 	trigger4 = stateno = 53
 	Trigger4 = (!var(1) && time >= 3) ||(var(1) && time >= 9)
-	Trigger5 = StateNo = 1101 && var(1)
+	Trigger5 = StateNo = 1101 && var(1)	
+
+[State -1, ブーストダッシュ]
+	type = ChangeState
+	value = 6100
+	TriggerAll = command = "ブーストダッシュ"
+	TriggerAll = command != "holddown"
+	TriggerAll = StateType != A
+	triggerAll = stateno != 6100
+	triggerAll = stateno != 2500
+	triggerAll = !ctrl
+	trigger1 = var(1)
+
+[State -1, ブーストダッシュ]
+	type = ChangeState
+	value = 6101
+	TriggerAll = command = "ブーストダッシュ"
+	TriggerAll = command != "holddown"
+	TriggerAll = StateType != A
+	triggerAll = stateno != 6101
+	triggerAll = stateno != 2500
+	triggerAll = !var(1)
+	trigger1 = ctrl
+	trigger2 = stateno = 6500
+	trigger2 = time > 10	
+
+[State -1, ブーストバック]
+	type = ChangeState
+	value = 6105
+	TriggerAll = command = "ブーストバック"
+	TriggerAll = command != "holddown"
+	TriggerAll = StateType != A
+	triggerAll = stateno != 6105
+	trigger1 = ctrl
+	trigger2 = stateno = 6500
+	trigger2 = time > 10
+	trigger3 = var(1)
 
 [State -1, 走る]
 	type = ChangeState
 	value = 100
-	TriggerAll = command = "FF"
+	TriggerAll = command = "FF"||(Command = "holdfwd" && Command = "y" )
 	TriggerAll = statetype != A
 	trigger1 = ctrl
 
 [State -1, バックステップ]
 	type = ChangeState
 	value = 105
-	TriggerAll = command = "BB"
+	TriggerAll = command = "BB"||(Command = "holdback" && Command = "y" )
 	TriggerAll = statetype != A
 	trigger1 = ctrl
 
@@ -619,7 +655,7 @@ time = 1
 	Type=ChangeState
 	value=110
 	TriggerAll = Alive
-	TriggerAll = command="FF"
+	TriggerAll = command="FF"||(Command = "holdfwd" && Command = "y" )
 	TriggerAll = StateType=A
 	TriggerAll = pos Y<=-30+(vel y>0)*20
 	TriggerAll = anim != 110
@@ -631,7 +667,7 @@ time = 1
 	Type=ChangeState
 	value=115
 	TriggerAll = Alive
-	TriggerAll = command="BB"
+	TriggerAll = command="BB"||(Command = "holdback" && Command = "y" )
 	TriggerAll = StateType=A
 	TriggerAll = pos Y<=-30+(vel y>0)*20
 	TriggerAll = anim!=115
@@ -685,44 +721,7 @@ time = 1
 	Trigger1 = Ctrl
 	trigger2 = stateno = 6500
 	trigger2 = time > 10
-	trigger3 = var(1)	
-
-[State -1, ブーストダッシュ]
-	type = ChangeState
-	value = 6100
-	TriggerAll = command = "ブーストダッシュ"
-	TriggerAll = command != "holddown"
-	TriggerAll = StateType != A
-	triggerAll = stateno != 6100
-	triggerAll = stateno != 2500
-	triggerAll = !ctrl
-	trigger1 = var(1)
-
-
-[State -1, ブーストダッシュ]
-	type = ChangeState
-	value = 6101
-	TriggerAll = command = "ブーストダッシュ"
-	TriggerAll = command != "holddown"
-	TriggerAll = StateType != A
-	triggerAll = stateno != 6101
-	triggerAll = stateno != 2500
-	triggerAll = !var(1)
-	trigger1 = ctrl
-	trigger2 = stateno = 6500
-	trigger2 = time > 10	
-
-[State -1, ブーストバック]
-	type = ChangeState
-	value = 6105
-	TriggerAll = command = "ブーストバック"
-	TriggerAll = command != "holddown"
-	TriggerAll = StateType != A
-	triggerAll = stateno != 6105
-	trigger1 = ctrl
-	trigger2 = stateno = 6500
-	trigger2 = time > 10
-	trigger3 = var(1)	
+	trigger3 = var(1)
 
 [State -1,打撃反射]
 	Type=ChangeState
@@ -770,12 +769,11 @@ time = 1
 [State -1,S_k];投げ
 	Type=ChangeState
 	value=800
-	TriggerAll=Alive!=0
-	TriggerAll = command != "holddown"
-	TriggerAll = StateType != A
-	TriggerAll = command != "y"
-	TriggerAll=Ctrl
-	Trigger1=command="x"
+	triggerall = command = "x"
+	triggerall = statetype != A
+	triggerall = ctrl || stateno=100
+	trigger1 = command = "holdfwd"
+	trigger2 = command = "holdback"
 
 ;==============================================================================
 ; 通常攻撃
