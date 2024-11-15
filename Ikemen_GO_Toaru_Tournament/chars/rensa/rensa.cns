@@ -162,7 +162,7 @@ trigger1 = AnimTime = 0
 value = 0
 
 ;---------------------------------------------------------------------------
-; Taunt
+; Kneeting Needles
 ; CNS difficulty: easy
 [Statedef 195]
 type = U
@@ -180,6 +180,38 @@ value = ifelse(pos y<0,50,0)
 ctrl = 1
 
 ;---------------------------------------------------------------------------
+; Kneeting Needles Super
+; CNS difficulty: easy
+[Statedef 196]
+type = U
+ctrl = 0
+anim = 196
+velset = 0,0
+movetype = I
+physics = N
+sprpriority = 2
+poweradd = -1000
+
+[State 0, SuperPause]
+type = SuperPause
+trigger1 = time = 0
+time = 42
+anim = -1
+movetime = 42
+darken = 1
+p2defmul = 1
+poweradd = 0
+unhittable = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 195, 2]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = ifelse(pos y<0,50,0)
+ctrl = 1 
+
+;---------------------------------------------------------------------------
 ; Override common states (use same number to override) :
 ;---------------------------------------------------------------------------
 
@@ -192,8 +224,8 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "fvar(10) = %f, fvar(0)=%f, facing = %d, life = %d, vel x = %f"
-params = fvar(11),fvar(0),var(16),sysvar(1), vel x
+text = "fvar(10) = %d, fvar(0)=%f, facing = %d, life = %d, vel x = %f"
+params = var(20),fvar(0),var(16),sysvar(1), vel x
 ;ignorehitpause = 
 ;persistent = 
 
@@ -209,17 +241,29 @@ trigger1= (stateno=[50,51])
 triggerall = var(23)=0
 var(23) = 1
 
-[State -2, super air jump - reset]
-type = VarSet
-triggerall = var(16)>=1
-Trigger1 = StateNo != [40,45]
-var(16) = 0
-
 ;Gives 1000 at the start of the battle
 [State -2,???????]
 	Type= PowerSet
 	trigger1 = roundsexisted = 0 && roundstate = 0 && roundno = 1;
 	value = 1000 ; 0?6000????? 1000???1? ??????1000
+
+;temporary esper power setter at the beginning of the match
+[State 0, VarSet]
+type = VarSet
+trigger1 = roundsexisted = 0 && roundstate = 0 && roundno = 1;
+var(20) = 1
+
+;temporary esper power setter
+[State 0, VarSet]
+type = VarSet
+triggerall = stateno = [195,196]
+trigger1 = command = "a"
+trigger2 = command = "b"
+trigger3 = command = "c"
+trigger4 = command = "x"
+trigger5 = command = "y"
+trigger6 = command = "z"
+var(20) = (command = "a") + 2*(command="b") + 3*(command="c") + 4*(command="x") + 5*(command="y") + 6*(command="z") 
 
 
 ;DamageDampening Reset
@@ -249,8 +293,6 @@ var(16) = 0
 	ignorehitpause = 1
 
 
-;var(16) is special jump chooser
 ;var(17) is the air dash count
-;var(20) is the current sigil
-;var(21) is the sigil to launch
-;var(22) is the sigil hurt blocker
+;var(20) is the esper power
+;var(21) is esper power choosing confirmation

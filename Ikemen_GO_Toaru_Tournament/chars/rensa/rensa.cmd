@@ -231,25 +231,10 @@ time = 20
 buffer.Time=10
 
 [Command]
-name = "aab"
-command = a, a, b
+name = "22_s"
+command = ~D, D, s
 time = 20
 buffer.Time=10
-
-[Command]
-name = "jump"    
-command = $D, UF
-time = 11
-
-[Command]
-name = "jump2"    
-command = $D, U
-time = 11
-
-[Command]
-name = "FBF"
-command = F, B, F
-time = 18
 
 ;-| Double Tap |-----------------------------------------------------------
 [Command]
@@ -395,6 +380,24 @@ trigger1=movetype=H
 trigger2 = stateno = [0,160]
 var(1) = 0
 ignorehitpause=1
+
+;---------------------------------------------------------------------------
+;Knitting needles Super
+[State -1, Taunt]
+type = ChangeState
+value = 196
+triggerall = command = "22_s"
+triggerall = power>=1000
+trigger1 = ctrl
+trigger2 = var(1)
+
+;---------------------------------------------------------------------------
+[State -1, 236_a]
+type = ChangeState
+value = 1000
+triggerall = command="236_a"
+triggerall = movetype!=H
+trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
 ;Run Fwd

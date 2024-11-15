@@ -1,0 +1,17 @@
+;236a series
+[Statedef 1000]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+Poweradd=FVar(11)
+velset = 0,0
+anim = 1000000+(var(20)*10)
+ctrl = 0
+sprpriority = 2
+
+[State 1050, 5]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
