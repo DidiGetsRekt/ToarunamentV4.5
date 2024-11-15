@@ -545,7 +545,7 @@ ignorehitpause = 1
 [State 0, StopSnd]
 type = StopSnd
 trigger1 = time = 41
-trigger2 = command != "hold_y"
+trigger2 = command != "hold_x"
 channel = 0
 ignorehitpause = 1
 ;persistent = 
@@ -574,7 +574,7 @@ ignorehitpause = 1
 
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1  = command != "hold_y"
+trigger1  = command != "hold_x"
 trigger2 = animtime = 0
 trigger3 = RoundState != 2
 id = 750
@@ -583,7 +583,7 @@ ignorehitpause = 1
 
 [State 0, RemoveExplod]
 type = RemoveExplod
-trigger1  = command != "hold_y"
+trigger1  = command != "hold_x"
 trigger2 = animtime = 0
 trigger3 = RoundState != 2
 id = 751
@@ -611,7 +611,7 @@ ignorehitpause = 1
 [State 700, ??????]
 type = ChangeState
 ;triggerall = stateno = 700
-Trigger1 = command != "hold_y"
+Trigger1 = command != "hold_x"
 trigger2 = animtime = 0
 trigger3 = RoundState != 2
 value = 0

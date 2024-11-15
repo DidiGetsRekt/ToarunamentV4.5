@@ -95,7 +95,7 @@
 	[State 180, ステート変更]
 		type = ChangeState
 		trigger1 = matchover
-		trigger1 = var(18)
+		;trigger1 = var(18)
 		trigger1 = Time = 0
 		value = 182
 

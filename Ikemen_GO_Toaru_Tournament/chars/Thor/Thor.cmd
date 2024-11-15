@@ -1150,6 +1150,7 @@ triggerall = command = "holddown"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = stateno = 400 && var(1)
+trigger3=stateno=100
 
 ;Crouching Low Kick
 [State -1, Crouching Low Kick]
@@ -1167,6 +1168,7 @@ triggerall = command = "holddown"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = stateno = 400 && var(1)
+trigger3=stateno=100
 
 ;Crouching Punch
 [State -1, Crouching Punch]
@@ -1185,6 +1187,7 @@ triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = stateno = 400 && var(1)
 trigger3 = stateno = 410 && var(1)
+trigger4=stateno=100
 
 ;Crouching Sweep
 [State -1, Crouching Sweep]

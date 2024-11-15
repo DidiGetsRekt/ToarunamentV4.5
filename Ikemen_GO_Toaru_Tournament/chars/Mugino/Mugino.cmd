@@ -277,7 +277,11 @@ time = 20
 buffer.time = 10
 
 
-
+[Command]
+name = "DP_x"
+command =  ~F, D, DF, x
+time = 20
+buffer.time = 10
 
 [Command]
 name = "FDF_a"
@@ -403,6 +407,11 @@ time = 1
 [Command]
 	name="hold_c"
 	command=/c
+
+[Command]
+	name="hold_x"
+	command=/x
+
 [Command]
 	name="hold_y"
 	command=/y
@@ -490,6 +499,7 @@ triggerall = power > 4999
 triggerall=life<(lifemax*0.3)
 trigger1 = ctrl
 ;trigger2 =var(1) && stateno != [2600,3000]
+triggerall=stateno!=[800,850]
 
 
 ;Meltdowner Hyper Beam
@@ -501,6 +511,7 @@ triggerall = statetype != A
 triggerall = power > 2999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2600,3000]
+triggerall=stateno!=[800,850]
 
 
 ;Meltdowner Shield
@@ -513,6 +524,7 @@ triggerall = power > 1999
 triggerall = numhelper(2800) = 0
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 ;EX Air Beams
 [State -1, Air Beams EX]
@@ -523,6 +535,7 @@ triggerall = statetype = A
 triggerall = power > 999
 trigger1 = ctrl
 trigger2 =var(1)
+triggerall=stateno!=[800,850]
 
 
 ;Meltdowner Grab
@@ -534,6 +547,7 @@ triggerall = statetype != A
 triggerall = power > 999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 ;Instant Upwards Beams EX 
 [State -1, Instant Upwards Beams EX ]
@@ -544,6 +558,7 @@ triggerall = statetype != A
 triggerall = power > 999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 
 ;Beam Combo
@@ -555,6 +570,7 @@ triggerall = statetype != A
 triggerall = power > 1999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 ;Laser Kick EX
 [State -1, Laser Kick EX]
@@ -565,6 +581,7 @@ triggerall = statetype != A
 triggerall = power > 999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 
 ;Instant Single Beam EX
@@ -576,6 +593,7 @@ triggerall = statetype != A
 triggerall = power > 999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 ;Instant Multiple Beams EX
 [State -1, Instant Multiple Beams EX]
@@ -586,6 +604,7 @@ triggerall = statetype != A
 triggerall = power > 999
 trigger1 = ctrl
 trigger2 =var(1) && stateno != [2500,3000]
+triggerall=stateno!=[800,850]
 
 
 ;===========================================================================
@@ -722,6 +741,29 @@ Trigger2 = var(1)
 
 ;---------------------------------------------------------------------------
 
+;AntiAir Throw
+[State -1]
+Type = ChangeState
+value = 830
+	TriggerAll=Alive!=0
+	TriggerAll = StateType != A
+	TriggerAll=command="DP_x"
+	Trigger1=Ctrl
+	trigger2=stateno=[100,101]
+
+
+;Forward Throw
+[State -1]
+Type = ChangeState
+value = 800
+	TriggerAll=Alive!=0
+	TriggerAll = StateType != A
+	TriggerAll=command="x"
+	TriggerAll=command="holdfwd"
+	TriggerAll=command!="DP_x"
+	Trigger1=Ctrl
+	trigger2=stateno=[100,101]
+
 
 
 
@@ -751,6 +793,9 @@ Trigger2 = var(1)
 	;TriggerAll = stateno != [1700,1750]
 	Trigger1 = Ctrl
 	Trigger2 = var(1)
+
+
+
 ;---------------------------------------------------------------------------
 ;Run Fwd
 [State -1, Run Fwd]
@@ -782,11 +827,20 @@ trigger1 = ctrl
 	TriggerAll=StateType!=A
 	triggerall = stateno != 64
 	triggerall = numhelper(6700) = 0
-	Triggerall=command="hold_y"
+	Triggerall=command="hold_x"
 	triggerall = !(command = "holdfwd") && !(command = "holdback")
 	Trigger1=Ctrl
 	;Trigger2=var(1)
 	
+;Spot Dodge
+[State -1, 回避]
+type = ChangeState
+value = 107
+triggerall = command = "y"
+triggerall = !(command = "holdfwd") && !(command = "holdback")
+triggerall = statetype != A
+trigger1 = ctrl 
+;trigger2=stateno=100
 	
 
 
@@ -822,14 +876,7 @@ trigger5 = stateno = [5001,5099]
 
 
 
-;Spot Dodge
-[State -1, 回避]
-type = ChangeState
-value = 107
-triggerall = command = "x"
-triggerall = statetype != A
-trigger1 = ctrl 
-;trigger2=stateno=100
+
 ;---------------------------------------------------------------------------
 
 ;---------------------------------------------------------------------------
@@ -941,6 +988,18 @@ trigger5 = (stateno = 205) && var(1)
 trigger6 = (stateno = 420) && var(1)
 trigger7 = (stateno = 1550) && var(1)
 trigger8=(stateno=100 && time>13) || (stateno=101)
+trigger9=stateno=810 && var(1)
+trigger10=stateno=840 && var(1)
+
+[State -1, Step On]
+type = ChangeState
+value = 240
+triggerall = command = "c"
+triggerall = command = "holdfwd"
+triggerall = command != "holddown"
+;triggerall = stateno != 220 && prevstateno != 220
+trigger1=stateno=810 && var(1)
+trigger2=stateno=840 && var(1)
 
 [State -1, Front Kick]
 type = ChangeState

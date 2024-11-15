@@ -1129,6 +1129,7 @@ ignorehitpause=1 ;Var(49)= Gametimeでステート奪われてない状態の認識。
 type = varset
 trigger1 = NumHelper(8000)
 trigger1 = Helper(8000),GetHitVar(hitcount)
+trigger1=Helper(8000),GetHitVar(damage) !=0
 ;trigger1 = var(7) := 1
 var(8)  = Helper(8000),GetHitVar(damage)
 ignorehitpause = 1

@@ -70,6 +70,27 @@ value = 19
 ignorehitpause = 1
 ;persistent = 
 
+;----------DASH----------
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = root,anim=102
+trigger1=anim!=103
+value = 103
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, ChangeAnim]
+type = null;,ChangeAnim
+trigger1 = root,anim=26
+trigger1=anim!=28
+value = 28
+;elem = 1
+ignorehitpause = 1
+;persistent = 
+
+
 ;---------------------------------------
 
 [State 0, BindToParent]
@@ -86,6 +107,7 @@ type = AssertSpecial
 trigger1 = root,stateno!=0
 trigger1=root,anim!=[25,26]
 trigger1=root,anim!=[15,19]
+trigger1=root,anim!=102
 ;flag = intro
 flag = invisible
 ;flag3 = roundnotover

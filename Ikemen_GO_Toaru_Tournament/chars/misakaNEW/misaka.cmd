@@ -1021,6 +1021,7 @@ triggerall = command = "holddown"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = stateno = 400 && var(1)
+trigger3=stateno=100
 
 [State -1, しゃがみ弱キック]
 type = ChangeState
@@ -1030,6 +1031,7 @@ triggerall = command = "holddown"
 triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = stateno = 400 && var(1)
+trigger3=stateno=100
 
 [State -1, しゃがみ強キック]
 type = ChangeState
@@ -1040,6 +1042,7 @@ triggerall = statetype !=A
 trigger1 = ctrl
 trigger2 = stateno = 400 && var(1)
 trigger3 = stateno = 430 && var(1)
+trigger4=stateno=100
 
 ;------------------------------------------------------------------------------
 

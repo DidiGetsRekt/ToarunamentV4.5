@@ -1998,7 +1998,481 @@ type = DestroySelf
 trigger1 = ishelper
 ignorehitpause = 1
 ;persistent = 
+;=============================================================
 
+;Throw 
+[Statedef 800]
+Type    = S
+MoveType= A
+Physics = S
+Ctrl = 0
+Anim = 800
+SprPriority = 2
+Facep2 = 1
+
+[State 600,V1=0]
+		Type=VarSet
+		Trigger1=Time=0
+		var(1)=0
+
+[State ]
+Type = VelSet
+TriggerAll = Time = 0
+Trigger1 = PrevStateNo != [100,103]
+X = 0
+Y = 0
+
+[State ]
+Type = VarSet
+Trigger1 = Time = 0
+V = 55
+Value = Facing
+
+
+[State ]
+Type = HitDef
+Trigger1 = P2MoveType != H || P2StateNo = [120,159]
+Trigger1 = P2BodyDist X = [-36,36]
+Trigger1 = Time = 2
+Attr = S, NT
+HitFlag = M-
+Priority = 1, Miss
+HitSound = s10,0
+SprPriority = 1
+sparkno=-1
+P1Facing = 1
+P2Facing = 1
+P1StateNo = 810
+P2StateNo = 820
+NumHits = 0
+Fall.XVelocity = 0
+Fall.YVelocity = 0
+Down.Bounce = 1
+
+
+[State ]
+Type = AttackDist
+Trigger1 = 1
+Value = 0
+
+[State ]
+Type = ChangeState
+Trigger1 = time>25
+value = 1
+ctrl = 0
+
+
+;---------------------------------------------------------------------------
+
+;Throw Success
+[Statedef 810]
+Type    = S
+MoveType= A
+Physics = S
+Anim = 0
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = time=0
+helpertype = normal ;player
+name = "Circles Effect"
+stateno = 4500
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 9999
+pausemovetime = 9999
+;ignorehitpause
+persistent=0
+
+[State ]
+Type = NotHitBy
+Trigger1 = 1
+Value = SAC
+Time = 1
+
+[State ]
+Type = VarSet
+Trigger1 = Time < 9
+Trigger1 = NumTarget
+Trigger1 = Target,StateNo != [811,812]
+Trigger2 = Time = 9
+V = 54
+Value = 1-(Time=9)
+
+[State ]
+Type = VarSet
+Trigger1 = Time = 0 || AnimElem = 6
+FV = 39
+Value = Cond(Target,Const(Size.Head.Pos.Y)>-90,-Target,Const(Size.Head.Pos.Y)-60,30)*(Time=0)
+
+[State ]
+Type = TargetBind
+Trigger1 = AnimElem = 1
+Pos = 70, 0
+
+[State 700, ?????];???????.txt???
+type = Explod
+trigger1 = animelem = 1
+trigger1 = NumExplod(800) = 0
+anim = 10049
+facing = -1
+postype = p2
+pos = 0,-45
+sprpriority = 3
+ownpal = 1
+scale = 1, 1
+removetime = -2 ;?-1??????????????????????
+bindtime = 0
+removeongethit = 1
+ID = 800
+
+[State 700, ?????];???????.txt???
+type = Explod
+trigger1 = time=40
+trigger1 = NumExplod(810) = 0
+anim = 10050
+facing = -1
+postype = p2
+pos = 0,-45
+sprpriority = 3
+ownpal = 1
+scale = 1, 1
+removetime = -2 ;?-1??????????????????????
+bindtime = 0
+removeongethit = 0
+ID = 810
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=50
+		value=1,10
+		channel=-1
+		volume=255
+		persistent=0
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=50
+		value=1,10
+		channel=-1
+		volume=255
+		persistent=0
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=54
+		value=1,23
+		channel=-1
+		volume=255
+		persistent=0
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=54
+		value=1,23
+		channel=-1
+		volume=255
+		persistent=0
+
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=1
+		value=1,32
+		channel=-1
+		volume=255
+		persistent=0
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=1
+		value=1,32
+		channel=-1
+		volume=255
+		persistent=0
+
+
+[State 200,???]
+		Type=PlaySnd
+		trigger1 = time>25
+		trigger1=time<54
+		trigger1=time%6=0
+		value=1,24
+		channel=-1
+		volume=255
+
+[State 200,???]
+		Type=PlaySnd
+		Trigger1=time=50
+		value=2700,0
+		channel=0
+		volume=255
+		persistent=0
+
+
+
+
+;Hitspark
+[State 200, 線形ヒットエフェ]
+		type = helper
+		trigger1 = time>25
+		trigger1=time<54
+		trigger1=time%6=0
+		stateno=6000
+		id=6000
+		postype = p2
+		Pos = -10,floor(-70*const(Size.yScale))
+		pausemovetime = 999
+		supermovetime = 999
+		ownpal = 1
+		;scale = 0.5,0.5
+		sprpriority = 9
+		;persistent = 0
+		;ignorehitpause = 1
+
+
+
+[State -2,壁吹き飛ばし]
+	type = TargetState
+	trigger1 = time=54
+	value = 7000
+
+[State -2,向き直し]
+	type = TargetFacing
+	trigger1 = time=54
+	value = -1
+
+
+[State ]
+Type = TargetLifeAdd
+Trigger1 = time = 54
+Value = -Ceil(FVar(0)*80)
+
+[State ]
+Type = Hitadd
+Trigger1 = time = 54
+Value = 1
+persistent=0
+
+
+
+[State ]
+Type = StateTypeSet
+Trigger1 = time = 55
+MoveType= I
+
+
+[State ]
+Type = AttackDist
+Trigger1 = 1
+Value = 0
+
+[State 200 ??????????]
+		type = Varadd
+		trigger1 = Time = 55
+		fVar(11) = 5
+		persistent = 0
+ 		ignorehitpause = 1
+
+	[State -1,????,???]
+		type = Varset
+		Trigger1=Time = 55
+		fvar(0)= fvar(0)*0.70
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State ]
+Type = VarSet
+Trigger1 = Time = 65
+V =1
+Value = 1;Cond(Var(57)/10%10=4,814,813)
+ignorehitpause=1
+
+[State 0, ChangeState]; confere se o alvo apertou o bot? pra techar, se sim, te leva pro state de tomar o tech
+type = ChangeState
+triggerall = NumTarget;()
+triggerall = time <= 8
+trigger1 = target,AILevel=0
+trigger1 = target, command = "x" && (target, command = "holdfwd" || target,command = "holdback")
+trigger2 = target,AILevel>0
+trigger2 = random <=floor(AILevel*100/1.5)
+value = 805
+ctrl = 0
+
+[State ]
+Type = ChangeState
+Trigger1 = time=70
+Value = 1
+Ctrl = 0
+
+;=========================================
+
+;??ｷ?????????
+[Statedef 820]
+Type    = S
+MoveType= H
+Physics = N
+Anim = 5010
+VelSet = 0,0
+
+[State ]
+Type = HitOverRide
+Trigger1 = 1
+Attr = , NT, ST, HT
+Time = 1
+
+[State ]
+Type = PlayerPush
+Trigger1 = 1
+Value = 0
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 9 && P2MoveType != A
+Value = 5035
+
+
+;________________
+
+; Teched Going Back - attacker state
+[Statedef 805]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 800
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, StopSnd]
+type = StopSnd
+trigger1 =  time = 0
+channel = -1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, TargetState]; faz o techador entrar no state do tech
+type = TargetState
+trigger1 = time = 0
+value = 806
+
+[State 200, PlaySnd];som de grito(?)
+type = PlaySnd
+trigger1 = time = 0
+value = 0,14
+
+	[State 3501,Hit Explod]
+		Type=Explod
+		Trigger1=time = 0
+		Anim=20026
+		Pos=0,0
+		bindTime=-1
+		PosType=back
+		sprPriority=-1
+		SuperMoveTime=30
+		PauseMoveTime=30
+		Persistent=0
+ 		ignorehitpause = 1
+
+	[State 3000,????]
+		Type=envColor
+		Trigger1= time = 0
+		value=0,0,0
+		Time=13
+		under=1
+		Persistent=0
+ 		ignorehitpause = 1
+
+[State 150, 1];anima?o
+type = ChangeAnim
+trigger1 = 1
+value = 120
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 0, ChangeState]
+type = selfState
+trigger1 = time = 30
+value = 1
+ctrl = 0
+
+;==================================================================================
+; Throw Escape - victim state
+[Statedef 806]
+type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
+physics = S                      ;Physics: S-stand, C-crouch, A-air
+velset = 0,0                     ;Set velocity (x,y) (Def: no change)
+ctrl = 0                         ;Set ctrl (Def: no change)
+poweradd = 0                    ;Power to add (Def: 0)
+sprpriority = 2                  ;Set p1's sprite layering priority to 2 (in front)
+
+[State 0, ChangeAnim2]
+type = ChangeAnim
+trigger1 = 1
+value = 120
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, PosSet];fique no ch? agora
+type = PosSet
+trigger1 = time = 0
+y = 0
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 9
+x = -6
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 14
+x = -3
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 17
+x = -1.5
+
+[State 0, VelSet];pushback
+type = VelSet
+trigger1 = time = 21
+x = 0
+
+[State 200, 3]; vai pro state 0 e faz tudo voltar ao normal (n?)
+type = selfState
+trigger1 = time = 33
+value = 0
+ctrl = 1
 
 ;============================================================
 
@@ -2090,7 +2564,7 @@ persistent = 1
 [State -2,壁SE]
 type = PlaySnd
 trigger1 = time = 1
-value = F7, 1
+value = 0,13
 volume = 255
 
 [State 0, VarAdd]
@@ -2217,7 +2691,7 @@ persistent = 1
 [State -2,床SE]
 type = PlaySnd
 trigger1 = time = 0
-value = F7, 1
+value = 0,13
 volume = 255
 
 [State 0, HitFallSet]

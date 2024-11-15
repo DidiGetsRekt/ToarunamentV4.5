@@ -492,6 +492,11 @@ Type=PosSet
 Trigger1=Time=0
 y=0
 
+[State -1]
+Type = CtrlSet
+Trigger1 = Time = 0
+Value = 1
+
 
 [State 53,4]
 Type=ChangeState

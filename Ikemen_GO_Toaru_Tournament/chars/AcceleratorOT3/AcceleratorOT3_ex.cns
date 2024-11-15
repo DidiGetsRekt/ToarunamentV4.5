@@ -796,11 +796,13 @@ persistent = 0
 		type = TargetState
 		trigger1 = moveHit = 1
 		value = 7000
+		ignorehitpause=1
 
 	[State 223,向き直し]
 		type = TargetFacing
 		trigger1 = moveHit = 1
 		value = -1
+		ignorehitpause=1
 
 	[State 6662,]
 		Type=PlaySnd
@@ -923,11 +925,13 @@ persistent = 0
 		type = TargetState
 		trigger1 = moveHit = 1
 		value = 7000
+		ignorehitpause=1
 
 	[State 223,向き直し]
 		type = TargetFacing
 		trigger1 = moveHit = 1
 		value = -1
+		ignorehitpause=1
 
 	[State 6300,]
 		Type=PlaySnd
@@ -1337,24 +1341,18 @@ sprpriority = 10
 ;------------------------------------------------------------------------------
 [Statedef 6420,飛び道具攻撃反射本体] 
 type     = S
-movetype = A
+movetype = I
 physics  = S
 ctrl     = 0
 anim     = 6420
 sprpriority = -5
-poweradd = -150
 
-;[State 6400,反射判定初期化]
- ;	type = Varadd
- ;	trigger1 = time = 0
-;	var(3) = -100
-;	ignorehitpause = 1
-
-[State 6420,反射判定初期化]
- 	type = Varset
+[State 6400,反射判定初期化]
+ 	type = Varadd
  	trigger1 = time = 0
-	var(7) = 0
+	var(3) = -100
 	ignorehitpause = 1
+
 
 [State 6420, 反射受け判定ヘルパー呼び出し]
 type = Helper
@@ -1378,15 +1376,33 @@ time = 1
 
 [State 6420, ダメージ保存];コレを取る為だけのステート
 type = varset
+trigger1 = time=0
+var(8)=0
+ignorehitpause = 1
+
+[State 6420, ダメージ保存];コレを取る為だけのステート
+type = varset
 trigger1 = NumHelper(6430)
 trigger1 = Helper(6430),GetHitVar(hitcount)
 trigger1 = var(7) := 1
-var(8)  = Helper(6430),GetHitVar(damage)
+var(8)  = var(8)+Helper(6430),GetHitVar(damage)
 ignorehitpause = 1
+
 
 [State 6420, 飛び道具攻撃反射成功ステート移行]
 type = ChangeState
-trigger1 =var(7)
+triggerall = NumHelper(6430)
+triggerall = Helper(6430),GetHitVar(hitcount)
+trigger1=helper(6430),stateno=6430
+trigger2=command!="hold_y"
+triggerall =var(7)
+value = 6421
+
+[State 6420, ステート終了]
+type = ChangeAnim
+trigger1 = Anim = 6420
+trigger1 = command != "hold_y"
+trigger1 = time >= 9
 value = 6421
 
 [State 6421]
@@ -1396,25 +1412,18 @@ trigger2 = NumHelper(6435)
 trigger3 = anim = 6420
 value = -4
 
-[State 6420, ステート終了]
-type = ChangeAnim
-trigger1 = Anim = 6420
-trigger1 = command != "hold_y"
-trigger1 = time >= 9
-value = 6421
 
 [State 6420, ステート終了]
 type = ChangeState
 trigger1 = Anim = 6421
 trigger1 = AnimTime = 0
 trigger1 = var(7) := 1
-trigger2 = power <= 6
 value = 0
 ctrl = 1
 ;---------------------------------------------------------------------------
 [Statedef 6421,飛び道具攻撃反射成功ステート]
 type     = S
-movetype = A
+movetype = I
 physics  = S
 ctrl     = 0
 velset   = 0,0
@@ -1439,6 +1448,11 @@ name = "reflect"
 keyctrl = 0
 ownpal = 1
 
+[State 6421]
+type = PowerAdd
+trigger1 = NumHelper(6430)
+trigger2 = NumHelper(6435)
+value = -30
 
 
 [State 6401,反射受け判定呼び出し中無敵]
@@ -1470,7 +1484,7 @@ ownpal = 1
 removeongethit = 1
 
 [State 6421, 反射受け判定ヘルパー呼び出し]
-type = Helper
+type = null;Helper
 ;trigger1 = !NumHelper(6435)
 trigger1 = time >= 7
 name = "Offense armor"
@@ -1486,26 +1500,20 @@ pausemovetime = 99999
 persistent = 0
 
 [State 6421, ダメージ保存];コレを取る為だけのステート
-type = varset
+type = null;varset
 trigger1 = NumHelper(6430)
 trigger1 = Helper(6430),GetHitVar(hitcount)
 trigger1 = var(7) := 1
-var(8)  = Helper(6430),GetHitVar(damage)
+var(8)  = var(8)+ Helper(6430),GetHitVar(damage)
 ignorehitpause = 1
-
-
-[State 6421]
-type = PowerAdd
-trigger1 = NumHelper(6430)
-trigger2 = NumHelper(6435)
-value = -30
 
 [State 6421, 飛び道具攻撃反射成功ステート移行]
 type = ChangeState
 trigger1 = NumHelper(6430)
-trigger1 = time > 0
+trigger1 = time > 10
 trigger1 =var(7)
-value = 6421
+value = 0
+ctrl = 1
 
 [State 6421, ステート終了]
 type = ChangeAnim
@@ -1519,15 +1527,6 @@ type = ChangeState
 trigger1 = Anim = 6421
 trigger1 = AnimTime = 0
 trigger1 = var(7) := 1
-value = 0
-ctrl = 1
-
-[State 6421, ステート終了]
-type = ChangeState
-trigger1 = Anim = 6421
-trigger2 = Anim = 6420
-
-triggerAll = Power <10
 value = 0
 ctrl = 1
 ;---------------------------------------------------------------------------
@@ -1588,22 +1587,51 @@ type = A
 movetype= I
 ;physics = S ;           
 velset = 0,0
-anim = 29999 ;
+;anim = 29999 ;
 sprpriority = 10
+
+[State 6410, 0]; 本体に追従
+type = BindToParent
+trigger1 = 1
+time = 1
+facing = 1
+pos = 0,0
 
 	[State 6411, 影なし]
 		type = AssertSpecial
 		trigger1 = 1
 		flag = Noshadow
+		flag2= invisible
 
 	[State 6411, 位置設定]
-		type = posset
+		type = null;posset
 		trigger1 = time = 0
 		x = 9999
 
-	[State 6411, 消滅]
-		type = DestroySelf
+[State 6415, SE]
+		type = PlaySnd
 		trigger1 = time = 0
+		value = 400,0
+		channel=3
+		volume=200
+
+
+[State 6410, 0];
+type = HitOverRide
+trigger1 = IsHelper(6430)
+attr = SCA,AP
+stateno = 6431
+
+	[State 6411, 消滅]
+		type = Changestate
+		trigger1 = time = 30
+		;trigger2= enemy,movetype!=A
+		value=6430
+		ignorehitpause=1
+
+[State 6410, 0]; 本体が反射パートを過ぎたら消滅
+type = DestroySelf
+trigger1 = Parent,stateno != 6421 && Parent,stateno != 6420
 ;---------------------------------------------------------------------------
 [Statedef 6435,反射攻撃ヘルパー]
 	type = A ;
@@ -1645,7 +1673,7 @@ sprpriority = 10
 		trigger1 = hitCount < 1
 		trigger1 = time >= 5
 		attr = S, HP
-		damage = Ceil(var(8)*root,fvar(1)),10
+		damage = Ceil(var(8)*root,fvar(1)),Ceil(var(8)*root,fvar(1))/2
 		getpower = 0
 		animtype = Light
 		pausetime = 0,0
@@ -1661,8 +1689,8 @@ sprpriority = 10
 		ground.slidetime = 17
 		guard.slidetime = 15
 		ground.hittime  = 17
-		guard.hittime  = 15
-		guard.ctrltime = 15
+		guard.hittime  = 20
+		guard.ctrltime = 20
 		ground.velocity =-12*ifelse(root,Facing = enemynear,Facing,-1,1),-5
 		air.velocity = -12*ifelse(root,Facing = enemynear,Facing,-1,1),-2
 		getpower = 0

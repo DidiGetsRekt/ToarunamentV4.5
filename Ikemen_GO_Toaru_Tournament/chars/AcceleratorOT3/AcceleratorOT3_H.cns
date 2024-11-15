@@ -5185,7 +5185,7 @@ postype = p1
 	[State 2600,無敵]
 		type = NotHitBy
 		value = SCA
-		trigger1 = numhelper(2610)
+		trigger1 = time<220
 
 	[State 2600, ステート変更]
 		type = ChangeState

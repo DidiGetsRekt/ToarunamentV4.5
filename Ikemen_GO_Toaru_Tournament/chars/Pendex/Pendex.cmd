@@ -825,6 +825,18 @@ trigger1 = movetype=H
 var(1) = 0
 ;===========================================================================
 
+;Forward Throw
+[State -1]
+Type = ChangeState
+value = 800
+	TriggerAll=Alive!=0
+	TriggerAll = StateType != A
+	TriggerAll=command="x"
+	TriggerAll=command="holdfwd"
+	Trigger1=stateno=1 && anim=0
+	trigger2=stateno=[100,101]
+
+
 ;Uninstall
 [State -1, Uninstall]
 type = ChangeState

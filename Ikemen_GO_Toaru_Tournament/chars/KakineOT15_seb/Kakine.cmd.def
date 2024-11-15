@@ -1301,8 +1301,8 @@ type = ChangeState
 value = 400
 triggerall = command = "a"
 triggerall = command = "holddown"
-trigger1 = statetype = C
-trigger1 = ctrl
+trigger1 = statetype !=A
+trigger1 = ctrl || stateno = [100,101]
 trigger2 = stateno = 400
 trigger2 = movecontact
 trigger2 = var(1)
@@ -1318,8 +1318,8 @@ value = 410
 triggerall = command = "b"
 triggerall = command = "holddown"
 triggerall=var(51)>=10
-trigger1 = statetype = C
-trigger1 = ctrl
+trigger1 = statetype !=A
+trigger1 = ctrl || stateno = [100,101]
 trigger2 = (stateno = 400) 
 trigger2 = var(1)
 trigger3 = stateno = 200
@@ -1333,8 +1333,8 @@ value = 420
 triggerall = command = "c"
 triggerall = command = "holddown"
 triggerall=var(51)>=20
-trigger1 = statetype = C
-trigger1 = ctrl
+trigger1 = statetype !=A
+trigger1 = ctrl || stateno = [100,101]
 trigger2 = (stateno = 410) 
 trigger2 = var(1)
 trigger3 = (stateno = 400) 

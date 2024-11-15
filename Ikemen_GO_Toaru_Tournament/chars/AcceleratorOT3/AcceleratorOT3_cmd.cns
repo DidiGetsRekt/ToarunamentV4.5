@@ -409,6 +409,7 @@ ignorehitpause	= 1
 	trigger2 = (stateno =  [200,499]) && var(1);5b（タメ含む）キャンセル
 	trigger3 = stateno = 2000 && var(1);風巻上げEXキャンセル
 	trigger4 = stateno = 1205 && var(1);風巻上げEXキャンセル
+	trigger5 = stateno = 1215 && var(1);風巻上げEXキャンセル
 
 [State -1, 風巻上げEX]
 	type = ChangeState
@@ -822,8 +823,8 @@ ignorehitpause	= 1
 	TriggerAll = StateType != A
 	Trigger1 = Ctrl
 	Trigger2 = StateNo = 200 && var(1)
-	Trigger3 = StateNo = 210 && var(1)
-	Trigger4 = StateNo = 220 && var(1)
+	;Trigger3 = StateNo = 210 && var(1)
+	Trigger3 = StateNo = 220 && var(1)
 ;	Trigger5 = StateNo = 420 && var(1)
 
 [State -1, 5c]

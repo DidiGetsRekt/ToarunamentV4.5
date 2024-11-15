@@ -4726,7 +4726,7 @@ postype = p1
 	[State 2600,無敵]
 		type = NotHitBy
 		value = SCA
-		trigger1 = numhelper(2610)
+		trigger1 = time<220
 
 	[State 2600, ステート変更]
 		type = ChangeState
@@ -6199,7 +6199,7 @@ Ctrl = 1
 		damage = 0, 0
 		animtype = Light
 		;guardflag = M
-		hitflag = MAF
+		hitflag = MF
 		priority = 3, Hit
 		pausetime = 0, 0
 		sparkno = -1

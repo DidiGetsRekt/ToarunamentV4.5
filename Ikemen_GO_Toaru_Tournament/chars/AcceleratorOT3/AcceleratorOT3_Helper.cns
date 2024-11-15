@@ -1053,7 +1053,7 @@ ctrl = 0
 		trigger1 = hitCount < 1
 		trigger1 = time >= 5
 		attr = S, HP
-		damage = Ceil(var(8)*root,fvar(1)),10
+		damage = Ceil(var(8)),10
 		getpower = 0
 		animtype = Light
 		pausetime = 0,0

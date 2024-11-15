@@ -3473,7 +3473,7 @@ trigger1=!movecontact
 ;trigger1 = anim = 1002
 ; HitDef
 attr = A,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
-hitflag = MAFP        ;HLAFD+-
+hitflag = MAFDP       ;HLAFD+-
 guardflag = HA         ;HLA
 getpower = 20,10
 givepower = 20,10

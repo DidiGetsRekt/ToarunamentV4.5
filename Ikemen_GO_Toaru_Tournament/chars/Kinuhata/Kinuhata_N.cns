@@ -34,6 +34,7 @@ ignorehitpause=1
 [State 2000,Voice]
 		Type=playSnd
 		Trigger1=animelem =1
+		trigger1=random%10=0
 		
 		value=220,2
 		channel=0

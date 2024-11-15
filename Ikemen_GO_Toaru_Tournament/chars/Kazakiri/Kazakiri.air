@@ -1079,6 +1079,15 @@ Clsn2:1
   Clsn2[0] = -14, -61, 53, -13
 110,4, 12,0, 2
 
+; Angel Dash
+[Begin Action 103]
+114,2, 12,0, 2, , A
+114,3, 12,0, 1, , A
+LoopStart
+114,4, 12,0, 2, , A
+114,5, 12,0, 2, , A
+114,4, 12,0, 2, , A
+
 ; Back Air Dash
 [Begin Action 115]
 Clsn2: 1
