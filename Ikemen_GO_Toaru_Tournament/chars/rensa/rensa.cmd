@@ -300,6 +300,30 @@ name = "start"
 command = s
 time = 1
 
+[Command]
+	name="hold_a"
+	command=/a
+
+[Command]
+	name="hold_b"
+	command=/b
+
+[Command]
+	name="hold_c"
+	command=/c
+
+[Command]
+	name="hold_x"
+	command=/x
+
+[Command]
+	name="hold_y"
+	command=/y
+
+[Command]
+	name="hold_z"
+	command=/z
+
 ;-| Hold Dir |--------------------------------------------------------------
 [Command]
 name = "holdfwd";Required (do not remove)
@@ -395,8 +419,18 @@ trigger2 = var(1)
 [State -1, 236_a]
 type = ChangeState
 value = 1000
+triggerall = var(20) <= 4
 triggerall = command="236_a"
-triggerall = movetype!=H
+triggerall = movetype!=A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 236_a]
+type = ChangeState
+value = 1010
+triggerall = var(20) <= 4
+triggerall = command="236_b"
+triggerall = movetype!=A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------

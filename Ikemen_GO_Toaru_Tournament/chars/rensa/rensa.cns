@@ -224,8 +224,8 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "fvar(10) = %d, fvar(0)=%f, facing = %d, life = %d, vel x = %f"
-params = var(20),fvar(0),var(16),sysvar(1), vel x
+text = "var(20) = %d, var(21)=%d, var(22)=%d"
+params = var(20),var(21),var(22)
 ;ignorehitpause = 
 ;persistent = 
 
@@ -257,13 +257,64 @@ var(20) = 1
 [State 0, VarSet]
 type = VarSet
 triggerall = stateno = [195,196]
-trigger1 = command = "a"
-trigger2 = command = "b"
-trigger3 = command = "c"
-trigger4 = command = "x"
-trigger5 = command = "y"
-trigger6 = command = "z"
-var(20) = (command = "a") + 2*(command="b") + 3*(command="c") + 4*(command="x") + 5*(command="y") + 6*(command="z") 
+trigger1 = command = "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger2 = command != "a" && command = "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger3 = command != "a" && command != "b" && command = "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger4 = command != "a" && command != "b" && command != "c" && command = "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger5 = command != "a" && command != "b" && command != "c" && command != "x" && command = "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger6 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command = "z" && !(command = "start" && var(21)>=0)
+trigger7 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && (command = "start" && var(21)>=0)
+var(20) = (command = "a") + 2*(command="b") + 3*(command="c") + 4*(command="x") + 5*(command="y") + 6*(command="z") + var(21)*(command="start")
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = 1
+var(22) = -1
+
+;the numbers I have to work with :
+;0, 7-99 -> 94 potential esper powers
+;0 -> reserved for kamijou touma as a reference to when rensa exploded herself trying to copy him
+
+;Level 4s
+;10 -> 24
+
+;Level 3s
+;25 -> 39
+
+;Level 2s
+;40 -> 54
+
+;Level 1s
+;55 -> 69
+
+;Level 0s
+;70 -> 84
+
+;Extra/more lvls than expected in the respective reserved spots
+;85 -> 99
+;7 -> 9
+
+
+[State 0, VarSet]
+type = VarSet
+;Kamijou Touma
+trigger1 = enemy,name = "Kamijou Touma" && var(21):=0
+;Level 4s
+trigger2 = enemy,name = "Hokaze Junko" && var(21):=10
+trigger3 = enemy,name = "Kinuhata Saiai" && var(21):=11
+;Level 3s
+trigger4 = enemy,name = "Last_Order" && var(21):=25
+;Level 2s
+;Level 1s
+;Level 0s
+trigger5 = enemy,name = "Tsuchimikado Motoharu" && var(21):=70
+;Extras
+var(22) = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(21)>=0 && var(22)=-1
+var(21) = -1
 
 
 ;DamageDampening Reset
@@ -295,4 +346,6 @@ var(20) = (command = "a") + 2*(command="b") + 3*(command="c") + 4*(command="x") 
 
 ;var(17) is the air dash count
 ;var(20) is the esper power
-;var(21) is esper power choosing confirmation
+;var(21) is the additional esper powers
+;var(22) is the boolean to confirm that the opponent is indeed one of the listed espers whose powers can be taken (if the code also exists)
+;var(23) is esper power choosing confirmation
