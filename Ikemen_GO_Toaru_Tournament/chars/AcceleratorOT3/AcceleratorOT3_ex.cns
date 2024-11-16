@@ -1296,7 +1296,7 @@ sprpriority = 10
 	[State 6415,壁吹き飛ばし]
 		type = TargetState
 		trigger1 = moveHit = 1
-		value = 7090
+		value = 7095
 
 	[State 6415, ヒットカウント持続]
 		type = ChangeState
@@ -2289,7 +2289,7 @@ sprpriority = 10
 	type = A
 	movetype = H
 	physics = N
-	velset = 0,0
+	velset = -20,0
 
 	[State 7000]
 		type = changeanim
@@ -2660,10 +2660,365 @@ volume = 255
 		type = SelfState ;ステートを戻す
 		trigger1 = Time >= 600 ;5秒経過・動作が長い場合はもっと長く。短くしすぎないように注意。
 		value = 5050 ;汎用くらい吹っ飛びステートへ
+
+;=============================
+
+; Knocked away into Wall Bounce
+[Statedef 7080]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+
+[State 0, PosFreeze]
+type = PosFreeze
+
+triggerall=enemynear,name="Hokaze Junko"
+trigger1=enemynear,stateno=2200
+trigger1 = time<=10
+trigger2=enemynear,stateno=2310
+trigger2 = time<=20
+value = 1
+ignorehitpause = 1
+;persistent = 
+
+
+	[State 0, Turn]
+type = Turn
+trigger1 = p2dist X <-20
+ignorehitpause = 0
+persistent = 0
+
+[State 5030, 1]
+type = ChangeAnim
+trigger1 = Anim != 5030;[5000, 5199]
+trigger1 = SelfAnimExist(5030)
+value = 5030
+
+[State 5030, 2]
+type = VelAdd
+trigger1 = time>=10
+y = GetHitVar(yaccel)
+
+[State 5030, 3]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 5030, 4]
+type = SelfState
+;triggerall = !HitFall
+trigger1 = 0;HitOver
+trigger2 = Vel Y > 0    ;Hit ground
+trigger2 = Pos Y >= Const(movement.air.gethit.groundlevel)
+value = 5100;5040 ;HITA_RECOV
+
+
+
+[State 5030, 6]
+type = changeState
+trigger1 = AnimTime = 0
+value = 7085 ;Air get-hit (transition)
+
+[State 7010]
+		type = changestate
+
+		triggerall=!(enemynear,name="Hokaze Junko" && enemynear,stateno=[2500,2599])
+		triggerall=!(enemynear,name="Hokaze Junko" && enemynear,anim=[3100,3120])
+		
+		trigger1=vel y <5
+		trigger1=time>=15
+
+		trigger1 = backedgebodydist<=10 ;|| frontedgebodydist<=10
+		value = 7020+5*(abs(vel X) >=15)
+
+;----------------------------------------------------------------
+; Knocked away NO WALL BOUNCE
+[Statedef 7081]
+type    = A
+movetype= H
+physics = N
+ctrl = 0
+
+
+
+	[State 0, Turn]
+type = Turn
+trigger1 = p2dist X <-20
+ignorehitpause = 0
+persistent = 0
+
+[State 0, PosAdd]
+type = PosAdd
+trigger1 = enemynear,stateno=810
+y = 80
+ignorehitpause = 1
+persistent = 0
+
+
+[State 5030, 1]
+type = ChangeAnim
+trigger1 = Anim != 5030;[5000, 5199]
+trigger1 = SelfAnimExist(5030)
+value = 5030
+
+[State 5030, 2]
+type = VelSet
+trigger1 = time>=10
+x = GetHitVar(xvel)
+y = GetHitVar(yvel)
+persistent=0
+
+[State 5030, 2]
+type = VelAdd
+trigger1 = time>=10
+y = GetHitVar(yaccel)
+
+[State 5030, 3]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 5030, 4]
+type = SelfState
+;triggerall = !HitFall
+trigger1 = 0;HitOver
+trigger2 = Vel Y > 0    ;Hit ground
+trigger2 = Pos Y >= Const(movement.air.gethit.groundlevel)
+value = 5100;5040 ;HITA_RECOV
+
+
+
+[State 5030, 6]
+type = changeState
+trigger1 = AnimTime = 0
+value = 7086 ;Air get-hit (transition)
+
+
+;--------------------------------------------------------------
+
+; Air get-hit (transition)
+[Statedef 7085]
+type    = A
+movetype= H
+physics = N
+
+[State 5035, 1]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5035)
+trigger1 = Anim != [5051,5059] ;Not if in hit up anim
+trigger1 = Anim != 5090 ;Not if hit off ground anim
+value = 5035
+
+[State 5035, 2]
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5035, 3]
+type = selfState
+triggerall = !HitFall
+trigger1 = 0;HitOver  ;Hit is over
+trigger2 = 0;AnimTime = 0 ;Animation over
+trigger3 = Time = 0     ;No transition anim
+trigger3 = Anim != 5035 ;.
+value = 5100 ;Air get-hit (recovering in air, not falling)
+
+[State 5035, 4]
+type = selfState
+triggerall = HitFall
+trigger1 = Vel Y > 0    ;Hit ground
+trigger1 = Pos Y >= Const(movement.air.gethit.groundlevel)
+value = 5100 ;Air get-hit (falling)
+
+[State 5035, 4]
+type = changeState
+triggerall = HitFall
+trigger1 = HitOver  ;Hit is over
+trigger2 = AnimTime = 0 ;Anim is over
+;trigger3 = Vel Y > 0    ;Hit ground
+;trigger3 = Pos Y >= Const(movement.air.gethit.groundlevel)
+trigger3 = Time = 0     ;No transition anim
+trigger3 = Anim != 5035 ;.
+value = 7090 ;Air get-hit (falling)
+
+[State 7010]
+		type = changestate
+		triggerall=!(enemynear,name="Hokaze Junko" && enemynear,stateno=[2500,2599])
+		triggerall=!(enemynear,name="Hokaze Junko" && enemynear,anim=[3100,3120])
+		trigger1=vel y <5
+		trigger1 = backedgebodydist<=10 ;|| frontedgebodydist<=10
+		value =  7020+5*(abs(vel X) >=15)
+
+;-------------------------------------------
+; Air get-hit (transition) NO WALL BOUNCE
+[Statedef 7086]
+type    = A
+movetype= H
+physics = N
+
+[State 5035, 1]
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5035)
+trigger1 = Anim != [5051,5059] ;Not if in hit up anim
+trigger1 = Anim != 5090 ;Not if hit off ground anim
+value = 5035
+
+[State 5035, 2]
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5035, 3]
+type = selfState
+triggerall = !HitFall
+trigger1 = 0;HitOver  ;Hit is over
+trigger2 = 0;AnimTime = 0 ;Animation over
+trigger3 = Time = 0     ;No transition anim
+trigger3 = Anim != 5035 ;.
+value = 5100 ;Air get-hit (recovering in air, not falling)
+
+[State 5035, 4]
+type = selfState
+triggerall = HitFall
+trigger1 = Vel Y > 0    ;Hit ground
+trigger1 = Pos Y >= Const(movement.air.gethit.groundlevel)
+value = 5100 ;Air get-hit (falling)
+
+[State 5035, 4]
+type = changeState
+triggerall = HitFall
+trigger1 = HitOver  ;Hit is over
+trigger2 = AnimTime = 0 ;Anim is over
+;trigger3 = Vel Y > 0    ;Hit ground
+;trigger3 = Pos Y >= Const(movement.air.gethit.groundlevel)
+trigger3 = Time = 0     ;No transition anim
+trigger3 = Anim != 5035 ;.
+value = 7091 ;Air get-hit (falling)
+
+
+;------------------------------------------
+
+; Air get-hit (falling)
+[Statedef 7090]
+type    = A
+movetype= H
+physics = N
+
+[State 5050, 1] ;Change anim when done with transition
+type = ChangeAnim
+trigger1 = AnimTime = 0
+trigger1 = Anim = 5035
+trigger2 = Time = 0     ;If no transition anim
+trigger2 = Anim != 5035
+trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
+trigger2 = Anim != 5090 ;Not if hit off ground anim
+value = 5050
+
+[State 5050, 2] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 5050, 3] ;Gravity
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5050, 4] ;Recover near ground
+type = SelfState
+triggerall = Vel Y > 0
+triggerall = Pos Y >= Const(movement.air.gethit.groundrecover.ground.threshold)
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5200 ;Air get-hit (fall recovery on ground)
+
+[State 5050, 5]; Recover in mid air
+type = SelfState
+triggerall = Vel Y > Const(movement.air.gethit.airrecover.threshold)
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5210 ;Air get-hit (fall recovery in air)
+
+[State 5050, 6]
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, Const(movement.air.gethit.groundlevel))
+value = 5100 ;Downed get-hit (hit ground from fall)
+
+[State 7010]
+		type = changestate
+		triggerall=!(enemynear,name="Hokaze Junko" && enemynear,stateno=[2500,2599])
+		triggerall=!(enemynear,name="Hokaze Junko" && enemynear,anim=[3100,3120])
+		trigger1=vel y <5
+		trigger1 = backedgebodydist<=10 ;|| frontedgebodydist<=10
+		value =  7020+5*(abs(vel X) >=15)
+
+;----------------------------------
+; Air get-hit (falling) NO WALL BOUNCE
+[Statedef 7091]
+type    = A
+movetype= H
+physics = N
+
+[State 5050, 1] ;Change anim when done with transition
+type = ChangeAnim
+trigger1 = AnimTime = 0
+trigger1 = Anim = 5035
+trigger2 = Time = 0     ;If no transition anim
+trigger2 = Anim != 5035
+trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
+trigger2 = Anim != 5090 ;Not if hit off ground anim
+value = 5050
+
+[State 5050, 2] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, Const720p(4), Const720p(-8))
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 5050, 3] ;Gravity
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 5050, 4] ;Recover near ground
+type = SelfState
+triggerall = Vel Y > 0
+triggerall = Pos Y >= Const(movement.air.gethit.groundrecover.ground.threshold)
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5200 ;Air get-hit (fall recovery on ground)
+
+[State 5050, 5]; Recover in mid air
+type = SelfState
+triggerall = Vel Y > Const(movement.air.gethit.airrecover.threshold)
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5210 ;Air get-hit (fall recovery in air)
+
+[State 5050, 6]
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, Const(movement.air.gethit.groundlevel))
+value = 5100 ;Downed get-hit (hit ground from fall)
 ;------------------------------------------------------------------------------
 ;反射やられ
 ;------------------------------------------------------------------------------
-[Statedef 7090,硬直時間]
+[Statedef 7095,硬直時間]
 	type = A
 	movetype = H
 	physics = N
@@ -2677,10 +3032,10 @@ volume = 255
 	[State 7050]
 		type = changestate
 		trigger1 = hitshakeover
-		value = 7091
+		value = 7096
 
 ;--------------------------------------
-[Statedef 7091,床に当たるまで吹っ飛び]
+[Statedef 7096,床に当たるまで吹っ飛び]
 	type = A
 	movetype = H
 	physics = N

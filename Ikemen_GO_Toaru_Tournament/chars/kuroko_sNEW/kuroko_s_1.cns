@@ -5848,7 +5848,7 @@ persistent = 0
 [State -1,InvFrames]
 		Type=notHitBy
 		Trigger1=Time>=0
-		Trigger1=Time<45
+		Trigger1=Time<55
 		value = SCA
 		Time=1
 

@@ -902,7 +902,7 @@ type = ChangeState
 value = 2100
 triggerall= var(59)=0
 triggerall = command = "QCF_a"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,499]) && var(1)
 
@@ -913,7 +913,7 @@ value = 2150
 triggerall= var(59)=0
 triggerall = command = "QCF_b"
 triggerall = (fvar(7) = 0 ||fvar(8)!=0) || (target(900),movetype=H)
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,499]) && var(1)
 
@@ -923,7 +923,7 @@ type = ChangeState
 value = 2500
 triggerall= var(59)=0
 triggerall = command = "QCF_a"
-trigger1 = statetype = A
+triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = (stateno = [200,650]) && var(1)
 trigger3= (stateno =[2000,2050]) && var(1)
@@ -934,7 +934,7 @@ type = ChangeState
 value = 2560
 triggerall= var(59)=0
 triggerall = command = "QCF_b"
-trigger1 = statetype = A
+triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = (stateno = [200,650]) && var(1)
 trigger3= (stateno =[2000,2050]) && var(1)
@@ -947,7 +947,7 @@ value = 2050
 triggerall= var(59)=0
 triggerall = command = "QCB_a"
 TriggerAll = pos Y <= -20
-trigger1 = statetype = A
+triggerall = statetype = A
 trigger1 = ctrl
 trigger2 = (stateno = [600,650]) && var(1)
 
@@ -957,7 +957,7 @@ type = ChangeState
 value = 2000
 triggerall= var(59)=0
 triggerall = command = "QCB_b"
-trigger1 = statetype = A
+triggerall = statetype = A
 trigger1 = ctrl
 triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 trigger2 = (stateno = [600,650]) && var(1)
@@ -971,7 +971,7 @@ type = ChangeState
 value = 2000
 triggerall= var(59)=0
 triggerall = command = "QCB_a"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 trigger2 = (stateno = [200,499]) && var(1)
@@ -984,7 +984,7 @@ type = ChangeState
 value = 2020
 triggerall= var(59)=0
 triggerall = command = "QCB_b"
-trigger1 = statetype != A
+triggerall = statetype != A
 trigger1 = ctrl
 triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 trigger2 = (stateno = [200,499]) && var(1)

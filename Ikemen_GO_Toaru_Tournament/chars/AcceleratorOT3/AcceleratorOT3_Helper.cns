@@ -975,8 +975,17 @@ stateno = 8041
 
 [State 6410, 0]; 本体が反射パートを過ぎたら消滅
 type = DestroySelf
+triggerall=root,stateno!=1102
+triggerall=root,stateno!=1112
 trigger1 = root,command!="hold_z"
 trigger2=parent,movetype=H
+
+[State 6410, 0]; 本体が反射パートを過ぎたら消滅
+type = DestroySelf
+triggerall=root,stateno=1102
+triggerall=root,stateno=1112
+trigger1=parent,movetype=H
+
 
 [State 6410, 0]
 type = DestroySelf

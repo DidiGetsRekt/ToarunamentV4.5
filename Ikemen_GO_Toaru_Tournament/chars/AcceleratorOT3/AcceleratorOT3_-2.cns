@@ -141,8 +141,8 @@ params = fvar(0),fvar(1),fvar(11)
  	type = Varset
  	triggerall = var(1) = 1
  	trigger1 = movetype = H
- 	trigger2 =  var(5) = 0
-	trigger2 = !numtarget
+ 	;trigger2 =  var(5) = 0
+	;trigger2 = !numtarget
 	var(1) = 0
 	ignorehitpause = 1
 	
@@ -1142,8 +1142,10 @@ ignorehitpause = 1
 		trigger1 = power > 100
 		triggerall = stateno != 6600
 		;trigger1 = var(2) != 0
-		trigger1 = gametime%5 <= 2
+		triggerall = gametime%5 <= 2
 		triggerall = movetype!=H
+		trigger2=stateno=1102 && time<10
+		trigger3=stateno=1112 && time<15
 		Time = 1
 		Add = 10,10,220
 		Mul = 256,256,256
@@ -1160,14 +1162,16 @@ ignorehitpause = 1
 		triggerall = movetype!=H
 		triggerall = stateno != 6600
 		trigger1 = power > 100
-		trigger1 =!(enemynear,Name = "Kamijou Touma" && enemynear,var(50) = 666)
+		triggerall =!(enemynear,Name = "Kamijou Touma" && enemynear,var(50) = 666)
+		trigger2=stateno=1102 && time<10
+		trigger3=stateno=1112 && time<15
 		
 		value = ,AA,AP
 		time = 1
 [State 7, Reflect Armor]
 type = PowerAdd
 trigger1 = (numExplod(8000) != 0)
-trigger2=command="hold_z"
+trigger1=command="hold_z"
 triggerall=gametime%2=1
 triggerall=movetype!=H
 value = -50
@@ -1176,6 +1180,8 @@ value = -50
 
 [State 6420,”½Ë”»’è‰Šú‰»]
  	type = Varset
+	trigger1= !(stateno=1102 && time<10)
+	trigger1=!(stateno=1112 && time<15)
  	trigger1 = command!="hold_z"
 	trigger2=numhelper(8045)!=0
 	var(7) = 0
@@ -1191,8 +1197,10 @@ type = Helper
 trigger1 =command = "hold_z"
 triggerall = movetype!=H
 triggerall = stateno != 6600
-trigger1 =(numHelper(8000) = 0)
-trigger1 = power > 100
+triggerall =(numHelper(8000) = 0)
+triggerall= power > 100
+trigger2=stateno=1102 && time<10
+trigger3=stateno=1112 && time<15
 name = "rf"
 stateno = 8040
 ID = 8000

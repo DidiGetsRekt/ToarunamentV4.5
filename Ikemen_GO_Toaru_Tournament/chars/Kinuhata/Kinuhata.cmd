@@ -308,7 +308,7 @@ time = 11
 
 [Command]
 name = "Bottle_EX"    
-command = ~D,D,x
+command = ~D,D,z
 time = 24
 buffer.time = 12
 
@@ -316,17 +316,17 @@ buffer.time = 12
 
 [Command]
 name = "Bottle"    
-command = $D, x
+command = $D, z
 time = 20
 
 [Command]
 name = "Offense"    
-command = $F, x
+command = $F, z
 time = 11
 
 [Command]
 name = "Defense"    
-command = $B, x
+command = $B, z
 time = 11
 
 [Command]
@@ -905,7 +905,7 @@ triggerall = fvar(6)<1600
 triggerall =  var(3) > 0
 ;trigger1 = command = "x" && command = "holddown"
 triggerall = command = "holddown"
-triggerall = command = "x"
+triggerall = command = "z"
 triggerall=!(command = "holdfwd" || command = "holdback")
 trigger1 = ctrl
 trigger2 = var(1)
@@ -1112,7 +1112,7 @@ Trigger4 = StateNo = 630 && var(1) && var(20) = 1
 [State -1, Super Armor]
 type = ChangeState
 value = 750
-triggerall = command = "z"
+triggerall = command = "x"
 trigger1 = ctrl
 trigger1 = fvar(6) >200
 

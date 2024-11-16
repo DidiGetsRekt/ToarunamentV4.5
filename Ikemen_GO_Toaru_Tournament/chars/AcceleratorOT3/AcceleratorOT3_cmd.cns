@@ -457,6 +457,7 @@ ignorehitpause	= 1
 	Trigger2 = StateNo = 620 && var(1);
 	trigger3 = stateno = 1020 && var(1);空中風巻上げA
 	trigger4 = stateno = 1350 && var(1);ベクトルキックヒットキャンセル
+	trigger5 = stateno = 1055 && var(1);ベクトルキックヒットキャンセル
 
 ;==============================================================================
 ; 必殺技
@@ -540,7 +541,7 @@ ignorehitpause	= 1
 
 [State -1, 空中風巻上げB]
 	type = ChangeState
-	value = 1070
+	value = 1055
 	triggerall = command = "風巻上げB"
 	triggerAll = statetype = A
 	TriggerAll = pos Y<=-15
@@ -559,6 +560,8 @@ ignorehitpause	= 1
 	Trigger1 = Ctrl
 	Trigger2 = StateNo = [600,799]
 	Trigger2 = var(1)	
+	Trigger3 = StateNo = 1020
+	Trigger3 = var(1)	
 
 [State -1,ベクトルキックB]
 	Type=SelfState
@@ -569,6 +572,8 @@ ignorehitpause	= 1
 	Trigger1 = Ctrl
 	Trigger2 = StateNo = [600,799]
 	Trigger2 = var(1)	
+	Trigger3 = StateNo = 1020
+	Trigger3 = var(1)	
 
 ;------------------------------------------------------------------------------
 ;地面砕き
@@ -597,6 +602,8 @@ ignorehitpause	= 1
 	trigger4 = stateno = 53
 	Trigger4 = (!var(1) && time >= 3) ||(var(1) && time >= 9)
 	Trigger5 = StateNo = 1101 && var(1)
+	Trigger6 = StateNo = 240 && var(1)
+	Trigger7 = StateNo = 1000 && var(1)
 
 [State -1, ブーストダッシュ]
 	type = ChangeState
@@ -662,6 +669,7 @@ ignorehitpause	= 1
 	Trigger1 = Ctrl
 	Trigger2 = StateNo = 620 && var(1)
 	Trigger3 = StateNo = 1020 && time >= 14
+	Trigger4 = StateNo = 1055 && time >= 55
 
 [State -1,空中バックダッシュ];
 	Type=ChangeState

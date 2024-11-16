@@ -1603,8 +1603,8 @@ sparkxy = -10, -8
 hitsound = s1, 0
 guardsound = s6, 2
 ground.type = High
-ground.slidetime =14
-ground.hittime  = 14
+ground.slidetime =15
+ground.hittime  = 15
 ground.velocity = -4.5,0
 airguard.velocity = -1.0,-.8
 air.type = High
@@ -1697,8 +1697,8 @@ sparkxy = -10, -33
 hitsound = s1, 1
 guardsound = s6, 3
 ground.type = low
-ground.slidetime = 18
-ground.hittime  = 18
+ground.slidetime = 19
+ground.hittime  = 19
 ground.velocity = -4,0
 airguard.velocity = -2.5,-.8
 air.type = High
@@ -2795,6 +2795,15 @@ trigger1 = AnimElemtime(6) =1
 value = s1,4
 volume = 255 ;音量
 
+[State 820, ダメージ(倒せる）]
+type = TargetLifeAdd
+trigger1= target,Pos y >=0
+trigger1=time>=35
+value = Ceil(-100*fvar(0))
+;absolute = 1
+kill =1
+persistent = 0
+
 [State -1, ヒットエフェクト]
 Type     = Helper
 trigger1 = AnimElemtime(6) =1
@@ -2896,13 +2905,7 @@ type = ChangeAnim2
 Trigger1 = Time = 0
 value = 920
 
-[State 820, ダメージ(倒せる）]
-type = LifeAdd
-trigger1= Pos y >=0
-value = -100
-absolute = 1
-kill =1
-persistent = 0
+
 
 [State 820,画面ゆらす]
 type = EnvShake
@@ -3051,6 +3054,7 @@ ignorehitpause = 1
 [State 0, VarSet]
 type = VarSet
 trigger1 = var(1)
+trigger2=enemynear,stateno=[120,160]
 v = 18    ;fv = 10
 value = 1
 ignorehitpause = 1

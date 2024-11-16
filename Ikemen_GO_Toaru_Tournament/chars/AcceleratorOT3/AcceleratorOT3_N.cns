@@ -1065,6 +1065,7 @@ sprpriority = 10
 		 name = "Rail"
 		 keyctrl = 0
 		 ownpal = 1
+		persistent=0
 
 [State 0, VelAdd]
 type = VelAdd
@@ -1079,7 +1080,26 @@ persistent = 0
 		trigger1 = animelemtime(3) <= 0
 		edge = 32,6
 
- 
+ 	[State -1,攻撃補正,倍率]
+		Type=VarSet
+		Trigger1 = helper(241),movecontact
+		fvar(0)=fvar(0)*0.75
+		persistent = 0
+ 		ignorehitpause = 1
+
+	[State 222 ノックバックカウント]
+		type = Varadd
+		Trigger1 = helper(241),movecontact
+		fvar(11) = 2
+		persistent = 0
+ 		ignorehitpause = 1
+ 		
+	[State 240,キャンセルフラグ設定]
+		Type = VarSet
+		Trigger1 = helper(241),movecontact
+		var(1) = 1
+		persistent = 0
+ 		ignorehitpause = 1
 
 	[State 240, ステート変更]
 		type = ChangeState
@@ -1096,7 +1116,7 @@ persistent = 0
 	anim = 251
 	velset = 0,0
 	ctrl = 0
-	sprpriority = -1
+	sprpriority = 4
 
 	[State 240, ?????]
 		type = PlaySnd
@@ -1124,7 +1144,7 @@ hitsound = S1,0
 guardsound = S2,0
 ground.type = High      ;Low,Trip,None
 air.type = High
-air.juggle = 3
+air.juggle = 0
 ;guard.hittime = 0
 air.hittime = 20
 ground.slidetime = 5
@@ -1180,31 +1200,12 @@ getpower = 80,5
 		persistent = 0
 		ignorehitpause = 1
 
-	[State -1,攻撃補正,倍率]
-		Type=ParentVarSet
-		Trigger1 = movecontact
-		fvar(0)=parent,fvar(0)*0.75
-		persistent = 0
- 		ignorehitpause = 1
 
-	[State 222 ノックバックカウント]
-		type = ParentVaradd
-		Trigger1 = movecontact
-		fvar(11) = 2
-		persistent = 0
- 		ignorehitpause = 1
- 		
-	[State 240,キャンセルフラグ設定]
-		Type = ParentVarSet
-		Trigger1 = movecontact
-		var(1) = 1
-		persistent = 0
- 		ignorehitpause = 1
 
 	[State 241, 消去]
 		type = DestroySelf
 		Trigger1=AnimTime=0
-		Trigger2=root,stateno != 240
+		Trigger2=root,movetype=H
 
 ;------------------------------------------------------------------------------
 ;屈み
