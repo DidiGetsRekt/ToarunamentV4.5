@@ -324,6 +324,28 @@ time = 1
 	name="hold_z"
 	command=/z
 
+
+;-| Dir |--------------------------------------------------------------
+[command]
+name = "fwd"
+command = F
+time = 0
+
+[command]
+name = "back"
+command = B
+time = 0
+
+[Command]
+name = "up" 
+command = U
+time = 0
+
+[Command]
+name = "down"
+command = D
+time = 0
+
 ;-| Hold Dir |--------------------------------------------------------------
 [Command]
 name = "holdfwd";Required (do not remove)

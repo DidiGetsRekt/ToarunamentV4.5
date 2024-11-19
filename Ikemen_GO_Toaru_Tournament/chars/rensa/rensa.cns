@@ -224,8 +224,8 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "var(20) = %d, var(21)=%d, var(22)=%d"
-params = var(20),var(21),var(22)
+text = "var(20) = %d, var(21)=%d, var(22)=%d, helper(24000),var = %d, helper(24000),var = %d"
+params = var(20),var(21),var(22), helper(24000),var(4),helper(24000),var(3)
 ;ignorehitpause = 
 ;persistent = 
 
@@ -315,6 +315,26 @@ var(22) = 1
 type = VarSet
 trigger1 = var(21)>=0 && var(22)=-1
 var(21) = -1
+
+[State -2]
+Type = Helper
+TriggerAll = RoundState = 0
+TriggerAll = NumEnemy > 0
+TriggerAll = NumHelper(24000) = 0
+Trigger1 = NumPartner = 0
+Trigger1 = RoundNo = 1
+Trigger2 = NumPartner > 0
+Trigger2 = Partner,ID > ID
+Trigger2 = RoundNo = 1
+Trigger3 = TeamMode = Turns
+StateNo = 24000
+PosType = Back
+Pos = 50, -140
+Ownpal = 1
+IgnoreHitPause = 1
+SuperMoveTime = 99999
+PauseMoveTime = 99999
+ID = 24000
 
 
 ;DamageDampening Reset
