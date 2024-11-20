@@ -173,6 +173,69 @@ movetype = I
 physics = N
 sprpriority = 2
 
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+v = 19
+value = 0
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = command = "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger2 = command != "a" && command = "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger3 = command != "a" && command != "b" && command = "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger4 = command != "a" && command != "b" && command != "c" && command = "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger5 = command != "a" && command != "b" && command != "c" && command != "x" && command = "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger6 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command = "z" && !(command = "start" && var(21)>=0)
+trigger7 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && (command = "start" && var(21)>=0)
+v = 25
+value = var(26)
+
+[State 0, VarSet]
+type = VarSet
+triggerall = time>0
+triggerall = var(19)<2
+trigger1 = command = "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger2 = command != "a" && command = "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger3 = command != "a" && command != "b" && command = "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger4 = command != "a" && command != "b" && command != "c" && command = "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger5 = command != "a" && command != "b" && command != "c" && command != "x" && command = "y" && command != "z" && !(command = "start" && var(21)>=0)
+trigger6 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command = "z" && !(command = "start" && var(21)>=0)
+trigger7 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && (command = "start" && var(21)>=0)
+v = 26
+value = (command = "a") + 2*(command="b") + 3*(command="c") + 4*(command="x") + 5*(command="y") + 6*(command="z") + var(21)*(command="start")
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(25)!=var(26)
+v = 19
+value = 1
+
+[State 0, VarSet]
+type = VarSet
+;triggerall = var(25)!=-1
+triggerall = var(26)!=-1
+trigger1 = var(25)=var(26)
+v = 19
+value = 2
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(19)=2
+trigger2 = var(19)=1
+trigger2 = animtime=0
+v = 20
+value = var(26)
+;ignorehitpause = 
+persistent = 0
+
+[State -1]
+Type = PlaySnd
+TriggerAll = var(19)=1
+trigger1 = animtime = 0
+Value = s24000, 0
+Channel = 1
+
 [State 195, 2]
 type = ChangeState
 trigger1 = AnimTime = 0
@@ -224,8 +287,16 @@ ctrl = 1
 [State 0, DisplayToClipboard]
 type = DisplayToClipboard
 trigger1 = 1
-text = "var(20) = %d, var(21)=%d, var(22)=%d, helper(24000),var = %d, helper(24000),var = %d"
-params = var(20),var(21),var(22), helper(24000),var(4),helper(24000),var(3)
+text = "var(20) = %d, var(21)=%d, var(22)=%d, helper(24000),var = %d, helper(24000),var = %d, roundstate = %d"
+params = var(20),var(21),var(22), helper(24000),var(1),helper(24000),var(4), roundstate
+;ignorehitpause = 
+;persistent = 
+
+[State 0, DisplayToClipboard]
+type = AppendToClipboard
+trigger1 = 1
+text = "\nvar(19) = %d, var(25)=%d, var(26)=%d"
+params = var(19),var(25),var(26)
 ;ignorehitpause = 
 ;persistent = 
 
@@ -247,6 +318,30 @@ var(23) = 1
 	trigger1 = roundsexisted = 0 && roundstate = 0 && roundno = 1;
 	value = 1000 ; 0?6000????? 1000???1? ??????1000
 
+;step process during match defaulting at 2 (aka set)
+[State 0, VarSet]
+type = VarSet
+trigger1 = stateno!=[195,196]
+trigger1 = roundstate = 2
+trigger1 = var(19)!=2
+var(19) = 2
+
+;first value during match reset
+[State 0, VarSet]
+type = VarSet
+trigger1 = stateno!=[195,196]
+trigger1 = roundstate = 2
+trigger1 = var(25)!=-1
+var(25) = -1
+
+;second value during match reset
+[State 0, VarSet]
+type = VarSet
+trigger1 = stateno!=[195,196]
+trigger1 = roundstate = 2
+trigger1 = var(26)!=-1
+var(26) = -1
+
 ;temporary esper power setter at the beginning of the match
 [State 0, VarSet]
 type = VarSet
@@ -255,7 +350,7 @@ var(20) = 1
 
 ;temporary esper power setter
 [State 0, VarSet]
-type = VarSet
+type = null
 triggerall = stateno = [195,196]
 trigger1 = command = "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
 trigger2 = command != "a" && command = "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
@@ -318,14 +413,12 @@ var(21) = -1
 
 [State -2]
 Type = Helper
-TriggerAll = RoundState = 0
+TriggerAll = RoundState = [0,2]
 TriggerAll = NumEnemy > 0
 TriggerAll = NumHelper(24000) = 0
 Trigger1 = NumPartner = 0
-Trigger1 = RoundNo = 1
 Trigger2 = NumPartner > 0
 Trigger2 = Partner,ID > ID
-Trigger2 = RoundNo = 1
 Trigger3 = TeamMode = Turns
 StateNo = 24000
 PosType = Back
@@ -365,7 +458,10 @@ ID = 24000
 
 
 ;var(17) is the air dash count
+;var(19) is esper power choosing confirmation
 ;var(20) is the esper power
 ;var(21) is the additional esper powers
 ;var(22) is the boolean to confirm that the opponent is indeed one of the listed espers whose powers can be taken (if the code also exists)
-;var(23) is esper power choosing confirmation
+;var(23) is jump variable
+;var(25) is first value clicked during taunt
+;var(26) is second value clicked during taunt

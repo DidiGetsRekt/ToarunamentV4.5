@@ -580,6 +580,8 @@ Loopstart
 
 ; Knitting needles
 [Begin Action 195]
+Clsn2Default: 1
+  Clsn2[0] = -13, -98, 15, -3
 181,  0,  0,  0,  3
 181,  1,  0,  0,  3
 181,  2,  0,  0,  3
