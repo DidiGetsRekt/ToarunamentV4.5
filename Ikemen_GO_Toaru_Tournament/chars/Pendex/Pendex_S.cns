@@ -2706,7 +2706,7 @@ ctrl = 0
 
 ;Rooting Helper A
 [Statedef 1301]
-type    = A                     ;State-type: S-stand, C-crouch, A-air, L-liedown
+type    = C                     ;State-type: S-stand, C-crouch, A-air, L-liedown
 movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
 physics = N                      ;Physics: S-stand, C-crouch, A-air                    ;Number of air juggle points move takes
 ;Commonly-used controllers:
@@ -2781,7 +2781,7 @@ ignorehitpause=1
 type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
-attr = A, SP                     ;Attribute: Standing, Normal Attack
+attr = C, SP                     ;Attribute: Standing, Normal Attack
 damage = Ceil(35*parent,fvar(10)), 0                   ;Damage that move inflicts, guard damage
 animtype = Hard                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag =                   ;Flags on how move is to be guarded against
@@ -3027,7 +3027,7 @@ ctrl = 0
 
 ;Rooting Helper B
 [Statedef 1351]
-type    = A                     ;State-type: S-stand, C-crouch, A-air, L-liedown
+type    = C                    ;State-type: S-stand, C-crouch, A-air, L-liedown
 movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
 physics = N                      ;Physics: S-stand, C-crouch, A-air                    ;Number of air juggle points move takes
 ;Commonly-used controllers:
@@ -3098,7 +3098,7 @@ ignorehitpause=1
 type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
-attr = A, SP                     ;Attribute: Standing, Normal Attack
+attr = C, SP                     ;Attribute: Standing, Normal Attack
 damage = Ceil(45*parent,fvar(10)), 0                   ;Damage that move inflicts, guard damage
 animtype = Hard                 ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag =                   ;Flags on how move is to be guarded against
@@ -3344,7 +3344,7 @@ Ctrl = 0
 ;---------------------------------------------------------------------
 ;Ground Pound Shockwave A
 [Statedef 1410]
-type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+type    = C                     ;State-type: S-stand, C-crouch, A-air, L-liedown
 movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
 physics = S                      ;Physics: S-stand, C-crouch, A-air                    ;Number of air juggle points move takes
 ;Commonly-used controllers:
@@ -3425,7 +3425,7 @@ persistent = 0
 type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
-attr = S, SA                     ;Attribute: Standing, Normal Attack
+attr = C, SA                     ;Attribute: Standing, Normal Attack
 damage = Ceil(45*parent,fvar(0)), 0                   ;Damage that move inflicts, guard damage
 animtype = Hard              ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = LA                   ;Flags on how move is to be guarded against
@@ -3677,7 +3677,7 @@ Ctrl = 0
 ;---------------------------------------------------------------------
 ;Ground Pound Shockwave B
 [Statedef 1460]
-type    = S                      ;State-type: S-stand, C-crouch, A-air, L-liedown
+type    = C                     ;State-type: S-stand, C-crouch, A-air, L-liedown
 movetype= A                      ;Move-type: A-attack, I-idle, H-gethit
 physics = S                      ;Physics: S-stand, C-crouch, A-air                    ;Number of air juggle points move takes
 ;Commonly-used controllers:
@@ -3759,7 +3759,7 @@ persistent = 0
 type = HitDef
 trigger1 = !movecontact
 trigger1 = !movereversed
-attr = S, SA                     ;Attribute: Standing, Normal Attack
+attr = C, SA                     ;Attribute: Standing, Normal Attack
 damage = Ceil(55*parent,fvar(0)), 0                   ;Damage that move inflicts, guard damage
 animtype = Hard              ;Animation type: Light, Medium, Heavy, Back (def: Light)
 guardflag = LA                   ;Flags on how move is to be guarded against

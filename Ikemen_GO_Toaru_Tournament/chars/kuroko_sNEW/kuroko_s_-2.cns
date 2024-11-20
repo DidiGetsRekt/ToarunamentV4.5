@@ -37,6 +37,71 @@ ignorehitpause = 1
 	fvar(11)=0
 	ignorehitpause = 1
 
+
+[State -2];Wallsplat reset
+	type = Varset
+	trigger1 = enemy,movetype != H
+	trigger2 = enemy,stateno = [120,155]
+	var(26)=0
+	ignorehitpause = 1
+
+[State -2];Groundsplat reset
+	type = Varset
+	trigger1 = enemy,movetype != H
+	trigger2 = enemy,stateno = [120,155]
+	var(27)=0
+	ignorehitpause = 1
+
+[State -1, ???]
+Type = Explod
+Trigger1 = target,stateno=2162
+trigger1=numexplod(2152)=0
+Anim = 2152
+ID = 2152
+Postype = p2
+Pos      = 0,0
+scale = 1,1
+Ownpal = 1
+SprPriority = 3
+bindtime = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+facing =-1
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = target,stateno!=2162
+id = 2152
+ignorehitpause = 1
+;persistent = 
+
+[State -1, ???]
+Type = Explod
+Trigger1 = target,stateno=2161
+trigger1=numexplod(2151)=0
+Anim = 2151
+ID = 2151
+Postype = p2
+Pos      = 0,0
+scale = 1,1
+Ownpal = 1
+SprPriority = 3
+bindtime = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+facing =-1
+
+
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = target,stateno!=2161
+id = 2151
+ignorehitpause = 1
+;persistent = 
+
+
 ;Cornerpush reset
 [State -2];ヒットバック
 	type = Varset

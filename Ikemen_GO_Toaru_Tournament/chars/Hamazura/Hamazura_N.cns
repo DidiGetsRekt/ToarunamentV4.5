@@ -637,7 +637,7 @@ Ctrl = 1
 
 ;Gun Helper HARD LUCK
 [Statedef 235]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -1093,7 +1093,7 @@ Ctrl = 1
 
 ;Gun Helper GOOD LUCK
 [Statedef 245]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -1955,7 +1955,7 @@ Ctrl = 1
 
 ;Crouch Gun Helper
 [Statedef 425]
-Type = A
+Type = C
 MoveType = A
 Physics = N
 SprPriority = 5

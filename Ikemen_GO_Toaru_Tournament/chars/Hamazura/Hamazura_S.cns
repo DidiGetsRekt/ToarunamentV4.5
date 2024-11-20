@@ -107,7 +107,7 @@ ctrl = 1
 
 ;Rifle A Helper
 [Statedef 1005]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -510,7 +510,7 @@ ctrl = 1
 
 ;Rifle B Helper
 [Statedef 1055]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -863,7 +863,7 @@ ctrl = 1
 
 ;Grenade Helper
 [Statedef 1125]
-type    = A;U
+type    = U
 movetype= I
 physics = N
 ctrl = 0
@@ -1614,7 +1614,7 @@ ctrl = 1
 
 ;Mine Helper
 [Statedef 1225]
-type    = A;U
+type    = S
 movetype= I
 physics = N
 ctrl = 0
@@ -2090,7 +2090,7 @@ ctrl = 1
 
 ;Mine Helper Flying
 [Statedef 1275]
-type    = A;U
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -2836,7 +2836,7 @@ ctrl = 1
 
 ;DP Rifle Helper
 [Statedef 1375]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5

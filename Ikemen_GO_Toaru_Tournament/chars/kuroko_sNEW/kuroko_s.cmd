@@ -825,7 +825,7 @@ triggerall = (command != "holdup" && statetype!=A) || statetype=A
 triggerall=var(7)<5
 trigger1 = command = "y"
 trigger1 = command = "holdfwd"
-trigger2=command="F_y"
+;trigger2=command="F_y"
 
 
 
@@ -841,7 +841,7 @@ triggerall = ctrl ||var(1)
 triggerall = command != "holdup"
 trigger1 = command = "y"
 trigger1 = command = "holdback"
-trigger2=command="B_y"
+;trigger2=command="B_y"
 
 ;Teleport Up
 [State -1]
@@ -851,7 +851,7 @@ triggerall=stateno!=[3000,3100]
 triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 ;triggerall = stateno != 1000 && stateno != 1010 && stateno!=1030
 ;triggerALL = stateno != 2200 
-triggerall = (command = "holdup" && command = "y") || (command="U_y")
+triggerall = (command = "holdup" && command = "y") ;|| (command="U_y")
 triggerall = (command != "holdfwd" && statetype=A) || statetype!=A
 triggerall=var(7)<8
 trigger1= ctrl ||Var(1)
@@ -870,8 +870,7 @@ triggerall = ctrl ||var(1)
 triggerall= pos Y <15
 trigger1 = command = "y"
 trigger1 = command = "holddown"
-trigger2=command="D_y"
-
+;trigger2=command="D_y"
 
 
 
@@ -916,6 +915,7 @@ triggerall = (fvar(7) = 0 ||fvar(8)!=0) || (target(900),movetype=H)
 triggerall = statetype != A
 trigger1 = ctrl
 trigger2 = (stateno = [200,499]) && var(1)
+trigger3 = (stateno = 810) && var(1)
 
 ;¡“Sji‹ó’†j
 [State -1, “Sji‹ó’†j]
@@ -998,6 +998,9 @@ trigger2 = (stateno = [200,499]) && var(1)
 
 ;------------------------------------------------------------------------------
 
+
+
+
 ;¡ ’nã’Êí“Š‚° 
 [State -1]
 type = ChangeState
@@ -1013,6 +1016,18 @@ triggerall = (fvar(7) = 0 ||fvar(8)!=0)
 triggerall = (command = "DP_x")
 trigger1 = ctrl
 trigger2= var(1) && stateno=[200,499]
+
+;Forward Throw
+[State -1]
+Type = ChangeState
+value = 800
+	TriggerAll=Alive!=0
+	TriggerAll = StateType != A
+	TriggerAll=command="x"
+	TriggerAll=command="holdfwd"
+	Trigger1=Ctrl
+	trigger2=stateno=[100,101]
+
 
 
 ;Spotdodge

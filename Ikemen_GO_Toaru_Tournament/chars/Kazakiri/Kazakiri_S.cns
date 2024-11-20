@@ -146,13 +146,23 @@ persistent = 0
 
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = time>=1
 value = C,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
 ;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = time>=1
+value = SA,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
 
 
 [State 0, VelSet]
@@ -192,13 +202,23 @@ SprPriority = 2
 		var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 =1
 value = C,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
 ;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SA,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
 
 
 [State -1,汎用格納]
@@ -377,9 +397,18 @@ SprPriority = 2
 		var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = 1
 value = C,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SA,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
@@ -912,9 +941,18 @@ velset=0,0
 		var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = time>=1
 value = C,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = time>=1
+value = SA,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
@@ -994,9 +1032,18 @@ SprPriority = 2
 		var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = 1
 value = C,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SA,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
@@ -1174,7 +1221,7 @@ SprPriority = 2
 		var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = 1
 value = C,AA,AP,AT
 ;value2 = S,NA
@@ -1182,6 +1229,14 @@ time = 1
 ignorehitpause = 1
 ;persistent = 
 
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = 1
+value = SA,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
 
 [State -1,汎用格納]
 		type = Varset

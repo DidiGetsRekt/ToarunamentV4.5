@@ -955,14 +955,7 @@ PauseMoveTime = 9999
 Persistent = 0
 facing =-1
 
-[State -1,カウンター補正]
-		Type=ParentVarSet
 
-		Trigger1=movecontact
-		;trigger1 = parent,fvar(0)>0.30
-		fvar(0)=parent,fvar(0)*0.85
-		persistent = 0
- 		ignorehitpause = 1
 
 
 [State 200 ノックバックカウント]
@@ -978,6 +971,65 @@ facing =-1
 		trigger1 = movecontact
 		ignorehitpause = 1
 		var(1)=1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget;()
+trigger1 = target,statetype=A
+trigger1=target,backedgedist<20
+trigger1 = target,stateno!=2162
+triggerall=parent,var(26)=0
+value = 2162
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno!=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.85
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.75
+		persistent = 0
+ 		ignorehitpause = 1
+
+
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		var(26)=1
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State -1, ガード]
+Type = null;Explod
+Trigger1 = target,stateno=2162
+Anim = 2152
+ID = 2152
+Postype = p2
+Pos      = 0,0
+scale = 1,1
+Ownpal = 1
+SprPriority = 3
+bindtime = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Persistent = 0
+facing =-1
 
 [State 2100, ガードされた時のステート変更]
 type = ChangeState
@@ -1429,6 +1481,43 @@ Peresistent = 1
 		fVar(11) = 6
 		persistent = 0
  		ignorehitpause = 1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget;()
+trigger1 = target,statetype=L
+trigger1 = target,stateno!=2161
+triggerall=parent,var(27)=0
+value = 2161
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		trigger1 = target,stateno=2161
+		;trigger1 = parent,fvar(0)>0.30
+		var(27)=1
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State -1, ガード]
+Type = null;Explod
+Trigger1 = target,stateno=2161
+Anim = 2151
+ID = 2151
+Postype = p2
+Pos      = 0,0
+scale = 1,1
+Ownpal = 1
+SprPriority = 3
+bindtime = 1
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Persistent = 0
+facing =-1
+
 [State 2210]
 type = AssertSpecial
 trigger1 =1
@@ -1438,6 +1527,114 @@ flag = noshadow
 type = Destroyself
 trigger1 = time >= 110
 Trigger2 = Movecontact >=2
+
+;-------------------------------------------
+;Stuck On Ground
+[Statedef 2161]
+Type    = L
+MoveType= H
+Physics = S
+VelSet = 0,0
+
+[State ]
+Type = null;HitOverRide
+Trigger1 = 1
+Attr = , NT, ST, HT
+Time = 1
+
+[State ]
+Type =null; NotHitBy
+Trigger1 = 1
+Value = SAC
+Time = 1
+
+[State ]
+Type = PlayerPush
+Trigger1 = 1
+Value = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 =1
+y = 0
+ignorehitpause = 1
+;persistent = 
+
+[State ]
+Type = ChangeAnim2
+Trigger1 = 1
+Value = 2153
+
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 120 && P2MoveType != A
+trigger1 = alive
+Value = 5120
+ctrl=0
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 120 && P2MoveType != A
+trigger1 = !alive
+Value = 5110
+ctrl=0
+
+
+;- ----------------------------------------
+
+;Stuck On Wall
+[Statedef 2162]
+Type    = A
+MoveType= H
+Physics = N
+VelSet = 0,0
+facep2=1
+
+[State ]
+Type = null;HitOverRide
+Trigger1 = 1
+Attr = , NT, ST, HT
+Time = 1
+
+[State ]
+Type =null; NotHitBy
+Trigger1 = 1
+Value = SAC
+Time = 1
+
+[State ]
+Type = PlayerPush
+Trigger1 = time<120
+Value = 0
+
+[State 0, PosSet]
+type = PosSet
+trigger1 =time<120
+x=pos x +10
+y = ifelse(pos y > -30,-30,pos y)
+ignorehitpause = 1
+;persistent = 
+
+[State ]
+Type = ChangeAnim2
+Trigger1 = 1
+Value = 2154
+
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 120 
+trigger1 = alive
+Value = 51
+ctrl=1
+
+[State ]
+Type = SelfState
+Trigger1 = Time > 120 
+trigger1 = !alive
+Value = 5110
+ctrl=0
 
 ;■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 ;Air Needle Helper
@@ -1599,6 +1796,80 @@ SuperMoveTime = 999
 PauseMoveTime = 999
 IgnoreHitPause = 1
 Persistent = 0
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget;()
+trigger1 = target,statetype=A
+trigger1=target,backedgedist<20
+trigger1 = target,stateno!=2162
+triggerall=parent,var(26)=0
+value = 2162
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno!=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.85
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.75
+		persistent = 0
+ 		ignorehitpause = 1
+
+
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		var(26)=1
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = target,stateno=2162
+v = 10    ;fv = 10
+value = 2
+ignorehitpause = 1
+;persistent = 
+
+
+
+
+
+[State 0, TargetState]
+type = TargetState
+triggerall=var(10)!=2
+triggerall = NumTarget;()
+trigger1 = target,statetype=L
+trigger1 = target,stateno!=2161
+triggerall=parent,var(27)=0
+value = 2161
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+		triggerall=var(10)!=2
+		trigger1 = target,stateno=2161
+		;trigger1 = parent,fvar(0)>0.30
+		var(27)=1
+		persistent = 0
+ 		ignorehitpause = 1
 
 [State 2250]
 type = AssertSpecial
@@ -1998,6 +2269,80 @@ type = AssertSpecial
 trigger1 =1
 flag = noshadow
 
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget;()
+trigger1 = target,statetype=A
+trigger1=target,backedgedist<20
+;trigger1 = target,stateno!=2162
+;triggerall=parent,var(26)=0
+value = 2162
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno!=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.85
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.75
+		persistent = 0
+ 		ignorehitpause = 1
+
+
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		var(26)=1
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = target,stateno=2162
+v = 10    ;fv = 10
+value = 2
+ignorehitpause = 1
+;persistent = 
+
+
+
+
+
+[State 0, TargetState]
+type = TargetState
+triggerall=var(10)!=2
+triggerall = NumTarget;()
+trigger1 = target,statetype=L
+;trigger1 = target,stateno!=2161
+;triggerall=parent,var(27)=0
+value = 2161
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+		triggerall=var(10)!=2
+		trigger1 = target,stateno=2161
+		;trigger1 = parent,fvar(0)>0.30
+		var(27)=1
+		persistent = 0
+ 		ignorehitpause = 1
+
 [State 2210, ステート変更]
 type = Destroyself
 trigger1 = time >= 110
@@ -2148,6 +2493,80 @@ flag = noshadow
 		type = ParentVaradd
 		trigger1 = movehit
 		fVar(11) = 2
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State 0, TargetState]
+type = TargetState
+triggerall = NumTarget;()
+trigger1 = target,statetype=A
+trigger1=target,backedgedist<20
+;trigger1 = target,stateno!=2162
+;triggerall=parent,var(26)=0
+value = 2162
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno!=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.85
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		Trigger1=movecontact
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		fvar(0)=parent,fvar(0)*0.75
+		persistent = 0
+ 		ignorehitpause = 1
+
+
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+
+		trigger1 = target,stateno=2162
+		;trigger1 = parent,fvar(0)>0.30
+		var(26)=1
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = target,stateno=2162
+v = 10    ;fv = 10
+value = 2
+ignorehitpause = 1
+;persistent = 
+
+
+
+
+
+[State 0, TargetState]
+type = TargetState
+triggerall=var(10)!=2
+triggerall = NumTarget;()
+trigger1 = target,statetype=L
+;trigger1 = target,stateno!=2161
+;triggerall=parent,var(27)=0
+value = 2161
+ignorehitpause = 1
+persistent = 0
+
+[State -1,カウンター補正]
+		Type=ParentVarSet
+		triggerall=var(10)!=2
+		trigger1 = target,stateno=2161
+		;trigger1 = parent,fvar(0)>0.30
+		var(27)=1
 		persistent = 0
  		ignorehitpause = 1
 

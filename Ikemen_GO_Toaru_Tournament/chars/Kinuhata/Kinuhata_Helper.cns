@@ -442,7 +442,7 @@ y = Cond(random%2 =1,-1*(pos y > -400),1*(pos y < -40))
 type = HitDef
 triggerall = !(enemy,Name = "Kamijou Touma") || !(enemy,var(50) = 666) 
 trigger1=1
-attr = SCA,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = S,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFD        ;HLAFD+-
 guardflag = MA         ;HLA
 ;affectteam = E          ;B,E,F

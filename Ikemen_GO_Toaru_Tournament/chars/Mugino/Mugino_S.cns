@@ -1382,9 +1382,18 @@ sprpriority = 2
 
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = time <14
 value = A
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = time <14
+value = SC,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
@@ -1674,7 +1683,7 @@ TriggerAll=AnimTime=0
 ;-------------------------------------------------------
 
 [statedef 1204, Small Beam Helper]
-type    = A
+type    = S
 anim = 1060
 movetype = A
 sprpriority = Cond((ishelper(1214)||ishelper(1225)),-1,4)
@@ -1791,7 +1800,7 @@ ignorehitpause = 1
 ;---------------------------------------
 
 [statedef 1205, Big Beam Helper]
-type    = A
+type    = S
 movetype = A
 anim = 1060
 sprpriority = Cond((ishelper(1214)||ishelper(1225)),-1,4)
@@ -2455,7 +2464,7 @@ TriggerAll=AnimTime=0
 ;-------------------------------------------------------
 
 [statedef 1304, Small Beam Helper]
-type    = A
+type    = S
 anim = 1060
 movetype = A
 sprpriority = Cond((ishelper(1244)||ishelper(1305)),-1,4)
@@ -2548,7 +2557,7 @@ ignorehitpause = 1
 ;---------------------------------------
 
 [statedef 1305, Big Beam Helper]
-type    = A
+type    = S
 anim = 1060
 movetype = A
 sprpriority = Cond((ishelper(1245)||ishelper(1316)),-1,4)
@@ -2916,7 +2925,7 @@ ctrl = 1
 ;-------------------------------------------------------------------
 [statedef 1401, Small Beam Propulsion Helper]
 anim = 1070
-type    = A
+type    = S
 movetype = A
 sprpriority = 4
 
@@ -4529,7 +4538,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 ID = 1750
 
-attr = S,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = A,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFP        ;HLAFD+-
 guardflag = MA         ;HLA
 getpower = 20,10
@@ -4708,7 +4717,7 @@ trigger1 = !movereversed
 trigger1=!movecontact
 ;trigger1 = anim = 1002
 ; HitDef
-attr = S,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = A,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFP        ;HLAFD+-
 guardflag = MA         ;HLA
 getpower = 20,10

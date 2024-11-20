@@ -67,7 +67,7 @@
 
 ;---------------------------------------------------------------------------
 [Statedef 1005,風巻上げA飛び道具ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 6.5,0
 	anim = 11000 ;
@@ -309,7 +309,7 @@ sprpriority = 10
 		value = 1040
 ;---------------------------------------------------------------------------
 [Statedef 1015,風巻上げB飛び道具ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 4.5,0
 	anim = 11001 ;
@@ -570,7 +570,7 @@ sprpriority = 10
 
 ;---------------------------------------------------------------------------
 [Statedef 1025,空中風巻上げAヘルパー飛び道具]
-	type = A ;
+	type = A;
 	movetype= A ;
 	velset = 6,5
 	sprpriority = 10
@@ -599,7 +599,7 @@ sprpriority = 10
 	[State 1025, 判定]
 		type = HitDef
 		trigger1 = Time = 0
-		attr = S, SP
+		attr = A, SP
 		damage = Ceil(ifelse(root,var(2) != 0,55,45)*root,fvar(0)),5
 		getpower = 0
 		animtype = Light
@@ -870,7 +870,7 @@ sprpriority = 10
 	[State 1035, 判定]
 		type = HitDef
 		trigger1 = Time = 0
-		attr = S, SP
+		attr = A, SP
 		damage = Ceil(ifelse(root,var(2) != 0,105,95)*root,fvar(0)),10
 		getpower = 0
 		animtype = Light
@@ -1248,7 +1248,7 @@ sprpriority = 10
 
 ;---------------------------------------------------------------------------
 [Statedef 1105,竜巻A飛び道具ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11100 ;
@@ -1731,7 +1731,7 @@ sprpriority = 10
 
 ;---------------------------------------------------------------------------
 [Statedef 1115,竜巻Bヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11120 ;

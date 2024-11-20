@@ -120,7 +120,7 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;ElecBallHelper
 [Statedef 1005]
-type    = A
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -2922,7 +2922,7 @@ Ctrl=1
 ;-----------------------
 ;Elec Ball Helper
 [Statedef 1801]
-type    = S
+type    = A
 movetype= A
 velset = 0,0                     ;このステートが始まった時に移動するか（0,0で動かない）
 ctrl = 0                         ;このステート中に他のコマンドを受け付けるか(1で受け付ける)
@@ -2954,7 +2954,7 @@ y = 4
 [State 6131 , 4]
 type = HitDef
 trigger1 = AnimElem = 3
-attr = S, SP 
+attr = A, SP 
 damage = Ceil(95*parent,fvar(10)),2
 getpower = 110,45
 animtype = Hard
@@ -3143,7 +3143,7 @@ Ctrl=1
 ;-----------------------
 ;Elec Ball Helper
 [Statedef 1851]
-type    = S
+type    = A
 movetype= A
 velset = 0,0                     ;このステートが始まった時に移動するか（0,0で動かない）
 ctrl = 0                         ;このステート中に他のコマンドを受け付けるか(1で受け付ける)
@@ -3176,7 +3176,7 @@ y = 0
 [State 6131 , 4]
 type = HitDef
 trigger1 = AnimElem = 3
-attr = S, SP 
+attr = A, SP 
 damage = Ceil(95*parent,fvar(10)),2
 getpower = 110,45
 animtype = Hard

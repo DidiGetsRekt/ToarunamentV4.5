@@ -484,7 +484,7 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;Wind DP EX Helper
 [Statedef 1068];‘å—ó•—
-type    = A
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -987,7 +987,7 @@ time = 44
 [State -1, Hit]
 type = HitDef
 trigger1 = AnimElem = 4
-attr = S, HP
+attr = A, HP
 damage = Ceil(120*fvar(10)),60
 animtype = Up
 hitflag = MAFD
@@ -2013,6 +2013,13 @@ velset = 0,0
 poweradd = -1000
 sprpriority = 0
 anim = 1450
+
+
+[State 3000, ‘Šè‚Ì“Á’è‚ÌUŒ‚‘®«–³Œø]
+type = NotHitBy
+trigger1 = AnimElem = 1
+value = SCA
+time = 20
 
 
 [State -1,”Ä—pŠi”[]

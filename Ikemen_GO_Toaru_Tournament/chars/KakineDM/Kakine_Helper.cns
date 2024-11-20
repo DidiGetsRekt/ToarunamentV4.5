@@ -52,7 +52,7 @@ IgnoreHitPause = 1
 
 [State 1000, Projectile]
 type = Hitdef
-trigger1 = AnimElem = 1
+trigger1 = AnimElemtime(2)<0
 attr = S, SP
 damage    = Ceil(35*root,fvar(10)),5
 guardflag = MA
@@ -350,7 +350,7 @@ Trigger2   = AnimElem = 6
 
 ;“äd—Íƒwƒ‹ƒp[
 [StateDef 1401]
-StateType   = A
+Type   = A
 Movetype    = A
 Physics     = N
 Anim        = 1401
@@ -1182,7 +1182,7 @@ x = 0.5
 
 [State 1350, 1]
 type = HitDef
-trigger1 = 1
+trigger1 = p2dist X <60
 ID = 1522
 attr = S, SP
 animtype  = Hard
@@ -1219,7 +1219,7 @@ fall.recover = 0
 type = NotHitBy
 trigger1 = AnimElem = 1
 value = SCA,NA,ST,HP
-time = 62
+time = 55
 IgnoreHitPause = 1
 
 [State 10700,–³“G]
@@ -1246,6 +1246,7 @@ Trigger1 = 1
 Attr = SCA,AA,AT,AP
 StateNo = 1523
 Time = -1
+ignorehitpause=1
 
 [State 0, ParentVarAdd]
 type = ParentVarAdd

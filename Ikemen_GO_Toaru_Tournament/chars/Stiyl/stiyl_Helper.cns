@@ -493,7 +493,7 @@ ignorehitpause=1
 [State 200 ノックバックカウント]
 		type = ParentVaradd
 		trigger1 = movecontact
-		fVar(11) = 4
+		fVar(11) = 6
 		persistent = 0
  		ignorehitpause = 1
 

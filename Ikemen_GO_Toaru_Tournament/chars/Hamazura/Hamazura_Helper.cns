@@ -401,7 +401,7 @@ ignorehitpause = 1
 
 ;Trip State
 [Statedef 6355]
-Type    = S
+Type    = C
 MoveType= A
 Physics = S
 Ctrl = 0

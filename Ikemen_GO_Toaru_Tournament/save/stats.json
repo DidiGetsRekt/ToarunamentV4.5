@@ -20,13 +20,27 @@
       "playtime": 2076.98
     },
     "arcade": {
-      "playtime": 3335.6,
-      "clear": 2,
+      "playtime": 4504.95,
+      "clear": 3,
       "clearcount": {
         "kanzaki": 1,
-        "kamijo": 1
+        "kamijo": 1,
+        "acceleratorot3": 1
       },
       "ranking": [
+        {
+          "score": 2065600,
+          "time": 1169.35,
+          "name": "",
+          "chars": [
+            "acceleratorot3"
+          ],
+          "tmode": 0,
+          "ailevel": 5,
+          "win": 13,
+          "lose": 0,
+          "consecutive": 11
+        },
         {
           "score": 1692800,
           "time": 1731.42,
@@ -56,5 +70,5 @@
       ]
     }
   },
-  "playtime": 157180.4
+  "playtime": 158349.75
 }

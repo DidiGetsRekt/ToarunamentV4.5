@@ -1870,7 +1870,7 @@ Trigger1 = Time >= 26
 Value = 1 
 
 [State ]
-Type = SelfState
+Type = null;SelfState
 Trigger1 = Alive && CanRecover
 Trigger1 = Time >= 27
 Trigger1 = Command != "holddown" && (Command != "holdup" && (Command = "holdfwd" || Command = "holdback")) || Command != "holdfwd" && Command != "holdback" && Command = "holdup"

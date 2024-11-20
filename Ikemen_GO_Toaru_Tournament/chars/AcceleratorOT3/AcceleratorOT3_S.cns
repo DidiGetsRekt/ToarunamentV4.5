@@ -208,6 +208,7 @@ persistent = 0
 ;--------------------------------------------------------------
 ;Steel Beam Helper
 [Statedef 1001,????]
+	type=S
 	movetype= A
 	physics = N
 	juggle  = 0
@@ -953,6 +954,7 @@ ignorehitpause = 1
 
 ;Steel Beam Helper Big
 [Statedef 1013,????]
+	type=S
 	movetype= A
 	physics = N
 	juggle  = 0
@@ -1417,6 +1419,7 @@ id = 2018
 ;-----------------------------------
 ;Air Steel Beam straight
 [Statedef 1022,????]
+	type=A
 	movetype= A
 	physics = N
 	juggle  = 0
@@ -1438,7 +1441,7 @@ y = 0.30
 		trigger1=!movecontact
 		;trigger1 = var(19) = 2
 
-		attr = S, SP
+		attr = A, SP
 		damage = Ceil(ifelse(root,var(2) != 0,80,65)*root,fvar(0))*0.7,7 
 		getpower = 0
 		animtype = Hard
@@ -1530,6 +1533,7 @@ ignorehitpause = 1
 
 ;Air Steel Beam down
 [Statedef 1023,????]
+	type=A
 	movetype= A
 	physics = N
 	juggle  = 0
@@ -1552,7 +1556,7 @@ y = 1.2
 		trigger1=!movecontact
 		;trigger1 = var(19) = 2
 
-		attr = S, SP
+		attr = A, SP
 		damage = Ceil(ifelse(root,var(2) != 0,100,85)*root,fvar(0))*0.7,7 
 		getpower = 0
 		animtype = Hard
@@ -1852,6 +1856,7 @@ id = 2018
 ;============================
 ;Air Steel Beam Helper Spin
 [Statedef 1056,????]
+	type=A
 	movetype= A
 	physics = N
 	juggle  = 0

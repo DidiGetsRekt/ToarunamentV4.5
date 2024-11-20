@@ -216,7 +216,7 @@ ctrl = 1
 ;------------------------------------------------------------------
 ;LMG EX Helper
 [Statedef 2005]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -725,7 +725,7 @@ ctrl = 1
 ;------------------------------------------------------------------
 ;RPG-7
 [Statedef 2105]
-Type = A
+Type = S
 Physics = N
 Anim = 2105
 VelSet = -2.5,0
@@ -1387,7 +1387,7 @@ ctrl = 1
 
 ;Mine EX Helper Flying
 [Statedef 2225]
-type    = A;U
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -3028,6 +3028,18 @@ ignorehitpause = 1
 
 ;Armor Destroyed
 [State 0, HitOverride]
+type = NotHitBy
+trigger1 = anim= 2410
+trigger2=anim=2411
+trigger3=anim=2412
+value = ,NA,SA,NP,SP,AT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+
+;Armor Destroyed
+[State 0, HitOverride]
 type = HitOverride
 trigger1 = anim= 2410
 trigger2=anim=2411
@@ -3243,6 +3255,8 @@ trigger1 = NumTarget(2400)
 trigger1 =frontedgedist<20
 trigger2 =frontedgedist<40
 trigger2=moveguarded
+trigger3 =frontedgedist<40
+trigger3=!numtarget
 value = 2412
 ;elem = 1
 ignorehitpause = 1
@@ -3286,7 +3300,7 @@ ID = 2405
 stateno = 2405
 pos = 0,60
 postype = p1    ;p2,front,back,left,right
-facing = 1
+facing = -facing
 keyctrl = 0
 ownpal = 0
 supermovetime = 99999
@@ -3393,7 +3407,7 @@ y = 0.30
 [Statedef 2405]
 Anim = 2405
 SprPriority = 0
-Facep2 = 1
+Facep2 = ifelse(root,anim=2413,0,1)
 
 [State 0, PlaySnd]
 type = PlaySnd
@@ -3418,6 +3432,15 @@ type = ChangeAnim
 trigger1 = parent,anim=2413
 trigger2 = parent,anim=2412
 value = 2406
+;elem = 1
+ignorehitpause = 1
+persistent = 0
+
+[State 0, ChangeAnim]
+type = Turn
+triggerall = parent,facing !=facing
+
+trigger1= parent,anim=2413
 ;elem = 1
 ignorehitpause = 1
 persistent = 0

@@ -10496,7 +10496,7 @@ ctrl=1
 ;------------------------------------------------------------------------------------
 
 [statedef 3015, Super Beam Helper]
-type    = A
+type    = S
 anim = 3015
 movetype = A
 sprpriority = 4

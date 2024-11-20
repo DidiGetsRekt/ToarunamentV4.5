@@ -202,7 +202,7 @@ ctrl = 1
 
 ;Dragon Helper
 [Statedef 2050]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -819,7 +819,7 @@ value = ifelse((fvar(31)+350+(var(6)*25)) >=1000, 1001-fvar(31), 350+(var(6)*25)
 
 ;Explosion Explod Helper
 [Statedef 2110]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -1098,7 +1098,7 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;Pillar Helper
 [Statedef 2250]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -1789,7 +1789,7 @@ Ctrl=1
 
 ;Magic Helper
 [Statedef 2355]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -3051,7 +3051,7 @@ trigger1 = 1
 trigger1 = !movehit
 trigger1 = !movereversed
 trigger1 = !moveguarded
-attr = S,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = A,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAF        ;HLAFD+-
 guardflag = MA         ;HLA
 ;affectteam = E          ;B,E,F

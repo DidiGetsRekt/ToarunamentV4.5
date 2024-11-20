@@ -98,7 +98,7 @@ ctrl = 1
 
 ;Orange Card Helper
 [Statedef 1005]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -185,7 +185,7 @@ ignorehitpause =  1
 
 ;Explosion State
 [Statedef 1010]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -436,7 +436,7 @@ ctrl = 1
 
 ;Black Spell Helper
 [Statedef 1150]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -1039,7 +1039,7 @@ value = ifelse((fvar(31)+250+(var(6)*50)) >=1000, 1001-fvar(31), 250+(var(6)*50)
 
 ;Explosion Explod Helper
 [Statedef 1210]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -1396,7 +1396,7 @@ value = ifelse((fvar(31)+300+(var(6)*25)) >=1000, 1001-fvar(31), 300+(var(6)*25)
 
 ;Explosion Explod Helper
 [Statedef 1310]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 6
@@ -1562,7 +1562,7 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;Pillar Helper
 [Statedef 1405]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -1820,7 +1820,7 @@ ctrl = 1
 ;---------------------------------------------------------------------------
 ;Pillar Helper
 [Statedef 1455]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5

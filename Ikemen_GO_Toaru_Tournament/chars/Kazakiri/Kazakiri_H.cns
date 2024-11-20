@@ -472,9 +472,18 @@ velset=0,0
 
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = time>=3
 value = C
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = time>=3
+value = SA
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
@@ -583,9 +592,18 @@ SprPriority = 2
 
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = null;NotHitBy
 trigger1 = time>=38
 value = C
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = time>=38
+value = SA
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
@@ -3716,7 +3734,7 @@ ignorehitpause = 1
 
 ;Lightning Strike Helper
 [Statedef 2850]
-type    = S
+type    = A
 movetype= A
 velset = 0,0                     ;このステートが始まった時に移動するか（0,0で動かない）
 ctrl = 0                         ;このステート中に他のコマンドを受け付けるか(1で受け付け)

@@ -585,6 +585,13 @@ ownpal = 1
 supermovetime = 0
 pausemovetime = 0
 
+[State 0, VelAdd]
+type = VelAdd
+trigger1 = var(1)
+trigger1=enemynear,backedgedist <20
+x = -fvar(11)*0.333
+ignorehitpause = 1
+persistent = 0 
 
 
 [State 1100, 5]
@@ -674,14 +681,15 @@ Trigger1=time=0
 var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = HitBy
 trigger1 = animelemtime(4)>=0
 trigger1=animelemtime(7)<=0
-value = A,AA
+value = SC,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1
 ;persistent = 
+
 
 
 [State -1,”Ä—pŠi”[]
@@ -756,10 +764,10 @@ Trigger1=time=0
 var(1)=0
 
 [State 0, NotHitBy]
-type = NotHitBy
+type = HitBy
 trigger1 = animelemtime(4)>=0
 trigger1=animelemtime(7)<=0
-value = A,AA
+value = SC,AA,AP,AT
 ;value2 = S,NA
 time = 1
 ignorehitpause = 1

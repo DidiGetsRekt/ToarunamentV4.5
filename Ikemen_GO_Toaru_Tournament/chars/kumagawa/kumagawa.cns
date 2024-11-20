@@ -441,6 +441,8 @@ flag = intro
 		Trigger12=(P2Name="gilgamesh" || P2Name="Dio" || P2Name="Shadow DIO" || P2Name="final dio" || P2Name="Shadow_Final_DIO") && var(10) := 11	
 		;ÉãÅ[Év
 		Trigger13=(P2Name="Akemi-Homura") && var(10) := 12
+
+		Trigger14=P2Name="Accelerator (Sisters)" && var(10) := 1
 			
 
 		value=192

@@ -593,7 +593,7 @@ projhitanim = 1012
 projremanim = 1012
 projremovetime = 16 
 velocity =0,0
-attr = S, SP
+attr = A, SP
 damage    = Ceil(25*fvar(10)),5
 guardflag = MA
 hitflag = MAF
@@ -820,7 +820,7 @@ projhitanim = 1011
 projremanim = 1011
 projremovetime = 18 
 velocity =0,0
-attr = S, SP
+attr = A, SP
 damage    = Ceil(20*fvar(10)),5
 guardflag = MA
 hitflag = MAF
@@ -2266,6 +2266,16 @@ anim = 1400
 		persistent = 0
  		ignorehitpause = 1
 
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = animelemtime(1)>=0
+trigger1=animelemtime(5)<=0
+value = SC,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
 
 [State 0, VelAdd]
 type = VarAdd
@@ -2357,6 +2367,18 @@ trigger1 = animelem = 5
 time = 5
 freq = 180
 ampl = -20
+
+[State 0, NotHitBy]
+type = HitBy
+trigger1 = animelemtime(1)>=0
+trigger1=animelemtime(5)<=0
+value = SC,AA,AP,AT
+;value2 = S,NA
+time = 1
+ignorehitpause = 1
+;persistent = 
+
+
 
 [State 1000, ‰¹]
 type = PlaySnd

@@ -665,7 +665,7 @@ Ctrl = 1
 
 ;Gun Helper
 [Statedef 235]
-Type = A
+Type = S
 MoveType = A
 Physics = N
 SprPriority = 5
@@ -1161,7 +1161,7 @@ Value = 0
 Ctrl = 1
 ;Gun Helper 2
 [Statedef 245]
-Type = A
+Type = C
 MoveType = A
 Physics = N
 SprPriority = 5

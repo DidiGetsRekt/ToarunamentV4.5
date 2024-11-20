@@ -2372,7 +2372,7 @@ ctrl = 1
 
 ;Air Blast EX Helper
 [Statedef 2350]
-Type = A
+Type = S
 MoveType = A
 SprPriority = 5
 Anim = 2350

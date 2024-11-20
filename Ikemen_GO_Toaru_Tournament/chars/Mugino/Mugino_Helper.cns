@@ -510,7 +510,7 @@ ignorehitpause = 1
 ;----------------------------------------------------------------
 ;Straight Beam Small
 [Statedef 6515]
-type    = A
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -662,7 +662,7 @@ ignorehitpause = 1
 
 ;Straight Beam Big
 [Statedef 6516]
-type    = A
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -1099,7 +1099,7 @@ ignorehitpause = 1
 ;-------------------------------------------------------
 ;Straight Beam Small
 [Statedef 6525]
-type    = A
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -1251,7 +1251,7 @@ ignorehitpause = 1
 
 ;Straight Beam Big
 [Statedef 6526]
-type    = A
+type    = S
 movetype= A
 physics = N
 ctrl = 0
@@ -1586,7 +1586,7 @@ ignorehitpause = 1
 
 ;------------------------------------------------------
 [statedef 6535, Small Beam Helper]
-type    = A
+type    = S
 anim = 1060
 movetype = A
 ;sprpriority = Cond((ishelper(1214)||ishelper(1225)),-1,4)
@@ -1694,7 +1694,7 @@ ignorehitpause = 1
 ;---------------------------------------
 
 [statedef 6536, Big Beam Helper]
-type    = A
+type    = S
 movetype = A
 anim = 1060
 ;sprpriority = Cond((ishelper(1214)||ishelper(1225)),-1,4)
@@ -1994,7 +1994,7 @@ ignorehitpause = 1
 
 ;-------------------------------------------------------
 [statedef 6545, Small Beam Helper]
-type    = A
+type    = S
 anim = 1060
 movetype = A
 ;sprpriority = Cond((ishelper(1214)||ishelper(1225)),-1,4)
@@ -2102,7 +2102,7 @@ ignorehitpause = 1
 ;---------------------------------------
 
 [statedef 6546, Big Beam Helper]
-type    = A
+type    = S
 movetype = A
 anim = 1060
 ;sprpriority = Cond((ishelper(1214)||ishelper(1225)),-1,4)
@@ -2440,7 +2440,7 @@ trigger1 = !movecontact
 trigger1 = !movereversed
 ID = 6565
 
-attr = S,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+attr = A,SP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
 hitflag = MAFP        ;HLAFD+-
 guardflag = MA         ;HLA
 getpower = 20,10

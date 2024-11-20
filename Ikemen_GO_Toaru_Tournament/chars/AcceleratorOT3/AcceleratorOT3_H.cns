@@ -348,7 +348,7 @@ persistent = 0
 
 ;Rails Helper
 [Statedef 2001]
-type    = S
+type    = A
 movetype= A
 physics = S
 velset = 0.55,0.65
@@ -543,7 +543,7 @@ ignorehitpause = 1
 [State 0, DestroySelf]
 type = DestroySelf
 trigger1 = animtime=0 && anim=2019
-trigger2 = parent,movetype=H
+trigger2 = parent,movetype=H && anim!=2019
 ;ignorehitpause = 
 ;persistent = 
 
@@ -553,7 +553,7 @@ trigger2 = parent,movetype=H
 
 ;;---------------------------------------------------------------------------
 [Statedef 2010,風巻上げex1飛び道具ヘルパー]
-	type = A ;	movetype= A ;
+	type = S ;	movetype= A ;
 	velset = 0,0
 	anim = 11030 ;
 	sprpriority = 10
@@ -676,7 +676,7 @@ sprpriority = 10
 
 ;---------------------------------------------------------------------------
 [Statedef 2020,風巻上げex2飛び道具ヘルパー]
-	type = A ;
+	type = S;
 	movetype= A ;
 	velset = 0,0
 	anim = 11031 ;
@@ -788,7 +788,7 @@ sprpriority = 10
 		trigger1 = !numtarget(2020)
 ;---------------------------------------------------------------------------
 [Statedef 2030,風巻上げex3飛び道具ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11032 ;
@@ -1441,7 +1441,7 @@ ID = -1
 		ctrl = 1
 ;---------------------------------------------------------------------------
 [Statedef 2110,竜巻A飛び道具ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11100 ;
@@ -1601,7 +1601,7 @@ sprpriority = 10
 
 ;---------------------------------------------------------------------------
 [Statedef 2120,竜巻Bヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11120 ;
@@ -1748,7 +1748,7 @@ sprpriority = 10
 		trigger1 = !numtarget(2120)
 ;---------------------------------------------------------------------------
 [Statedef 2130,竜巻3ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11130 ;
@@ -2741,7 +2741,7 @@ sprpriority = 10
 		
 ;---------------------------------------------------------------------------
 [Statedef 2310,地面砕きヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim =  1511;
@@ -5280,7 +5280,7 @@ postype = p1
 
 ;---------------------------------------------------------------------------
 [Statedef 2610,発射]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11620;
@@ -5676,7 +5676,7 @@ sprpriority = 10
 
 ;---------------------------------------------------------------------------
 [Statedef 2710,竜巻ヘルパー]
-	type = A ;
+	type = S ;
 	movetype= A ;
 	velset = 0,0
 	anim = 11650 ;

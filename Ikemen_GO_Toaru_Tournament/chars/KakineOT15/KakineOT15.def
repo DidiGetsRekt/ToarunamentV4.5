@@ -1,5 +1,5 @@
 [Info]
-Name         = "Kakine Teitoku (OT15)"  ;キャラクターの名前（必要な項目なので省略不可）
+Name         = "Kakine Teitoku"  ;キャラクターの名前（必要な項目なので省略不可）
 DisplayName  = "Kakine Teitoku (OT15)"  ;M.U.G.E.Nで実際に表示される名前（省略可能）
 VersionDate  = 22,04,2022    ;キャラクターの最終更新日（変えなくてもＯＫ）
 MugenVersion = 05,15,2013;1.1      ;キャラクターが動作出来るM.U.G.E.Nの改訂版

@@ -696,7 +696,7 @@ trigger1 = anim = 235 && var(1);Use combo condition (above)
 
 ;Lunge Baton 
 [State -1, Lunge Baton]
-type = ChangeState
+type = null;ChangeState
 value = 1150
 triggerall = command = "LungeBaton"
 triggerall = statetype != A
@@ -706,7 +706,7 @@ trigger2 = (StateNo=[200,299])  && stateno != 211 && stateno != 235 &&var(1)
 ;---------------------------------------------------------------------------
 ;Heavy Punch B
 [State -1, Heavy Punch]
-type = ChangeState
+type = null;ChangeState
 value = 1125
 triggerall = command = "HeavyPunch"
 triggerall = statetype != A

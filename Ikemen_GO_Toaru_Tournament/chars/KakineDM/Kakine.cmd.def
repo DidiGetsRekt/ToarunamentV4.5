@@ -1052,6 +1052,7 @@ trigger2= var(1) && stateno!=1300 && stateno!=2000  && stateno!=1070
 	Trigger2 = (!var(1) && time >= 3) ||(var(1) && time >= 9)
 
 
+
 [State -1, ‘–‚é]
 type = ChangeState
 value = 100
@@ -1132,9 +1133,9 @@ trigger3=(Stateno = [600,699]) || (stateno= [1020,1030])
 type = ChangeState
 value = 800
 triggerall = command = "x"
-triggerall = statetype = S
-triggerall = ctrl
-triggerall = stateno != 100
+triggerall = statetype !=A 
+triggerall = ctrl || stateno = [100,101]
+;triggerall = stateno != 100
 triggerall=var(51)>=10
 trigger1 = command = "holdfwd"
 trigger2 = command = "holdback"

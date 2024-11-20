@@ -4220,7 +4220,7 @@ Ctrl = 1
 
 ;Air Blast A Helper
 [Statedef 1605]
-Type = A
+Type = S
 MoveType = A
 SprPriority = 5
 Anim = 1605
@@ -4373,7 +4373,7 @@ Ctrl = 1
 
 ;Air Blast B Helper
 [Statedef 1655]
-Type = A
+Type = S
 MoveType = A
 SprPriority = 5
 Anim = 1655
