@@ -13,13 +13,6 @@ Anim = 24000
 ;var(4) -> previous value of the index (relevant for roundstart)
 ;var(5) -> small timer
 ;var(6) -> whitening effect
-;var(5) ~ var(7) -> values used for zooming the text in the moons phase (system, normals and specials respectively)
-;no var(8) and var(9)
-;var(10) -> actual timer
-;var(11) -> value that fluctuates at the final step -> adds after all the choices have been made and has a threshold before it's one of the conditions to destroy the helper
-;var(12) -> boolean for showing the palette selector
-;var(13) -> palette number for the palette selection at the final step
-;var(14) -> slider for the palette selector
 
 ;helper for palfx values
 ;var to keep the active amount of available powers (should fluctuate between 6 and 7)
@@ -54,6 +47,14 @@ TriggerAll = var(1) = 0
 Trigger1 = Parent,Command = "up"
 Trigger2 = Parent,Command = "down"
 Trigger3 = Parent,Command = "fwd"
+ID = 24010
+
+;main background removal
+[State -1]
+Type = RemoveExplod
+triggerall = roundno = 1 && roundstate = [0,1]
+TriggerAll = var(1) = 1
+Trigger1 = Parent,Command = "back"
 ID = 24010
 
 ;main background removal
@@ -439,8 +440,8 @@ Trigger1 = Var(10) >= 300 || Var(10) < 300 && Var(10)%6 = [0,2]
 Trigger1 = Var(11) < 11
 Trigger1 = NumExplod(24100) = 0
 Anim = 24100+Var(10)/100%10
-PosType = P1
-Pos = IfElse(TeamSide=1,-22,22), 17
+PosType = back
+Pos = ifelse(teamside=1,30,76.5), 50;22
 Facing = IfElse(TeamSide=1,1,-1)
 Scale = 0.5,0.5
 Ownpal = 1
@@ -455,8 +456,8 @@ Trigger1 = Var(10) >= 300 || Var(10) < 300 && Var(10)%6 = [0,2]
 Trigger1 = Var(11) < 11
 Trigger1 = NumExplod(24110) = 0
 Anim = 24110+Var(10)/10%10
-PosType = P1
-Pos = IfElse(TeamSide=1,5,-5), 25
+PosType = back
+Pos = ifelse(teamside=1,57.5,49), 58.5;5
 Facing = IfElse(TeamSide=1,1,-1)
 Scale = 0.5,0.5
 Ownpal = 1
@@ -471,8 +472,8 @@ Trigger1 = Var(10) >= 300 || Var(10) < 300 && Var(10)%6 = [0,2]
 Trigger1 = Var(11) < 11
 Trigger1 = NumExplod(24120) = 0
 Anim = 24110+Var(10)%10
-PosType = P1
-Pos = IfElse(TeamSide=1,15,-15), 25
+PosType = back
+Pos = ifelse(teamside=1,67.5,39), 58.5;15
 Facing = IfElse(TeamSide=1,1,-1)
 Scale = 0.5,0.5
 Ownpal = 1

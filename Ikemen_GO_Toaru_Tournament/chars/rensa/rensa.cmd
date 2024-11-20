@@ -443,7 +443,7 @@ type = ChangeState
 value = 1000
 triggerall = var(20) <= 4
 triggerall = command="236_a"
-triggerall = movetype!=A
+triggerall = statetype!=A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
@@ -452,7 +452,7 @@ type = ChangeState
 value = 1010
 triggerall = var(20) <= 4
 triggerall = command="236_b"
-triggerall = movetype!=A
+triggerall = statetype!=A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------

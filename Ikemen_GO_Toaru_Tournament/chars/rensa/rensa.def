@@ -23,4 +23,9 @@ st2	= rensa_S.cns
 st3	= rensa_H.cns
 st4	= rensa_Helper.cns
 stcommon= common.cns
+
+;for ikemen go
+st5	= rensa_text.zss
+font0	= jg.fnt
+
 movelist= rensa.dat
