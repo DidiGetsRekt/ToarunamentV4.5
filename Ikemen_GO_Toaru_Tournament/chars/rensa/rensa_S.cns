@@ -1,0 +1,213 @@
+;236a ground series
+[Statedef 1000]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+Poweradd=FVar(11)
+velset = 0,0
+anim = 1000000+(var(20)*10)
+ctrl = 0
+sprpriority = 2
+
+
+;	Vector control state
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 1
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;	Dark Matter state
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 2
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;	Electro master state
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 3
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;	Meltdowner state
+
+	[State 1101, チャージアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1000040
+		trigger1 = Animelemtime(2) = 2
+		trigger1 = command = "hold_a"
+		value = 1000041
+
+	[State 1101, 通常5bアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1000040
+		trigger1 = AnimTime = 0
+		value = 1000042
+
+	[State 1102, ガー不5bアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1000041
+		trigger1 = animtime= 0
+		trigger1 = command = "hold_a"
+		value = 1000043
+
+	[State 1102, 通常5bアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1000041
+		trigger1 = command != "hold_a"
+		value = 1000042
+[State 1104]
+Type = AssertSpecial
+triggerall = var(20) = 4
+trigger1 = Anim = 1000043
+flag = noautoturn
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 4
+triggerall = AnimTime = 0
+trigger1 = 1000042
+trigger1 = 1000043
+value = 0
+ctrl = 1
+
+;236b ground series
+[Statedef 1010]
+type    = S
+movetype= A
+physics = S
+juggle  = 0
+Poweradd=FVar(11)
+velset = 0,0
+anim = 1010000+(var(20)*10)
+ctrl = 0
+sprpriority = 2
+
+;	Vector control state
+
+	[State 1010, 移動速度]
+		type = VelSet
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(1) = 14
+		x = const(velocity.run.back.x)-1.5
+		y = -7.75;const(velocity.run.back.y)
+		persistent=0
+
+	[State 1010, 空中移行]
+		type = StateTypeSet
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(1) = 14
+		statetype = A
+		physics = N
+
+	[State 1010, 重力付加]
+		type = VelAdd
+		triggerall = var(20) = 1
+		trigger1 = StateType = A
+		y = 0.55
+
+	[State 1010, ステート変更]
+		type = ChangeState
+		triggerall = var(20) = 1
+		trigger1 = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value = 52
+
+;	Dark Matter state
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 2
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;	Electro master state
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 3
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;	Meltdowner state
+
+	[State 1101, チャージアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1010040
+		trigger1 = Animelemtime(2) = 4
+		trigger1 = command = "hold_b"
+		value = 1010041
+
+	[State 1101, 通常5bアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1010040
+		trigger1 = AnimTime = 0
+		value = 1010042
+
+	[State 1102, ガー不5bアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1010041
+		trigger1 = animtime= 0
+		trigger1 = command = "hold_b"
+		value = 1010043
+
+	[State 1102, 通常5bアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 4
+		trigger1 = Anim = 1010041
+		trigger1 = command != "hold_b"
+		value = 1010042
+
+[State 1104]
+Type = AssertSpecial
+triggerall = var(20) = 4
+trigger1 = Anim = 1010043
+flag = noautoturn
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 4
+triggerall = AnimTime = 0
+trigger1 = 1000042
+trigger1 = 1000043
+value = 0
+ctrl = 1
+
+;236a air series
+[Statedef 1020]
+type    = A
+movetype= A
+physics = A
+juggle  = 0
+Poweradd=FVar(11)
+velset = 0,0
+anim = 1000000+(var(20)*10)
+ctrl = 0
+sprpriority = 2
+
+;	Vector control state
+
+	[State 1010, ステート変更]
+		type = ChangeState
+		triggerall = var(20) = 1
+		trigger1 = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value = 52

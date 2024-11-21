@@ -1854,7 +1854,7 @@ Priority = 1, Miss
 HitSound = s1,5
 SprPriority = 1
 sparkno=-1
-P1Facing = 1
+p1facing = cond(command="holdback",-1,1)
 P2Facing = 1
 P1StateNo = 810
 P2StateNo = 820

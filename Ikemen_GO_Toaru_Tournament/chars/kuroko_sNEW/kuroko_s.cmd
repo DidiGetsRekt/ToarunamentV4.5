@@ -1017,16 +1017,15 @@ triggerall = (command = "DP_x")
 trigger1 = ctrl
 trigger2= var(1) && stateno=[200,499]
 
-;Forward Throw
+;Throw
 [State -1]
 Type = ChangeState
 value = 800
-	TriggerAll=Alive!=0
-	TriggerAll = StateType != A
-	TriggerAll=command="x"
-	TriggerAll=command="holdfwd"
-	Trigger1=Ctrl
-	trigger2=stateno=[100,101]
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl || stateno=[100,101]
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
 
 
 
