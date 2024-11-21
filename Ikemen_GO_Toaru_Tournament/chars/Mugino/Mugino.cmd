@@ -752,17 +752,15 @@ value = 830
 	trigger2=stateno=[100,101]
 
 
-;Forward Throw
+;Throw
 [State -1]
 Type = ChangeState
 value = 800
-	TriggerAll=Alive!=0
-	TriggerAll = StateType != A
-	TriggerAll=command="x"
-	TriggerAll=command="holdfwd"
-	TriggerAll=command!="DP_x"
-	Trigger1=Ctrl
-	trigger2=stateno=[100,101]
+triggerall = command = "x"
+triggerall = statetype != A
+triggerall = ctrl || stateno=[100,101]
+trigger1 = command = "holdfwd"
+trigger2 = command = "holdback"
 
 
 

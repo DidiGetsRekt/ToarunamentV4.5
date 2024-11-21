@@ -2649,7 +2649,7 @@ Priority = 1, Miss
 HitSound = s10,0
 SprPriority = 1
 sparkno=-1
-P1Facing = 1
+p1facing = cond(command="holdback",-1,1)
 P2Facing = 1
 P1StateNo = 810
 P2StateNo = 820
@@ -3023,14 +3023,14 @@ Value = 0
 
 [State ]
 Type = AngleDraw
-Trigger1 = enemynear,animelem=3
-value=-39
+Trigger1 = enemynear,animelemtime(2)>=0 && enemynear,animelemtime(3)<=0
+value=-enemynear,animelemtime(2)*13
 
 
 [State ]
 Type = AngleDraw
-Trigger1 = enemynear,animelem=4
-value=-141
+Trigger1 = enemynear,animelemtime(3)>=0 && enemynear,animelemtime(4)<=0
+value=-39 - 51*enemynear,animelemtime(3)
 
 [State ]
 Type = SelfState
@@ -3148,8 +3148,6 @@ type = NotHitBy
 trigger1 = 1
 value = SCA
 time = 1
-
-
 
 [State 820, 1]
 type = turn
