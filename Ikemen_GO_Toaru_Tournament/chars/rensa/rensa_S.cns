@@ -10,6 +10,16 @@ anim = 1000000+(var(20)*10)
 ctrl = 0
 sprpriority = 2
 
+[State 200,V1=0]
+Type=VarSet
+Trigger1=time=0
+var(1)=0
+
+[State 200,V1=1]
+Type=VarSet
+Trigger1=MoveContact
+var(1)=1
+ignorehitpause = 1
 
 ;	Vector control state
 
@@ -30,6 +40,30 @@ value = 0
 ctrl = 1
 
 ;	Electro master state
+
+
+[State 320, VelSet]
+type = VelSet
+triggerall = var(20) = 3
+trigger1= AnimElem = 4
+trigger2= AnimElem = 5
+x = -1.5
+
+[State 320, エフェクト]
+Type = Explod
+triggerall = var(20) = 3
+Trigger1 = AnimElem = 3
+Anim = 10400
+ID = 10400
+supermovetime = 100
+Postype = p1
+Pos = 50,-70
+scale = 0.5
+Ownpal = 1
+SprPriority = 1
+bindtime = -1
+IgnoreHitPause = 1
+persistent =0
 
 [State 1050, 5]
 type = ChangeState
@@ -84,6 +118,172 @@ trigger1 = 1000043
 value = 0
 ctrl = 1
 
+;	???
+
+[State 0, TargetLifeAdd]
+type = TargetLifeAdd
+triggerall = var(20) = 6
+trigger1 = time = 0
+value = -100
+ID = -1
+kill = 1
+absolute = 0
+;ignorehitpause = 
+;persistent = 
+
+
+[State 1050, 5]
+type = ChangeState
+triggerall = var(20) = 6
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+;Helper for 236a series
+[Statedef 1005]
+type    = S
+movetype= A
+physics = N
+ctrl = 0
+anim = 1005000+(var(20)*10)
+sprpriority = 4
+
+[State 0, VelSet]
+type = VelSet
+triggerall = isHelper(1005030)
+trigger1 = time = 0
+x = 4
+y = 0
+;ignorehitpause = 
+;persistent = 
+
+
+[State -1]
+Type = AssertSpecial
+Trigger1 = 1
+Flag = Noshadow
+IgnoreHitPause = 1
+
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = isHelper(1005030)
+;value = 1
+scale = 0.3,0.3
+ignorehitpause = 1
+;persistent = 
+
+[State 6131, NoHitBy]
+type = NotHitBy
+trigger1 = Time = 0
+value = , NT, ST, HT ,NA, SA, HA,NP
+time = -1
+
+[State 0, HitOverride]
+type = HitOverride
+trigger1 = 1
+attr = SCA,SP,HP        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 1852
+time = 2
+forceair = 0
+ignorehitpause = 1
+;persistent = 
+
+[State -2, 飛び道具]
+type = Hitdef
+triggerall = isHelper(1005030)
+trigger1 = !movecontact
+trigger1=!movereversed
+attr = S, SP 
+damage = Ceil(95*parent,fvar(10)),2
+getpower = 100,45
+animtype = Hard
+pausetime = 0,15
+hitflag		  = MAF
+guardflag = MA
+sparkxy = 0,0
+hitsound = s1,4
+guardsound = s0,5
+ground.type = High
+ground.slidetime = 23
+ground.hittime = 20
+ground.velocity = -4.9
+air.velocity = -3,-3
+air.juggle = 4 
+envshake.time = 6
+palfx.time = 30
+palfx.add = 0,0,220
+palfx.sinadd = 0,0,220,10
+palfx.color = 0
+palfx.invertall = 1
+sparkno=-1
+
+
+[State 0, ParentVarAdd]
+type = ParentVarSet
+trigger1 = movecontact
+v =   1  
+value = 1
+ignorehitpause = 1
+persistent = 0
+
+
+	[State -1,攻撃補正,上書き,カウンター]
+		type = ParentVarset
+		triggerall = isHelper(1005030)
+		Trigger1=MoveHit=1
+		fvar(0)= parent,fvar(0)*0.80
+		persistent = 0
+ 		ignorehitpause = 1
+
+[State 200 ノックバックカウント]
+		type = ParentVaradd
+		trigger1 = movehit
+		fVar(11) = 3
+		persistent = 0
+ 		ignorehitpause = 1
+
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+		triggerall = isHelper(1005030)
+trigger1 = movecontact
+trigger2=movereversed
+value =10950
+
+ignorehitpause = 1
+persistent = 0
+
+[State 0, VelSet]
+type = VelSet
+		triggerall = isHelper(1005030)
+trigger1 = anim =10950
+
+x = 0
+y = 0
+ignorehitpause = 1
+;persistent = 
+
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+		triggerall = isHelper(1005030)
+trigger1 = anim = 10950
+movetype = I        ;I,A,H
+ignorehitpause = 1
+persistent = 0
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+		triggerall = isHelper(1005030)
+trigger1 = anim=10950
+trigger1=animtime=0
+ignorehitpause = 1
+;persistent = 
+
 ;236b ground series
 [Statedef 1010]
 type    = S
@@ -95,6 +295,11 @@ velset = 0,0
 anim = 1010000+(var(20)*10)
 ctrl = 0
 sprpriority = 2
+
+[State 200,V1=0]
+Type=VarSet
+Trigger1=time=0
+var(1)=0
 
 ;	Vector control state
 
@@ -136,6 +341,44 @@ value = 0
 ctrl = 1
 
 ;	Electro master state
+
+[State 760, エフェクト]
+type = Explod
+triggerall = var(20) = 3
+trigger1 = AnimElem = 6
+Postype = p1
+Pos = 20, -70
+SprPriority = 2
+anim = 12100
+
+[State 760, hitdef]
+type = HitDef
+triggerall = var(20) = 3
+trigger1 = AnimElem = 6
+attr = S, SP
+damage    = Ceil(72*fvar(10))
+animtype = Hard
+hitflag = MAF
+guardflag = MA
+hitsound = s1,6
+pausetime = 10,20
+sparkno = s8000
+sparkxy = 0,-70
+guardsound = s0,5
+ground.type = low
+ground.hittime  = 70
+guard.hittime = 5
+ground.velocity = -5,-3
+air.velocity = -5,-3
+fall.recover = 0
+fall = 1
+ground.cornerpush.veloff = 0
+envshake.time = 6
+palfx.time = 30
+palfx.add = 0,0,220
+palfx.sinadd = 0,0,220,10
+palfx.color = 0
+palfx.invertall = 1
 
 [State 1050, 5]
 type = ChangeState
@@ -202,6 +445,11 @@ velset = 0,0
 anim = 1000000+(var(20)*10)
 ctrl = 0
 sprpriority = 2
+
+[State 200,V1=0]
+Type=VarSet
+Trigger1=time=0
+var(1)=0
 
 ;	Vector control state
 

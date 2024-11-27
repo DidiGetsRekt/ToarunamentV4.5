@@ -441,7 +441,7 @@ trigger2 = var(1)
 [State -1, 236_a]
 type = ChangeState
 value = 1000
-triggerall = var(20) <= 4
+triggerall = var(20) <= 4 ;|| var(20)=6
 triggerall = command="236_a"
 triggerall = statetype!=A
 trigger1 = ctrl

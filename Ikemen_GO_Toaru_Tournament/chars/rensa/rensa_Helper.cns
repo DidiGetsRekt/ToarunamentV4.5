@@ -13,6 +13,7 @@ Anim = 24000
 ;var(4) -> previous value of the index (relevant for roundstart)
 ;var(5) -> small timer
 ;var(6) -> whitening effect
+;var(7) -> addition of whitening effect and sinadd
 
 ;helper for palfx values
 ;var to keep the active amount of available powers (should fluctuate between 6 and 7)
@@ -140,6 +141,14 @@ Type = VarAdd
 Trigger1 = Var(6) > 0
 V = 6
 Value = -1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(7)!= 16*var(6) + (var(1)=2)*ifelse(gametime%256<128,ifelse(gametime%128<64,gametime%64/2,32-gametime%64/2),ifelse(gametime%128<64,-gametime%64/2,-32+gametime%64/2))
+v = 7
+value = 16*var(6) + (var(1)=2)*ifelse(gametime%256<128,ifelse(gametime%128<64,gametime%64/2,32-gametime%64/2),ifelse(gametime%128<64,-gametime%64/2,-32+gametime%64/2))
+;ignorehitpause = 
+;persistent = 
 
 [State 0, VarSet]
 type = VarSet
@@ -273,7 +282,7 @@ Value = 1
 type = PalFX
 trigger1 = 1
 time = 1
-add = helper(24001),var(var(3)*3-2)+16*var(6),helper(24001),var(var(3)*3-1)+16*var(6),helper(24001),var(var(3)*3)+16*var(6)
+add = helper(24001),var(var(3)*3-2)+var(7),helper(24001),var(var(3)*3-1)+var(7),helper(24001),var(var(3)*3)+var(7)
 ;mul = 256,256,256
 ;sinadd = 0,0,0,10
 invertall = 0
@@ -281,6 +290,7 @@ color = 256
 ;ignorehitpause = 
 ;persistent = 
 
+;+ifelse(gametime%256<128,ifelse(gametime%128<64,gametime%64/2,32-gametime%64/2),ifelse(gametime%128<64,-gametime%64/2,-32+gametime%64/2))
 
 ;main background phase 1
 [State -1]
@@ -288,7 +298,7 @@ Type = Explod
 Trigger1 = NumExplod(24010) = 0
 Anim = 24010
 PosType = back
-Pos = 30, 30
+Pos = 23.75, 31
 ;Facing = IfElse(TeamSide=1,1,-1)
 scale = 0.5,0.5
 Ownpal = 0
@@ -306,7 +316,7 @@ helpertype = normal ;player
 name = "down"
 ID = 24015
 stateno = 24001
-Pos = 30, topedge+30
+Pos = 23.75, topedge+31
 size.xscale = 0.5
 size.yscale = 0.5
 postype = back    ;p2,front,back,left,right
@@ -409,9 +419,12 @@ Value = 999
 ;setting the step if timer ends
 [State -1]
 Type = VarSet
-triggerall = roundno = 1 && roundstate = [0,1]
+triggerall = roundstate = [0,1]
+trigger1 = roundno = 1
 Trigger1 = var(1) <= 1
 Trigger1 = Var(10) = 0
+trigger2 = roundno > 1
+trigger2 = var(1)!=2
 v = 1
 Value = 2
 
@@ -681,7 +694,7 @@ trigger2 = isHelper(24016)
 time = 1
 add = var(var(30)*3-2),var(var(30)*3-1),var(var(30)*3)
 ;mul = 256,256,256
-;sinadd = 0,0,0,10
+;sinadd = 64,64,64,60
 invertall = 0
 color = 256
 ;ignorehitpause = 
