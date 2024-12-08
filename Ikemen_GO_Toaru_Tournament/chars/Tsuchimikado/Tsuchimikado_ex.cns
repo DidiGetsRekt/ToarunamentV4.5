@@ -858,6 +858,12 @@ ctrl = 0
 
 [State 0, ChangeState]
 type = ChangeState
+trigger1 = command = "z" && command = "holdback"
+value = 104
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
 trigger1 = command = "a"
 value = 206
 ctrl = 0
