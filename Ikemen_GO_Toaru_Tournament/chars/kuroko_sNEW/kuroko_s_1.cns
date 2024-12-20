@@ -1568,14 +1568,14 @@ Value = 2153
 
 [State ]
 Type = SelfState
-Trigger1 = Time > 120 && P2MoveType != A
+Trigger1 = Time > 120 ;&& P2MoveType != A
 trigger1 = alive
 Value = 5120
 ctrl=0
 
 [State ]
 Type = SelfState
-Trigger1 = Time > 120 && P2MoveType != A
+Trigger1 = Time > 120 ; && P2MoveType != A
 trigger1 = !alive
 Value = 5110
 ctrl=0
@@ -1611,7 +1611,7 @@ Value = 0
 [State 0, PosSet]
 type = PosSet
 trigger1 =time<120
-x=pos x +10
+x=pos x +15*-facing
 y = ifelse(pos y > -30,-30,pos y)
 ignorehitpause = 1
 ;persistent = 
