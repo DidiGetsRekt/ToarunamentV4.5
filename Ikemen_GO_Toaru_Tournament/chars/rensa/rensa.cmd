@@ -447,12 +447,30 @@ triggerall = statetype!=A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
-[State -1, 236_a]
+[State -1, 236_b]
 type = ChangeState
 value = 1010
 triggerall = var(20) <= 4
 triggerall = command="236_b"
 triggerall = statetype!=A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 236_a]
+type = ChangeState
+value = 1020
+triggerall = var(20) <= 4 ;|| var(20)=6
+triggerall = command="236_a"
+triggerall = statetype=A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 236_b]
+type = ChangeState
+value = 1030
+triggerall = var(20) <= 4
+triggerall = command="236_b"
+triggerall = statetype=A
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------

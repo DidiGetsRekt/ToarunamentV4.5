@@ -442,7 +442,7 @@ physics = A
 juggle  = 0
 Poweradd=FVar(11)
 velset = 0,0
-anim = 1000000+(var(20)*10)
+anim = 1020000+(var(20)*10)
 ctrl = 0
 sprpriority = 2
 
@@ -453,9 +453,119 @@ var(1)=0
 
 ;	Vector control state
 
+	[State 1020, 移動速度]
+		type = VelSet
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(3) = 0
+		x = 5;const(velocity.run.fwd.x)
+		;y = 3.6;const(velocity.run.back.y)
+		persistent=0
+		
+	[State 1020, 位置固定]
+		type = PosFreeze
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(4) < 0
+		
+	[State 1020, 重力付加]
+		type = VelAdd
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(4) >= 0
+		y = 0.55
+
 	[State 1010, ステート変更]
 		type = ChangeState
 		triggerall = var(20) = 1
+		trigger1 = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value = 52
+
+;	Dark Matter state
+
+[State 1350, 1]
+type = velset
+triggerall = var(20) = 2
+trigger1 = animelemtime(1) >= 0 && animelemtime(8) < 0
+x = 0
+y = 0
+
+[State 0, VelAdd]
+type = VelAdd
+triggerall = var(20) = 2
+trigger1 = var(1)
+x = -fvar(11)*0.666
+ignorehitpause = 1
+persistent = 0
+
+	[State 1010, ステート変更]
+		type = ChangeState
+		triggerall = var(20) = 2
+		trigger1 = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value = 52
+
+;236b air series
+[Statedef 1030]
+type    = A
+movetype= A
+physics = A
+juggle  = 0
+Poweradd=FVar(11)
+velset = 0,0
+anim = 1030000+(var(20)*10)
+ctrl = 0
+sprpriority = 2
+
+[State 200,V1=0]
+Type=VarSet
+Trigger1=time=0
+var(1)=0
+
+;	Vector control state
+
+	[State 1101, チャージアニメ変更]
+		type = Changeanim
+		triggerall = var(20) = 1
+		trigger1 = time = 0
+		value = 103001+random%2
+
+	[State 1030, 移動速度]
+		type = VelSet
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(2) = 2
+		x = const(velocity.run.back.x)
+		y = -3.6;const(velocity.run.back.y)
+		persistent=0
+		
+	[State 1030, 位置固定]
+		type = PosFreeze
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(2) < 2
+		
+	[State 1030, 重力付加]
+		type = VelAdd
+		triggerall = var(20) = 1
+		trigger1 = animelemtime(2) >= 2
+		y = 0.55
+
+	[State 1010, ステート変更]
+		type = ChangeState
+		triggerall = var(20) = 1
+		trigger1 = Vel Y > 0
+		trigger1 = Pos Y >= 0
+		value = 52
+
+;	Dark Matter state
+
+[State 1350, 1]
+type = velset
+triggerall = var(20) = 2
+trigger1 = animelemtime(1) >= 0 && animelemtime(8) < 0
+x = 0
+y = 0
+
+	[State 1010, ステート変更]
+		type = ChangeState
+		triggerall = var(20) = 2
 		trigger1 = Vel Y > 0
 		trigger1 = Pos Y >= 0
 		value = 52
