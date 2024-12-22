@@ -471,7 +471,7 @@ trigger2=animelemtime(3)<0
 type = ChangeState
 value = 2400
 triggerall = command = "RDP_c"
-triggerall = statetype !=A
+;triggerall = statetype !=A
 TriggerAll = Power>999 || fvar(7)>2
 TriggerAll = stateno != [3000,3199] 
 triggerall= var(3)=1
@@ -564,9 +564,8 @@ trigger2 =var(1)
 ;Almighty A
 [State -1, Almighty A]
 type = ChangeState
-value = 1800
+value = 1800+(statetype=A)*5
 triggerall = command = "RDP_a"
-triggerall = statetype !=A
 triggerall= var(3)=1
 trigger1 = ctrl
 Trigger2 = StateNo = [200,499] 
@@ -575,9 +574,8 @@ trigger2 = var(1)
 ;Almighty B
 [State -1, Almighty B]
 type = ChangeState
-value = 1850
+value = 1850+(statetype=A)*5
 triggerall = command = "RDP_b"
-triggerall = statetype !=A
 triggerall= var(3)=1
 trigger1 = ctrl
 Trigger2 = StateNo = [200,499] 

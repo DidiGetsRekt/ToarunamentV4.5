@@ -545,10 +545,10 @@ value = 0
 ctrl = 1
 
 
-; Ducking
+;Front Ducking Step
 [Statedef 102]
 physics = S
-anim = 100
+anim = 102
 ctrl = 0
 sprpriority = -1
 Facep2 = 1
@@ -576,7 +576,7 @@ Type = Explod
 Trigger1 = Time = 2
 Anim = 13200
 ID = 13200
-Pos = 30,-70
+Pos = 30,-35
 PosType = P1
 Scale = 1.3,1.3
 Ownpal = 1
@@ -589,7 +589,7 @@ Type = Explod
 Trigger1 = Time > 3
 Anim = 13210
 ID = 13210
-Pos = 20,-85+Random%90
+Pos = 20,-42.5+Random%45
 PosType = P1
 Scale = 1,1
 Vel = -1
@@ -663,6 +663,146 @@ type = ChangeState
 Trigger1 = AnimTime = 0
 value = 0
 ctrl = 1
+
+;Back Ducking Step
+[Statedef 104]
+physics = S
+anim = 104
+ctrl = 0
+sprpriority = -1
+Facep2 = 1
+
+[State 105, 2]
+type = hitby
+trigger1 = Time = [0,6]
+value = SCA,AT
+time = 1
+
+[State ]
+type = VelSet
+triggerall = anim = 104
+Trigger1 = AnimElemtime(3) < 0
+x = -10.53+(AnimElemtime(1)-7)*0.234
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 104
+trigger1 = animtime = 0
+value = 102
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 115,SE]
+type=PlaySnd
+triggerall = anim = 102
+trigger1=AnimElemtime(1)=0
+value=101,0
+
+[State 0, PlaySnd]
+type = PlaySnd
+triggerall = anim = 102
+trigger1=AnimElemtime(1)=0
+value = S100,1+(prevstateno=751 || prevstateno=195)
+channel = 0
+
+[State 111, Effect_1]
+Type = Explod
+triggerall = anim = 102
+Trigger1 = AnimElemtime(1)= 2
+Anim = 13200
+ID = 13200
+Pos = 30,-35
+PosType = P1
+Scale = 1.3,1.3
+Ownpal = 1
+SprPriority = 3
+IgnoreHitPause = 1
+Persistent = 1
+
+[State 111, Effect_2]
+Type = Explod
+triggerall = anim = 102
+Trigger1 = AnimElemtime(1) > 3
+Anim = 13210
+ID = 13210
+Pos = 20,-42.5+Random%45
+PosType = P1
+Scale = 1,1
+Vel = -1
+Ownpal = 1
+SprPriority = 3
+IgnoreHitPause = 1
+Persistent = 3
+
+[State 0, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = nowalk
+
+
+[State ]
+type = VelSet
+triggerall = anim = 102
+Trigger1 = AnimElemtime(1) = [8,21]
+x = 15.53-(AnimElemtime(1)-7)*0.234
+
+[State ]
+type = VelSet
+triggerall = anim = 102
+Trigger1 = AnimElemtime(1) = [22,31]
+x = 2.34-(AnimElemtime(1)-21)*0.117
+
+[State ]
+type = VelSet
+triggerall = anim = 102
+Trigger1 = AnimElemtime(1) = 32
+x = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = anim = 102
+trigger1 = command = "y" && command = "holdfwd"
+value = 101
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = anim = 102
+trigger1 = command = "y"
+value = 750
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = anim = 102
+trigger1 = command = "a"
+value = 206
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = anim = 102
+trigger1 = command = "b"
+value = 216
+ctrl = 0
+
+[State 0, ChangeState]
+type = ChangeState
+triggerall = anim = 102
+trigger1 = command = "c"
+value = 220
+ctrl = 0
+
+[State ]
+type = ChangeState
+triggerall = anim = 102
+Trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
 ;---------------------------------------------------------------------------
 ; RUN_BACK
 [Statedef 105]
