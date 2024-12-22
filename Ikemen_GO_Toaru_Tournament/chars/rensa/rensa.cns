@@ -56,7 +56,7 @@ walk.fwd = 2.85
 walk.back = -2.85
 run.fwd = 6.5, 0
 run.back = -4.5,-3.8 ;Hop backward (x, y)
-jump.neu = 0,-8.4    ;Neutral jumping velocity (x, y)
+jump.neu = 0,-9    ;Neutral jumping velocity (x, y)
 jump.back = -2.55    ;Jump back Speed (x, y)
 jump.fwd = 2.5       ;Jump forward Speed (x, y)
 runjump.back = -2.55,-8.1 ;Running jump speeds (opt)
@@ -351,7 +351,7 @@ ctrl = 1
 type = DisplayToClipboard
 trigger1 = 1
 text = "var(20) = %d, var(21)=%d, var(22)=%d, helper(24000),var = %d, helper(24000),var = %d, roundstate = %d"
-params = var(20),var(21),var(22), helper(24000),var(1),helper(24000),var(4), roundstate
+params = var(20),var(21),var(22), helper(24000),var(1),helper(24000),var(4), ifelse(gametime%256<128,ifelse(gametime%128<64,gametime%64,64-gametime%64),ifelse(gametime%128<64,-gametime%64,-64+gametime%64))
 ;ignorehitpause = 
 ;persistent = 
 
@@ -359,7 +359,7 @@ params = var(20),var(21),var(22), helper(24000),var(1),helper(24000),var(4), rou
 type = AppendToClipboard
 trigger1 = 1
 text = "\nvar(19) = %d, var(25)=%d, var(26)=%d, map(esperPower)=%f, map(phase)=%f, map(palfxmodifier)=%f"
-params = var(19),var(25),var(26),map(esperPower),map(phase), map(palfxmodifier)
+params = var(19),enemy,id,var(26),map(esperPower),map(phase), map(palfxmodifier)
 ;ignorehitpause = 
 ;persistent = 
 
@@ -408,27 +408,8 @@ var(26) = -1
 ;temporary esper power setter at the beginning of the match
 [State 0, VarSet]
 type = VarSet
-trigger1 = roundsexisted = 0 && roundstate = 0 && roundno = 1;
-var(20) = -1
-
-;temporary esper power setter at the beginning of the match
-[State 0, VarSet]
-type = VarSet
-trigger1 = roundstate = 2 && var(20)=-1;
+trigger1 = roundstate = 2 && var(20)=0;
 var(20) = 1
-
-;temporary esper power setter
-[State 0, VarSet]
-type = null
-triggerall = stateno = [195,196]
-trigger1 = command = "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
-trigger2 = command != "a" && command = "b" && command != "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
-trigger3 = command != "a" && command != "b" && command = "c" && command != "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
-trigger4 = command != "a" && command != "b" && command != "c" && command = "x" && command != "y" && command != "z" && !(command = "start" && var(21)>=0)
-trigger5 = command != "a" && command != "b" && command != "c" && command != "x" && command = "y" && command != "z" && !(command = "start" && var(21)>=0)
-trigger6 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command = "z" && !(command = "start" && var(21)>=0)
-trigger7 = command != "a" && command != "b" && command != "c" && command != "x" && command != "y" && command != "z" && (command = "start" && var(21)>=0)
-var(20) = (command = "a") + 2*(command="b") + 3*(command="c") + 4*(command="x") + 5*(command="y") + 6*(command="z") + var(21)*(command="start")
 
 [State 0, VarSet]
 type = VarSet
@@ -462,17 +443,20 @@ var(22) = -1
 [State 0, VarSet]
 type = VarSet
 ;Kamijou Touma
-trigger1 = enemy,name = "Kamijou Touma" && var(21):=0
-;Level 4s
+trigger1 = enemy,name = "Kamijou Touma" && var(21):=100;originally 0 but it doesn't work with maps and vars
+;Lvl-4s
 trigger2 = enemy,name = "Hokaze Junko" && var(21):=10
 trigger3 = enemy,name = "Kinuhata Saiai" && var(21):=11
-;Level 3s
-trigger4 = enemy,name = "Last_Order" && var(21):=25
-;Level 2s
-;Level 1s
-;Level 0s
-trigger5 = enemy,name = "Tsuchimikado Motoharu" && var(21):=70
+trigger4 = enemy,name = "kuroko_s" && var(21):=12
+;Lvl-3s
+trigger5 = enemy,name = "Last_Order" && var(21):=25
+;Lvl-2s
+;Lvl-1s
+;Lvl-0s
+trigger6 = enemy,name = "Tsuchimikado Motoharu" && var(21):=70
 ;Extras
+trigger7 = enemy,name = "Suzushina Yuriko" && var(21):=85
+trigger8 = enemy,name = "Kazakiri Hyouka" && var(21):=86
 var(22) = 1
 
 [State 0, VarSet]
@@ -524,6 +508,23 @@ ID = 24000
 	trigger2 = enemy,stateno = [120,155]
 	fvar(11)=0
 	ignorehitpause = 1
+
+
+
+;----------------------------------------------
+;Specific esper powers that work all the/over time
+
+;	Auto-Rebirth
+[State -2, LifeAdd]
+type = LifeAdd
+triggerAll = alive
+trigger1 = roundstate = 2
+trigger1 = gametime%(6+3*ceil(life/50))=0 
+trigger1 = !ishelper
+value = 1
+absolute = 1
+ignorehitpause = 1
+persistent = 1
 
 
 ;var(17) is the air dash count

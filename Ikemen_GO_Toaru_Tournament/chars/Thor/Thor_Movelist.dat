@@ -36,7 +36,7 @@ Air Side Kick			 			^HK / ^C (Air)
 Air Stomp						_D^HK / _D^C (Air)
 
 
-Throw 					_B / _F  _+ ^LP / ^X
+Throw									_B / _F  _+ ^LP / ^X
 
 Dashes				Dir+ ^MP / Dir +^Y 
 
@@ -163,16 +163,16 @@ _D_DF_F ^HK / _D_DF_F ^C (Slide)
 
 
 Almighty TP
-_B_D_DB ^LK / _B_D_DB ^A
+_B_D_DB ^LK / _B_D_DB ^A (Air OK)
 (Almighty Install)
 
 Almighty TP Crossup
-_B_D_DB ^MK / _B_D_DB ^B
+_B_D_DB ^MK / _B_D_DB ^B (Air OK)
 (Almighty Install)
 
 <#00ff00>Lvl-1</>
 Almighty TP EX
-_B_D_DB ^HK / _B_D_DB ^C
+_B_D_DB ^HK / _B_D_DB ^C (Air OK)
 (Almighty Install)
 (Unblockable for 20 ticks)
 

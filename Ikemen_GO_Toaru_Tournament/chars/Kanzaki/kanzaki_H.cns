@@ -963,8 +963,11 @@ type = HitDef
 trigger1 = animelemtime(5) = 0
 attr = S,HA
 hitflag = MAF
+guardflag = MA
 animtype = Light
 sparkno = -1
+guard.sparkno = S6105
+sparkxy = -10,-60
 damage = 0
 pausetime = 1,1
 guardsound = s1,0

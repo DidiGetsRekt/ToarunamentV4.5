@@ -216,8 +216,17 @@ type = ChangeState
 triggerall = animelemtime(2)>=0
 trigger1=enemy,statetype = C
 trigger2=enemy,statetype = A
-trigger3=enemy,statetype = L
 value = 1820
+ctrl = 0
+;anim =
+;persistent = 
+
+;Stand if enemy is lying down (that'd be weird)
+[State 0, ChangeState]
+type = ChangeState
+triggerall = animelemtime(2)>=0
+trigger1=enemy,statetype = L
+value = 1830
 ctrl = 0
 ;anim =
 ;persistent = 

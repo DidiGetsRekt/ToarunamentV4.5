@@ -127,21 +127,24 @@ Spot Dodge								^MP / ^Y
 Forward Dodge							_F^MP / _F^Y
 
 Dodge Feint								^HP / ^Z
-Ducking									_F^HP / _F^Z
+Ducking Step							_F^HP / _F^Z
+Back Ducking Step						_B^HP / _B^Z
 
-Expelled Breath							^LK / ^A during Dodge Feint / Ducking
-Evolved Clever Feet						^MK / ^B during Dodge Feint / Ducking
-Go To Sleep								^HK / ^C during Dodge Feint / Ducking
+Expelled Breath							^LK / ^A during Feint Series
+Evolved Clever Feet						^MK / ^B during Feint Series
+Go To Sleep								^HK / ^C during Feint Series
 
 About the Feint Series :
 This kind of series of movements and attacks can be
 thought of like the mechanic Thor has in which he has
 moves available only when he is running.
 Here, the same principle applies but only from feints.
-Where Dodge Feint is a sort of spot dodge and Ducking is a
-forward dodge.
-Both of them don't have invincibility.
-You can cancel Dodge Feint into Ducking but not vice versa.
+Where Dodge Feint is a sort of spot dodge and Ducking Step
+is a budget Dandy Step Toaru edition, which actually ducks.
+Dodge Feint and Ducking Step don't have invincibility.
+Back Ducking Step has invincibility on startup.
+You can cancel Dodge Feint into Ducking Step
+but not vice versa.
 You can cancel into ^K / ^A, ^B or ^C or actual dodges
 
 Charge up								^LK_+^HK / ^A_+^C

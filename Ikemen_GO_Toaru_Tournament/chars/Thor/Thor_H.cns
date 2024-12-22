@@ -2483,15 +2483,15 @@ Trigger1 = AnimTime = 0 || Parent,MoveType = H && Parent,StateNo != [120,159]
 
 ;Almighty TP EX
 [Statedef 2400]
-Type    = S
+Type    = U
 MoveType= I
-Physics = S
+Physics = N
 Ctrl = 0
 Anim = 2400
 poweradd= -1000*(fvar(7)=0)
 SprPriority = 2
 Facep2 = 1
-;velset=0,0
+velset=0,0
 
 [State 200,V1=0]
 		Type=VarSet
@@ -2666,11 +2666,20 @@ type = ChangeState
 triggerall = animelemtime(5)>=0
 trigger1=enemy,statetype = C
 trigger2=enemy,statetype = A
-trigger3=enemy,statetype = L
 value = 1820
 ctrl = 0
 ;anim =
-;persistent = 
+;persistent =
+
+;Stand if enemy is lying down
+[State 0, ChangeState]
+type = ChangeState
+triggerall = animelemtime(5)>=0
+trigger1=enemy,statetype = L
+value = 1830
+ctrl = 0
+;anim =
+;persistent =  
 
 ;Debug
 [State 0, ChangeState]

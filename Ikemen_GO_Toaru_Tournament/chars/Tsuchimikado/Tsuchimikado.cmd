@@ -782,6 +782,20 @@ triggerall = command = "holdfwd" || command = "holdback"
 trigger1 = ctrl
 trigger2 = stateno=[100,101]
 
+;Back Ducking Step
+[State -1, Forward Dodge]
+type = ChangeState
+value = 104
+triggerall = stateno != 101
+triggerall = stateno != 105
+triggerall = stateno != 6000
+triggerall = stateno != [2000,3100]
+triggerall = command = "holdback" && command = "z"
+triggerall = statetype!=A
+trigger1 = ctrl
+trigger2 = var(4)
+trigger3 = stateno = 195
+
 ;Run Fwd
 [State -1, Run Fwd]
 type = ChangeState
@@ -793,7 +807,7 @@ triggerall = statetype = S
 trigger1 = ctrl
 trigger2=var(1)
 
-;Ducking
+;Front Ducking Step
 [State -1, Forward Dodge]
 type = ChangeState
 value = 102
