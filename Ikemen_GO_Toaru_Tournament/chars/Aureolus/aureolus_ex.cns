@@ -1,0 +1,34 @@
+;Card charge
+[Statedef 900]
+type     = S
+movetype = I
+physics  = S
+anim = 900
+ctrl     = 0
+sprpriority = 3
+velset = 0,0
+
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = animelemtime(5) = 0
+fv = 20
+value = 1000.
+;ignorehitpause = 
+;persistent = 
+
+[State 0, LifeAdd]
+type = LifeAdd
+trigger1 = animelemtime(5) = 0
+value = -10
+kill = 0
+absolute = 0
+;ignorehitpause = 
+;persistent = 
+
+
+[State 200, 3]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1

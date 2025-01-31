@@ -219,7 +219,7 @@ ctrl = 0
 ;Instant slash
 [Statedef 930]
 anim = 930
-type = S
+type = A
 movetype = A
 physics = U
 ctrl = 0

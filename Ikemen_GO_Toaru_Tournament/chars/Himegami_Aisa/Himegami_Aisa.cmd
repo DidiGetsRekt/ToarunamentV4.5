@@ -1057,16 +1057,16 @@ trigger1 = statetype = S
 trigger1 = ctrl
 
 ;‚¨‚Í‚©
-;[State -1,‚¨‚Í‚©]
-;	type = ChangeState
-;	value = 1400
-;	TriggerAll = Var(59) = [0,1]
-;	triggerall = statetype != A
-;	triggerall = stateno = 5110
-;	triggerall = var(15) = 0
-;	triggerall = NumHelper(1410) = 0
-;	trigger1 = command = "a"
-;	trigger1 = command != "holddown"
+[State -1,‚¨‚Í‚©]
+	type = ChangeState
+	value = 1400
+	TriggerAll = Var(59) = [0,1]
+	triggerall = statetype != A
+	triggerall = stateno = 5110
+	triggerall = var(15) = 0
+	triggerall = NumHelper(1410) = 0
+	trigger1 = command = "a"
+	trigger1 = command != "holddown"
 
 
 ;==============================================================================
