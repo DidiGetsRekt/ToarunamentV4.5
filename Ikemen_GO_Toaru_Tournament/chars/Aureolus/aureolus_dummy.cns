@@ -1,0 +1,651 @@
+;Aureolus Dummy summon
+[Statedef 960]
+type = S
+movetype = I
+physics = S
+sprpriority = 2
+velset = 0,0
+anim = 960
+poweradd = -2000
+ctrl = 0
+
+[State 300, Helper]
+type = Helper
+triggerall = NumHelper(320) = 0
+trigger1 = Time = 14
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Aureolus Dummy"
+id = 965
+pos = 100, 0
+postype = P1
+stateno = 963
+keyctrl = 0
+ownpal = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0 
+fv = 18    ;fv = 10
+value = 900
+;ignorehitpause = 
+;persistent = 
+
+[State 300, State]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;---------------------------------------------------------------------------
+; Aureolus Dummy - Preactivation
+[Statedef 963]
+movetype = I
+physics = N
+velset = 0,0
+sprpriority = -10
+anim = 0
+ctrl = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = 1
+time = 1
+add = -32,-32,-32
+mul = 256,256,256
+;sinadd = -32,-32,-32,10
+invertall = 0
+color = 128
+;ignorehitpause = 
+;persistent = 
+
+[State 0, Trans]
+type = Trans
+trigger1 = time < 16
+trans = addalpha
+alpha = time*16, 256-time*16
+;ignorehitpause = 
+;persistent = 
+
+[State 300, State]
+type = ChangeState
+trigger1 = time = 16
+value = 964
+
+
+;---------------------------------------------------------------------------
+; Aureolus Dummy - Activation
+[Statedef 964]
+movetype = I
+physics = N
+velset = 0,0
+sprpriority = -10
+anim = 9640+random%4
+ctrl = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = 1
+time = 1
+add = -32,-32,-32
+mul = 256,256,256
+;sinadd = -32,-32,-32,10
+invertall = 0
+color = 128
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 40
+value = 105
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+trigger1 = time = 40
+x = -5
+y = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 330, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+;==============================
+;----- Record Information -----
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(970) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Anchor"
+id = 970
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(971) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Anim"
+id = 971
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(972) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record AnimElemNo"
+id = 972
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(973) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Pos XY 1"
+id = 973
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(974) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Pos XY 2"
+id = 974
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(975) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Pos XY 3"
+id = 975
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+;------------------------------
+;==============================
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time <= 0
+trigger1 = Root, StateType = S
+StateType = S
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time <= 0
+trigger1 = Root, StateType = C
+StateType = C
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Time <= 0
+trigger1 = Root, StateType = A
+StateType = A
+
+[State 330, State]
+type = ChangeState
+trigger1 = Time >= 60
+value = 965
+
+;---------------------------------------------------------------------------
+; Aureolus Dummy
+[Statedef 965]
+physics = N
+sprpriority = -10
+velset = 0,0
+juggle = 0
+ctrl = 0
+
+;var(0) is animation
+;var(1) is animation element number
+;var(2) is the time spent during that animation element
+;var(10) is the final countdown
+;var(20) is movecontact
+;var(21) is movehit
+;var(22) is moveguarded
+
+;fvar(10) is pos x
+;fvar(11) is pos y
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = 1
+time = 1
+add = -32,-32,-32
+mul = 256,256,256
+;sinadd = -32,-32,-32,10
+invertall = 0
+color = 128
+;ignorehitpause = 
+;persistent = 
+
+[State 330, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+ignorehitpause = 1
+value = SCA
+time = 1
+
+[State 330, SprPriority]
+type = SprPriority
+trigger1 = 1
+ignorehitpause = 1
+value = -10
+
+[State 330, NoJuggle]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = NoJuggleCheck
+
+;------------------------------
+;==============================
+
+;==============================
+;----- Record Direction -----
+[State 330, Turn]
+type = Turn
+triggerall = NumHelper(970) > 0
+trigger1 = (Helper(970), Var(time%60) < 0) && (Facing = 1)
+trigger2 = (Helper(970), Var(time%60) > 0) && (Facing = -1)
+;------------------------------
+
+;----- Record Animation -----
+[State 330, Anim]
+type = ChangeAnim
+trigger1 = NumHelper(971) > 0
+trigger1 = NumHelper(972) > 0
+value = Helper(971), Var(time%60)
+elem = Helper(972), Var(time%60)
+
+[State 330, VarAdd]	; Record AnimElem Time
+type = VarAdd
+trigger1 = Var(0) = Anim
+trigger1 = Var(1) = AnimElemNo(0)
+var(2) = 1
+
+[State 330, VarSet]	; Reset AnimElem Time
+type = VarSet
+trigger1 = Var(0) != Anim
+trigger2 = Var(1) != AnimElemNo(0)
+var(2) = 0
+
+[State 330, VarSet]	; Set AnimElem
+type = VarSet
+trigger1 = 1
+var(1) = AnimElemNo(0)
+
+[State 330, VarSet]	; Set Anim
+type = VarSet
+trigger1 = 1
+var(0) = Anim
+;------------------------------
+
+;----- Record Position -----
+[State 330, PosSet]
+type = PosSet
+trigger1 = NumHelper(973) > 0
+trigger1 = NumHelper(974) > 0
+trigger1 = NumHelper(975) > 0
+x = Helper(973+time%60/20), FVar(time%20) + Helper(970), Pos X + 160
+y = Helper(973+time%60/20), FVar(time%20+20)
+
+[State 330, VarSet]	; Set Pos X
+type = VarSet
+trigger1 = NumHelper(970) > 0
+trigger1 = NumHelper(973) > 0
+fvar(10) = Pos X
+
+[State 330, VarSet]	; Set Pos Y
+type = VarSet
+trigger1 = NumHelper(974) > 0
+fvar(11) = Pos Y
+;------------------------------
+
+;----- Record Display Data -----
+[State 330, Display]
+type = DisplayToClipboard
+trigger1 = NumHelper(970) > 0
+trigger1 = NumHelper(971) > 0
+trigger1 = NumHelper(972) > 0
+trigger1 = NumHelper(973) > 0
+trigger1 = NumHelper(974) > 0
+trigger1 = NumHelper(975) > 0
+ignorehitpause = 1
+text = "Anim: %d \t AnimElem: %d \t AnimElem Time: %d \nPos X: %f \t Pos Y: %f"
+params = Helper(971), Var(time%60), Helper(972), Var(time%60), Var(2), Helper(973+time%60/20), FVar(time%20), Helper(973+time%60/20), FVar(time%20+20)
+;------------------------------
+;==============================
+
+;==============================
+;---------- StateType ----------
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim = 0
+trigger2 = Anim >= 200
+trigger2 = Anim < 300
+trigger3 = Pos Y >= 0
+trigger3 = StateType = A
+StateType = S
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim >= 10
+trigger1 = Anim <= 12
+trigger2 = Anim >= 400
+trigger2 = Anim < 500
+StateType = C
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Pos Y != 0
+StateType = A
+;------------------------------
+
+;---------- MoveType ----------
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim < 200
+MoveType = I
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim >= 200
+trigger1 = Anim < 5000
+MoveType = A
+
+[State 330, StateTypeSet]
+type = StateTypeSet
+trigger1 = Anim = [5000,6000)
+MoveType = H
+;------------------------------
+;==============================
+
+;===== Contact/Hit/Guard =====
+;----- MoveContact -----
+[State -2, VarSet]
+type = VarSet
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+v = 20
+value = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = MoveContact
+ignorehitpause = 1
+v = 20
+value = 1
+;-----------------------
+
+;----- MoveHit -----
+[State -2, VarSet]
+type = VarSet
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+v = 21
+value = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = MoveHit
+ignorehitpause = 1
+v = 21
+value = 1
+;--------------------
+
+;----- MoveGuarded -----
+[State -2, VarSet]
+type = VarSet
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+v = 22
+value = 0
+
+[State -2, VarAdd]
+type = VarAdd
+trigger1 = MoveGuarded
+ignorehitpause = 1
+v = 22
+value = 1
+;HitDefs
+;-----------------------------
+;PLACE ALL YOUR CHARACTER'S HITDEF & PROJECTILE CODES HERE.
+;-----------------------------
+;USE SPRPRIORITY = -10 IN THE HITDEF CODES TO FIX THE SHADOW'S SPRITE ISSUE.
+;MAKE SURE TO USE TRIGGER 'VAR(2) <= 0' IF YOU PLAN TO USE THE ANIMELEM TRIGGER.
+;USE VARIABLES #20-22 TO DETERMINE MOVETYPE ATTACK CONTACT/HIT/GUARDED TRIGGERS IF NECCESSARY.
+;BE SURE TO IDENTIFY WHICH ANIMATION THE SHADOW IS USING, SO THAT ONLY SPECIFIC HITDEFS TAKE EFFECT.
+;ALWAYS USE PAUSETIME = 0, SO THAT THE SHADOW REMAINS IN SYNCH WITH YOUR CHARACTER'S HITDEF PAUSETIMES.
+;THE OPPONENTS HIT PAUSETIME SHOULD BE SHORTER, OR HALF OF THE ORIGINAL PAUSETIME OF THE HITDEF.
+;ALL OTHER HITDEF VALUES SHOULD REMAIN THE SAME AS YOUR CHARACTER'S HITDEF VALUES.
+;-----------------------------
+
+
+
+;------------------------------
+;-------- HitDef Reset --------
+[State 330, Reset]
+type = HitDef
+trigger1 = Var(2) <= 0
+trigger1 = AnimElem = 1
+trigger2 = MoveType != A
+ignorehitpause = 1
+;------------------------------
+
+;----- Hit Contact Reset -----
+[State 330, Reset]
+type = MoveHitReset
+trigger1 = MoveContact
+ignorehitpause = 1
+;------------------------------
+;==============================
+
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = root,fvar(18)=0
+v = 10    ;fv = 
+value = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = root,fvar(18)=0
+trigger1 = var(10)=60
+value = 966
+ctrl = 0
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+
+;---------------------------------------------------------------------------
+; Aureolus Dummy - Deactivation
+[Statedef 966]
+movetype = I
+physics = N
+velset = 0,0
+sprpriority = -10
+anim = 9660+random%7
+ctrl = 0
+
+[State 0, PalFX]
+type = PalFX
+trigger1 = 1
+time = 1
+add = -32,-32,-32
+mul = 256,256,256
+;sinadd = -32,-32,-32,10
+invertall = 0
+color = 128
+;ignorehitpause = 
+;persistent = 
+
+[State 0, Trans]
+type = Trans
+trigger1 = time > 44
+trans = addalpha
+alpha = 256-(time-44)*16, (time-44)*16
+;ignorehitpause = 
+;persistent = 
+
+[State 330, Destroy]
+type = DestroySelf
+trigger1 = Time >= 60
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+; Anchor - Record Information
+[Statedef 970]
+type = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 320
+ctrl = 0
+
+[State 970, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 970, AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = NoShadow
+;flag2 = Invisible
+
+;----- Record Direction -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(970)
+v = time%60
+value = Root, Facing
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(970)
+text = "ScreenPos X = %f \t ScreenPos Y = %f \nPos X: %f \t \t \t Pos Y: %f"
+params = ScreenPos X, ScreenPos Y, Pos X, Pos Y
+;------------------------------
+
+;----- Record Animation -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(971)
+v = time%60
+value = Root, Anim
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(971)
+text = "Record Anim - Var(%d): %d"
+params = time%60, Var(time%60)
+;------------------------------
+
+;----- Record AnimElemNo -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(972)
+v = time%60
+value = Root, AnimElemNo(0)
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(972)
+text = "Record AnimElemNo - Var(%d): %d"
+params = time%60, Var(time%60)
+;------------------------------
+
+;----- Record Position X -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(973+time%60/20)
+fv = time%20
+value = Root, Pos X - Helper(970), ScreenPos X; + Root, CameraPos X
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(973+time%60/20)
+text = "Record Pos X - FVar(%d): %f"
+params = time%60, FVar(time%20)
+;------------------------------
+
+;----- Record Position Y -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(973+time%60/20)
+fv = time%20+20
+value = Root, Pos Y
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(973+time%60/20)
+text = "Record Pos X - FVar(%d): %f"
+params = time%60, FVar(time%20+20)
+;------------------------------
+
+[State 970, PosSet]
+type = PosSet
+trigger1 = Time <= 0
+x = 0
+y = 1000
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = Time > 0
+trigger1 = NumHelper(965) = 0
+
+;---------------------------------------------------------------------------

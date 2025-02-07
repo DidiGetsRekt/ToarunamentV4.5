@@ -215,25 +215,6 @@ command = ~D, DF, F, c
 time = 20
 buffer.Time=10
 
-
-[Command]
-name = "[4]]6[_a"
-command = ~35$B, F, a;~45$B, F, a
-time = 20
-buffer.Time=10
-
-[Command]
-name = "[4]]6[_b"
-command = ~35$B, F, b;~45$B, F, b
-time = 20
-buffer.Time=10
-
-[Command]
-name = "[4]]6[_c"
-command = ~35$B, F, c
-time = 20
-buffer.Time=10
-
 [Command]
 name = "FF_ab"
 command = F, F, a+b
@@ -255,6 +236,12 @@ buffer.Time=10
 [Command]
 name = "22x"
 command = D, D, x
+time = 20
+buffer.Time=10
+
+[Command]
+name = "22z"
+command = D, D, z
 time = 20
 buffer.Time=10
 
@@ -566,6 +553,30 @@ value = 105
 triggerall = !ishelper
 trigger1 = command = "BB"
 trigger1 = statetype != A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 22x]
+type = ChangeState
+value = 950;ifelse(statetype != A,6301,6302)
+triggerall = alive
+triggerall = !ishelper
+triggerall = power >= 4000
+triggerall = (command = "22z" || (command = "a+b" && movetype = H))
+;triggerall = command != "holddown"
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 22x]
+type = ChangeState
+value = 960;ifelse(statetype != A,6301,6302)
+triggerall = alive
+triggerall = !ishelper
+triggerall = statetype != A
+triggerall = power >= 2000
+triggerall = command = "z"
+triggerall = numhelper(965)=0
+;triggerall = command != "holddown"
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------

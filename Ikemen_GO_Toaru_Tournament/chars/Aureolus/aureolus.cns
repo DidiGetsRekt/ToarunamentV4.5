@@ -136,6 +136,31 @@ value = 750+(ifelse(life*1./lifemax>=enemynear,life*1./enemynear,lifemax,-1,1)*(
 ;ignorehitpause = 
 ;persistent =
 
+;aureolus dummy decreasing while having him
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = fvar(18)>0 && roundstate=2
+trigger1 = stateno!=960
+fvar(18)=-1
+;ignorehitpause = 
+;persistent =
+
+;Super will decreasing while in honos628
+[State 0, VarAdd]
+type = VarAdd
+trigger1 = fvar(19)>0 && var(20)=1 && roundstate=2
+trigger1 = stateno!=950
+fvar(19)=-1
+;ignorehitpause = 
+;persistent =
+
+;magic name done
+[State 0, VarSet]
+type = VarSet
+trigger1 = (fvar(19)=0 || roundstate>=3) && var(20)=1
+v = 20
+value = 0
+
 ;AlmightyGaugeHelper
 [State -2]
 	type = Helper
@@ -151,6 +176,53 @@ value = 750+(ifelse(life*1./lifemax>=enemynear,life*1./enemynear,lifemax,-1,1)*(
 	ownpal = 1
 	pausemovetime = 9999
 	supermovetime = 9999
+
+[State -2]
+Type = AssertSpecial
+Trigger1 = var(20)=1
+Flag = TimerFreeze
+IgnoreHitPause = 1
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(20)=1 && var(13) = 0
+var(13) = 1
+
+[State ]
+Type = Helper
+TriggerAll = NumExplod(10969) = 0
+Trigger1 = var(20)=0 && var(13)=1; || var(20)
+StateNo = 10968
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+Ownpal = 1
+ID = 10969
+
+[State 0, VarSet]
+type = VarSet
+trigger1 = var(20)=0 && var(13) = 1
+var(13) = 0
+
+[State ]
+Type = Helper
+;triggerall = stateno!=1510 && stateno!=3011 && stateno!=[3021,3022]
+Trigger1 = NumHelper(10980) = 0
+Trigger1 = var(20)=1
+StateNo = 10980
+PauseMoveTime = 9**9
+Ownpal = 1
+ID = 10980
+
+;------------------------------------------------------------------------------------------
+;Magic name chars
+[State ]
+Type = Null
+trigger1 = 1 && var(12):= 0
+trigger2 = enemynear,name = "Stiyl Magnus" && var(12):= 1
+trigger3 = enemynear,name = "Tsuchimikado Motoharu" && var(12):= 2
+trigger4 = enemynear,name = "Kanzaki Kaori" && var(12):= 3
+trigger5 = enemynear,name = "Aureolus Izzard" && var(12):= 4
 
 ;---------------------------------------------------------------------------
 ; States that are executed when in self's state file (use statedef -3)
@@ -168,6 +240,25 @@ trigger1 = stateno = 52 ;Jump land
 trigger2 = stateno = 106 ;Run-back land
 value = 40, 0
 
+;aura ?
+[State -3]
+Type = Helper
+Triggerall = NumHelper(999) <= 8
+trigger1 = fvar(19)>=0
+trigger1 = var(20)
+StateNo = 999
+ID = 999
+Ownpal = 1
+Keyctrl = 0
+SprPriority = -5
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
+;var(12) is the magic name users
+;var(13) is the conditionality for the heat mode to end
 ;var(20) magic name
 ;var(21) steps for gun
+;fvar(18) is the aurolus dummy meter
+;fvar(19) is the magic name timer
 ;fvar(20) will meter
