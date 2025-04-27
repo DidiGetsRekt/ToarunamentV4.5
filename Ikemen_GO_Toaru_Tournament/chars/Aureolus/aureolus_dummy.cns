@@ -28,7 +28,7 @@ ownpal = 1
 type = VarSet
 trigger1 = time = 0 
 fv = 18    ;fv = 10
-value = 900
+value = 300+300*var(25)+300*var(20)
 ;ignorehitpause = 
 ;persistent = 
 
@@ -52,7 +52,7 @@ ctrl = 0
 type = PalFX
 trigger1 = 1
 time = 1
-add = -32,-32,-32
+add = -64,-64,-64
 mul = 256,256,256
 ;sinadd = -32,-32,-32,10
 invertall = 0
@@ -73,6 +73,21 @@ type = ChangeState
 trigger1 = time = 16
 value = 964
 
+;aura ?
+[State -3]
+Type = Helper
+Triggerall = NumHelper(998) <= 8
+trigger1 = root,fvar(19)>=0
+trigger1 = root,var(20)
+StateNo = 999
+ID = 998
+Ownpal = 1
+Keyctrl = 0
+SprPriority = -5
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
 
 ;---------------------------------------------------------------------------
 ; Aureolus Dummy - Activation
@@ -88,7 +103,7 @@ ctrl = 0
 type = PalFX
 trigger1 = 1
 time = 1
-add = -32,-32,-32
+add = -64,-64,-64
 mul = 256,256,256
 ;sinadd = -32,-32,-32,10
 invertall = 0
@@ -204,6 +219,62 @@ pos = 0, 0
 postype = P1
 stateno = 970
 keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(976) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Vel XY 1"
+id = 976
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(977) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Vel XY 2"
+id = 977
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(978) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Vel XY 3"
+id = 978
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
+
+[State 330, Helper]
+type = Helper
+trigger1 = Time <= 0
+trigger1 = NumHelper(979) = 0
+helpertype = normal
+pausemovetime = 9999 
+supermovetime = 9999 
+name = "Record Stateno"
+id = 979
+pos = 0, 0
+postype = P1
+stateno = 970
+keyctrl = 0
 ;------------------------------
 ;==============================
 
@@ -230,6 +301,21 @@ type = ChangeState
 trigger1 = Time >= 60
 value = 965
 
+;aura ?
+[State -3]
+Type = Helper
+Triggerall = NumHelper(998) <= 8
+trigger1 = root,fvar(19)>=0
+trigger1 = root,var(20)
+StateNo = 999
+ID = 998
+Ownpal = 1
+Keyctrl = 0
+SprPriority = -5
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
 ;---------------------------------------------------------------------------
 ; Aureolus Dummy
 [Statedef 965]
@@ -242,6 +328,7 @@ ctrl = 0
 ;var(0) is animation
 ;var(1) is animation element number
 ;var(2) is the time spent during that animation element
+;var(5) is the stateno
 ;var(10) is the final countdown
 ;var(20) is movecontact
 ;var(21) is movehit
@@ -254,7 +341,7 @@ ctrl = 0
 type = PalFX
 trigger1 = 1
 time = 1
-add = -32,-32,-32
+add = -64,-64,-64
 mul = 256,256,256
 ;sinadd = -32,-32,-32,10
 invertall = 0
@@ -301,6 +388,27 @@ trigger1 = NumHelper(972) > 0
 value = Helper(971), Var(time%60)
 elem = Helper(972), Var(time%60)
 
+;Change anim for aureolus dummy's
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = [1000,1002]
+trigger2 = anim = [1100,1102]
+value = anim+20000
+elem = animelemno(0)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = anim = [1010,1012]
+value = anim+19990
+elem = animelemno(0)
+;ignorehitpause = 
+;persistent = 
+
+;-------------------------------
+
 [State 330, VarAdd]	; Record AnimElem Time
 type = VarAdd
 trigger1 = Var(0) = Anim
@@ -337,12 +445,39 @@ y = Helper(973+time%60/20), FVar(time%20+20)
 type = VarSet
 trigger1 = NumHelper(970) > 0
 trigger1 = NumHelper(973) > 0
+trigger1 = NumHelper(974) > 0
+trigger1 = NumHelper(975) > 0
 fvar(10) = Pos X
 
 [State 330, VarSet]	; Set Pos Y
 type = VarSet
+trigger1 = NumHelper(973) > 0
 trigger1 = NumHelper(974) > 0
+trigger1 = NumHelper(975) > 0
 fvar(11) = Pos Y
+;------------------------------
+
+;----- Record Velocity -----
+[State 330, VarSet]	; Set Vel X
+type = VarSet
+trigger1 = NumHelper(976) > 0
+trigger1 = NumHelper(977) > 0
+trigger1 = NumHelper(978) > 0
+fvar(20) = Helper(976+time%60/20), FVar(time%20)
+
+[State 330, VarSet]	; Set Vel Y
+type = VarSet
+trigger1 = NumHelper(976) > 0
+trigger1 = NumHelper(977) > 0
+trigger1 = NumHelper(978) > 0
+fvar(21) = Helper(976+time%60/20), FVar(time%20+20)
+;------------------------------
+
+;----- Record Stateno -----
+[State 330, VarSet]	; Set Stateno
+type = VarSet
+trigger1 = NumHelper(979) > 0
+var(5) = Helper(979), Var(time%60)
 ;------------------------------
 
 ;----- Record Display Data -----
@@ -355,8 +490,8 @@ trigger1 = NumHelper(973) > 0
 trigger1 = NumHelper(974) > 0
 trigger1 = NumHelper(975) > 0
 ignorehitpause = 1
-text = "Anim: %d \t AnimElem: %d \t AnimElem Time: %d \nPos X: %f \t Pos Y: %f"
-params = Helper(971), Var(time%60), Helper(972), Var(time%60), Var(2), Helper(973+time%60/20), FVar(time%20), Helper(973+time%60/20), FVar(time%20+20)
+text = "Anim: %d \t AnimElem: %d \t AnimElem Time: %d \nPos X: %f \t Pos Y: %f\nVel X: %f \t Vel Y: %f\nfvar(20): %f \t fvar(21): %f"
+params = Helper(971), Var(time%60), Helper(972), Var(time%60), Var(2), Helper(973+time%60/20), FVar(time%20), Helper(973+time%60/20), FVar(time%20+20), Helper(976+time%60/20), FVar(time%20), Helper(976+time%60/20), FVar(time%20+20),fvar(20),fvar(21)
 ;------------------------------
 ;==============================
 
@@ -470,6 +605,111 @@ value = 1
 ;ALL OTHER HITDEF VALUES SHOULD REMAIN THE SAME AS YOUR CHARACTER'S HITDEF VALUES.
 ;-----------------------------
 
+[State 0, Helper]
+type = Helper
+triggerall = Var(2) <= 0
+trigger1 = Anim = 200
+trigger1 = animelem = 4
+helpertype = normal ;player
+name = "Limen Magna tester"
+ID = 96500200
+stateno = 9650
+pos = 10,-87.5
+postype = p1    ;p2,front,back,left,right
+;facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper]
+type = Helper
+triggerall = Var(2) <= 0
+trigger1 = Anim = 610
+trigger1 = animelem = 4
+helpertype = normal ;player
+name = "Limen Magna tester air 1"
+ID = 96500610
+stateno = 9650
+pos = 10,-87.5
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper]
+type = Helper
+triggerall = Var(2) <= 0
+trigger1 = Anim = 21000
+trigger1 = animelem = 5
+trigger1 = var(5) = 1000
+helpertype = normal ;player
+name = "Limen Magna 236a W1"
+ID = 96501000
+stateno = 9650
+pos = 10,-87.5
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper]
+type = Helper
+triggerall = Var(2) <= 0
+trigger1 = Anim = 21002
+trigger1 = animelem = 3
+trigger1 = var(5) = 1000
+helpertype = normal ;player
+name = "Limen Magna 236a W3"
+ID = 96501002
+stateno = 9650
+pos = 10,-87.5
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper]
+type = Helper
+triggerall = Var(2) <= 0
+trigger1 = Anim = 21002
+trigger1 = animelem = 5
+trigger1 = var(5) = 1010
+helpertype = normal ;player
+name = "Limen Magna 236b W3 1"
+ID = 965010120
+stateno = 9650
+pos = 10,-87.5
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 0, Helper]
+type = Helper
+triggerall = Var(2) <= 0
+trigger1 = Anim = [1110,1112]
+trigger1 = animelem = 3
+helpertype = normal ;player
+name = "Limen Magna 214b W1"
+ID = 96501110
+stateno = 9650
+pos = 10,-87.5
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
 
 
 ;------------------------------
@@ -509,6 +749,21 @@ ctrl = 0
 ;ignorehitpause = 
 ;persistent = 
 
+;aura ?
+[State -3]
+Type = Helper
+Triggerall = NumHelper(998) <= 8
+trigger1 = root,fvar(19)>=0
+trigger1 = root,var(20)
+StateNo = 999
+ID = 998
+Ownpal = 1
+Keyctrl = 0
+SprPriority = -5
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
+
 
 ;---------------------------------------------------------------------------
 ; Aureolus Dummy - Deactivation
@@ -524,7 +779,7 @@ ctrl = 0
 type = PalFX
 trigger1 = 1
 time = 1
-add = -32,-32,-32
+add = -64,-64,-64
 mul = 256,256,256
 ;sinadd = -32,-32,-32,10
 invertall = 0
@@ -544,6 +799,21 @@ alpha = 256-(time-44)*16, (time-44)*16
 type = DestroySelf
 trigger1 = Time >= 60
 ignorehitpause = 1
+
+;aura ?
+[State -3]
+Type = Helper
+Triggerall = NumHelper(998) <= 8
+trigger1 = root,fvar(19)>=0
+trigger1 = root,var(20)
+StateNo = 999
+ID = 998
+Ownpal = 1
+Keyctrl = 0
+SprPriority = -5
+IgnoreHitPause = 1
+SuperMoveTime = 9999
+PauseMoveTime = 9999
 
 ;---------------------------------------------------------------------------
 ; Anchor - Record Information
@@ -637,6 +907,48 @@ text = "Record Pos X - FVar(%d): %f"
 params = time%60, FVar(time%20+20)
 ;------------------------------
 
+;----- Record Velocity X -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(976+time%60/20)
+fv = time%20
+value = Root, Vel X
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(976+time%60/20)
+text = "Record Vel X - FVar(%d): %f"
+params = time%60, FVar(time%20)
+;------------------------------
+
+;----- Record Velocity Y -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(976+time%60/20)
+fv = time%20+20
+value = Root, Vel Y
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(976+time%60/20)
+text = "Record Vel X - FVar(%d): %f"
+params = time%60, FVar(time%20+20)
+;------------------------------
+
+;----- Record State number -----
+[State 970, VarSet]
+type = VarSet
+trigger1 = IsHelper(979)
+v = time%60
+value = Root, Stateno
+
+[State 970, Display]
+type = DisplayToClipboard
+trigger1 = IsHelper(979)
+text = "Record Stateno - Var(%d): %d"
+params = time%60, Var(time%60)
+;------------------------------
+
 [State 970, PosSet]
 type = PosSet
 trigger1 = Time <= 0
@@ -649,3 +961,789 @@ triggerall = Time > 0
 trigger1 = NumHelper(965) = 0
 
 ;---------------------------------------------------------------------------
+;Helpers 
+
+;Limen Magna
+[Statedef 9650]
+type = U
+physics = U
+anim = 29999
+sprpriority = 1
+
+;var(0) is id*10000
+;fvar(0) is chain size
+;fvar(1) is radian to degree conversion
+;fvar(2) is arrowhead parentdist x
+;fvar(3) is arrowhead parentdist y
+;fvar(4) is hypothenuse
+;fvar(5) is angle
+
+;----------Binding------------
+
+[State 0, BindToParent]
+type = bindtoparent
+trigger1 = isHelper(96500200)
+trigger2 = isHelper(96500610)
+trigger3 = isHelper(96501000)
+trigger4 = isHelper(96501002)
+trigger5 = isHelper(96501110)
+;time = 1
+;facing = 1
+pos = 10,-87.5
+;ignorehitpause = 
+;persistent = 
+
+[State 0, BindToParent]
+type = bindtoparent
+trigger1 = isHelper(965010120)
+;time = 1
+;facing = 1
+pos = 0,-87.5
+;ignorehitpause = 
+;persistent = 
+
+;-----------------------------
+;id*10000
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+v = 0
+value = id*10000
+;ignorehitpause = 
+;persistent = 
+
+;-----------------------------
+;chain size (assuming it's the actual size * 0.75)
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+fv = 0
+value = 32.25;*facing
+;ignorehitpause = 
+;persistent = 
+
+;radian to degree
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+fv = 1
+value = 57.2958;*facing
+;ignorehitpause = 
+;persistent = 
+
+;constant distance for comparison for the chain
+[State 0, VarSet]
+type = VarSet
+trigger1 = numhelper(9651+var(0))
+fv = 4
+value = (fvar(2)**2+fvar(3)**2)**0.5
+;ignorehitpause = 
+;persistent = 
+
+
+
+[State 0, Helper]
+type = Helper
+trigger1 = time = 0
+helpertype = normal ;player
+name = "arrow head"
+ID = 9651+var(0)
+stateno = 9651
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96520+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*0
+helpertype = normal ;player
+name = "chain 1"
+ID = 96520+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96521+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*1
+helpertype = normal ;player
+name = "chain 2"
+ID = 96521+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96522+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*2
+helpertype = normal ;player
+name = "chain 3"
+ID = 96522+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96523+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*3
+helpertype = normal ;player
+name = "chain 4"
+ID = 96523+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96524+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*4
+helpertype = normal ;player
+name = "chain 5"
+ID = 96524+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96525+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*5
+helpertype = normal ;player
+name = "chain 6"
+ID = 96525+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96526+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*6
+helpertype = normal ;player
+name = "chain 7"
+ID = 96526+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96527+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*7
+helpertype = normal ;player
+name = "chain 8"
+ID = 96527+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96528+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*8
+helpertype = normal ;player
+name = "chain 9"
+ID = 96528+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 0, Helper]
+type = Helper
+triggerall = numhelper(96529+var(0))=0
+trigger1 = fvar(4) >= fvar(0)*9
+helpertype = normal ;player
+name = "chain 10"
+ID = 96529+var(0)
+stateno = 9652
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 0
+supermovetime = 0
+pausemovetime = 0
+size.xscale = 0.75
+size.yscale = 0.75
+
+[State 970, Destroy]
+type = DestroySelf
+trigger1 = numhelper(9651+var(0))=0
+
+;Arrow Head
+[Statedef 9651]
+type = U
+physics = U
+movetype = A
+anim = 9651
+sprpriority = 1
+
+;fvar(0) is angle
+
+;Angle (normal value)
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+fv = 0
+value = 0
+;ignorehitpause = 
+;persistent = 
+
+[State 0, DisplayToClipboard]
+type = DisplayToClipboard
+trigger1 = 1
+text = "vel x = %f vel y = %f"
+params = vel x,vel y
+;ignorehitpause = 
+;persistent = 
+
+
+;X value of the "big triangle"
+[State 0, VarSet]
+type = ParentVarSet
+trigger1 = 1
+fv = 2
+value = parentdist x
+;ignorehitpause = 
+;persistent = 
+
+;Y value of the "big triangle"
+[State 0, VarSet]
+type = ParentVarSet
+trigger1 = 1
+fv = 3
+value = parentdist y
+;ignorehitpause = 
+;persistent = 
+
+
+;5a
+
+;distance = 150
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96500200)
+trigger1 = time = [0,4]
+x = 30;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96500200)
+trigger1 = time = [5,10]
+x = -30;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = parent,isHelper(96500200)
+trigger1 = Time >= 10
+
+;j.b
+
+;distance = 150
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96500610)
+trigger1 = time = [0,4]
+x = 30;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96500610)
+trigger1 = time = [5,10]
+x = -30;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = parent,isHelper(96500610)
+trigger1 = Time >= 10
+
+;236a W1
+
+;distance = 300
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501000)
+trigger1 = time = [0,14]
+x = 20;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501000)
+trigger1 = time = [15,30]
+x = -20;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = parent,isHelper(96501000)
+trigger1 = Time >= 30
+
+;236a W3
+
+;distance = -50 to 190
+
+;Angle (diag down back)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(96501002)
+trigger1 = time = [0,5]
+fv = 0
+value = -90-atan(50./75.)*parent,fvar(1)
+;ignorehitpause = 
+;persistent = 
+
+;Angle (angling forward)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(96501002)
+trigger1 = time = [6,14]
+fv = 0
+value = -90-atan(50./75.)*parent,fvar(1)+(atan(50./abs(parent,pos y))*parent,fvar(1)+atan(190./abs(parent,pos y))*parent,fvar(1))*((time-6)/9.)
+;ignorehitpause = 
+;persistent = ;Angle (angling down)
+
+;Angle (final angle)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(96501002)
+trigger1 = time >= 15
+fv = 0
+value = -atan(abs(parent,pos y)/190.)*parent,fvar(1)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = parent,isHelper(96501002)
+value = fvar(0)
+;scale = 
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501002)
+trigger1 = time = [0,5]
+x = -50/6.;+helper(965),fvar(20)
+y = abs(parent,pos y)/6.;+helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501002)
+trigger1 = time = [6,14]
+x = 240/9.;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501002)
+trigger1 = time = [15,26]
+x = -190/12.;+helper(965),fvar(20)
+y = -abs(parent,pos y)/12.;+helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = parent,isHelper(96501002)
+trigger1 = Time >= 26
+
+;236b W3
+
+;distance = 250 and goes up to 125
+
+;Angle (angling towards the back)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(965010120)
+trigger1 = time = [9,20]
+fv = 0
+value = atan((((1-((1-(time-9.)/12.)*250)**2/250.**2)*125**2)**0.5)/((1-(time-9.)/12.)*250.))*parent,fvar(1)
+;ignorehitpause = 
+;persistent = ;Angle (angling down)
+
+;Angle (final angle)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(965010120)
+trigger1 = time >= 21
+fv = 0
+value = (90+(time-21)*12%360)%360
+;ignorehitpause = 
+;persistent = 
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = parent,isHelper(965010120)
+value = fvar(0)
+;scale = 
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(965010120)
+trigger1 = time = [0,8]
+x = 250/9.;+helper(965),fvar(20)
+y = 0;helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+;discrete elipse formula for y :
+;y vel = pos y beg - pos y end (result will be negative which is what we want)
+;pos y = g = sqrt([a+(1-time/timemax)*a]² - [h + (1-time/timemax)*a]²)
+;h is defined as the distance between the center and the focal point for the elipse
+;it's equal to sqr(a²-b²)
+;a corresponds to the big axis of the elipse
+;b corresponds to the small axis of the elipse
+;the first value corresponds to the hypothenuse and it's always between a and 2a because that distance represents the fact that between the 2 focal points,
+;if it hits the elipse, it'll always equal 2a when adding d1 and d2
+;the second value is the known distance of the x axis which is the addition of h + whatever is left of a over time
+
+;update I fucked up somwhere, so here was the calculation I'm going to scrap :
+;((250.+(1-(time-9.)/12.)*250.)**2-((250.**2-125.**2)**0.5+(1-(time-9.)/12.)*250.)**2)**0.5 - ((250.+(1-(time-9.+1)/12.)*250.)**2-((250.**2-125.**2)**0.5+(1-(time-9.+1)/12.)*250.)**2)**0.5 
+
+;new formula uses this property of the elipse :
+;x²/a²+y²/b²=1
+;and thus we get the y value by doing :
+;y=sqr((1-x²/a²)*b²)
+;and thus we can therefore use y beg - y end to get a negative value and the actual formula for the thing
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(965010120)
+trigger1 = time = [9,20]
+x = -250/12.;+helper(965),fvar(20)
+y = (((1-((1-(time-9.)/12.)*250)**2/250.**2)*125**2)**0.5) - (((1-((1-(time-9.+1)/12.)*250)**2/250.**2)*125**2)**0.5) ;+helper(965),fvar(21)
+;((1-((125)**2/250.**2))*125**2)**0.5
+;ignorehitpause = 
+;persistent = 
+
+[State 0, BindToParent]
+type = BindToParent
+triggerall = parent,isHelper(965010120)
+trigger1 = time = [21,320]
+trigger1 = (time-21)%60=0
+;time = 1
+;facing = 0
+pos = 0,-125
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(965010120)
+trigger1 = time = [21,320]
+x = -125.*(pi/15)*sin(fvar(0)/parent,fvar(1));+helper(965),fvar(20)
+y = -125.*(pi/15)*cos(fvar(0)/parent,fvar(1));+helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = parent,isHelper(965010120)
+trigger1 = Time >= 320
+
+;214b W1
+
+;distance = 200
+
+;Angle (diag up)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(96501110)
+trigger1 = time = [0,14]
+fv = 0
+value = 45
+;ignorehitpause = 
+;persistent = 
+
+;abs(parent,pos y) gives me the height positively of where I'm at, for the opposite side
+;200 is the hypothenuse,(might need to change it later down the line for like other stuff optional lengths)
+
+;Angle (angling down)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(96501110)
+trigger1 = time = [15,24]
+fv = 0
+value = 45-(45+asin(abs(parent,pos y)/200.)*parent,fvar(1))*((time-15)/10.)
+;ignorehitpause = 
+;persistent = ;Angle (angling down)
+
+;Angle (final angle)
+[State 0, VarSet]
+type = VarSet
+triggerall = parent,isHelper(96501110)
+trigger1 = time >= 25
+fv = 0
+value = -asin(abs(parent,pos y)/200.)*parent,fvar(1)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = parent,isHelper(96501110)
+value = fvar(0)
+;scale = 
+;ignorehitpause = 
+;persistent = 
+
+;hyp = k*sqrt(2)
+;isocele sides = k
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501110)
+trigger1 = time = [0,14]
+x = (200/(2**0.5))/15.;+helper(965),fvar(20)
+y = -(200/(2**0.5))/15.;+helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+
+;pi/4 (rad)= 45°
+;arcsin(75/200) = angle from horizontal position at height 75 that goes towards the ground, knowing that the radius is 200... and it's in radians
+;time = 10
+
+;formula :
+;vel x = radius * total angle in radians / time * sin(angle that is still in calculation)
+;vel y = radius * total angle in radians / time * cos(angle that is still in calculation)
+
+;sin is in x and cos is in y because we're comparing the angle compared to the y axis instead of the x
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501110)
+trigger1 = time = [15,24]
+x = (200.*(pi/4+asin(abs(parent,pos y)/200.))/10.)*sin(fvar(0)/parent,fvar(1));+helper(965),fvar(20)
+y = (200.*(pi/4+asin(abs(parent,pos y)/200.))/10.)*cos(fvar(0)/parent,fvar(1));+helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+[State 0, BindToParent]
+type = BindToParent
+triggerall = parent,isHelper(96501110)
+trigger1 = time = 25
+;time = 1
+;facing = 0
+pos = (200**2-parent,pos y**2)**0.5,75
+;ignorehitpause = 
+;persistent = 
+
+[State 0, VelSet]
+type = VelSet
+triggerall = parent,isHelper(96501110)
+trigger1 = time >= 25
+x = -((200.**2-75.**2)**0.5)/15.;+helper(965),fvar(20)
+y = -75/15.;+helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+
+
+[State 970, Destroy]
+type = DestroySelf
+triggerall = parent,isHelper(96501110)
+trigger1 = Time >= 40
+
+[State 0, VelSet]
+type = VelAdd
+trigger1 = 1
+x = ((helper(965),facing=facing)-(helper(965),facing!=facing))*helper(965),fvar(20)
+y = helper(965),fvar(21)
+;ignorehitpause = 
+;persistent = 
+
+;Angle
+[State 0, VarSet]
+type = ParentVarSet
+trigger1 = 1
+fv = 5
+value = fvar(0)
+;ignorehitpause = 
+;persistent = 
+
+;Chain
+[Statedef 9652]
+type = U
+physics = U
+anim = 9652
+sprpriority = 1
+
+;var(0) is chain distance
+;fvar(0) is angle
+;fvar(1
+
+;distance of chain
+[State 0, VarSet]
+type = VarSet
+trigger1 = time = 0
+v = 0    ;fv = 10
+value = -1+ishelper(96520+parent,var(0))+ishelper(96521+parent,var(0))*2+ishelper(96522+parent,var(0))*3+ishelper(96523+parent,var(0))*4+ishelper(96524+parent,var(0))*5+ishelper(96525+parent,var(0))*6+ishelper(96526+parent,var(0))*7+ishelper(96527+parent,var(0))*8+ishelper(96528+parent,var(0))*9+ishelper(96529+parent,var(0))*10
+;ignorehitpause = 
+;persistent = 
+
+;Angle copied from parent which it got from the arrow head
+[State 0, VarSet]
+type = VarSet
+trigger1 = numhelper(9651+parent,var(0))
+fv = 0
+value = parent,fvar(5)
+;ignorehitpause = 
+;persistent = 
+
+;here it's cos because it's the derivation of sin
+
+;X value of the "triangle" (adjacent)
+[State 0, VarSet]
+type = VarSet
+trigger1 = numhelper(9651+parent,var(0))
+fv = 1
+value = cos(fvar(0)/parent,fvar(1))*parent,fvar(0)*var(0)
+;ignorehitpause = 
+;persistent = 
+;ifelse(helper(9651),parentdist x<0,1,-1)*
+
+;here it's -sin because it's the derivation of cos
+
+;Y value of the "triangle" (opposite)
+[State 0, VarSet]
+type = VarSet
+trigger1 = numhelper(9651+parent,var(0))
+fv = 2
+value = -sin(fvar(0)/parent,fvar(1))*parent,fvar(0)*var(0)
+;ignorehitpause = 
+;persistent = 
+;ifelse(helper(9651),parentdist y<0,1,-1)*
+
+;Hypotenuse of the "triangle"
+[State 0, VarSet]
+type = VarSet
+trigger1 = numhelper(9651+parent,var(0))
+fv = 3
+value = (fvar(1)**2+fvar(2)**2)**0.5
+;ignorehitpause = 
+;persistent = 
+
+[State 0, AngleDraw]
+type = AngleDraw
+trigger1 = numhelper(9651+parent,var(0))
+value = fvar(0)
+;scale = 
+;ignorehitpause = 
+;persistent = 
+
+[State 0, BindToParent]
+type = BindToParent
+trigger1 = 1
+;time = 1
+facing = 1
+pos =  fvar(1),fvar(2);ifelse(helper(9651),parentdist x<0,1,-1)
+;ignorehitpause = 
+;persistent = 
+
+[State 970, Destroy]
+type = DestroySelf
+trigger1 = numhelper(9651+parent,var(0))=0
+trigger2 = fvar(3)+parent,fvar(0)*0.5>parent,fvar(4)

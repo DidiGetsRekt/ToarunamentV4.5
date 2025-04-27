@@ -3,7 +3,7 @@
 [Statedef 999]
 Type = A
 Physics = N
-SprPriority = -9
+SprPriority = -9-2*ishelper(998)
 
 [State -1]
 Type = NotHitBy
@@ -20,7 +20,7 @@ Pos = 0,-1
 type = AngleDraw
 trigger1 = 1
 ;value = 1
-scale = 1+time*0.0078125*(ifelse(root,fvar(19)>=192,2,root,fvar(19)/96)),1+time*0.0078125*(ifelse(root,fvar(19)>=192,2,root,fvar(19)/96))
+scale = 1+time*0.0078125*(ifelse(root,fvar(19)>=192,2,root,fvar(19)/96))/(1+ishelper(998)),1+time*0.0078125*(ifelse(root,fvar(19)>=192,2,root,fvar(19)/96))/(1+ishelper(998))
 ;ignorehitpause = 
 ;persistent = 
 ;+0.125*(sin((gametime%600)/600*2*pi)+1)
@@ -38,7 +38,10 @@ Type = PalFX
 Trigger1 = root,var(20) = 1
 Time = 1
 Add = 256,216,0
+Mul = 256-128*ishelper(998),256-128*ishelper(998),256-128*ishelper(998)
 ;invertall = ifelse(parent,stateno = 3021 && parent,time>=60 && parent,time<152,1,0)
+
+
 
 [State -1]
 Type = VarSet
@@ -571,6 +574,413 @@ trigger1 = time = 120
 ;ignorehitpause = 
 ;persistent = 
 
+;Ropes or shine
+[Statedef 1215]
+type = S
+movetype = A
+physics = S
+;anim = 1215
+sprpriority = 2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = ishelper(1215)
+value = 1215
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = ishelper(1216)
+trigger2 = ishelper(1217)
+value = 1218
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, HitDef]
+type = HitDef
+triggerall = time = 0
+trigger1 = ishelper(1215)
+trigger2 = ishelper(1216)
+attr = S,NT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MF        ;HLAFD+-
+guardflag = MA         ;HLA
+;affectteam = E          ;B,E,F
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+;fall.animtype = Back
+;priority = 4,Hit
+damage = 50*ishelper(1216),0
+pausetime = 0 ,0
+;guard.pausetime = 0,0
+sparkno = S3000
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,0
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+;air.type = High
+ground.slidetime = 0
+;guard.slidetime = 0
+ground.hittime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+;guard.dist = 320
+;yaccel = 0.5
+ground.velocity = 0,0
+;guard.velocity = 0
+air.velocity = 0,0
+sprpriority = 1
+;p1facing = 
+p1getp2facing = 0
+p1stateno = 1216
+p2stateno = 1217
+;p2getp1state = 1
+;forcestand = 0
+
+[State 0, HitDef]
+type = HitDef
+triggerall = time = 0
+trigger1 = ishelper(1217)
+attr = S,NT        ;SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+hitflag = MAF        ;HLAFD+-
+guardflag = MA         ;HLA
+;affectteam = E          ;B,E,F
+animtype = light          ;light,medium,hard,back,up,diagup
+air.animtype = light
+;fall.animtype = Back
+;priority = 4,Hit
+damage = 50,0
+pausetime = 0 ,0
+;guard.pausetime = 0,0
+sparkno = S3000
+guard.sparkno = S3100
+sparkxy = 0,0
+hitsound = S1,0
+guardsound = S2,0
+ground.type = High      ;Low,Trip,None
+;air.type = High
+ground.slidetime = 0
+;guard.slidetime = 0
+ground.hittime = 0
+;guard.hittime = 0
+air.hittime = 20
+;guard.ctrltime = 0
+;guard.dist = 320
+;yaccel = 0.5
+ground.velocity = 0,0
+;guard.velocity = 0
+air.velocity = 0,0
+sprpriority = 1
+;p1facing = 
+p1getp2facing = 0
+p1stateno = 1216
+p2stateno = 1218
+;p2getp1state = 1
+;forcestand = 0
+
+[State 0, Trans]
+type = Trans
+trigger1 = animtime>=-16
+trigger1 = ishelper(1215)
+trans = addalpha ;none, add, addalpha, add1, sub
+alpha = 256-(16+animtime)*16,256
+;ignorehitpause = 
+;persistent = 
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = animtime = 0
+;ignorehitpause = 
+;persistent = 
+
+;Ropes or shine success
+[Statedef 1216]
+type = S
+movetype = U
+physics = S
+sprpriority = 3
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = ishelper(1215)
+value = 12160
+elem = animelemno(0)
+;ignorehitpause = 
+;persistent = 
+
+[State -1]
+Type = Explod
+Trigger1 = Time = 120
+trigger1 = ishelper(1215)
+Anim = 12161
+ID = 1216
+Pos = 0,0
+PosType = P1
+Ownpal = 1
+SprPriority = 3
+BindTime = -1
+IgnoreHitPause = 0
+Persistent = 0
+SuperMoveTime = 9999
+
+[State 0, Explod]
+type = Explod
+trigger1 = anim = 12160
+trigger1 = animelem = 18
+trigger1 = ishelper(1215)
+anim = 12170 
+ID = 1217
+Pos = 0,0
+PosType = P1
+Ownpal = 1
+SprPriority = -2
+BindTime = -1
+IgnoreHitPause = 0
+Persistent = 0
+;SuperMoveTime = 9999
+
+[State 0, Explod]
+type = ModifyExplod
+Trigger1 = Time = 120
+trigger1 = ishelper(1215)
+anim = 12171
+ID = 1217
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = anim = 1218
+triggerall = animtime = 0
+trigger1 = ishelper(1216)
+trigger2 = ishelper(1217)
+value = 29999
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = time=120
+;ignorehitpause = 
+;persistent = 
+
+;Target held
+[Statedef 1217]
+type = S
+movetype = H
+physics = S
+velset = 0,0
+sprpriority = 2
+
+[State 0, StateTypeSet]
+type = StateTypeSet
+trigger1 = time = 0
+trigger1 = prevstateno = 1218
+statetype = L       ;S,A,C,L
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+;value2 = S,NA
+time = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, PosSet]
+type = PosSet
+trigger1 = time = 0
+trigger1 = prevstateno = 1218
+trigger1 = pos y != 0
+y = 0
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = prevstateno != 1218
+value = 5300
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = prevstateno = 1218
+value = 5110
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, SelfState]
+type = SelfState
+triggerall = time=120
+trigger1 = anim = 5300
+value = 0
+ctrl = 1
+
+[State 0, SelfState]
+type = SelfState
+triggerall = time=120
+trigger1 = anim = 5110
+value = 5120
+
+;Target dropping down
+[Statedef 1218]
+type = A
+movetype= H
+physics = N
+velset = 0,10
+sprpriority = 2
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = selfanimexist(5060)
+value = 5060
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = !selfanimexist(5060)
+trigger1 = selfanimexist(5061)
+value = 5061
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+[State 0, ChangeAnim]
+type = ChangeAnim
+trigger1 = time = 0
+trigger1 = !selfanimexist(5060)
+trigger1 = !selfanimexist(5061)
+trigger1 = selfanimexist(5062)
+value = 5062
+;elem = 1
+;ignorehitpause = 
+;persistent = 
+
+
+[State 0, ChangeState]
+type = ChangeState
+trigger1 = vel y >= 0
+trigger1 = pos y >= 0
+value = 1217
+ctrl = 0
+;anim =
+;ignorehitpause = 
+;persistent = 
+
+
+;Can't touch me indicator
+[Statedef 7200]
+anim = 29999
+
+
+;Exclamation remove
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = numexplod(7200)=1
+id = 7200
+ignorehitpause = 1
+;persistent = 
+
+;Exclamation display
+[State 30000] 
+type = Explod
+trigger1 = numexplod(7200)=0
+trigger1 = root,var(22) > 0
+anim = 7211
+ID = 7200
+pos = ifelse(teamside=1,27.5+10+15,320-27.5-5), 35
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = 5
+scale = 0.5,0.5
+ownpal = 0
+ignorehitpause = 1
+
+;Unit remove
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = numexplod(7201)=1
+id = 7201
+ignorehitpause = 1
+;persistent = 
+
+
+
+;Unit
+[State 30000] 
+type = Explod
+trigger1 = numexplod(7201)=0
+trigger1 = root,var(22) > 0
+anim = 7201+(root,var(22)%10)
+ID = 7201
+pos = ifelse(teamside=1,27.5+10,320-27.5-10-10), 32.5
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = 5
+scale = 0.75,0.75
+ownpal = 0
+ignorehitpause = 1
+
+;Tens remove
+[State 0, RemoveExplod]
+type = RemoveExplod
+trigger1 = numexplod(7202)=1
+id = 7202
+ignorehitpause = 1
+;persistent = 
+
+;Tens
+[State 30000] 
+type = Explod
+trigger1 = numexplod(7202)=0
+trigger1 = root,var(22) > 0
+anim = 7201+((root,var(22)/10)%10)
+ID = 7202
+pos = ifelse(teamside=1,27.5,320-27.5-10-10-10), 32.5
+postype = left
+bindtime = -1
+removetime = -1
+supermovetime = 9999
+pausemovetime = 9999
+sprpriority = 5
+scale = 0.75,0.75
+ownpal = 0
+ignorehitpause = 1
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = root,var(22)=0
+;ignorehitpause = 
+;persistent = 
+
+
 ;---------------------------------------------------------------------------
 ;Magic circuit random waves
 [Statedef 8030]
@@ -962,7 +1372,7 @@ trigger1 = numexplod(11100) = 0
 trigger1 = teamside=1
 anim = 11100
 ID = 11100
-pos = 16, 228
+pos = 16, 228-20*parent,ishelper(30001)
 postype = left
 bindtime = -1
 removetime = -1
@@ -983,7 +1393,7 @@ trigger1 = numexplod(11100) = 0
 trigger1 = teamside=2
 anim = 11100
 ID = 11100
-pos = 305, 228
+pos = 305, 228-20*parent,ishelper(30001)
 postype = left
 bindtime = -1
 removetime = -1
@@ -999,18 +1409,28 @@ ignorehitpause = 1
 ;W Progress
 [State 30000]
 type = ModifyExplod
+triggerall = parent,ishelper(30000)
 trigger1 = numexplod(11100) = 1
 trigger1 = root,fvar(20)>=0
 trigger1 = root,fvar(20)<=3000
 scale = root,fvar(20)/6000,.5
 ID = 11100
 
+;Dummy Progress
+[State 30000]
+type = ModifyExplod
+triggerall = parent,ishelper(30001)
+trigger1 = numexplod(11100) = 1
+scale = root,fvar(18)/1800,.5
+ID = 11100
+
 [State 0, PalFX]
 type = PalFX
+triggerall = parent,ishelper(30000)
 trigger1 = root,fvar(20)>=0
 trigger1 = root,fvar(20)<=3000
 time = 1
-add = 0,-85*(3-ceil(root,fvar(20)/1000)),0;orange, light orange, yellow
+add = 0,-85*(2-root,var(25)),0;orange, light orange, yellow  3-ceil(root,fvar(20)/1000)
 mul = 256,256,256
 ;sinadd = 0,0,0,10
 invertall = 0
@@ -1018,8 +1438,29 @@ color = 256
 ;ignorehitpause = 
 ;persistent = 
 
+[State 0, PalFX]
+type = PalFX
+trigger1 = parent,ishelper(30001)
+trigger1 = time%90=0
+time = 90
+add = -63,-63,192;orange, light orange, yellow
+mul = 256,256,256
+sinadd = 32,32,32,90
+invertall = 0
+color = 256
+;ignorehitpause = 
+;persistent = 
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = parent,ishelper(30001)
+trigger1 = numhelper(965)=0
+;ignorehitpause = 
+;persistent = 
+
+
 ;==========================================================
-;Will Meter Bar Helper
+;Super Will Meter Bar Helper
 [Statedef 11101]
 anim = 29999
 sprpriority = 5
@@ -1108,7 +1549,7 @@ trigger1 = numexplod(11600) = 0
 ;trigger1 = Parent,fvar(6) != 0
 anim = 11600
 ID = 11600
-pos = ifelse(teamside=1,8,205), 217
+pos = ifelse(teamside=1,8,205), 217-20*ishelper(30001)
 postype = left
 bindtime = -1
 removetime = -1
@@ -1138,7 +1579,7 @@ trigger1 = numexplod(11103) = 0
 ;trigger1 = Parent,fvar(6) != 0
 anim = 11103
 ID = 11103
-pos = ifelse(teamside=1,16,213), 228
+pos = ifelse(teamside=1,16,213), 228-20*ishelper(30001)
 postype = left
 bindtime = -1
 removetime = -1
@@ -1153,7 +1594,7 @@ ignorehitpause = 1
 [State 0, Helper]
 type = Helper
 triggerAll = numexplod(11103);Black bar
-trigger1 = numhelper(11100) = 0
+trigger1 = time = 0
 helpertype = normal ;player
 name = "will bar"
 ID = 11100
@@ -1169,6 +1610,7 @@ sprpriority = 9999
 
 [State 30000];ƒQ[ƒWŒõ‘ò
 type = Explod
+triggerall = ishelper(30000)
 triggerAll = numexplod(11210) = 0
 triggerAll = teamside=1
 trigger1 = Parent,fvar(20)=3000
@@ -1188,6 +1630,7 @@ ignorehitpause = 1
 
 [State 30000];ƒQ[ƒWŒõ‘ò2p
 type = Explod
+triggerall = ishelper(30000)
 triggerAll = numexplod(11212) = 0
 triggerAll = teamside=2
 trigger1 = Parent,fvar(20)=3000
@@ -1217,3 +1660,24 @@ type = RemoveExplod
 triggerAll = numexplod(11212)
 trigger1 = Parent,fvar(20) != 3000
 ID = 11212
+
+[State 30000]
+type = RemoveExplod
+triggerAll = numexplod(11600)
+trigger1 = ishelper(30001)
+trigger1 = numhelper(965)=0
+ID = 11600
+
+[State 30000]
+type = RemoveExplod
+triggerAll = numexplod(11103)
+trigger1 = ishelper(30001)
+trigger1 = numhelper(965)=0
+ID = 11103
+
+[State 0, DestroySelf]
+type = DestroySelf
+trigger1 = ishelper(30001)
+trigger1 = root,numhelper(965)=0
+;ignorehitpause = 
+;persistent = 

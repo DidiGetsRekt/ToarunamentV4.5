@@ -121,4 +121,4 @@ value = 3000
 [State 200, 3]
 type = ChangeState
 trigger1 = AnimTime = 0
-value = 51
+value = 50
