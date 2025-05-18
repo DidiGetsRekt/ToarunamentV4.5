@@ -196,6 +196,76 @@ LoopStart
 105,7, 0,0, 2
 
 
+;--------------------
+; GUARDSTART (stand)
+[Begin Action 120]
+120,  2,  0,  0,  2
+120,  1,  0,  0,  2
+
+
+; GUARDSTART (crouch)
+[Begin Action 121]
+121,  2,  0,  0,  2
+121,  1,  0,  0,  2
+
+
+; GUARDSTART (air)
+[Begin Action 122]
+122,  2,  0,  0,  2
+122,  1,  0,  0,  2
+
+
+; GUARD (stand)
+[Begin Action 130]
+120,0, 0,0, -1
+
+
+; GUARD (crouch)
+[Begin Action 131]
+121,0, 0,0, -1
+
+
+; GUARD (air)
+[Begin Action 132]
+122,0, 0,0, -1
+
+
+; GUARDEND (stand)
+[Begin Action 140]
+120,  1,  0,  0,  3
+120,  2,  0,  0,  1
+
+
+; GUARDEND (crouch)
+[Begin Action 141]
+121,  1,  0,  0,  3
+121,  2,  0,  0,  1
+
+
+; GUARDEND (air)
+[Begin Action 142]
+122,  1,  0,  0,  3
+122,  2,  0,  0,  3
+Loopstart
+ 41,  6,  0,  0,  5
+ 41,  7,  0,  0,  5
+
+
+; Hit back while guarding (stand)
+[Begin Action 150]
+120,  0,  0,  0, -1
+
+
+; Hit back while guarding (crouch)
+[Begin Action 151]
+121,0, 0,0, -1
+
+
+; Hit back while guarding (air)
+[Begin Action 152]
+122,0, 0,0, -1
+
+
 ;5A
 [Begin Action 200]
 200,  0,  0,  0,  2
@@ -1319,6 +1389,402 @@ Clsn1Default: 1
 1110,8, 0,0, 4
 1110,9, 0,0, 3
 1110,10, 0,0, 3
+
+; Get Hit L
+[Begin Action 5000]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,0, 0,0, 5
+5000,10, 0,0, 5
+
+
+; Get Hit M
+[Begin Action 5001]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,0, 0,0, 5
+5000,10, 0,0, 5
+5000,20, 0,0, 5
+
+
+; Get Hit H
+[Begin Action 5002]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,0, 0,0, 5
+5000,10, 0,0, 5
+5000,20, 0,0, 5
+5000,21, 0,0, 5
+
+
+; Stagger
+[Begin Action 5003]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,0, 0,0, 4
+5010,10, 0,0, 4
+LoopStart
+5010,20, 0,0, 4
+LoopStart
+5010,21, 0,0, 4
+
+
+; Get Hit L Recover
+[Begin Action 5005]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,0, 0,0, -1
+
+
+; Get Hit M Recover
+[Begin Action 5006]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,10, 0,0, 3
+5000,0, 0,0, -1
+
+; Get Hit H Recover
+[Begin Action 5007]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,21, 0,0, 2
+5000,20, 0,0, 2
+5000,10, 0,0, 2
+5000,10, 0,0, 2
+5000,0, 0,0, -1
+
+; Stagger Recover
+[Begin Action 5008]
+Clsn2Default: 2
+  Clsn2[0] = -7, -124, 13, -101
+  Clsn2[1] = -23, -110, 21, -1
+5000,22, 0,0, 2
+5000,21, 0,0, 2
+5000,20, 0,0, 2
+5000,0, 0,0, 2
+
+; Low Blow L
+[Begin Action 5010]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,0, 0,0, 5
+5010,10, 0,0, 5
+
+
+; Low Blow M
+[Begin Action 5011]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,0, 0,0, 5
+5010,10, 0,0, 5
+5010,20, 0,0, 5
+
+
+; Low Blow H
+[Begin Action 5012]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,0, 0,0, 5
+5010,10, 0,0, 5
+5010,20, 0,0, 5
+LoopStart
+5010,21, 0,0, 5
+
+
+; Low Blow L Recover
+[Begin Action 5015]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,0, 0,0, -1
+
+
+; Low Blow M Recover
+[Begin Action 5016]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,10, 0,0, 3
+5010,0, 0,0, -1
+
+; Low Blow H Recover
+[Begin Action 5017]
+Clsn2Default: 2
+  Clsn2[0] = -27, -110, 15, 3
+  Clsn2[1] = 10, -117, 34, -88
+5010,20, 0,0, 3
+5010,20, 0,0, 3
+5010,10, 0,0, 3
+5010,0, 0,0, -1
+
+; Crouch Get Hit L
+[Begin Action 5020]
+Clsn2Default: 2
+  Clsn2[0] = -27, -78, -10, -61
+  Clsn2[1] = -32, -61, 22, 5
+5020,0, 0,0, 2
+5020,10, 0,0, 3
+5020,20, 0,0, 5
+
+
+; Crouch Get Hit M
+[Begin Action 5021]
+Clsn2Default: 2
+  Clsn2[0] = -27, -78, -10, -61
+  Clsn2[1] = -32, -61, 22, 5
+5020,0, 0,0, 2
+5020,10, 0,0, 3
+5020,20, 0,0, 5
+5020,21, 0,0, 5
+
+
+; Crouch Get Hit H
+[Begin Action 5022]
+Clsn2Default: 2
+  Clsn2[0] = -27, -78, -10, -61
+  Clsn2[1] = -32, -61, 22, 5
+5020,0, 0,0, 2
+5020,10, 0,0, 3
+5020,20, 0,0, 5
+5020,21, 0,0, 5
+5020,22, 0,0, 5
+
+
+; Crouch Get Hit L Recover
+[Begin Action 5025]
+Clsn2Default: 2
+  Clsn2[0] = -27, -78, -10, -61
+  Clsn2[1] = -32, -61, 22, 5
+5020,0, 0,0, -1
+
+
+; Crouch Get Hit M Recover
+[Begin Action 5026]
+Clsn2Default: 2
+  Clsn2[0] = -27, -78, -10, -61
+  Clsn2[1] = -32, -61, 22, 5
+5020,10, 0,0, 3
+5020,0, 0,0, -1
+
+; Crouch Get Hit H Recover
+[Begin Action 5027]
+Clsn2Default: 2
+  Clsn2[0] = -27, -78, -10, -61
+  Clsn2[1] = -32, -61, 22, 5
+5020,22, 0,0, 3
+5020,20, 0,0, 3
+5020,10, 0,0, 3
+5020,0, 0,0, -1
+
+; Air Get Hit
+[Begin Action 5030]
+Clsn2: 2
+  Clsn2[0] = 18, -110, 37, -91
+  Clsn2[1] = -17, -113, 23, -1
+5030,0, 0,0, 3
+
+
+; Air Get Hit Transition
+[Begin Action 5035]
+Clsn2: 2
+  Clsn2[0] = 18, -110, 37, -91
+  Clsn2[1] = -17, -113, 23, -1
+5030,0, 0,0, 4
+
+
+; Air Recover
+[Begin Action 5040]
+5200,5, 0,0, 5
+5200,6, 0,0, 5
+5200,7, 0,0, 10
+5200,8, 0,0, -1
+
+
+; Knocked Upward
+[Begin Action 5050]
+Clsn2: 2
+  Clsn2[0] = 18, -110, 37, -91
+  Clsn2[1] = -17, -113, 23, -1
+5030,0, 0,0, 5
+5030,10, 0,0, 5
+5030,20, 0,0, 5
+5030,30, 0,0, 5
+5030,40, 0,0, 5
+LoopStart
+5030,50, 0,0, 5
+5030,60, 0,0, 5
+
+
+; Trip
+[Begin Action 5051]
+Clsn2: 2
+  Clsn2[0] = 18, -110, 37, -91
+  Clsn2[1] = -17, -113, 23, -1
+5030,0, 0,0, 4
+
+
+; Going Down
+[Begin Action 5061]
+Clsn2: 2
+  Clsn2[0] = -32, -128, -15, -114
+  Clsn2[1] = -34, -114, 4, 7
+5060,10, 0,0, 5
+Clsn2: 2
+  Clsn2[0] = -40, -112, -1, -62
+  Clsn2[1] = -18, -85, 25, 10
+5060,3, 0,0, 5
+Clsn2: 2
+  Clsn2[0] = -47, -96, 2, -79
+  Clsn2[1] = -12, -83, 34, 5
+5060,4, 0,0, 5
+Clsn2: 5
+  Clsn2[0] = -34, -105, -17, -74
+  Clsn2[1] = -38, -76, -22, -62
+  Clsn2[2] = -2, -69, 15, 0
+  Clsn2[3] = 12, -80, 44, -17
+  Clsn2[4] = -24, -90, 16, -69
+5060,5, 0,0, 5
+Clsn2: 5
+  Clsn2[0] = -14, -53, 4, -34
+  Clsn2[1] = -22, -102, 23, -53
+  Clsn2[2] = 12, -114, 51, -70
+  Clsn2[3] = -34, -110, -18, -68
+  Clsn2[4] = 13, -62, 26, -46
+5060,6, 0,0, 5
+LoopStart
+Clsn2Default: 2
+  Clsn2[0] = -3, -19, 15, -3
+  Clsn2[1] = -24, -140, 18, -16
+5060,7, 0,0, 5
+5060,8, 0,0, 5
+
+
+; Trip
+[Begin Action 5070]
+5070,0, 0,0, 5
+5070,10, 0,0, 5
+LoopStart
+5070,20, 0,0, 5
+5070,3, 0,0, 5
+
+
+; Liedown Gethit
+[Begin Action 5080]
+5040,0, 0,0, 3
+5040,1, 0,0, 3
+5040,20, 0,0, 3
+5040,30, 0,0, 3
+5040,40, 0,0, 3
+5040,45, 0,0, 3
+5040,60, 0,0, 3
+5040,10, 0,0, -1
+
+
+; Popped Up
+[Begin Action 5090]
+5030,20, 0,0, 5
+5030,30, 0,0, 5
+5030,40, 0,0, 5
+LoopStart
+5030,50, 0,0, 5
+5030,60, 0,0, 5
+
+
+; Hit The Ground
+[Begin Action 5100]
+5040,0, 0,0, 1
+5040,1, 0,0, 1
+5040,20, 0,0, 1
+5040,30, 0,0, 1
+
+
+; Unhappy Landing
+[Begin Action 5101]
+5040,0, 0,0, 1
+5040,20, 0,0, 1
+5040,20, 0,0, 1
+5040,60, 0,0, 1
+
+
+; Liedown
+[Begin Action 5110]
+5040,10, 0,0, 1
+
+
+; I'm done making Thudthumping references
+[Begin Action 5120]
+5120,0, 0,0, 1
+5120,1, 0,0, 1
+5120,2, 0,0, 1
+5120,3, 0,0, 1
+5120,4, 0,0, 1
+5120,5, 0,0, 2
+5120,6, 0,0, 2
+5120,7, 0,0, 2
+5120,8, 0,0, 2
+5120,9, 0,0, 2
+5120,10, 0,0, 2
+5120,11, 0,0, 1
+5120,12, 0,0, 1
+5120,13, 0,0, 1
+
+
+; DEAD
+[Begin Action 5150]
+5040,10, 0,0, 1
+
+
+; Bounced Up
+[Begin Action 5160]
+5040,0, 0,0, 5
+5040,1, 0,0, 5
+5040,20, 0,0, -1
+
+
+; Hit the Ground After Bounce
+[Begin Action 5170]
+5040,20, 0,0, 3
+5040,45, 0,0, 3
+5040,60, 0,0, 3
+
+; Ground Fall Recover
+[Begin Action 5200]
+5200,0, 0,0, 2
+5200,1, 0,0, 2
+5200,2, 0,0, 2
+5200,3, 0,0, 2
+5200,4, 0,0, 2
+5200,5, 0,0, 2
+5200,6, 0,0, 2
+5200,7, 0,0, 2
+5200,8, 0,0, -1
+
+
+; Air Fall Recover
+[Begin Action 5210]
+5200,6, 0,0, 10
+5200,7, 0,0, 10
+5200,8, 0,0, -1
+
+
+; Dizzy
+[Begin Action 5300]
+5421,0, 0,0, 8
+5421,1, 0,0, 8
+5421,2, 0,0, 6
+5421,3, 0,0, -1
+
+
 
 [Begin Action 9651]
 Clsn1: 1

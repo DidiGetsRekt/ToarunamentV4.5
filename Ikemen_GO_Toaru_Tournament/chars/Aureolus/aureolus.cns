@@ -104,7 +104,7 @@ down.friction.threshold = .05         ;If the player's speed drops below this th
 type = DisplayToClipboard
 trigger1 = 1
 text = "fvar(20) = %f, numexplod=%d %d, arrowhead pos x %f y %f, angle %f"
-params = fvar(20),var(22),helper(9651),facing,Helper(9651), parentdist x,helper(9651),parentdist y, helper(9651),fvar(0)
+params = fvar(20),playerID(id),life,facing,Helper(9651), parentdist x,helper(9651),parentdist y, helper(9651),fvar(0)
 ;ignorehitpause = 
 ;persistent = 
 
