@@ -47,195 +47,1463 @@ scale = 1;4
 ;Player 1
 p1.pos    = 0,0
 
-p1.bg0.anim = 10
+;lifebar bg
+p1.bg0.anim = 4
 p1.bg0.scale = 0.5,0.5
 
-p1.top.spr = 0,2
-p1.top.scale = 0.5,0.5
-
-;for lifebar glare anim
-;p1.bg2.anim = 27
-;p1.bg2.scale = .6,.5
-;p1.bg2.layerno = 1
-
+;hurt bar
 p1.mid.anim = 2
-p1.mid.scale = 0.8,0.5
+p1.mid.scale = 0.8,0.6
+p1.mid.offset = 0,-6
 
+;low lifebar
 p1.front.spr = 26,0
 p1.front.palfx.sinadd = 64,32,0,60
-p1.front.scale = 0.8,0.5
+p1.front.scale = 0.8,0.6
+p1.front.offset = 0,-6
 
+;lifebar
 p1.front30.spr = 1,0
 p1.front30.palfx.sinadd = 0,0,64,60
-p1.front30.scale = 0.8,0.5
+p1.front30.scale = 0.8,0.6
+p1.front30.offset = 0,-6
 
-p1.range.x  = 290,50;580,156
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.5
+
+p1.range.x = 292.5,47.5;-580,-156
 
 ;Player 2
 p2.pos    = 640,0;1279,0
-p2.bg0.anim = 10
+
+;lifebar bg
+p2.bg0.anim = 4
 p2.bg0.scale = 0.5,0.5
 p2.bg0.facing = -1
 
-p2.top.spr = 0,2
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.6
+p2.mid.facing = -1
+p2.mid.offset = 0,-6
+
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.6
+p2.front.facing = -1
+p2.front.offset = 0,-6
+
+;lifebar
+p2.front30.spr = 1,0
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.6
+p2.front30.facing = -1
+p2.front30.offset = 0,-6
+
+;lifebar overlay
+p2.top.anim = 5
 p2.top.scale = 0.5,0.5
 p2.top.facing = -1
 
-p2.mid.anim = 2
-p2.mid.scale = 0.8,0.5
-p2.mid.facing = -1
-
-p2.front.spr = 26,0
-p2.front.palfx.sinadd = 64,32,0,60
-p2.front.scale = 0.8,0.5
-p2.front.facing = -1
-
-p2.front30.spr = 1,0
-p2.front30.palfx.sinadd = 0,0,64,60
-p2.front30.scale = 0.8,0.5
-p2.front30.facing = -1
-
-p2.range.x = -290,-50;-580,-156
+p2.range.x = -292.5,-47.5;-580,-156
 
 [Simul Lifebar]
+;IMPORTANT !
+;35 -> size between top and top lifebar (divisions of that are important)
+;51 -> height of lifebar (same)
+
 ;Player 1
-p1.pos    = 0,0
-p1.bg0.anim = 56
-p1.bg0.scale = 0.8,0.5
-p1.bg0.layerno = 0;1
-p1.bg1.spr = 0,0
-p1.bg1.scale = 0.5,0.5
-p1.mid.offset = 0,11 ;for upper
-p1.mid.scale = 0.8,0.25 ;for upper
-p1.mid.spr = 26,0
-p1.front.offset = 0,11
-p1.front.spr = 2,0
-p1.front.scale = 0.8,0.25 ;for upper
-p1.range.x  = 290,50;580,156
+p1.pos    = 0,8.75
 
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.25
+
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.3
+p1.mid.offset = 0,-3;6/2
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.3
+p1.front.offset = 0,-3;6/2
+
+;lifebar
 p1.front30.spr = 1,0
-p1.front30.offset = 0,11 ;for upper
-p1.front30.scale = 0.8,0.25 ;for upper
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.3
+p1.front30.offset = 0,-3;6/2
 
-;REFERENCE BELOW
-;p1.pos    = 0,0
-;p1.bg0.anim = 56
-;p1.bg0.scale = 0.8,0.5
-;p1.bg0.layerno = 0;1
-;p1.bg1.spr = 0,0
-;p1.bg1.scale = 0.5,0.5
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.25
 
-;p1.mid.spr = 26,0
-;p1.mid.scale = 0.8,0.5
-;p1.front.spr = 2,0
-;p1.front.scale = 0.8,0.5
-
-;p1.range.x  = 290,50;580,156
-
+p1.range.x = 292.5,47.5;-580,-156
 
 ;Player 2
-p2.pos    = 640,0;1279,0
-p2.bg0.anim = 56
-p2.bg0.scale = 0.8,0.5
-p2.bg0.layerno = 0;1
+p2.pos    = 640,8.75
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.25
 p2.bg0.facing = -1
 
-p2.bg1.spr = 0,0
-p2.bg1.scale = 0.5,0.5
-p2.bg1.facing = -1
-
-p2.mid.offset = 0,11
-p2.mid.spr = 26,0
-p2.mid.scale = 0.8,0.25
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.3
 p2.mid.facing = -1
+p2.mid.offset = 0,-3;6/2
 
-p2.front.offset = 0,11
-p2.front.spr = 2,0
-p2.front.scale = 0.8,0.25
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.3
 p2.front.facing = -1
+p2.front.offset = 0,-3;6/2
 
-p2.range.x = -290,-50;-580,-156
-
+;lifebar
 p2.front30.spr = 1,0
-p2.front30.offset = 0,11 ;for upper
-p2.front30.scale = 0.8,0.25 ;for upper
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.3
 p2.front30.facing = -1
+p2.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.25
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
 
 ;Player 3
-p3.pos    = 0,11;0,20
-p3.mid.spr = 26,0
-p3.mid.scale = 0.8,0.23
-p3.mid.offset = 0,11 ;for lower
-p3.front.spr = 2,0
-p3.front.scale = 0.8,0.23
-p3.front.offset = 0,11
-p3.range.x  = 290,50;580,156
+p3.pos    = 0,20;21.5;12.75+8.75
+
+;lifebar bg
+p3.bg0.anim = 4
+p3.bg0.scale = 0.5,0.25
+
+;hurt bar
+p3.mid.anim = 2
+p3.mid.scale = 0.8,0.3
+p3.mid.offset = 0,-3;6/2
+
+;low lifebar
+p3.front.spr = 26,0
+p3.front.palfx.sinadd = 64,32,0,60
+p3.front.scale = 0.8,0.3
+p3.front.offset = 0,-3;6/2
+
+;lifebar
 p3.front30.spr = 1,0
-p3.front30.offset = 0,11 ;for lower
-p3.front30.scale = 0.8,0.23 ;for lower
+p3.front30.palfx.sinadd = 0,0,64,60
+p3.front30.scale = 0.8,0.3
+p3.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p3.top.anim = 5
+p3.top.scale = 0.5,0.25
+
+p3.range.x = 292.5,47.5;-580,-156
 
 ;Player 4
-p4.pos    = 640,11;1279,0
-p4.mid.spr = 26,0
-p4.mid.scale = 0.8,0.23
-p4.mid.facing = -1
-p4.mid.offset = 0,11
-p4.front.spr = 2,0
-p4.front.scale = 0.8,0.23
-p4.front.facing = -1
-p4.front.offset = 0,11
-p4.front30.spr = 1,0
-p4.front30.scale = 0.8,0.23
-p4.front30.facing = -1
-p4.front30.offset = 0,11
-p4.range.x = -290,-50;-580,-156
+p4.pos    = 640,20;21.5;12.75+8.75
 
-;[Begin Action 20] ;Darkened lifebar background (team)
-;20,0, 0,0, 1, , S
+;lifebar bg
+p4.bg0.anim = 4
+p4.bg0.scale = 0.5,0.25
+p4.bg0.facing = -1
+
+;hurt bar
+p4.mid.anim = 2
+p4.mid.scale = 0.8,0.3
+p4.mid.facing = -1
+p4.mid.offset = 0,-3;6/2
+
+;low lifebar
+p4.front.spr = 26,0
+p4.front.palfx.sinadd = 64,32,0,60
+p4.front.scale = 0.8,0.3
+p4.front.facing = -1
+p4.front.offset = 0,-3;6/2
+
+;lifebar
+p4.front30.spr = 1,0
+p4.front30.palfx.sinadd = 0,0,64,60
+p4.front30.scale = 0.8,0.3
+p4.front30.facing = -1
+p4.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p4.top.anim = 5
+p4.top.scale = 0.5,0.25
+p4.top.facing = -1
+
+p4.range.x = -292.5,-47.5;-580,-156
+
+
+[Simul_3P Lifebar]
+;IMPORTANT !
+;35 -> size between top and top lifebar (divisions of that are important)
+;51 -> height of lifebar (same)
+
+;additional info : the offset each time has to be compensated with x-1 times the distance between the top and lifebar where x is the amount of players on one side (here it's 3-1) 
+
+;Player 1
+p1.pos    = 0,11.667
+
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.167
+
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.2
+p1.mid.offset = 0,-2;6/3
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.2
+p1.front.offset = 0,-2;6/3
+
+;lifebar
+p1.front30.spr = 1,0
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.2
+p1.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.167
+
+p1.range.x = 292.5,47.5;-580,-156
+
+;Player 2
+p2.pos    = 640,11.667
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.167
+p2.bg0.facing = -1
+
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.2
+p2.mid.facing = -1
+p2.mid.offset = 0,-2;6/3
+
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.2
+p2.front.facing = -1
+p2.front.offset = 0,-2;6/3
+
+;lifebar
+p2.front30.spr = 1,0
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.2
+p2.front30.facing = -1
+p2.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.167
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
+
+;Player 3
+p3.pos    = 0,19.667;20.167;11.667+8.5
+
+;lifebar bg
+p3.bg0.anim = 4
+p3.bg0.scale = 0.5,0.167
+
+;hurt bar
+p3.mid.anim = 2
+p3.mid.scale = 0.8,0.2
+p3.mid.offset = 0,-2;6/3
+
+;low lifebar
+p3.front.spr = 26,0
+p3.front.palfx.sinadd = 64,32,0,60
+p3.front.scale = 0.8,0.2
+p3.front.offset = 0,-2;6/3
+
+;lifebar
+p3.front30.spr = 1,0
+p3.front30.palfx.sinadd = 0,0,64,60
+p3.front30.scale = 0.8,0.2
+p3.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p3.top.anim = 5
+p3.top.scale = 0.5,0.167
+
+p3.range.x = 292.5,47.5;-580,-156
+
+;Player 4
+p4.pos    = 640,19.667;20.167;11.667+8.5
+
+;lifebar bg
+p4.bg0.anim = 4
+p4.bg0.scale = 0.5,0.167
+p4.bg0.facing = -1
+
+;hurt bar
+p4.mid.anim = 2
+p4.mid.scale = 0.8,0.2
+p4.mid.facing = -1
+p4.mid.offset = 0,-2;6/3
+
+;low lifebar
+p4.front.spr = 26,0
+p4.front.palfx.sinadd = 64,32,0,60
+p4.front.scale = 0.8,0.2
+p4.front.facing = -1
+p4.front.offset = 0,-2;6/3
+
+;lifebar
+p4.front30.spr = 1,0
+p4.front30.palfx.sinadd = 0,0,64,60
+p4.front30.scale = 0.8,0.2
+p4.front30.facing = -1
+p4.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p4.top.anim = 5
+p4.top.scale = 0.5,0.167
+p4.top.facing = -1
+
+p4.range.x = -292.5,-47.5;-580,-156
+
+;Player 5
+p5.pos    = 0,27.667;28.567;11.667+16.9;should've been 17, but it looks better like this
+
+;lifebar bg
+p5.bg0.anim = 4
+p5.bg0.scale = 0.5,0.167
+
+;hurt bar
+p5.mid.anim = 2
+p5.mid.scale = 0.8,0.2
+p5.mid.offset = 0,-2;6/3
+
+;low lifebar
+p5.front.spr = 26,0
+p5.front.palfx.sinadd = 64,32,0,60
+p5.front.scale = 0.8,0.2
+p5.front.offset = 0,-2;6/3
+
+;lifebar
+p5.front30.spr = 1,0
+p5.front30.palfx.sinadd = 0,0,64,60
+p5.front30.scale = 0.8,0.2
+p5.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p5.top.anim = 5
+p5.top.scale = 0.5,0.167
+
+p5.range.x = 292.5,47.5;-580,-156
+
+;Player 6
+p6.pos    = 640,27.667;28.567;11.667+16.9;should've been 17, but it looks better like this
+
+;lifebar bg
+p6.bg0.anim = 4
+p6.bg0.scale = 0.5,0.167
+p6.bg0.facing = -1
+
+;hurt bar
+p6.mid.anim = 2
+p6.mid.scale = 0.8,0.2
+p6.mid.facing = -1
+p6.mid.offset = 0,-2;6/3
+
+;low lifebar
+p6.front.spr = 26,0
+p6.front.palfx.sinadd = 64,32,0,60
+p6.front.scale = 0.8,0.2
+p6.front.facing = -1
+p6.front.offset = 0,-2;6/3
+
+;lifebar
+p6.front30.spr = 1,0
+p6.front30.palfx.sinadd = 0,0,64,60
+p6.front30.scale = 0.8,0.2
+p6.front30.facing = -1
+p6.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p6.top.anim = 5
+p6.top.scale = 0.5,0.167
+p6.top.facing = -1
+
+p6.range.x = -292.5,-47.5;-580,-156
+
+
+[Simul_4P Lifebar]
+;IMPORTANT !
+;35 -> size between top and top lifebar (divisions of that are important)
+;51 -> height of lifebar (same)
+
+;additional info : the offset each time has to be compensated with x-1 times the distance between the top and lifebar where x is the amount of players on one side (here it's 3-1) 
+
+;Player 1
+p1.pos    = 0,13.125
+
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.125
+
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.15
+p1.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.15
+p1.front.offset = 0,-1.5;6/4
+
+;lifebar
+p1.front30.spr = 1,0
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.15
+p1.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.125
+
+p1.range.x = 292.5,47.5;-580,-156
+
+;Player 2
+p2.pos    = 640,13.125
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.125
+p2.bg0.facing = -1
+
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.15
+p2.mid.facing = -1
+p2.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.15
+p2.front.facing = -1
+p2.front.offset = 0,-1.5;6/4
+
+;lifebar
+p2.front30.spr = 1,0
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.15
+p2.front30.facing = -1
+p2.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.125
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
+
+;Player 3
+p3.pos    = 0,19.5;13.125+6.375
+
+;lifebar bg
+p3.bg0.anim = 4
+p3.bg0.scale = 0.5,0.125
+
+;hurt bar
+p3.mid.anim = 2
+p3.mid.scale = 0.8,0.15
+p3.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p3.front.spr = 26,0
+p3.front.palfx.sinadd = 64,32,0,60
+p3.front.scale = 0.8,0.15
+p3.front.offset = 0,-1.5;6/4
+
+;lifebar
+p3.front30.spr = 1,0
+p3.front30.palfx.sinadd = 0,0,64,60
+p3.front30.scale = 0.8,0.15
+p3.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p3.top.anim = 5
+p3.top.scale = 0.5,0.125
+
+p3.range.x = 292.5,47.5;-580,-156
+
+;Player 4
+p4.pos    = 640,19.5;13.125+6.375
+
+;lifebar bg
+p4.bg0.anim = 4
+p4.bg0.scale = 0.5,0.125
+p4.bg0.facing = -1
+
+;hurt bar
+p4.mid.anim = 2
+p4.mid.scale = 0.8,0.15
+p4.mid.facing = -1
+p4.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p4.front.spr = 26,0
+p4.front.palfx.sinadd = 64,32,0,60
+p4.front.scale = 0.8,0.15
+p4.front.facing = -1
+p4.front.offset = 0,-1.5;6/4
+
+;lifebar
+p4.front30.spr = 1,0
+p4.front30.palfx.sinadd = 0,0,64,60
+p4.front30.scale = 0.8,0.15
+p4.front30.facing = -1
+p4.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p4.top.anim = 5
+p4.top.scale = 0.5,0.125
+p4.top.facing = -1
+
+p4.range.x = -292.5,-47.5;-580,-156
+
+;Player 5
+p5.pos    = 0,25.875;13.125+12.75
+
+;lifebar bg
+p5.bg0.anim = 4
+p5.bg0.scale = 0.5,0.125
+
+;hurt bar
+p5.mid.anim = 2
+p5.mid.scale = 0.8,0.15
+p5.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p5.front.spr = 26,0
+p5.front.palfx.sinadd = 64,32,0,60
+p5.front.scale = 0.8,0.15
+p5.front.offset = 0,-1.5;6/4
+
+;lifebar
+p5.front30.spr = 1,0
+p5.front30.palfx.sinadd = 0,0,64,60
+p5.front30.scale = 0.8,0.15
+p5.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p5.top.anim = 5
+p5.top.scale = 0.5,0.125
+
+p5.range.x = 292.5,47.5;-580,-156
+
+;Player 6
+p6.pos    = 640,25.875;13.125+12.75
+
+;lifebar bg
+p6.bg0.anim = 4
+p6.bg0.scale = 0.5,0.125
+p6.bg0.facing = -1
+
+;hurt bar
+p6.mid.anim = 2
+p6.mid.scale = 0.8,0.15
+p6.mid.facing = -1
+p6.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p6.front.spr = 26,0
+p6.front.palfx.sinadd = 64,32,0,60
+p6.front.scale = 0.8,0.15
+p6.front.facing = -1
+p6.front.offset = 0,-1.5;6/4
+
+;lifebar
+p6.front30.spr = 1,0
+p6.front30.palfx.sinadd = 0,0,64,60
+p6.front30.scale = 0.8,0.15
+p6.front30.facing = -1
+p6.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p6.top.anim = 5
+p6.top.scale = 0.5,0.125
+p6.top.facing = -1
+
+p6.range.x = -292.5,-47.5;-580,-156
+
+;Player 7
+p7.pos    = 0,31;32.025;13.125+18.9;should've been 19.125, but it looks better like this
+
+;lifebar bg
+p7.bg0.anim = 4
+p7.bg0.scale = 0.5,0.125
+
+;hurt bar
+p7.mid.anim = 2
+p7.mid.scale = 0.8,0.15
+p7.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p7.front.spr = 26,0
+p7.front.palfx.sinadd = 64,32,0,60
+p7.front.scale = 0.8,0.15
+p7.front.offset = 0,-1.5;6/4
+
+;lifebar
+p7.front30.spr = 1,0
+p7.front30.palfx.sinadd = 0,0,64,60
+p7.front30.scale = 0.8,0.15
+p7.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p7.top.anim = 5
+p7.top.scale = 0.5,0.125
+
+p7.range.x = 292.5,47.5;-580,-156
+
+;Player 8
+p8.pos    = 640,31;32.025;13.125+18.9;should've been 19.125, but it looks better like this
+
+;lifebar bg
+p8.bg0.anim = 4
+p8.bg0.scale = 0.5,0.125
+p8.bg0.facing = -1
+
+;hurt bar
+p8.mid.anim = 2
+p8.mid.scale = 0.8,0.15
+p8.mid.facing = -1
+p8.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p8.front.spr = 26,0
+p8.front.palfx.sinadd = 64,32,0,60
+p8.front.scale = 0.8,0.15
+p8.front.facing = -1
+p8.front.offset = 0,-1.5;6/4
+
+;lifebar
+p8.front30.spr = 1,0
+p8.front30.palfx.sinadd = 0,0,64,60
+p8.front30.scale = 0.8,0.15
+p8.front30.facing = -1
+p8.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p8.top.anim = 5
+p8.top.scale = 0.5,0.125
+p8.top.facing = -1
+
+p8.range.x = -292.5,-47.5;-580,-156
+
+[Tag Lifebar]
+;IMPORTANT !
+;35 -> size between top and top lifebar (divisions of that are important)
+;51 -> height of lifebar (same)
+
+;Player 1
+p1.pos    = 0,8.75
+
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.25
+
+;red life bar
+p1.red.spr = 1,1
+p1.red.palfx.sinadd = 0,32,32,60
+p1.red.scale = 0.8,0.3
+p1.red.offset = 0,-3;6/2
+
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.3
+p1.mid.offset = 0,-3;6/2
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.3
+p1.front.offset = 0,-3;6/2
+
+;lifebar
+p1.front30.spr = 1,0
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.3
+p1.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.25
+
+p1.range.x = 292.5,47.5;-580,-156
+
+;Player 2
+p2.pos    = 640,0
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.25
+p2.bg0.facing = -1
+
+;red life bar
+p2.red.spr = 1,1
+p2.red.palfx.sinadd = 0,32,32,60
+p2.red.scale = 0.8,0.3
+p2.red.facing = -1
+p2.red.offset = 0,-3;6/2
+
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.3
+p2.mid.facing = -1
+p2.mid.offset = 0,-3;6/2
+
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.3
+p2.front.facing = -1
+p2.front.offset = 0,-3;6/2
+
+;lifebar
+p2.front30.spr = 1,0
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.3
+p2.front30.facing = -1
+p2.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.25
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
+
+;Player 3
+p3.pos    = 0,20;21.5;12.75+8.75
+
+;lifebar bg
+p3.bg0.anim = 4
+p3.bg0.scale = 0.5,0.25
+
+;red life bar
+p3.red.spr = 1,1
+p3.red.palfx.sinadd = 0,32,32,60
+p3.red.scale = 0.8,0.3
+p3.red.offset = 0,-3;6/2
+
+;hurt bar
+p3.mid.anim = 2
+p3.mid.scale = 0.8,0.3
+p3.mid.offset = 0,-3;6/2
+
+;low lifebar
+p3.front.spr = 26,0
+p3.front.palfx.sinadd = 64,32,0,60
+p3.front.scale = 0.8,0.3
+p3.front.offset = 0,-3;6/2
+
+;lifebar
+p3.front30.spr = 1,0
+p3.front30.palfx.sinadd = 0,0,64,60
+p3.front30.scale = 0.8,0.3
+p3.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p3.top.anim = 5
+p3.top.scale = 0.5,0.25
+
+p3.range.x = 292.5,47.5;-580,-156
+
+;Player 4
+p4.pos    = 640,20;21.5;12.75+8.75;1279,0
+
+;lifebar bg
+p4.bg0.anim = 4
+p4.bg0.scale = 0.5,0.25
+p4.bg0.facing = -1
+
+;red life bar
+p4.red.spr = 1,1
+p4.red.palfx.sinadd = 0,32,32,60
+p4.red.scale = 0.8,0.3
+p4.red.facing = -1
+p4.red.offset = 0,-3;6/2
+
+;hurt bar
+p4.mid.anim = 2
+p4.mid.scale = 0.8,0.3
+p4.mid.facing = -1
+p4.mid.offset = 0,-3;6/2
+
+;low lifebar
+p4.front.spr = 26,0
+p4.front.palfx.sinadd = 64,32,0,60
+p4.front.scale = 0.8,0.3
+p4.front.facing = -1
+p4.front.offset = 0,-3;6/2
+
+;lifebar
+p4.front30.spr = 1,0
+p4.front30.palfx.sinadd = 0,0,64,60
+p4.front30.scale = 0.8,0.3
+p4.front30.facing = -1
+p4.front30.offset = 0,-3;6/2
+
+;lifebar overlay
+p4.top.anim = 5
+p4.top.scale = 0.5,0.25
+p4.top.facing = -1
+
+p4.range.x = -292.5,-47.5;-580,-156
+
+
+[Tag_3P Lifebar]
+;IMPORTANT !
+;35 -> size between top and top lifebar (divisions of that are important)
+;51 -> height of lifebar (same)
+
+;additional info : the offset each time has to be compensated with x-1 times the distance between the top and lifebar where x is the amount of players on one side (here it's 3-1) 
+
+;Player 1
+p1.pos    = 0,11.667
+
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.167
+
+;red life bar
+p1.red.spr = 1,1
+p1.red.palfx.sinadd = 0,32,32,60
+p1.red.scale = 0.8,0.2
+p1.red.offset = 0,-2;6/3
+
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.2
+p1.mid.offset = 0,-2;6/3
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.2
+p1.front.offset = 0,-2;6/3
+
+;lifebar
+p1.front30.spr = 1,0
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.2
+p1.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.167
+
+p1.range.x = 292.5,47.5;-580,-156
+
+;Player 2
+p2.pos    = 640,11.667
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.167
+p2.bg0.facing = -1
+
+;red life bar
+p2.red.spr = 1,1
+p2.red.palfx.sinadd = 0,32,32,60
+p2.red.scale = 0.8,0.2
+p2.red.facing = -1
+p2.red.offset = 0,-2;6/3
+
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.2
+p2.mid.facing = -1
+p2.mid.offset = 0,-2;6/3
+
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.2
+p2.front.facing = -1
+p2.front.offset = 0,-2;6/3
+
+;lifebar
+p2.front30.spr = 1,0
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.2
+p2.front30.facing = -1
+p2.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.167
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
+
+;Player 3
+p3.pos    = 0,19.667;20.167;11.667+8.5
+
+;lifebar bg
+p3.bg0.anim = 4
+p3.bg0.scale = 0.5,0.167
+
+;red life bar
+p3.red.spr = 1,1
+p3.red.palfx.sinadd = 0,32,32,60
+p3.red.scale = 0.8,0.2
+p3.red.offset = 0,-2;6/3
+
+;hurt bar
+p3.mid.anim = 2
+p3.mid.scale = 0.8,0.2
+p3.mid.offset = 0,-2;6/3
+
+;low lifebar
+p3.front.spr = 26,0
+p3.front.palfx.sinadd = 64,32,0,60
+p3.front.scale = 0.8,0.2
+p3.front.offset = 0,-2;6/3
+
+;lifebar
+p3.front30.spr = 1,0
+p3.front30.palfx.sinadd = 0,0,64,60
+p3.front30.scale = 0.8,0.2
+p3.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p3.top.anim = 5
+p3.top.scale = 0.5,0.167
+
+p3.range.x = 292.5,47.5;-580,-156
+
+;Player 4
+p4.pos    = 640,19.667;20.167;11.667+8.5
+
+;lifebar bg
+p4.bg0.anim = 4
+p4.bg0.scale = 0.5,0.167
+p4.bg0.facing = -1
+
+;red life bar
+p4.red.spr = 1,1
+p4.red.palfx.sinadd = 0,32,32,60
+p4.red.scale = 0.8,0.2
+p4.red.facing = -1
+p4.red.offset = 0,-2;6/3
+
+;hurt bar
+p4.mid.anim = 2
+p4.mid.scale = 0.8,0.2
+p4.mid.facing = -1
+p4.mid.offset = 0,-2;6/3
+
+;low lifebar
+p4.front.spr = 26,0
+p4.front.palfx.sinadd = 64,32,0,60
+p4.front.scale = 0.8,0.2
+p4.front.facing = -1
+p4.front.offset = 0,-2;6/3
+
+;lifebar
+p4.front30.spr = 1,0
+p4.front30.palfx.sinadd = 0,0,64,60
+p4.front30.scale = 0.8,0.2
+p4.front30.facing = -1
+p4.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p4.top.anim = 5
+p4.top.scale = 0.5,0.167
+p4.top.facing = -1
+
+p4.range.x = -292.5,-47.5;-580,-156
+
+;Player 5
+p5.pos    = 0,27.667;28.567;11.667+16.9;should've been 17, but it looks better like this
+
+;lifebar bg
+p5.bg0.anim = 4
+p5.bg0.scale = 0.5,0.167
+
+;red life bar
+p5.red.spr = 1,1
+p5.red.palfx.sinadd = 0,32,32,60
+p5.red.scale = 0.8,0.2
+p5.red.offset = 0,-2;6/3
+
+;hurt bar
+p5.mid.anim = 2
+p5.mid.scale = 0.8,0.2
+p5.mid.offset = 0,-2;6/3
+
+;low lifebar
+p5.front.spr = 26,0
+p5.front.palfx.sinadd = 64,32,0,60
+p5.front.scale = 0.8,0.2
+p5.front.offset = 0,-2;6/3
+
+;lifebar
+p5.front30.spr = 1,0
+p5.front30.palfx.sinadd = 0,0,64,60
+p5.front30.scale = 0.8,0.2
+p5.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p5.top.anim = 5
+p5.top.scale = 0.5,0.167
+
+p5.range.x = 292.5,47.5;-580,-156
+
+;Player 6
+p6.pos    = 640,27.667;28.567;11.667+16.9;should've been 17, but it looks better like this
+
+;lifebar bg
+p6.bg0.anim = 4
+p6.bg0.scale = 0.5,0.167
+p6.bg0.facing = -1
+
+;red life bar
+p6.red.spr = 1,1
+p6.red.palfx.sinadd = 0,32,32,60
+p6.red.scale = 0.8,0.2
+p6.red.facing = -1
+p6.red.offset = 0,-2;6/3
+
+;hurt bar
+p6.mid.anim = 2
+p6.mid.scale = 0.8,0.2
+p6.mid.facing = -1
+p6.mid.offset = 0,-2;6/3
+
+;low lifebar
+p6.front.spr = 26,0
+p6.front.palfx.sinadd = 64,32,0,60
+p6.front.scale = 0.8,0.2
+p6.front.facing = -1
+p6.front.offset = 0,-2;6/3
+
+;lifebar
+p6.front30.spr = 1,0
+p6.front30.palfx.sinadd = 0,0,64,60
+p6.front30.scale = 0.8,0.2
+p6.front30.facing = -1
+p6.front30.offset = 0,-2;6/3
+
+;lifebar overlay
+p6.top.anim = 5
+p6.top.scale = 0.5,0.167
+p6.top.facing = -1
+
+p6.range.x = -292.5,-47.5;-580,-156
+
+
+[Tag_4P Lifebar]
+;IMPORTANT !
+;35 -> size between top and top lifebar (divisions of that are important)
+;51 -> height of lifebar (same)
+
+;additional info : the offset each time has to be compensated with x-1 times the distance between the top and lifebar where x is the amount of players on one side (here it's 3-1) 
+
+;Player 1
+p1.pos    = 0,13.125
+
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.125
+
+;red life bar
+p1.red.spr = 1,1
+p1.red.palfx.sinadd = 0,32,32,60
+p1.red.scale = 0.8,0.15
+p1.red.offset = 0,-1.5;6/4
+
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.15
+p1.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.15
+p1.front.offset = 0,-1.5;6/4
+
+;lifebar
+p1.front30.spr = 1,0
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.15
+p1.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.125
+
+p1.range.x = 292.5,47.5;-580,-156
+
+;Player 2
+p2.pos    = 640,13.125
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.125
+p2.bg0.facing = -1
+
+;red life bar
+p2.red.spr = 1,1
+p2.red.palfx.sinadd = 0,32,32,60
+p2.red.scale = 0.8,0.15
+p2.red.facing = -1
+p2.red.offset = 0,-1.5;6/3
+
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.15
+p2.mid.facing = -1
+p2.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.15
+p2.front.facing = -1
+p2.front.offset = 0,-1.5;6/4
+
+;lifebar
+p2.front30.spr = 1,0
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.15
+p2.front30.facing = -1
+p2.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.125
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
+
+;Player 3
+p3.pos    = 0,19.5;13.125+6.375
+
+;lifebar bg
+p3.bg0.anim = 4
+p3.bg0.scale = 0.5,0.125
+
+;red life bar
+p3.red.spr = 1,1
+p3.red.palfx.sinadd = 0,32,32,60
+p3.red.scale = 0.8,0.15
+p3.red.offset = 0,-1.5;6/4
+
+;hurt bar
+p3.mid.anim = 2
+p3.mid.scale = 0.8,0.15
+p3.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p3.front.spr = 26,0
+p3.front.palfx.sinadd = 64,32,0,60
+p3.front.scale = 0.8,0.15
+p3.front.offset = 0,-1.5;6/4
+
+;lifebar
+p3.front30.spr = 1,0
+p3.front30.palfx.sinadd = 0,0,64,60
+p3.front30.scale = 0.8,0.15
+p3.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p3.top.anim = 5
+p3.top.scale = 0.5,0.125
+
+p3.range.x = 292.5,47.5;-580,-156
+
+;Player 4
+p4.pos    = 640,19.5;13.125+6.375
+
+;lifebar bg
+p4.bg0.anim = 4
+p4.bg0.scale = 0.5,0.125
+p4.bg0.facing = -1
+
+;red life bar
+p4.red.spr = 1,1
+p4.red.palfx.sinadd = 0,32,32,60
+p4.red.scale = 0.8,0.15
+p4.red.facing = -1
+p4.red.offset = 0,-1.5;6/3
+
+;hurt bar
+p4.mid.anim = 2
+p4.mid.scale = 0.8,0.15
+p4.mid.facing = -1
+p4.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p4.front.spr = 26,0
+p4.front.palfx.sinadd = 64,32,0,60
+p4.front.scale = 0.8,0.15
+p4.front.facing = -1
+p4.front.offset = 0,-1.5;6/4
+
+;lifebar
+p4.front30.spr = 1,0
+p4.front30.palfx.sinadd = 0,0,64,60
+p4.front30.scale = 0.8,0.15
+p4.front30.facing = -1
+p4.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p4.top.anim = 5
+p4.top.scale = 0.5,0.125
+p4.top.facing = -1
+
+p4.range.x = -292.5,-47.5;-580,-156
+
+;Player 5
+p5.pos    = 0,25.875;13.125+12.75
+
+;lifebar bg
+p5.bg0.anim = 4
+p5.bg0.scale = 0.5,0.125
+
+;red life bar
+p5.red.spr = 1,1
+p5.red.palfx.sinadd = 0,32,32,60
+p5.red.scale = 0.8,0.15
+p5.red.offset = 0,-1.5;6/4
+
+;hurt bar
+p5.mid.anim = 2
+p5.mid.scale = 0.8,0.15
+p5.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p5.front.spr = 26,0
+p5.front.palfx.sinadd = 64,32,0,60
+p5.front.scale = 0.8,0.15
+p5.front.offset = 0,-1.5;6/4
+
+;lifebar
+p5.front30.spr = 1,0
+p5.front30.palfx.sinadd = 0,0,64,60
+p5.front30.scale = 0.8,0.15
+p5.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p5.top.anim = 5
+p5.top.scale = 0.5,0.125
+
+p5.range.x = 292.5,47.5;-580,-156
+
+;Player 6
+p6.pos    = 640,25.875;13.125+12.75
+
+;lifebar bg
+p6.bg0.anim = 4
+p6.bg0.scale = 0.5,0.125
+p6.bg0.facing = -1
+
+;red life bar
+p6.red.spr = 1,1
+p6.red.palfx.sinadd = 0,32,32,60
+p6.red.scale = 0.8,0.15
+p6.red.facing = -1
+p6.red.offset = 0,-1.5;6/3
+
+;hurt bar
+p6.mid.anim = 2
+p6.mid.scale = 0.8,0.15
+p6.mid.facing = -1
+p6.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p6.front.spr = 26,0
+p6.front.palfx.sinadd = 64,32,0,60
+p6.front.scale = 0.8,0.15
+p6.front.facing = -1
+p6.front.offset = 0,-1.5;6/4
+
+;lifebar
+p6.front30.spr = 1,0
+p6.front30.palfx.sinadd = 0,0,64,60
+p6.front30.scale = 0.8,0.15
+p6.front30.facing = -1
+p6.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p6.top.anim = 5
+p6.top.scale = 0.5,0.125
+p6.top.facing = -1
+
+p6.range.x = -292.5,-47.5;-580,-156
+
+;Player 7
+p7.pos    = 0,31;32.025;13.125+18.9;should've been 19.125, but it looks better like this
+
+;lifebar bg
+p7.bg0.anim = 4
+p7.bg0.scale = 0.5,0.125
+
+;red life bar
+p7.red.spr = 1,1
+p7.red.palfx.sinadd = 0,32,32,60
+p7.red.scale = 0.8,0.15
+p7.red.offset = 0,-1.5;6/4
+
+;hurt bar
+p7.mid.anim = 2
+p7.mid.scale = 0.8,0.15
+p7.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p7.front.spr = 26,0
+p7.front.palfx.sinadd = 64,32,0,60
+p7.front.scale = 0.8,0.15
+p7.front.offset = 0,-1.5;6/4
+
+;lifebar
+p7.front30.spr = 1,0
+p7.front30.palfx.sinadd = 0,0,64,60
+p7.front30.scale = 0.8,0.15
+p7.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p7.top.anim = 5
+p7.top.scale = 0.5,0.125
+
+p7.range.x = 292.5,47.5;-580,-156
+
+;Player 8
+p8.pos    = 640,31;32.025;13.125+18.9;should've been 19.125, but it looks better like this
+
+;lifebar bg
+p8.bg0.anim = 4
+p8.bg0.scale = 0.5,0.125
+p8.bg0.facing = -1
+
+;red life bar
+p8.red.spr = 1,1
+p8.red.palfx.sinadd = 0,32,32,60
+p8.red.scale = 0.8,0.15
+p8.red.facing = -1
+p8.red.offset = 0,-1.5;6/3
+
+;hurt bar
+p8.mid.anim = 2
+p8.mid.scale = 0.8,0.15
+p8.mid.facing = -1
+p8.mid.offset = 0,-1.5;6/4
+
+;low lifebar
+p8.front.spr = 26,0
+p8.front.palfx.sinadd = 64,32,0,60
+p8.front.scale = 0.8,0.15
+p8.front.facing = -1
+p8.front.offset = 0,-1.5;6/4
+
+;lifebar
+p8.front30.spr = 1,0
+p8.front30.palfx.sinadd = 0,0,64,60
+p8.front30.scale = 0.8,0.15
+p8.front30.facing = -1
+p8.front30.offset = 0,-1.5;6/4
+
+;lifebar overlay
+p8.top.anim = 5
+p8.top.scale = 0.5,0.125
+p8.top.facing = -1
+
+p8.range.x = -292.5,-47.5;-580,-156
+
 
 [Turns Lifebar]
 ;Player 1
-p1.pos = 0,0
-p1.bg0.anim = 56
-p1.bg0.scale = 0.8,0.5
-p1.bg0.layerno = 0
-p1.bg0.anim = 56
+p1.pos    = 0,0
 
-p1.bg1.scale = 0.5,0.5
-p1.bg1.spr = 0,0
+;lifebar bg
+p1.bg0.anim = 4
+p1.bg0.scale = 0.5,0.5
 
-p1.mid.spr = 26,0
-p1.mid.scale = 0.8,0.5
-p1.front.spr = 2,0
-p1.front.scale = 0.8,0.5
+;hurt bar
+p1.mid.anim = 2
+p1.mid.scale = 0.8,0.6
+p1.mid.offset = 0,-6
+
+;low lifebar
+p1.front.spr = 26,0
+p1.front.palfx.sinadd = 64,32,0,60
+p1.front.scale = 0.8,0.6
+p1.front.offset = 0,-6
+
+;lifebar
 p1.front30.spr = 1,0
-p1.front30.scale = 0.8,0.5
-p1.range.x  = 290,50;580,156
+p1.front30.palfx.sinadd = 0,0,64,60
+p1.front30.scale = 0.8,0.6
+p1.front30.offset = 0,-6
+
+;lifebar overlay
+p1.top.anim = 5
+p1.top.scale = 0.5,0.5
+
+p1.range.x = 292.5,47.5;-580,-156
 
 ;Player 2
 p2.pos    = 640,0;1279,0
-p2.bg0.anim = 56
-p2.bg0.scale = 0.8,0.5
+
+;lifebar bg
+p2.bg0.anim = 4
+p2.bg0.scale = 0.5,0.5
 p2.bg0.facing = -1
-p2.bg0.layerno = 0
 
-p2.bg1.spr = 0,0
-p2.bg1.scale = 0.5,0.5
-p2.bg1.facing = -1
-
-p2.mid.spr = 26,0
-p2.mid.scale = 0.8,0.5
+;hurt bar
+p2.mid.anim = 2
+p2.mid.scale = 0.8,0.6
 p2.mid.facing = -1
+p2.mid.offset = 0,-6
 
-p2.front.spr = 2,0
-p2.front.scale = 0.8,0.5
+;low lifebar
+p2.front.spr = 26,0
+p2.front.palfx.sinadd = 64,32,0,60
+p2.front.scale = 0.8,0.6
 p2.front.facing = -1
+p2.front.offset = 0,-6
 
+;lifebar
 p2.front30.spr = 1,0
-p2.front30.scale = 0.8,0.5
+p2.front30.palfx.sinadd = 0,0,64,60
+p2.front30.scale = 0.8,0.6
 p2.front30.facing = -1
+p2.front30.offset = 0,-6
 
-p2.range.x = -290,-50;-580,-156
+;lifebar overlay
+p2.top.anim = 5
+p2.top.scale = 0.5,0.5
+p2.top.facing = -1
+
+p2.range.x = -292.5,-47.5;-580,-156
 
 ;-----------------------------------------------------------
 ;-----------------------------------------------------------
@@ -243,8 +1511,9 @@ p2.range.x = -290,-50;-580,-156
 ;Player 1
 p1.pos    = 0,0
 
-p1.top.spr = 0,3
-p1.top.scale = 0.5,0.5
+p1.bg0.anim = 6
+p1.bg0.scale = 0.5,0.5
+
 ;p1.mid.spr = 42,0
 p1.front.spr = 3,0
 p1.front.palfx.add = 0,-64,-256
@@ -258,6 +1527,15 @@ p1.front3000.palfx.sinadd = 0,32,0,60
 p1.front3000.scale = 0.5,0.5
 ;p1.front3000.layerno = -1
 
+p1.front6000.spr = 3,0
+p1.front6000.palfx.add = -128,-256,0
+p1.front6000.palfx.sinadd = 32,0,0,60
+p1.front6000.scale = 0.5,0.5
+;p1.front6000.layerno = -1
+
+p1.top.anim = 7
+p1.top.scale = 0.5,0.5
+
 p1.range.x = 61,215 ;271,5;5,271
 p1.counter.offset = 57,60;146.5,74.5;293,149
 p1.counter.font = 3,0, 0
@@ -267,9 +1545,9 @@ p1.levelbars = 1
 ;Player 2
 p2.pos    = 640,0;1279,0
 
-p2.top.spr = 0,3
-p2.top.scale = 0.5,0.5
-p2.top.facing = -1
+p2.bg0.anim = 6
+p2.bg0.scale = 0.5,0.5
+p2.bg0.facing = -1
 
 p2.front.spr = 3,0
 p2.front.palfx.add = 0,-64,-256
@@ -282,6 +1560,16 @@ p2.front3000.palfx.add = -256,-64,0
 p2.front3000.palfx.sinadd = 0,32,0,60
 p2.front3000.scale = 0.5,0.5
 p2.front3000.facing = -1
+
+p2.front6000.spr = 3,0
+p2.front6000.palfx.add = -128,-256,0
+p2.front6000.palfx.sinadd = 32,0,0,60
+p2.front6000.scale = 0.5,0.5
+p2.front6000.facing = -1
+
+p2.top.anim = 7
+p2.top.scale = 0.5,0.5
+p2.top.facing = -1
 
 p2.range.x  = -61,-215 ;-271,-4
 p2.counter.offset = -56,60;495,74.5;990,149
@@ -309,41 +1597,303 @@ level9.snd = 1,1
 [Face]
 ;Player 1
 p1.pos    = 0,0
+
+p1.bg.anim = 3
+p1.bg.scale = 0.5,0.5
+
 p1.face.spr = 9000,69
 p1.face.facing = 1
 p1.face.offset = 0,0
 p1.face.scale = .25,.25
+p1.face.palfxshare = 1
+
 ;Player 2
 p2.pos    = 640,0
+
+p2.bg.anim = 3
 p2.bg.facing = -1
+p2.bg.scale = 0.5,0.5
+
 p2.face.spr = 9000,69
 p2.face.facing = -1
 p2.face.offset = 0,0
 p2.face.scale = .25,.25
+p2.face.palfxshare = 1
 
 [Simul Face]
 ;Player 1
 p1.pos    = 0,0
+
+p1.bg.anim = 3
+p1.bg.scale = 0.5,0.5
+
 p1.face.spr = 9000,69
 p1.face.facing = 1
 p1.face.offset = 0,0
 p1.face.scale = .25,.25
+p1.face.palfxshare = 1
+
 ;Player 2
 p2.pos    = 640,0
+
+p2.bg.anim = 3
 p2.bg.facing = -1
+p2.bg.scale = 0.5,0.5
+
 p2.face.spr = 9000,69
 p2.face.facing = -1
 p2.face.offset = 0,0
 p2.face.scale = .25,.25
+p2.face.palfxshare = 1
 
-[Turns Face]
+;Player 3
+p3.pos = 0,80;283,8
+
+p3.bg.spr = 99,0
+p3.bg.scale = 1.20,1.20
+
+p3.ko.spr = 11,0
+p3.ko.scale = 1,1
+p3.ko.offset = 5,5
+
+p3.face.spr = 9000,0
+p3.face.scale = 0.5,0.5
+p3.face.facing = 1
+p3.face.offset = 5,5
+p3.face.palfxshare = 1
+
+;Player 4
+p4.pos = 640,80;996,8
+p4.spacing = 0, 30;-40,0;
+
+p4.bg.spr = 99,0
+p4.bg.scale = 1.20,1.20
+p4.bg.facing = -1
+
+p4.ko.spr = 11,0
+p4.ko.scale = 1,1
+p4.ko.facing = -1
+p4.ko.offset = -5,5
+
+p4.face.spr = 9000,0
+p4.face.scale = 0.5,0.5
+p4.face.facing = -1
+p4.face.offset = -5,5
+p4.face.palfxshare = 1
+
+;Player 5
+p5.pos = 0,110;283,8
+
+p5.bg.spr = 99,0
+p5.bg.scale = 1.20,1.20
+
+p5.ko.spr = 11,0
+p5.ko.scale = 1,1
+p5.ko.offset = 5,5
+
+p5.face.spr = 9000,0
+p5.face.scale = 0.5,0.5
+p5.face.facing = 1
+p5.face.offset = 5,5
+p5.face.palfxshare = 1
+
+;Player 6
+p6.pos = 640,110;996,8
+p6.spacing = 0, 30;-40,0;
+
+p6.bg.spr = 99,0
+p6.bg.scale = 1.20,1.20
+p6.bg.facing = -1
+
+p6.ko.spr = 11,0
+p6.ko.scale = 1,1
+p6.ko.facing = -1
+p6.ko.offset = -5,5
+
+p6.face.spr = 9000,0
+p6.face.scale = 0.5,0.5
+p6.face.facing = -1
+p6.face.offset = -5,5
+p6.face.palfxshare = 1
+
+;Player 7
+p7.pos = 0,140;283,8
+
+p7.bg.spr = 99,0
+p7.bg.scale = 1.20,1.20
+
+p7.ko.spr = 11,0
+p7.ko.scale = 1,1
+p7.ko.offset = 5,5
+
+p7.face.spr = 9000,0
+p7.face.scale = 0.5,0.5
+p7.face.facing = 1
+p7.face.offset = 5,5
+p7.face.palfxshare = 1
+
+;Player 8
+p8.pos = 640,80;996,8
+p8.spacing = 0, 30;-40,0;
+
+p8.bg.spr = 99,0
+p8.bg.scale = 1.20,1.20
+p8.bg.facing = -1
+
+p8.ko.spr = 11,0
+p8.ko.scale = 1,1
+p8.ko.facing = -1
+p8.ko.offset = -5,5
+
+p8.face.spr = 9000,0
+p8.face.scale = 0.5,0.5
+p8.face.facing = -1
+p8.face.offset = -5,5
+p8.face.palfxshare = 1
+
+[Tag Face]
 ;Player 1
 p1.pos    = 0,0
-;p1.bg.spr = 0,0
+
+p1.bg.anim = 3
+p1.bg.scale = 0.5,0.5
+
 p1.face.spr = 9000,69
 p1.face.facing = 1
 p1.face.offset = 0,0
 p1.face.scale = .25,.25
+p1.face.palfxshare = 1
+
+;Player 2
+p2.pos    = 640,0
+
+p2.bg.anim = 3
+p2.bg.facing = -1
+p2.bg.scale = 0.5,0.5
+
+p2.face.spr = 9000,69
+p2.face.facing = -1
+p2.face.offset = 0,0
+p2.face.scale = .25,.25
+p2.face.palfxshare = 1
+
+;Player 3
+p3.pos = 0,80;283,8
+
+p3.bg.spr = 99,0
+p3.bg.scale = 1.20,1.20
+
+p3.ko.spr = 11,0
+p3.ko.scale = 1,1
+p3.ko.offset = 5,5
+
+p3.face.spr = 9000,0
+p3.face.scale = 0.5,0.5
+p3.face.facing = 1
+p3.face.offset = 5,5
+p3.face.palfxshare = 1
+
+;Player 4
+p4.pos = 640,80;996,8
+p4.spacing = 0, 30;-40,0;
+
+p4.bg.spr = 99,0
+p4.bg.scale = 1.20,1.20
+p4.bg.facing = -1
+
+p4.ko.spr = 11,0
+p4.ko.scale = 1,1
+p4.ko.facing = -1
+p4.ko.offset = -5,5
+
+p4.face.spr = 9000,0
+p4.face.scale = 0.5,0.5
+p4.face.facing = -1
+p4.face.offset = -5,5
+p4.face.palfxshare = 1
+
+;Player 5
+p5.pos = 0,110;283,8
+
+p5.bg.spr = 99,0
+p5.bg.scale = 1.20,1.20
+
+p5.ko.spr = 11,0
+p5.ko.scale = 1,1
+p5.ko.offset = 5,5
+
+p5.face.spr = 9000,0
+p5.face.scale = 0.5,0.5
+p5.face.facing = 1
+p5.face.offset = 5,5
+p5.face.palfxshare = 1
+
+;Player 6
+p6.pos = 640,110;996,8
+p6.spacing = 0, 30;-40,0;
+
+p6.bg.spr = 99,0
+p6.bg.scale = 1.20,1.20
+p6.bg.facing = -1
+
+p6.ko.spr = 11,0
+p6.ko.scale = 1,1
+p6.ko.facing = -1
+p6.ko.offset = -5,5
+
+p6.face.spr = 9000,0
+p6.face.scale = 0.5,0.5
+p6.face.facing = -1
+p6.face.offset = -5,5
+p6.face.palfxshare = 1
+
+;Player 7
+p7.pos = 0,140;283,8
+
+p7.bg.spr = 99,0
+p7.bg.scale = 1.20,1.20
+
+p7.ko.spr = 11,0
+p7.ko.scale = 1,1
+p7.ko.offset = 5,5
+
+p7.face.spr = 9000,0
+p7.face.scale = 0.5,0.5
+p7.face.facing = 1
+p7.face.offset = 5,5
+p7.face.palfxshare = 1
+
+;Player 8
+p8.pos = 640,80;996,8
+p8.spacing = 0, 30;-40,0;
+
+p8.bg.spr = 99,0
+p8.bg.scale = 1.20,1.20
+p8.bg.facing = -1
+
+p8.ko.spr = 11,0
+p8.ko.scale = 1,1
+p8.ko.facing = -1
+p8.ko.offset = -5,5
+
+p8.face.spr = 9000,0
+p8.face.scale = 0.5,0.5
+p8.face.facing = -1
+p8.face.offset = -5,5
+p8.face.palfxshare = 1
+
+[Turns Face]
+;Player 1
+p1.pos    = 0,0
+
+p1.bg.anim = 3
+p1.bg.scale = 0.5,0.5
+
+p1.face.spr = 9000,69
+p1.face.facing = 1
+p1.face.offset = 0,0
+p1.face.scale = .25,.25
+p1.face.palfxshare = 1
 
 p1.teammate.pos = 0,80;283,8
 p1.teammate.spacing = 0,30;40,0
@@ -359,22 +1909,25 @@ p1.teammate.face.spr = 9000,0
 p1.teammate.face.scale = 0.5,0.5
 p1.teammate.face.facing = 1
 p1.teammate.face.offset = 5,5
+p1.teammate.face.palfxshare = 1
 
 ;Player 2
-p2.pos    = 640,0;1279,0
-;p2.bg.spr = 9,1
-;p2.bg.scale = 0.5,0.5
+p2.pos    = 640,0
+
+p2.bg.anim = 3
 p2.bg.facing = -1
+p2.bg.scale = 0.5,0.5
 
 p2.face.spr = 9000,69
 p2.face.facing = -1
 p2.face.offset = 0,0
 p2.face.scale = .25,.25
+p2.face.palfxshare = 1
 
 p2.teammate.pos = 640,80;996,8
 p2.teammate.spacing = 0, 30;-40,0
 
-p2.teammate.bg.spr =99,0
+p2.teammate.bg.spr = 99,0
 p2.teammate.bg.scale = 1.20,1.20
 p2.teammate.bg.facing = -1
 
@@ -387,6 +1940,7 @@ p2.teammate.face.spr = 9000,0
 p2.teammate.face.scale = 0.5,0.5
 p2.teammate.face.facing = -1
 p2.teammate.face.offset = -5,5
+p2.teammate.face.palfxshare = 1
 
 ;-----------------------------------------------------------
 [Name]
@@ -2892,19 +4446,14 @@ p2.level3.scale = 0.5, 0.5
 p2.level4.spr   = 300, 3
 p2.level4.scale = 0.5, 0.5
 
-; Lifebar Shine
+; Lifebar red life
 [Begin Action 27]
-27,0, 0,0, 4, , A
-27,1, 0,0, 4, , A
-27,2, 0,0, 4, , A
-27,3, 0,0, 4, , A
-27,4, 0,0, 4, , A
-27,5, 0,0, 4, , A
-27,6, 0,0, 4, , A
-27,7, 0,0, 4, , A
-27,8, 0,0, 4, , A
-27,9, 0,0, 4, , A
-27,10, 0,0, 2, , A
+2,11, 0,0, 5, , A1
+2,10, 0,0, 5, , A1
+2,12, 0,0, 5, , A1
+2,13, 0,0, 5, , A1
+2,12, 0,0, 5, , A1
+2,10, 0,0, 5, , A1
 
 [Begin Action 2]
 2,1, 0,0, 5
@@ -2914,7 +4463,17 @@ p2.level4.scale = 0.5, 0.5
 2,2, 0,0, 5
 2,0, 0,0, 5
 
-[Begin Action 10]
-0,1, 0,0, 10, , AS256D50
+[Begin Action 3] ;portrait bg
+0,2, 0,0, -1, , AS256D64
 
+[Begin Action 4] ;lifebar bg
+0,3, 0,0, -1, , AS256D64
 
+[Begin Action 5] ;lifebar top
+0,4, 0,0, -1
+
+[Begin Action 6] ;powerbar bg
+0,5, 0,0, -1, , AS256D64
+
+[Begin Action 7] ;powerbar top
+0,6, 0,0, -1

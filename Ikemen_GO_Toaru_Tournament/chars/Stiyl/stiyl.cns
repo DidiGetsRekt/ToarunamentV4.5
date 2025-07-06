@@ -645,6 +645,7 @@ trigger1 = stateno!=1020
 trigger1 = stateno!=[1070,1095]
 trigger1 = stateno!=1120
 trigger1 = stateno!=[2000,3000]
+trigger1 = stateno!=[6301,6302]
 var(20)=-1
 ;ignorehitpause = 
 ;persistent = 
@@ -657,6 +658,7 @@ trigger1 = stateno!=1020
 trigger1 = stateno!=[1070,1095]
 trigger1 = stateno!=1120
 trigger1 = stateno!=[2000,3000]
+trigger1 = stateno!=[6301,6302]
 fvar(26)=1
 ;ignorehitpause = 
 ;persistent =
@@ -899,6 +901,7 @@ trigger1 = 1 && var(12):= 0
 trigger2 = enemynear,name = "Stiyl Magnus" && var(12):= 1
 trigger3 = enemynear,name = "Tsuchimikado Motoharu" && var(12):= 2
 trigger4 = enemynear,name = "Kanzaki Kaori" && var(12):= 3
+trigger5 = enemynear,name = "Aureolus Izzard" && var(12):= 4
 IgnoreHitPause = 1
 
 ;---------------------------------------------------------------------------

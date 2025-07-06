@@ -215,25 +215,6 @@ command = ~D, DF, F, c
 time = 20
 buffer.Time=10
 
-
-[Command]
-name = "[4]]6[_a"
-command = ~35$B, F, a;~45$B, F, a
-time = 20
-buffer.Time=10
-
-[Command]
-name = "[4]]6[_b"
-command = ~35$B, F, b;~45$B, F, b
-time = 20
-buffer.Time=10
-
-[Command]
-name = "[4]]6[_c"
-command = ~35$B, F, c
-time = 20
-buffer.Time=10
-
 [Command]
 name = "FF_ab"
 command = F, F, a+b
@@ -253,8 +234,14 @@ time = 20
 buffer.Time=10
 
 [Command]
-name = "22x"
+name = "22_x"
 command = D, D, x
+time = 20
+buffer.Time=10
+
+[Command]
+name = "22_z"
+command = D, D, z
 time = 20
 buffer.Time=10
 
@@ -276,19 +263,19 @@ name = "/b"
 command = /b
 
 [Command]
-name = "22a"
+name = "22_a"
 command = D, D, a
 time = 20
 buffer.Time=10
 
 [Command]
-name = "22b"
+name = "22_b"
 command = D, D, b
 time = 20
 buffer.Time=10
 
 [Command]
-name = "22c"
+name = "22_c"
 command = D, D, c
 time = 20
 buffer.Time=10
@@ -540,6 +527,26 @@ trigger2 =(StateNo=[200,499]) && var(1)
 ;trigger2=stateno=1050
 
 ;---------------------------------------------------------------------------
+[State -1, 22a]
+type = ChangeState
+value = 1200
+triggerall = command = "22_a"
+triggerall = statetype!=A
+trigger1=ctrl
+trigger2 =(StateNo=[200,499]) && var(1)
+;trigger2=stateno=1050
+
+;---------------------------------------------------------------------------
+[State -1, 22a]
+type = ChangeState
+value = 1210
+triggerall = command = "22_b"
+triggerall = statetype!=A
+trigger1=ctrl
+trigger2 =(StateNo=[200,499]) && var(1)
+;trigger2=stateno=1050
+
+;---------------------------------------------------------------------------
 [State -1, Jump Cancel]
 type = changestate
 value = 40
@@ -566,6 +573,31 @@ value = 105
 triggerall = !ishelper
 trigger1 = command = "BB"
 trigger1 = statetype != A
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 22z]
+type = ChangeState
+value = 950;ifelse(statetype != A,6301,6302)
+triggerall = alive
+triggerall = !ishelper
+triggerall = power >= 4000
+triggerall = var(20) = 0
+triggerall = (command = "22_z" || (command = "a+b" && movetype = H))
+;triggerall = command != "holddown"
+trigger1 = ctrl
+
+;---------------------------------------------------------------------------
+[State -1, 5z]
+type = ChangeState
+value = 960;ifelse(statetype != A,6301,6302)
+triggerall = alive
+triggerall = !ishelper
+triggerall = statetype != A
+triggerall = power >= 2000
+triggerall = command = "z"
+triggerall = numhelper(965)=0
+;triggerall = command != "holddown"
 trigger1 = ctrl
 
 ;---------------------------------------------------------------------------
@@ -663,5 +695,6 @@ type = ChangeState
 value = 900
 triggerall = command = "x"
 triggerall = statetype != A
+triggerall = var(20)=0
 trigger1 = ctrl
 trigger2 = var(1)

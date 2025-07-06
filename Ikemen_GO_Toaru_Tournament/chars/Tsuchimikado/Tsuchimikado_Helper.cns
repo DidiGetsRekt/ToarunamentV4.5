@@ -469,11 +469,11 @@ Type = VarAdd
 Trigger1 = Var(1) > 0
 Trigger1 = RoundState != 2 || (Parent,var(18) = 0 && parent,var(20) = 0)
 V = 1
-Value = -1-((parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 1 && IsHomeTeam = 1)*(Var(1)-1)
+Value = -1-((parent,var(12)=[1,4]) && EnemyNear,NumHelper(10980) = 1 && IsHomeTeam = 1)*(Var(1)-1)
 
 [State ]
 Type = Explod
-Trigger1 = (parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,3]) && IsHomeTeam = 0 || IsHomeTeam = 1
+Trigger1 = (parent,var(12)=[1,4]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,4]) && IsHomeTeam = 0 || IsHomeTeam = 1
 Anim = 10980
 ID = 10980
 PosType = Left
@@ -488,7 +488,7 @@ PauseMoveTime = 999
 
 [State ]
 Type = Explod
-Trigger1 = (parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,3]) && IsHomeTeam = 0 || IsHomeTeam = 1
+Trigger1 = (parent,var(12)=[1,4]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,4]) && IsHomeTeam = 0 || IsHomeTeam = 1
 Anim = 10985
 ID = 10985
 PosType = Left
@@ -516,7 +516,7 @@ Value = 0.0021*(1-(Time%240=[60,159])*2)
 ;Character specific bgpalfx
 [State 0, BGPalFX]
 type = BGPalFX
-Trigger1 = (parent,var(12)=[1,3]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,3]) && IsHomeTeam = 0 || IsHomeTeam = 1
+Trigger1 = (parent,var(12)=[1,4]) && EnemyNear,NumHelper(10980) = 0 && IsHomeTeam = 0 || (parent,var(12)!=[1,4]) && IsHomeTeam = 0 || IsHomeTeam = 1
 time = 1
 ;add = 95,12,0
 ;mul = 256,256,256
