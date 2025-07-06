@@ -27,7 +27,8 @@
 		"data/turtlewax.zss",
 		"data/mods/intro-outro.zss",
 		"data/mods/intro-outro-config.zss",
-		"data/mods/player-lead.zss"
+		"data/mods/lifelead.zss",
+		"data/mods/mixed.zss"
 	],
 	"ControllerStickSensitivity": 0.4,
 	"Credits": 10,

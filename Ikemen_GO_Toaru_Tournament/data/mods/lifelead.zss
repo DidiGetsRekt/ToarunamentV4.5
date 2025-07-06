@@ -85,7 +85,7 @@ ignorehitpause if !isHelper {
 			explod {
 				id: 1296512514;
 				anim: F 1296512514;
-				postype: back;
+				postype: left;
 				pos: (gameWidth/2)-18.625,4;
 				ownpal: 1;
 			}	
@@ -104,7 +104,7 @@ ignorehitpause if !isHelper {
 			explod {
 				id: 1296512515;
 				anim: F 1296512515;
-				postype: back;
+				postype: left;
 				pos: (gameWidth/2)+18.625,4;
 				facing: -1;
 				ownpal: 1;
@@ -124,7 +124,7 @@ ignorehitpause if !isHelper {
 			explod {
 				id: 1296512516;
 				anim: F 1296512516;
-				postype: back;
+				postype: left;
 				pos: (gameWidth/2),5;
 				facing: -1;
 				scale: 0.5,0.5;
